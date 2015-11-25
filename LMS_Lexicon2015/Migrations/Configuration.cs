@@ -20,7 +20,8 @@ namespace LMS_Lexicon2015.Migrations
             var roleStore = new RoleStore<IdentityRole>(context);
             var roleManager = new RoleManager<IdentityRole>(roleStore);
 
-            foreach (string roles in new[] { "Studien", "Teatcher"})
+            //foreach (string roles in new[] { "Studien", "Teatcher"})
+            foreach (string roles in new[] { "Elev", "Lärare" })
             {
                 if (!context.Roles.Any(u => u.Name == roles))
                 {
@@ -41,7 +42,7 @@ namespace LMS_Lexicon2015.Migrations
                 }
 
             var keeper = UserManager.FindByName("nisaw99@hotmail.com");
-            UserManager.AddToRole(keeper.Id, "Teatcher");  //Lägg till en roll för nisaw99@hotmail.com // AddToRole lägger in en ny roll men inte om den redan finns
+            UserManager.AddToRole(keeper.Id, "Lärare");  //Lägg till en roll för nisaw99@hotmail.com // AddToRole lägger in en ny roll men inte om den redan finns
 
             
             //  This method will be called after migrating to the latest version.
