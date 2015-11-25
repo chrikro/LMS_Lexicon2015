@@ -31,17 +31,17 @@ namespace LMS_Lexicon2015.Migrations
 
             //Nytt skapa användare med hash lösenord om det inte finns  
             var store = new UserStore<ApplicationUser>(context);
-            var manager = new UserManager<ApplicationUser>(store);
+            var UserManager = new UserManager<ApplicationUser>(store);
 
 
             if (!context.Users.Any(u => u.UserName == "nisaw99@hotmail.com"))
                 {
                     var user = new ApplicationUser { UserName = "nisaw99@hotmail.com", Email = "nisaw99@hotmail.com", FirstName = "Kalle", LastName = "Anka", GroupId = null};
-                    manager.Create(user, "hej999");// foobar = hej999
+                    UserManager.Create(user, "hej999");// foobar = hej999
                 }
 
-            var keeper = manager.FindByName("nisaw99@hotmail.com");
-            manager.AddToRole(keeper.Id, "Teatcher");  //Lägg till en roll för nisaw99@hotmail.com // AddToRole lägger in en ny roll men inte om den redan finns
+            var keeper = UserManager.FindByName("nisaw99@hotmail.com");
+            UserManager.AddToRole(keeper.Id, "Teatcher");  //Lägg till en roll för nisaw99@hotmail.com // AddToRole lägger in en ny roll men inte om den redan finns
 
             
             //  This method will be called after migrating to the latest version.

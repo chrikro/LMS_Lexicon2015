@@ -9,6 +9,18 @@
     padding-right: 15px;
 }
 
+
+.nav navbar-nav  a:hover
+{
+    color: green;
+}
+
+.nav navbar-nav  a:visited
+{
+    color: green;
+}
+
+
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */

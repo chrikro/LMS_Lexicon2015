@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<LMS_Lexicon2015.Models.ApplicationUser>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Använare lista";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Skapa Användare", "Register", "Account")
+
 </p>
 <table class="table">
     <tr>
@@ -23,19 +24,19 @@
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmailConfirmed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PasswordHash)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SecurityStamp)
-        </th>
+        @*<th>
+        @Html.DisplayNameFor(model => model.EmailConfirmed)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.PasswordHash)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.SecurityStamp)
+    </th>*@
         <th>
             @Html.DisplayNameFor(model => model.PhoneNumber)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
         </th>
         <th>
@@ -52,7 +53,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UserName)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -70,19 +71,19 @@
         <td>
             @Html.DisplayFor(modelItem => item.Email)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmailConfirmed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PasswordHash)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SecurityStamp)
-        </td>
+        @*<td>
+        @Html.DisplayFor(modelItem => item.EmailConfirmed)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PasswordHash)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SecurityStamp)
+    </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.PhoneNumber)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
         </td>
         <td>
@@ -99,7 +100,7 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UserName)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |

@@ -7,11 +7,55 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using LMS_Lexicon2015.Models;
+using System.Threading.Tasks;
+
+
+using System.Security.Claims;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 
 namespace LMS_Lexicon2015.Controllers
 {
     public class UsersController : Controller
     {
+        //private ApplicationSignInManager _signInManager;
+        //private ApplicationUserManager _userManager;
+
+        //public UsersController()
+        //{
+        //}
+
+        //public UsersController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        //{
+        //    UserManager = userManager;
+        //    SignInManager = signInManager;
+        //}
+
+        //public ApplicationSignInManager SignInManager
+        //{
+        //    get
+        //    {
+        //        return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+        //    }
+        //    private set
+        //    {
+        //        _signInManager = value;
+        //    }
+        //}
+
+        //public ApplicationUserManager UserManager
+        //{
+        //    get
+        //    {
+        //        return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+        //    }
+        //    private set
+        //    {
+        //        _userManager = value;
+        //    }
+        //}
+
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Users
@@ -57,6 +101,13 @@ namespace LMS_Lexicon2015.Controllers
 
             return View(applicationUser);
         }
+        public ActionResult Register()
+        {
+            return View();
+        }
+        
+
+
 
         // GET: Users/Edit/5
         public ActionResult Edit(string id)
@@ -114,7 +165,13 @@ namespace LMS_Lexicon2015.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
