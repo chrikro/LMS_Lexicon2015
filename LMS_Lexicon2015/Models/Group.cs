@@ -13,6 +13,7 @@ namespace LMS_Lexicon2015.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
-        //public virtual ICollection<ApplicationUser> GroupName { get; set; }
+       public virtual ICollection<ApplicationUser> GroupName { get; set; }
+         //public ICollection<ApplicationUser> ListOfUsers { get; set; }
     }
 }

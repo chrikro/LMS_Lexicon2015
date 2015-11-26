@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-}
+    }
 
 <h2>Index</h2>
 
@@ -31,6 +31,7 @@
 
 @foreach (var item in Model) {
     <tr>
+
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
@@ -44,13 +45,25 @@
             @Html.DisplayFor(modelItem => item.EndDate)
         </td>
         <td>
-            @*@Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(modelItem => item.MemberId).ToString()), "index", new { sortOrder = ViewBag.MemberSortParm, searchString = ViewBag.searchString })*@
+
+            @*@{
+            int GroupNameList = modelItem => item.GroupName.Count;
+            }*@
+
+            @*GroupName = modelItem => item.GroupName.Coun*@
+
+           @Html.ActionLink("Länk:", "Index", "Users")
+
+            @*@Html.ActionLink(model => item.GroupName.Count, "Index", "Users")*@
 
 
-           @Html.ActionLink("userscount", "Index", "Users")
+            @*@Html.ActionLink(string model => item.GroupName.Count, "Index", "Users")*@
 
-            @ViewBag.userscount
-            @*@Html.DisplayFor(db.)*@
+
+
+            @Html.DisplayFor(modelItem => item.GroupName.Count)
+
+
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
