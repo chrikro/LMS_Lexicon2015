@@ -23,6 +23,9 @@
         <th>
             @Html.DisplayNameFor(model => model.EndDate)
         </th>
+        <th>
+            Antal Elever
+        </th>
         <th></th>
     </tr>
 
@@ -39,6 +42,15 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @*@Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(modelItem => item.MemberId).ToString()), "index", new { sortOrder = ViewBag.MemberSortParm, searchString = ViewBag.searchString })*@
+
+
+           @Html.ActionLink("userscount", "Index", "Users")
+
+            @ViewBag.userscount
+            @*@Html.DisplayFor(db.)*@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

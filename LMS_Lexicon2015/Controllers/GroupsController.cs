@@ -17,6 +17,7 @@ namespace LMS_Lexicon2015.Controllers
         // GET: Groups
         public ActionResult Index()
         {
+            ViewBag.userscount = db.Users.Count();
             return View(db.Groups.ToList());
         }
 

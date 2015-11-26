@@ -139,11 +139,12 @@ namespace LMS_Lexicon2015.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            ViewBag.Role = new SelectList(db.Roles, "Name", "Name");//en bäg för rullningslistan på formuläret
-
+            //lägg till en gång till "If we got this far, something failed, redisplay form"
+            ViewBag.Role = new SelectList(db.Roles, "Name", "Name");//en bäg för rullningslistan på formuläret 
+            ViewBag.Group = new SelectList(db.Groups, "Id", "Name");//en bäg för rullningslistan på formuläret
             return View();
         }
-
+        
         //
         // POST: /Account/Register
         [HttpPost]
@@ -151,9 +152,19 @@ namespace LMS_Lexicon2015.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+
+ 
+          //  if (!UserManager.FindByName(user.UserName) == model.Email))
+            //    if (!UserManager.FindByName(user.UserName) == model.Email)
+            //{
+
+            //}
+     
+
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber, GroupId = null };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber, GroupId = model.Group};
+            
 
                // var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
@@ -176,6 +187,7 @@ namespace LMS_Lexicon2015.Controllers
 
             // If we got this far, something failed, redisplay form
             ViewBag.Role = new SelectList(db.Roles, "Id", "Name");//om det blir fel så skickas roll tillbaka till formuläret
+            ViewBag.Group = new SelectList(db.Groups, "Id", "Name");//om det blir fel så skickas roll tillbaka till formuläret
             return View(model);
         }
 

@@ -13,8 +13,8 @@ namespace LMS_Lexicon2015.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int? GroupId { get; set; }
-    
-        
+
+        //public virtual Group Group { get; set; }
         
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

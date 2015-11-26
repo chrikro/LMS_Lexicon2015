@@ -67,6 +67,10 @@ namespace LMS_Lexicon2015.Models
     {
 
         [Required]
+        [Display(Name = "Group")]
+        public int Group { get; set; }
+
+        [Required]
         [Display(Name = "Role")]
         public string Role { get; set; }
 
