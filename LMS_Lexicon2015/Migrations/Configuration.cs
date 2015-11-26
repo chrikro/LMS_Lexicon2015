@@ -44,7 +44,25 @@ namespace LMS_Lexicon2015.Migrations
             var keeper = UserManager.FindByName("nisaw99@hotmail.com");
             UserManager.AddToRole(keeper.Id, "Lärare");  //Lägg till en roll för nisaw99@hotmail.com // AddToRole lägger in en ny roll men inte om den redan finns
 
-            
+            if (!context.Groups.Any(g => g.Name == ".net Maj 2015"))
+            {
+                var group = new Group { Name = ".net Maj 2015", Description = "Text text text text", StartDate = new DateTime(2015,05,30), EndDate = new DateTime(2015,08,18)  };
+                context.Groups.Add(group);
+            }
+
+            if (!context.Groups.Any(g => g.Name == ".net Sep 2015"))
+            {
+                var group = new Group { Name = ".net Sep 2015", Description = "Text text text text", StartDate = new DateTime(2015, 08, 30), EndDate = new DateTime(2015, 12, 18) };
+                context.Groups.Add(group);
+            }
+
+            if (!context.Groups.Any(g => g.Name == ".net Feb 2016"))
+            {
+                var group = new Group { Name = ".net Feb 2016", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16) };
+                context.Groups.Add(group);
+            }
+
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

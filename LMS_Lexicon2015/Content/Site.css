@@ -10,16 +10,15 @@
 }
 
 
-.nav navbar-nav  a:hover
-{
-    color: green;
+.navbar {
+    display: inline;
+    font-family: Garamond;
+    font-size: 1.5em;
 }
 
-.nav navbar-nav  a:visited
-{
-    color: green;
+.navbar-inverse .navbar-nav > li > a {
+    color: #41dd92;
 }
-
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
