@@ -44,7 +44,35 @@ namespace LMS_Lexicon2015.Migrations
             var keeper = UserManager.FindByName("nisaw99@hotmail.com");
             UserManager.AddToRole(keeper.Id, "Lärare");  //Lägg till en roll för nisaw99@hotmail.com // AddToRole lägger in en ny roll men inte om den redan finns
 
-            
+
+
+            if (!context.Groups.Any(g => g.Name == ".net Maj 2015"))
+            {
+                var group = new Group { Name = ".net Maj 2015", Description = "Text text text text", StartDate = new DateTime(2015,05,30), EndDate = new DateTime(2015,08,18)  };
+                context.Groups.Add(group);
+                //var group = new Group { Name = "net Maj 2015", Description = "Text text text text", StartDate = DateTime.ParseExact("2015-05-30", "yyyy-MM-dd"), EndDate = DateTime.ParseExact("2015-08-18", "yyyy-MM-dd") };
+
+            }
+
+            //if (!context.Groups.Any(g => g.Name == ".net Sep 2015"))
+            //{
+            //    var group = new Group { Name = "net Sep 2015", Description = "Text text text text", StartDate = DateTime("2013-09-01"), EndDate = new DateTime(2016,12,18)  };
+            //}
+
+            //if (!context.Groups.Any(g => g.Name == ".net Feb 2016"))
+            //{
+            //    var group = new Group { Name = "net Feb 2016", Description = "Text text text text", StartDate = new DateTime(2016,02,30), EndDate = new DateTime(2016,05,18) };
+            //}
+  
+          //  StartDate = DateTime("2015-05-30", "yyyy-MM-dd", CultureInfo.InvariantCulture)
+
+
+        //            public int Id { get; set; }
+        //public string Name { get; set; }
+        //public string Description { get; set; }
+        //public DateTime StartDate { get; set; }
+        //public DateTime EndDate { get; set; }
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

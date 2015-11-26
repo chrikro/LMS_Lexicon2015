@@ -29,6 +29,7 @@
                     @using Microsoft.AspNet.Identity
                     @if (User.Identity.IsAuthenticated)
                     {
+                        <li>@Html.ActionLink("Grupper", "Index", "Groups")</li>
                         <li>@Html.ActionLink("Användare", "Index", "Users")</li>
                     }
 

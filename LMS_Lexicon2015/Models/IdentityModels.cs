@@ -37,6 +37,8 @@ namespace LMS_Lexicon2015.Models
             return new ApplicationDbContext();
         }
 
+        public System.Data.Entity.DbSet<LMS_Lexicon2015.Models.Group> Groups { get; set; }
+
         //public System.Data.Entity.DbSet<LMS_Lexicon2015.Models.ApplicationUser> ApplicationUsers { get; set; }
 
          
