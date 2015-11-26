@@ -67,11 +67,7 @@ namespace LMS_Lexicon2015.Models
     {
 
         [Required]
-        [Display(Name = "Group")]
-        public int Group { get; set; }
-
-        [Required]
-        [Display(Name = "Role")]
+        [Display(Name = "Roll")]
         public string Role { get; set; }
 
         [Required]
@@ -81,16 +77,16 @@ namespace LMS_Lexicon2015.Models
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
-        [Display(Name = "FirstName")]
+        [Display(Name = "För Namn")]
         public string FirstName { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
-        [Display(Name = "LastName")]
+        [Display(Name = "Efter Namn")]
         public string LastName { get; set; }
 
 
-        [Display(Name = "Phone number")]
+        [Display(Name = "Mobil Nummer")]
         public string PhoneNumber { get; set; }
 
         [Required]

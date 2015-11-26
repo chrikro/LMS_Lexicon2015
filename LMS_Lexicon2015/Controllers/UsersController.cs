@@ -57,7 +57,7 @@ namespace LMS_Lexicon2015.Controllers
         //}
 
         private ApplicationDbContext db = new ApplicationDbContext();
-
+ 
         // GET: Users
         public ActionResult Index()
         {
@@ -71,11 +71,16 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             ApplicationUser applicationUser = db.Users.Find(id);
+
+            ViewBag.Role = db.Roles.Find((applicationUser.Roles).First().RoleId).Name;
+
             if (applicationUser == null)
             {
                 return HttpNotFound();
             }
+
             return View(applicationUser);
         }
 
@@ -130,6 +135,7 @@ namespace LMS_Lexicon2015.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,GroupId,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+//        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,GroupId,Email,EmailConfirmed,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
         {
             if (ModelState.IsValid)
             {
