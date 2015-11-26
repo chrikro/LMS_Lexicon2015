@@ -126,6 +126,7 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Role = new SelectList(db.Roles, "Name", "Name");//en bäg för rullningslistan på formuläret 
             return View(applicationUser);
         }
 
@@ -143,6 +144,7 @@ namespace LMS_Lexicon2015.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(applicationUser);
         }
 
