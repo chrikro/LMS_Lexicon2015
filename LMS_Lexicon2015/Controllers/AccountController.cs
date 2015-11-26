@@ -139,7 +139,7 @@ namespace LMS_Lexicon2015.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            ViewBag.Role = new SelectList(db.Roles, "Name", "Name");
+            ViewBag.Role = new SelectList(db.Roles, "Name", "Name");//en bäg för rullningslistan på formuläret
 
             return View();
         }
@@ -165,7 +165,7 @@ namespace LMS_Lexicon2015.Controllers
 
 
 
-                    var keeper = UserManager.FindByName(user.UserName);
+                    var keeper = UserManager.FindByName(user.UserName);//lägga till roll
                     //UserManager.AddToRole(keeper.Id, "Teatcher");
                     UserManager.AddToRole(keeper.Id, model.Role); 
                    
@@ -175,7 +175,7 @@ namespace LMS_Lexicon2015.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            ViewBag.Role = new SelectList(db.Roles, "Id", "Name");
+            ViewBag.Role = new SelectList(db.Roles, "Id", "Name");//om det blir fel så skickas roll tillbaka till formuläret
             return View(model);
         }
 
