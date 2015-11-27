@@ -52,16 +52,16 @@
 
             @*GroupName = modelItem => item.GroupName.Coun*@
 
-           @Html.ActionLink("Länk:", "Index", "Users")
+           @*@Html.ActionLink("Länk:", "Index", "Users")*@
 
             @*@Html.ActionLink(model => item.GroupName.Count, "Index", "Users")*@
 
 
             @*@Html.ActionLink(string model => item.GroupName.Count, "Index", "Users")*@
 
+            @Html.ActionLink("" + item.GroupName.Count, "Index", "Users")
 
-
-            @Html.DisplayFor(modelItem => item.GroupName.Count)
+            @*@Html.DisplayFor(modelItem => item.GroupName.Count)*@
 
 
         </td>

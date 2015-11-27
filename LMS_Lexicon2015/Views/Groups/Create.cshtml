@@ -6,7 +6,6 @@
 
 <h2>Create</h2>
 
-
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -30,6 +29,14 @@
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
+ 
+        @*<div class="form-group input-group-sm">
+            @Html.LabelFor(model => model.StartDate)
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.StartDate, new { @class = "form-control datepicker", placeholder = "Start Date" })
+                @Html.ValidationMessageFor(model => model.StartDate)
+            </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -61,4 +68,12 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+
+@*<script type="text/javascript">
+    $(function () { // will trigger when the document is ready
+        $('.datepicker').datepicker(); //Initialise any date pickers
+    });
+</script>*@
+
 }
