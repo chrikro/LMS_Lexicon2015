@@ -15,14 +15,14 @@ namespace LMS_Lexicon2015.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Om Lexicon AB";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Kontaktsida";
 
             return View();
         }
