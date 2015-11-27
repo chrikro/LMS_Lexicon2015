@@ -16,7 +16,14 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+        @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+       <span class="glyphicon glyphicon-log-in"></span>*@
+
+
+
+        @*<li>@Html.ActionLink("Logga in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+
+        <li> @Html.ActionLink("  Logga in", "Login", "Account", null, htmlAttributes: new { @class = "glyphicon glyphicon-log-in", id = "loginLink" })</li>
+</ul>
 }
+

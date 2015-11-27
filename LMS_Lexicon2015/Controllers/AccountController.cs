@@ -51,7 +51,7 @@ namespace LMS_Lexicon2015.Controllers
                 _userManager = value;
             }
         }
-
+        private ApplicationDbContext db = new ApplicationDbContext();
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -139,9 +139,12 @@ namespace LMS_Lexicon2015.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            //lägg till en gång till "If we got this far, something failed, redisplay form"
+            ViewBag.Role = new SelectList(db.Roles, "Name", "Name");//en bäg för rullningslistan på formuläret 
+            ViewBag.Group = new SelectList(db.Groups, "Id", "Name");//en bäg för rullningslistan på formuläret
             return View();
         }
-
+        
         //
         // POST: /Account/Register
         [HttpPost]
@@ -149,26 +152,42 @@ namespace LMS_Lexicon2015.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+
+ 
+          //  if (!UserManager.FindByName(user.UserName) == model.Email))
+            //    if (!UserManager.FindByName(user.UserName) == model.Email)
+            //{
+
+            //}
+     
+
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber, GroupId = model.Group};
+            
+
+               // var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+
+
+
+
+                    var keeper = UserManager.FindByName(user.UserName);//lägga till roll
+                    //UserManager.AddToRole(keeper.Id, "Teatcher");
+                    UserManager.AddToRole(keeper.Id, model.Role); 
+                   
+                    return RedirectToAction("Index", "Users");
                 }
                 AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
+            ViewBag.Role = new SelectList(db.Roles, "Id", "Name");//om det blir fel så skickas roll tillbaka till formuläret
+            ViewBag.Group = new SelectList(db.Groups, "Id", "Name");//om det blir fel så skickas roll tillbaka till formuläret
             return View(model);
         }
 

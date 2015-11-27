@@ -9,6 +9,18 @@
     padding-right: 15px;
 }
 
+
+.navbar {
+    display: inline;
+    font-family: Garamond;
+    font-size: 1.5em;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    /*color: #41dd92;*/
+    color: lightgreen;
+}
+
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
