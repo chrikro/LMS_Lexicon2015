@@ -9,6 +9,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using LMS_Lexicon2015.Models;
+using System.Collections.Generic;
+using System.Web.Security;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace LMS_Lexicon2015.Controllers
 {
@@ -139,9 +142,20 @@ namespace LMS_Lexicon2015.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ApplicationDbContext context = new ApplicationDbContext();
+            var groups = context.Groups;
+
+            List<Group> g = groups.ToList();
+
+
+            g.Insert(0,null);
+
+           // db.Groups.Insert(0, new SelectListItem { Text = "", Value = "" });
+    
+
             //lägg till en gång till "If we got this far, something failed, redisplay form"
-            ViewBag.Role = new SelectList(db.Roles, "Name", "Name");//en bäg för rullningslistan på formuläret 
-            ViewBag.Group = new SelectList(db.Groups, "Id", "Name");//en bäg för rullningslistan på formuläret
+             ViewBag.Role = new SelectList(db.Roles, "Name", "Name");//en bäg för rullningslistan på formuläret 
+             ViewBag.Group = new SelectList(g, "Id", "Name");//en bäg för rullningslistan på formuläret
             return View();
         }
         
