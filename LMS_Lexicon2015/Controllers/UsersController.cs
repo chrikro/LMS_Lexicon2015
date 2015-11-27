@@ -75,6 +75,10 @@ namespace LMS_Lexicon2015.Controllers
             ApplicationUser applicationUser = db.Users.Find(id);
 
             ViewBag.Role = db.Roles.Find((applicationUser.Roles).First().RoleId).Name;
+            ViewBag.GroupName = "Grupp Namn";
+            ViewBag.GroupStart = "Start Datum";
+            ViewBag.GroupEnd = "Slut Datum";
+
 
             if (applicationUser == null)
             {
