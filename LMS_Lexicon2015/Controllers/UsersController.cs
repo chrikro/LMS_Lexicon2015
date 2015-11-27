@@ -75,6 +75,10 @@ namespace LMS_Lexicon2015.Controllers
             ApplicationUser applicationUser = db.Users.Find(id);
 
             ViewBag.Role = db.Roles.Find((applicationUser.Roles).First().RoleId).Name;
+            ViewBag.GroupName = "Grupp Namn";
+            ViewBag.GroupStart = "Start Datum";
+            ViewBag.GroupEnd = "Slut Datum";
+
 
             if (applicationUser == null)
             {
@@ -126,6 +130,7 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Role = new SelectList(db.Roles, "Name", "Name");//en bäg för rullningslistan på formuläret 
             return View(applicationUser);
         }
 
@@ -143,6 +148,7 @@ namespace LMS_Lexicon2015.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(applicationUser);
         }
 

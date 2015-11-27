@@ -39,13 +39,39 @@
             @Html.DisplayFor(model => model.Roles)
         </dd>*@
 
-    <dt>
+    @*<dt>
         @Html.DisplayNameFor(model => model.GroupId)
     </dt>
 
     <dd>
         @Html.DisplayFor(model => model.GroupId)
-    </dd>
+    </dd>*@
+
+        <dt>
+            @ViewBag.GroupName
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Group.Name)
+        </dd>
+
+
+        <dt>
+            @ViewBag.GroupStart
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Group.StartDate)
+        </dd>
+
+
+        <dt>
+            @ViewBag.GroupEnd
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Group.EndDate)
+        </dd>
 
     <dt>
         @Html.DisplayNameFor(model => model.Email)
