@@ -21,6 +21,10 @@ namespace LMS_Lexicon2015.Models
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
+
+   //         userIdentity.AddClaim(new Claim(ClaimTypes.GivenName, FirstName));
+     //       userIdentity.AddClaim(new Claim(ClaimTypes.Name, LastName));
+
             return userIdentity;
         }
     }
