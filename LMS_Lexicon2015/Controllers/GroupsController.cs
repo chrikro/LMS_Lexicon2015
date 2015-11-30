@@ -152,7 +152,7 @@ namespace LMS_Lexicon2015.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult _Course(Group group)
+        public ActionResult _Course(int GroupId) 
         {
             //foreach (var Group in group.Courses)
             //{
