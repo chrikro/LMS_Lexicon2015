@@ -17,7 +17,7 @@ namespace LMS_Lexicon2015.Models
        [Display(Name = "Efternamn")]
         public string LastName { get; set; }
 
-        [Display(Name = "GruppId")]
+        [Display(Name = "Grupp")]
         public int? GroupId { get; set; }
 
         [Display(Name = "Grupp")]
@@ -35,6 +35,8 @@ namespace LMS_Lexicon2015.Models
         }
     }
 
+
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -48,6 +50,8 @@ namespace LMS_Lexicon2015.Models
         }
 
         public System.Data.Entity.DbSet<LMS_Lexicon2015.Models.Group> Groups { get; set; }
+
+        public System.Data.Entity.DbSet<LMS_Lexicon2015.Models.CourseOccasion> CourseOccasions { get; set; }
 
         //public System.Data.Entity.DbSet<LMS_Lexicon2015.Models.ApplicationUser> ApplicationUsers { get; set; }
 

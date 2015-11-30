@@ -13,13 +13,17 @@ namespace LMS_Lexicon2015.Controllers
     public class GroupsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        public static bool ErrorMessageToEarly = false;
+        public static bool ErrorMessageStartAfterEnd = false;
 
         // GET: Groups
         public ActionResult Index()
         {
             //ViewBag.userscount = db.Users.Where(gr;
-
-
+            ViewBag.Line1 = "/";
+            ViewBag.Line2 = "-";
+            ErrorMessageToEarly = false;
+            ErrorMessageStartAfterEnd = false;
             return View(db.Groups.ToList());
         }
 
@@ -35,12 +39,22 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Line1 = "/";
+            ViewBag.Line2 = "-";
             return View(group);
         }
 
         // GET: Groups/Create
         public ActionResult Create()
         {
+            if (ErrorMessageToEarly == true)
+            {
+                ViewBag.ErrorMessage = "Du har angivit ett startdatum före dagens datum";
+            }
+            if (ErrorMessageStartAfterEnd == true)
+            {
+                ViewBag.ErrorMessage = "Du har angivit ett slutdatum före startdatumet ";
+            }             
             return View();
         }
 
@@ -53,11 +67,29 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Groups.Add(group);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (group.StartDate < DateTime.Now)
+                {
+                    //AddErrors(ModelState);
+                    ErrorMessageToEarly = true;
+                    ErrorMessageStartAfterEnd = false;
+                    return RedirectToAction("Create");
+                }
 
+                else if (group.StartDate > group.EndDate)
+                {
+                    //AddErrors(ModelState);
+                    ErrorMessageStartAfterEnd = true;
+                    ErrorMessageToEarly = false;
+                    return RedirectToAction("Create");
+                }
+
+                else
+                {
+                    db.Groups.Add(group);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
             return View(group);
         }
 
@@ -95,6 +127,8 @@ namespace LMS_Lexicon2015.Controllers
         // GET: Groups/Delete/5
         public ActionResult Delete(int? id)
         {
+            ViewBag.Line1 = "/";
+            ViewBag.Line2 = "-";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -116,6 +150,11 @@ namespace LMS_Lexicon2015.Controllers
             db.Groups.Remove(group);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult _Course()
+        {
+            return View(db.CourseOccasions.ToList());
         }
 
         protected override void Dispose(bool disposing)

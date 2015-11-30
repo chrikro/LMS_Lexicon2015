@@ -62,6 +62,14 @@ namespace LMS_Lexicon2015.Migrations
                 context.Groups.Add(group);
             }
 
+            if (!context.CourseOccasions.Any(c => c.Name == "c#"))
+            {
+                var CourseOccasion = new CourseOccasion { Name = "c#", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16), GroupId = 1 };
+                context.CourseOccasions.Add(CourseOccasion);
+            }
+
+
+
 
             //  This method will be called after migrating to the latest version.
 

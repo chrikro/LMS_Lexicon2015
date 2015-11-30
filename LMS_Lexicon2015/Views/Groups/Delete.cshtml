@@ -32,7 +32,11 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.StartDate)
+            @Html.DisplayFor(model => model.StartDate.Day)
+            @ViewBag.Line1
+            @Html.DisplayFor(model => model.StartDate.Month)
+            @ViewBag.Line2
+            @Html.DisplayFor(model => model.StartDate.Year)
         </dd>
 
         <dt>
@@ -40,7 +44,11 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EndDate)
+            @Html.DisplayFor(model => model.EndDate.Day)
+            @ViewBag.Line1
+            @Html.DisplayFor(model => model.EndDate.Month)
+            @ViewBag.Line2
+            @Html.DisplayFor(model => model.EndDate.Year)
         </dd>
 
     </dl>
