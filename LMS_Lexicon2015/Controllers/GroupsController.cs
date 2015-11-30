@@ -57,9 +57,10 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (StartDate > EndDate)
+                if (group.StartDate > group.EndDate)
                 {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                    //AddErrors(ModelState);
+                    return RedirectToAction("Create");
                 }
                 else 
                 {
@@ -130,6 +131,7 @@ namespace LMS_Lexicon2015.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
         protected override void Dispose(bool disposing)
         {
