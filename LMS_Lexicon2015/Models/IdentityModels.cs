@@ -17,7 +17,7 @@ namespace LMS_Lexicon2015.Models
        [Display(Name = "Efternamn")]
         public string LastName { get; set; }
 
-        [Display(Name = "GruppId")]
+        [Display(Name = "Grupp")]
         public int? GroupId { get; set; }
 
         [Display(Name = "Grupp")]
@@ -34,6 +34,8 @@ namespace LMS_Lexicon2015.Models
             return userIdentity;
         }
     }
+
+
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
