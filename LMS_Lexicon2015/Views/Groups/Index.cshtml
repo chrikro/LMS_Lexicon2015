@@ -53,25 +53,7 @@
             @Html.DisplayFor(model => item.EndDate.Year)
         </td>
         <td>
-
-            @*@{
-            int GroupNameList = modelItem => item.GroupName.Count;
-            }*@
-
-            @*GroupName = modelItem => item.GroupName.Coun*@
-
-           @*@Html.ActionLink("Länk:", "Index", "Users")*@
-
-            @*@Html.ActionLink(model => item.GroupName.Count, "Index", "Users")*@
-
-
-            @*@Html.ActionLink(string model => item.GroupName.Count, "Index", "Users")*@
-
             @Html.ActionLink("" + item.GroupName.Count, "Index", "Users")
-
-            @*@Html.DisplayFor(modelItem => item.GroupName.Count)*@
-
-
         </td>
         <td>
             @Html.ActionLink("Ändra", "Edit", new { id=item.Id }) |
