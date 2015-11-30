@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<LMS_Lexicon2015.Models.ApplicationUser>
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "Användarlista";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2></h2>
 
 <p>
     @Html.ActionLink("Skapa Användare", "Register", "Account")
@@ -107,6 +108,16 @@
                 </td>*@
 
             <td>
+                @{
+        var managear = new UserManager<LMS_Lexicon2015.Models.ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<LMS_Lexicon2015.Models.ApplicationUser>(new LMS_Lexicon2015.Models.ApplicationDbContext()));
+       // var manager = new RoleManager<LMS_Lexicon2015.Models.ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.RoleStore<LMS_Lexicon2015.Models.
+        
+        
+        
+      //  var currentUser = manager.FindById(User.Identity.GetUserId());
+       // var rollen = manager.FindById(Roles.GetRolesForUser());
+                }
+
                 @Html.DisplayFor(modelItem => item.Roles)
             </td>
 
