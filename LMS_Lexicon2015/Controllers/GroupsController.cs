@@ -13,13 +13,15 @@ namespace LMS_Lexicon2015.Controllers
     public class GroupsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private DateTime StartDate;
+        private DateTime EndDate;
 
         // GET: Groups
         public ActionResult Index()
         {
             //ViewBag.userscount = db.Users.Where(gr;
-
-
+            ViewBag.Line1 = "/";
+            ViewBag.Line2 = "-";
             return View(db.Groups.ToList());
         }
 
@@ -35,6 +37,8 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Line1 = "/";
+            ViewBag.Line2 = "-";
             return View(group);
         }
 
@@ -53,9 +57,16 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Groups.Add(group);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (StartDate > EndDate)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                else 
+                {
+                   db.Groups.Add(group);
+                   db.SaveChanges();
+                   return RedirectToAction("Index");
+                }
             }
 
             return View(group);
@@ -95,6 +106,8 @@ namespace LMS_Lexicon2015.Controllers
         // GET: Groups/Delete/5
         public ActionResult Delete(int? id)
         {
+            ViewBag.Line1 = "/";
+            ViewBag.Line2 = "-";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

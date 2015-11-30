@@ -39,10 +39,18 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
+            @Html.DisplayFor(model => item.StartDate.Day)
+            @ViewBag.Line1
+            @Html.DisplayFor(model => item.StartDate.Month)
+            @ViewBag.Line2
+            @Html.DisplayFor(model => item.StartDate.Year)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
+            @Html.DisplayFor(model => item.EndDate.Day)
+            @ViewBag.Line1
+            @Html.DisplayFor(model => item.EndDate.Month)
+            @ViewBag.Line2
+            @Html.DisplayFor(model => item.EndDate.Year)
         </td>
         <td>
 
