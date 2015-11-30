@@ -19,7 +19,7 @@ namespace LMS_Lexicon2015.Models
         [Display(Name = "Startdatum")]
         public DateTime StartDate { get; set; }
 
-        [Display(Name = "Slutdatum")]        
+        [Display(Name = "Slutdatum")]
         public DateTime EndDate { get; set; }
 
        [Display(Name = "Gruppnamn")]

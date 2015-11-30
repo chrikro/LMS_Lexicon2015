@@ -13,8 +13,8 @@ namespace LMS_Lexicon2015.Controllers
     public class GroupsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        private DateTime StartDate;
-        private DateTime EndDate;
+        public static bool ErrorMessageToEarly = false;
+        public static bool ErrorMessageStartAfterEnd = false;
 
         // GET: Groups
         public ActionResult Index()
@@ -22,6 +22,8 @@ namespace LMS_Lexicon2015.Controllers
             //ViewBag.userscount = db.Users.Where(gr;
             ViewBag.Line1 = "/";
             ViewBag.Line2 = "-";
+            ErrorMessageToEarly = false;
+            ErrorMessageStartAfterEnd = false;
             return View(db.Groups.ToList());
         }
 
@@ -45,6 +47,14 @@ namespace LMS_Lexicon2015.Controllers
         // GET: Groups/Create
         public ActionResult Create()
         {
+            if (ErrorMessageToEarly == true)
+            {
+                ViewBag.ErrorMessage = "Du har angivit ett startdatum före dagens datum";
+            }
+            if (ErrorMessageStartAfterEnd == true)
+            {
+                ViewBag.ErrorMessage = "Du har angivit ett slutdatum före startdatumet ";
+            }             
             return View();
         }
 
@@ -57,19 +67,29 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (group.StartDate > group.EndDate)
+                if (group.StartDate < DateTime.Now)
                 {
                     //AddErrors(ModelState);
+                    ErrorMessageToEarly = true;
+                    ErrorMessageStartAfterEnd = false;
                     return RedirectToAction("Create");
                 }
-                else 
+
+                else if (group.StartDate > group.EndDate)
                 {
-                   db.Groups.Add(group);
-                   db.SaveChanges();
-                   return RedirectToAction("Index");
+                    //AddErrors(ModelState);
+                    ErrorMessageStartAfterEnd = true;
+                    ErrorMessageToEarly = false;
+                    return RedirectToAction("Create");
+                }
+
+                else
+                {
+                    db.Groups.Add(group);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
                 }
             }
-
             return View(group);
         }
 

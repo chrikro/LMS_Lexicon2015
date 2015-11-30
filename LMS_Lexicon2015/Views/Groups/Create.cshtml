@@ -59,17 +59,15 @@
 }
 
 <div>
+    <h4>
+        @ViewBag.ErrorMessage
+    </h4>
+</div>
+
+<div>
     @Html.ActionLink("Tillbaka till listan", "Index")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    @*@Scripts.Render("~/bundles/bootstrap")*@
-
-@*<script type="text/javascript">
-    $(function () { // will trigger when the document is ready
-        $('.datepicker').datepicker(); //Initialise any date pickers
-    });
-</script>*@
-
 }
