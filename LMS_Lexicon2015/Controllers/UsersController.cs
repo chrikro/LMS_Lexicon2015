@@ -91,9 +91,13 @@ namespace LMS_Lexicon2015.Controllers
             ApplicationUser applicationUser = db.Users.Find(id);
 
             ViewBag.Role = db.Roles.Find((applicationUser.Roles).First().RoleId).Name;
-            ViewBag.GroupName = "Grupp Namn";
-            ViewBag.GroupStart = "Start Datum";
-            ViewBag.GroupEnd = "Slut Datum";
+            ViewBag.GroupName = "Gruppnamn";
+            ViewBag.GroupStart = "Startdatum";
+            ViewBag.GroupEnd = "Slutdatum";
+            ViewBag.RoleHeader = "Roll";
+            ViewBag.EmailHeader = "Epost";
+            ViewBag.PhoneHeader = "Mobilnummer";
+            ViewBag.UserName = "Användarnamn";
 
 
             if (applicationUser == null)
