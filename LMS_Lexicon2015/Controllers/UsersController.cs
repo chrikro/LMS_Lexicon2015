@@ -8,8 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using LMS_Lexicon2015.Models;
 using System.Threading.Tasks;
-
-
 using System.Security.Claims;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -57,11 +55,29 @@ namespace LMS_Lexicon2015.Controllers
         //}
 
         private ApplicationDbContext db = new ApplicationDbContext();
- 
+
         // GET: Users
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            var applicationUsers = db.Users.ToList();
+
+            ViewBag.Roles = db.Roles.ToList();
+
+            var model =
+    db.Users.Select(r => new UserListViewModel
+    {
+        Id = r.Id,
+        FirstName = r.FirstName,
+        LastName = r.LastName,
+        Email = r.Email,
+        Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
+        Group = db.Groups.FirstOrDefault().Name,
+        PhoneNumber = r.PhoneNumber
+
+    }).ToList();
+
+            return View(model);
+
         }
 
         // GET: Users/Details/5
@@ -75,9 +91,13 @@ namespace LMS_Lexicon2015.Controllers
             ApplicationUser applicationUser = db.Users.Find(id);
 
             ViewBag.Role = db.Roles.Find((applicationUser.Roles).First().RoleId).Name;
-            ViewBag.GroupName = "Grupp Namn";
-            ViewBag.GroupStart = "Start Datum";
-            ViewBag.GroupEnd = "Slut Datum";
+            ViewBag.GroupName = "Gruppnamn";
+            ViewBag.GroupStart = "Startdatum";
+            ViewBag.GroupEnd = "Slutdatum";
+            ViewBag.RoleHeader = "Roll";
+            ViewBag.EmailHeader = "Epost";
+            ViewBag.PhoneHeader = "Mobilnummer";
+            ViewBag.UserName = "Användarnamn";
 
 
             if (applicationUser == null)
@@ -114,9 +134,6 @@ namespace LMS_Lexicon2015.Controllers
         {
             return View();
         }
-        
-
-
 
         // GET: Users/Edit/5
         public ActionResult Edit(string id)
@@ -140,7 +157,7 @@ namespace LMS_Lexicon2015.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,GroupId,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
-//        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,GroupId,Email,EmailConfirmed,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+        //        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,GroupId,Email,EmailConfirmed,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
         {
             if (ModelState.IsValid)
             {

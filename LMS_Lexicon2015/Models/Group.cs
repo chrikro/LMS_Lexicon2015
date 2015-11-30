@@ -24,6 +24,9 @@ namespace LMS_Lexicon2015.Models
 
        [Display(Name = "Gruppnamn")]
        public virtual ICollection<ApplicationUser> GroupName { get; set; }
-         //public ICollection<ApplicationUser> ListOfUsers { get; set; }
+
+       [Display(Name = "Courses")]
+       public virtual ICollection<CourseOccasion> Courses { get; set; }
+
     }
 }

@@ -4,6 +4,33 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace LMS_Lexicon2015.Models
 {
+    public class UserListViewModel
+    {
+        [Display(Name = "Id")]
+        public string Id { get; set; }
+
+        [Display(Name = "Förnamn")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Efternamn")]
+        public string LastName { get; set; }
+
+        [Display(Name = "Grupp")]
+        public string Group { get; set; }
+
+        [Display(Name = "Roll")]
+        public string Role { get; set; }
+
+        [Display(Name = "Mobilnummer")]
+        public string PhoneNumber { get; set; }
+
+        [Display(Name = "Epost")]
+        [EmailAddress]
+        public string Email { get; set; }
+
+
+    }
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]

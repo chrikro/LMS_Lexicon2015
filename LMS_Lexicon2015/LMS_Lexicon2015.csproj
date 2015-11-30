@@ -159,6 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CourseOccasionsController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -182,6 +183,10 @@
     <Compile Include="Migrations\201511271446430_ändrat språk i modeller.Designer.cs">
       <DependentUpon>201511271446430_ändrat språk i modeller.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511301252463_seed4.cs" />
+    <Compile Include="Migrations\201511301252463_seed4.Designer.cs">
+      <DependentUpon>201511301252463_seed4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -204,6 +209,7 @@
     <Content Include="Images\lexicon.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -261,7 +267,12 @@
     <Content Include="Views\Groups\Details.cshtml" />
     <Content Include="Views\Groups\Edit.cshtml" />
     <Content Include="Views\Groups\Index.cshtml" />
-    <Content Include="Views\Groups\DelGroup.cshtml" />
+    <Content Include="Views\CourseOccasions\Create.cshtml" />
+    <Content Include="Views\CourseOccasions\Delete.cshtml" />
+    <Content Include="Views\CourseOccasions\Details.cshtml" />
+    <Content Include="Views\CourseOccasions\Edit.cshtml" />
+    <Content Include="Views\CourseOccasions\Index.cshtml" />
+    <Content Include="Views\Groups\_Course.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -286,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511271446430_ändrat språk i modeller.resx">
       <DependentUpon>201511271446430_ändrat språk i modeller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511301252463_seed4.resx">
+      <DependentUpon>201511301252463_seed4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

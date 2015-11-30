@@ -198,6 +198,17 @@ namespace LMS_Lexicon2015.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult _Course(Group group)
+        {
+            //foreach (var Group in group.Courses)
+            //{
+            //    var courses = group.Courses.Where(c => c.GroupId == group.Id);
+            //}
+
+            //return View(courses);
+
+            return View(db.CourseOccasions.ToList());
+        }
 
         protected override void Dispose(bool disposing)
         {

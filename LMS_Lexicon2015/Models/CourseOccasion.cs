@@ -9,7 +9,7 @@ namespace LMS_Lexicon2015.Models
     public class CourseOccasion
     {
         public int Id { get; set; }
-        public string Namn { get; set; }
+        public string Name { get; set; }
 
         [Display(Name = "Beskrivning")]
         public string Description { get; set; }
@@ -20,8 +20,14 @@ namespace LMS_Lexicon2015.Models
         [Display(Name = "Slutdatum")]
         public DateTime EndDate { get; set; }
 
-        [Display(Name = "GruppId")]
-        public int GroupId { get; set; }
+        //[Display(Name = "GruppId")]
+        //public int GroupId { get; set; }
+
+        [Display(Name = "Grupp")]
+        public int? GroupId { get; set; }
+
+        [Display(Name = "Grupp")]
+        public virtual Group Group { get; set; }
     }
 }
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LMS_Lexicon2015.Models.ApplicationUser>
+﻿@model IEnumerable<LMS_Lexicon2015.Models.UserListViewModel>
 @using Microsoft.AspNet.Identity
 
 @{
@@ -20,7 +20,10 @@
             @Html.DisplayNameFor(model => model.LastName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GroupId)
+            @Html.DisplayNameFor(model => model.Role)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Group)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
@@ -30,13 +33,11 @@
             @Html.DisplayNameFor(model => model.PhoneNumber)
         </th>
  
-        <th>
-            <p>Roll</p>
-        </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
@@ -45,35 +46,28 @@
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
-              @Html.DisplayFor(modelItem => item.Group.Name)
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Group)
               </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
  
+
             <td>
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
   
 
-            <td>
-                @{
-        var managear = new UserManager<LMS_Lexicon2015.Models.ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<LMS_Lexicon2015.Models.ApplicationUser>(new LMS_Lexicon2015.Models.ApplicationDbContext()));
-       // var manager = new RoleManager<LMS_Lexicon2015.Models.ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.RoleStore<LMS_Lexicon2015.Models.
         
         
-        
-      //  var currentUser = manager.FindById(User.Identity.GetUserId());
-       // var rollen = manager.FindById(Roles.GetRolesForUser());
-                }
-
-                @Html.DisplayFor(modelItem => item.Roles)
-            </td>
 
        <td>
-                @Html.ActionLink("Ändra", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Detaljer", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Ta bort", "Delete", new { id=item.Id })
+                @Html.ActionLink("Ändra", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Detaljer", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Ta bort", "Delete", new { id = item.Id })
             </td>
         </tr>
 }
