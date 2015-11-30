@@ -4,7 +4,7 @@
     ViewBag.Title = "Användarlista";
 }
 
-<h2></h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
     @Html.ActionLink("Skapa Användare", "Register", "Account")
@@ -108,7 +108,7 @@
 
             <td>
                 @Html.DisplayFor(modelItem => item.Roles)
-            </td>*
+            </td>
 
        <td>
                 @Html.ActionLink("Ändra", "Edit", new { id=item.Id }) |
