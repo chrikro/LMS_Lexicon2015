@@ -62,6 +62,8 @@ namespace LMS_Lexicon2015.Controllers
             var applicationUsers = db.Users.ToList();
 
             ViewBag.Roles = db.Roles.ToList();
+        //var gruppTest =  db.Groups.Find
+
 
             var model =
     db.Users.Select(r => new UserListViewModel
@@ -71,7 +73,7 @@ namespace LMS_Lexicon2015.Controllers
         LastName = r.LastName,
         Email = r.Email,
         Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
-        Group = db.Groups.FirstOrDefault().Name,
+        Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
         PhoneNumber = r.PhoneNumber
 
     }).ToList();
