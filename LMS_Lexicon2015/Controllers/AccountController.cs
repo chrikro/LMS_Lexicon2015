@@ -89,7 +89,7 @@ namespace LMS_Lexicon2015.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Felaktig inloggning.");
                     return View(model);
             }
         }
@@ -132,7 +132,7 @@ namespace LMS_Lexicon2015.Controllers
                     return View("Lockout");
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid code.");
+                    ModelState.AddModelError("", "Fel kod");
                     return View(model);
             }
         }

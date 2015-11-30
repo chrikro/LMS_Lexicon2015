@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<LMS_Lexicon2015.Models.ApplicationUser>
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "Användarlista";
@@ -107,7 +108,17 @@
                 </td>*@
 
             <td>
-                @Html.DisplayFor(modelItem => item.Roles)
+                @{
+        var managear = new UserManager<LMS_Lexicon2015.Models.ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<LMS_Lexicon2015.Models.ApplicationUser>(new LMS_Lexicon2015.Models.ApplicationDbContext()));
+       // var manager = new RoleManager<LMS_Lexicon2015.Models.ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.RoleStore<LMS_Lexicon2015.Models.
+        
+        
+        
+      //  var currentUser = manager.FindById(User.Identity.GetUserId());
+       // var rollen = manager.FindById(Roles.GetRolesForUser());
+                }
+
+                        @Html.DisplayFor(modelItem => item.Roles)
             </td>*
 
        <td>
