@@ -27,6 +27,25 @@ namespace LMS_Lexicon2015.Controllers
             return View(db.Groups.ToList());
         }
 
+        // GET: Groups
+ //       public ActionResult DelGroup(int id)
+        public ActionResult DelGroup(int? id)
+        {
+            ViewBag.Line1 = "/";
+            ViewBag.Line2 = "-";
+
+        //    var groupName = db.Groups.Find(id).Name;
+        //    List<Group> delGroup = new List<Group>();
+        //    foreach (var group in db.Groups) {
+        //    if (group.Name == groupName) delGroup.Add(group);
+        //}
+
+            //ViewBag.userscount = db.Users.Where(gr;
+//             return View(delGroup.ToList());
+           return View(db.Users.ToList());
+        }
+
+
         // GET: Groups/Details/5
         public ActionResult Details(int? id)
         {
@@ -105,6 +124,14 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
+            if (ErrorMessageToEarly == true)
+            {
+                ViewBag.ErrorMessage = "Du har angivit ett startdatum före dagens datum";
+            }
+            if (ErrorMessageStartAfterEnd == true)
+            {
+                ViewBag.ErrorMessage = "Du har angivit ett slutdatum före startdatumet ";
+            }         
             return View(group);
         }
 
@@ -117,9 +144,28 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(group).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (group.StartDate < DateTime.Now)
+                {
+                    //AddErrors(ModelState);
+                    ErrorMessageToEarly = true;
+                    ErrorMessageStartAfterEnd = false;
+                    return RedirectToAction("Edit");
+                }
+
+                else if (group.StartDate > group.EndDate)
+                {
+                    //AddErrors(ModelState);
+                    ErrorMessageStartAfterEnd = true;
+                    ErrorMessageToEarly = false;
+                    return RedirectToAction("Edit");
+               }
+
+                else
+                {
+                    db.Entry(group).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             return View(group);
         }
@@ -152,7 +198,7 @@ namespace LMS_Lexicon2015.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult _Course(Group group)
+        public ActionResult _Course(int GroupId) 
         {
             //foreach (var Group in group.Courses)
             //{

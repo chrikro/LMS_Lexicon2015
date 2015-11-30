@@ -58,7 +58,10 @@
         @Html.ActionLink("Tillbaka till listan", "Index")
     </p>
 
+@Html.Partial("_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.ToList() )
+@*@Html.Partial("_Course", Model)*@
     @*@Html.Partial("_Course", new { Model })*@
+@*@Html.Partial("~/Views/CourseOccasion/index.cshtml", ViewData.Model.Courses)*@
 
 
 

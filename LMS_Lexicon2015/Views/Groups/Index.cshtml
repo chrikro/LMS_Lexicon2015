@@ -57,7 +57,7 @@
             @Html.DisplayFor(model => item.EndDate.Year)
         </td>
         <td>
-            @Html.ActionLink("" + item.GroupName.Count, "Index", "Users")
+            @Html.ActionLink("" + item.GroupName.Count, "DelGroup", "Groups", new { id = item.Id})
         </td>
         <td>
             @*@Html.ActionLink("Ändra", "Edit", new { id=item.Id }) |
