@@ -10,131 +10,109 @@ using LMS_Lexicon2015.Models;
 
 namespace LMS_Lexicon2015.Controllers
 {
-    public class GroupsController : Controller
+    public class CourseOccasionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        private DateTime StartDate;
-        private DateTime EndDate;
 
-        // GET: Groups
+        // GET: CourseOccasions
         public ActionResult Index()
         {
-            //ViewBag.userscount = db.Users.Where(gr;
-            ViewBag.Line1 = "/";
-            ViewBag.Line2 = "-";
-            return View(db.Groups.ToList());
+            return View(db.CourseOccasions.ToList());
         }
 
-        // GET: Groups/Details/5
+        // GET: CourseOccasions/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Group group = db.Groups.Find(id);
-            if (group == null)
+            CourseOccasion courseOccasion = db.CourseOccasions.Find(id);
+            if (courseOccasion == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Line1 = "/";
-            ViewBag.Line2 = "-";
-            return View(group);
+            return View(courseOccasion);
         }
 
-        // GET: Groups/Create
+        // GET: CourseOccasions/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Groups/Create
+        // POST: CourseOccasions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,StartDate,EndDate")] Group group)
+        public ActionResult Create([Bind(Include = "Id,Namn,Description,StartDate,EndDate,GroupId")] CourseOccasion courseOccasion)
         {
             if (ModelState.IsValid)
             {
-                if (group.StartDate > group.EndDate)
-                {
-                    //AddErrors(ModelState);
-                    return RedirectToAction("Create");
-                }
-                else 
-                {
-                   db.Groups.Add(group);
-                   db.SaveChanges();
-                   return RedirectToAction("Index");
-                }
+                db.CourseOccasions.Add(courseOccasion);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
-            return View(group);
+            return View(courseOccasion);
         }
 
-        // GET: Groups/Edit/5
+        // GET: CourseOccasions/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Group group = db.Groups.Find(id);
-            if (group == null)
+            CourseOccasion courseOccasion = db.CourseOccasions.Find(id);
+            if (courseOccasion == null)
             {
                 return HttpNotFound();
             }
-            return View(group);
+            return View(courseOccasion);
         }
 
-        // POST: Groups/Edit/5
+        // POST: CourseOccasions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,StartDate,EndDate")] Group group)
+        public ActionResult Edit([Bind(Include = "Id,Namn,Description,StartDate,EndDate,GroupId")] CourseOccasion courseOccasion)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(group).State = EntityState.Modified;
+                db.Entry(courseOccasion).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(group);
+            return View(courseOccasion);
         }
 
-        // GET: Groups/Delete/5
+        // GET: CourseOccasions/Delete/5
         public ActionResult Delete(int? id)
         {
-            ViewBag.Line1 = "/";
-            ViewBag.Line2 = "-";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Group group = db.Groups.Find(id);
-            if (group == null)
+            CourseOccasion courseOccasion = db.CourseOccasions.Find(id);
+            if (courseOccasion == null)
             {
                 return HttpNotFound();
             }
-            return View(group);
+            return View(courseOccasion);
         }
 
-        // POST: Groups/Delete/5
+        // POST: CourseOccasions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Group group = db.Groups.Find(id);
-            db.Groups.Remove(group);
+            CourseOccasion courseOccasion = db.CourseOccasions.Find(id);
+            db.CourseOccasions.Remove(courseOccasion);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        public ActionResult _Course()
-        {
-            return View(db.CourseOccasions.ToList());
         }
 
         protected override void Dispose(bool disposing)
