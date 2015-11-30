@@ -13,9 +13,7 @@ namespace LMS_Lexicon2015.Controllers
     public class GroupsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        private DateTime StartDate;
-        private DateTime EndDate;
-
+  
         // GET: Groups
         public ActionResult Index()
         {
@@ -57,16 +55,9 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (StartDate > EndDate)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-                else 
-                {
                    db.Groups.Add(group);
                    db.SaveChanges();
                    return RedirectToAction("Index");
-                }
             }
 
             return View(group);
