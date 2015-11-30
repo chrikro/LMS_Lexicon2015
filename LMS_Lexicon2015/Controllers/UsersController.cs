@@ -61,24 +61,19 @@ namespace LMS_Lexicon2015.Controllers
         {
             var applicationUsers = db.Users.ToList();
 
-            // var x = db.Users.Find((applicationUser.Id).First();
-
-            //var w =db.Roles.Find()
-
-            //var model = from q in db.Us 
-            //            join w in 
-            //    (from Name in 
-
-
             ViewBag.Roles = db.Roles.ToList();
 
             var model =
     db.Users.Select(r => new UserListViewModel
     {
         Id = r.Id,
-        Name = r.FirstName,
+        FirstName = r.FirstName,
+        LastName = r.LastName,
         Email = r.Email,
-        Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name
+        Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
+        Group = db.Groups.FirstOrDefault().Name,
+        PhoneNumber = r.PhoneNumber
+
     }).ToList();
 
             return View(model);
@@ -135,9 +130,6 @@ namespace LMS_Lexicon2015.Controllers
         {
             return View();
         }
-
-
-
 
         // GET: Users/Edit/5
         public ActionResult Edit(string id)
