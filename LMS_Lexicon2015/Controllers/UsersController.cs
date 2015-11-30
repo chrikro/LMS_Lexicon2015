@@ -8,8 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using LMS_Lexicon2015.Models;
 using System.Threading.Tasks;
-
-
 using System.Security.Claims;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -57,11 +55,34 @@ namespace LMS_Lexicon2015.Controllers
         //}
 
         private ApplicationDbContext db = new ApplicationDbContext();
- 
+
         // GET: Users
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            var applicationUsers = db.Users.ToList();
+
+            // var x = db.Users.Find((applicationUser.Id).First();
+
+            //var w =db.Roles.Find()
+
+            //var model = from q in db.Us 
+            //            join w in 
+            //    (from Name in 
+
+
+            ViewBag.Roles = db.Roles.ToList();
+
+            var model =
+    db.Users.Select(r => new UserListViewModel
+    {
+        Id = r.Id,
+        Name = r.FirstName,
+        Email = r.Email,
+        Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name
+    }).ToList();
+
+            return View(model);
+
         }
 
         // GET: Users/Details/5
@@ -114,7 +135,7 @@ namespace LMS_Lexicon2015.Controllers
         {
             return View();
         }
-        
+
 
 
 
@@ -140,7 +161,7 @@ namespace LMS_Lexicon2015.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,GroupId,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
-//        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,GroupId,Email,EmailConfirmed,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+        //        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,GroupId,Email,EmailConfirmed,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
         {
             if (ModelState.IsValid)
             {
