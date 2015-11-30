@@ -10,8 +10,8 @@
     @Html.AntiForgeryToken()
     <h4>Skapa en ny användare</h4>
     <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
 
+        @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(model => model.Role, "Role", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -24,7 +24,6 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Group, "Group", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-
 
             @Html.DropDownList("Group", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Group, "", new { @class = "text-danger" })
