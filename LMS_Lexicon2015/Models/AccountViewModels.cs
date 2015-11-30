@@ -4,6 +4,22 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace LMS_Lexicon2015.Models
 {
+    public class UserListViewModel
+    {
+        [Display(Name = "Id")]
+        public string Id { get; set; }
+
+        [Display(Name = "Namn")]
+        public string Name { get; set; }
+
+        [Display(Name = "Epost")]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Display(Name = "Roll")]
+        public string Role { get; set; }
+    }
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
