@@ -1,4 +1,21 @@
-﻿@model LMS_Lexicon2015.Models.RegisterViewModel
+﻿
+<script type="text/javascript">
+<!--
+    function ChangeRoll(id) {
+       var e = document.getElementById(id);
+       if (e.style.display == 'block') {
+           e.style.display = 'none';
+           document.getElementById('GroupStudent').style.display = 'block';
+       }
+       else {
+           e.style.display = 'block';
+           document.getElementById('GroupStudent').style.display = 'none';
+       }
+    }
+//-->
+</script>
+
+@model LMS_Lexicon2015.Models.RegisterViewModel
 @{
     ViewBag.Title = "Registrera";
 }
@@ -11,26 +28,38 @@
     <h4>Skapa en ny användare</h4>
     <hr />
 
+  
+ 
+ 
+    
         @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(model => model.Role, "Role", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
 
-            @Html.DropDownList("Role", null, htmlAttributes: new { @class = "form-control" })
+            @Html.DropDownList("Role", null, htmlAttributes: new { @class = "form-control", @onchange = "ChangeRoll('GroupTeacher')" })
             @Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Group, "Group", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="form-group" id="GroupStudent">
+        @Html.LabelFor(model => model.GroupStudent, "Group", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-
-
-            @Html.DropDownList("Group", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Group, "", new { @class = "text-danger" })
+            @Html.DropDownList("GroupStudent", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.GroupStudent, "", new { @class = "text-danger" })
         </div>
     </div>
-    
+
+    <div class="form-group" id="GroupTeacher" style="display: none;">
+ 
+            @Html.LabelFor(model => model.GroupTeacher, "Group", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("GroupTeacher", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.GroupTeacher, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
     <div class="form-group">
         @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">

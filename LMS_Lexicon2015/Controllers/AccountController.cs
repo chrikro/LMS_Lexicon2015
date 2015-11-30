@@ -142,20 +142,18 @@ namespace LMS_Lexicon2015.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            ApplicationDbContext context = new ApplicationDbContext();
-            var groups = context.Groups;
+            //ApplicationDbContext context = new ApplicationDbContext();
+            //var groups = context.Groups;
 
-            List<Group> g = groups.ToList();
-
-
+            List<Group> g = db.Groups.ToList();
             g.Insert(0,null);
 
-           // db.Groups.Insert(0, new SelectListItem { Text = "", Value = "" });
-    
+   
 
             //lägg till en gång till "If we got this far, something failed, redisplay form"
              ViewBag.Role = new SelectList(db.Roles, "Name", "Name");//en bäg för rullningslistan på formuläret 
-             ViewBag.Group = new SelectList(g, "Id", "Name");//en bäg för rullningslistan på formuläret
+             ViewBag.GroupTeacher = new SelectList(g, "Id", "Name");//en bäg för rullningslistan på formuläret
+             ViewBag.GroupStudent = new SelectList(db.Groups, "Id", "Name");//en bäg för rullningslistan på formuläret
             return View();
         }
         
@@ -177,18 +175,22 @@ namespace LMS_Lexicon2015.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber, GroupId = model.Group};
+                ApplicationUser user;
+                if (model.Role == "Elev") 
+                {
+                    user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber, GroupId = model.GroupStudent };
+      
+                }
+                else
+                {
+                    user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber, GroupId = model.GroupTeacher };
+                }
             
-
                // var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-
-
-
-
 
                     var keeper = UserManager.FindByName(user.UserName);//lägga till roll
                     //UserManager.AddToRole(keeper.Id, "Teatcher");

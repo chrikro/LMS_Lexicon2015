@@ -67,9 +67,12 @@ namespace LMS_Lexicon2015.Models
 
     public class RegisterViewModel
     {
-        [Required]
-        [Display(Name = "Grupp")]
-        public int Group { get; set; }
+        //[Required]
+        [Display(Name = "Group")]
+        public int? GroupStudent { get; set; }
+
+        [Display(Name = "Group")]
+        public int? GroupTeacher { get; set; }
 
         [Required]
         [Display(Name = "Roll")]
