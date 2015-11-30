@@ -14,7 +14,7 @@
 
             @Html.ActionLink("Hej " + currentUser.FirstName + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Logga ut</a></li>
     </ul>
     }
 }
@@ -28,7 +28,7 @@ else
 
         @*<li>@Html.ActionLink("Logga in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
 
-        <li> @Html.ActionLink("  Logga in", "Login", "Account", null, htmlAttributes: new { @class = "glyphicon glyphicon-log-in", id = "loginLink" })</li>
+        <li> @Html.ActionLink("Logga in", "Login", "Account", null, htmlAttributes: new { @class = "glyphicon glyphicon-log-in", id = "loginLink" })</li>
 </ul>
 }
 

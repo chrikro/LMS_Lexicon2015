@@ -7,7 +7,7 @@ namespace LMS_Lexicon2015.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "Epost")]
         public string Email { get; set; }
     }
 
@@ -21,6 +21,8 @@ namespace LMS_Lexicon2015.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
         public string ReturnUrl { get; set; }
+
+        [Display(Name = "Kom ihåg mig")]
         public bool RememberMe { get; set; }
     }
 
@@ -30,43 +32,44 @@ namespace LMS_Lexicon2015.Models
         public string Provider { get; set; }
 
         [Required]
-        [Display(Name = "Code")]
+        [Display(Name = "Kod")]
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
-        [Display(Name = "Remember this browser?")]
+        [Display(Name = "Kom ihåg den här webbläsaren?")]
         public bool RememberBrowser { get; set; }
-
+        [Display(Name = "Kom ihåg mig")]
         public bool RememberMe { get; set; }
     }
 
     public class ForgotViewModel
     {
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "Epost")]
         public string Email { get; set; }
     }
 
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "Epost")]
         [EmailAddress]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Lösenord")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Kom ihåg mig?")]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterViewModel
     {
-        [Display(Name = "Group")]
-        public int? Group { get; set; }
+        [Required]
+        [Display(Name = "Grupp")]
+        public int Group { get; set; }
 
         [Required]
         [Display(Name = "Roll")]
@@ -74,32 +77,32 @@ namespace LMS_Lexicon2015.Models
 
         [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "Epost")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
-        [Display(Name = "För Namn")]
+        [StringLength(100, ErrorMessage = "{0} måste vara minst {2} tecken långt.", MinimumLength = 3)]
+        [Display(Name = "Förnamn")]
         public string FirstName { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
-        [Display(Name = "Efter Namn")]
+        [StringLength(100, ErrorMessage = "{0} måste vara minst {2} tecken långt.", MinimumLength = 2)]
+        [Display(Name = "Efternamn")]
         public string LastName { get; set; }
 
 
-        [Display(Name = "Mobil Nummer")]
+        [Display(Name = "Mobilnummer")]
         public string PhoneNumber { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
+        [StringLength(100, ErrorMessage = "The {0} måste vara minst {2} tecken långt.", MinimumLength = 3)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Lösenord")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Konfirmera lösenord")]
+        [Compare("Password", ErrorMessage = "Ditt nya lösenord och det konfirmerade lösenordet stämmer inte överens.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -107,18 +110,18 @@ namespace LMS_Lexicon2015.Models
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "Epost")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} måste vara minst {2} tecken långt.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Lösenord")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Konfirmera lösenord")]
+        [Compare("Password", ErrorMessage = "Ditt nya lösenord och det konfirmerade lösenordet stämmer inte överens.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
@@ -128,7 +131,7 @@ namespace LMS_Lexicon2015.Models
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "Epost")]
         public string Email { get; set; }
     }
 }
