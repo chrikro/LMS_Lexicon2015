@@ -178,6 +178,10 @@
     <Compile Include="Migrations\201511261439457_seed3.Designer.cs">
       <DependentUpon>201511261439457_seed3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511271446430_ändrat språk i modeller.cs" />
+    <Compile Include="Migrations\201511271446430_ändrat språk i modeller.Designer.cs">
+      <DependentUpon>201511271446430_ändrat språk i modeller.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -278,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511261439457_seed3.resx">
       <DependentUpon>201511261439457_seed3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511271446430_ändrat språk i modeller.resx">
+      <DependentUpon>201511271446430_ändrat språk i modeller.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
