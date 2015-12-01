@@ -157,13 +157,7 @@ namespace LMS_Lexicon2015.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            // Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
-            //ViewBag.Role = new SelectList(db.Roles, "Name", "Name");//en bäg för rullningslistan på formuläret 
-
-            //ViewBag.Group = new SelectList(db.Groups, "Name", "Name");
-
-            //var currentUser = db.Users.Where(u => u.Id == id).FirstOrDefault();
-            var model =
+            var applicationUser =
             db.Users.Where(u => u.Id == id).Select(r => new UserListViewModel
             {
                 Id = r.Id,
@@ -176,8 +170,6 @@ namespace LMS_Lexicon2015.Controllers
                 UserName = r.UserName
 
             }).FirstOrDefault();
-
-            var applicationUser = model;
 
             if (applicationUser == null)
             {
@@ -195,17 +187,49 @@ namespace LMS_Lexicon2015.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-      //  public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,GroupId,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
-                public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,GroupId,Email,EmailConfirmed,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,GroupId,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
         {
+
+            //var currentUser = applicationUser.Id;
+            var userInDb = db.Users.Where(u => u.Id == applicationUser.Id).FirstOrDefault();
+
+            if (applicationUser.LastName != userInDb.LastName && !String.IsNullOrEmpty(applicationUser.LastName))
+            {
+                userInDb.LastName = applicationUser.LastName;
+            }
+
+
+            if (applicationUser.FirstName != userInDb.FirstName && !String.IsNullOrEmpty(applicationUser.FirstName))
+            {
+                userInDb.FirstName = applicationUser.FirstName;
+            }
+
+            if (applicationUser.Email != userInDb.Email && !String.IsNullOrEmpty(applicationUser.Email))
+            {
+                userInDb.Email = applicationUser.Email;
+            }
+            if (applicationUser.PhoneNumber != userInDb.PhoneNumber)
+            {
+                userInDb.PhoneNumber = applicationUser.PhoneNumber;
+            }
+
+
+            //    // other changed properties
+            db.SaveChanges();
+
+            //db.Users.Where(r => r.GroupId == id).First().Group.Name;
+
             if (ModelState.IsValid)
             {
-                db.Entry(applicationUser).State = EntityState.Modified;
-                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(applicationUser);
+            //            return View(applicationUser);
+            // i fall det knasar måste nedan finnas så att det visas om
+
+            return RedirectToAction("Edit");
+
+
         }
 
         // GET: Users/Delete/5
