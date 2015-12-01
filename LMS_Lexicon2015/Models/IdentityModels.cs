@@ -53,6 +53,8 @@ namespace LMS_Lexicon2015.Models
 
         public System.Data.Entity.DbSet<LMS_Lexicon2015.Models.CourseOccasion> CourseOccasions { get; set; }
 
+  //      public System.Data.Entity.DbSet<LMS_Lexicon2015.Models.ApplicationUser> ApplicationUsers { get; set; }
+
         //public System.Data.Entity.DbSet<LMS_Lexicon2015.Models.ApplicationUser> ApplicationUsers { get; set; }
 
         //public System.Data.Entity.DbSet<LMS_Lexicon2015.Models.ApplicationUser> ApplicationUsers { get; set; }

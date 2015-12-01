@@ -273,6 +273,7 @@
     <Content Include="Views\CourseOccasions\Edit.cshtml" />
     <Content Include="Views\CourseOccasions\Index.cshtml" />
     <Content Include="Views\Groups\_Course.cshtml" />
+    <Content Include="Views\Users\PartitialGroup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

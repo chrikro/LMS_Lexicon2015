@@ -82,6 +82,19 @@ namespace LMS_Lexicon2015.Controllers
 
         }
 
+        // GET: Groups
+        //       public ActionResult DelGroup(int id)
+        public ActionResult PartitialGroup(int? id)
+        {
+            ViewBag.Line1 = "/";
+            ViewBag.Line2 = "-";
+
+            var model = db.Users.Where(r => r.GroupId == id).ToList();
+            ViewBag.GroupName = db.Users.Where(r => r.GroupId == id).First().Group.Name;
+
+            return View(model);
+        }
+
         // GET: Users/Details/5
         public ActionResult Details(string id)
         {

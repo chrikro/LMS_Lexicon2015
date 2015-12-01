@@ -27,24 +27,6 @@ namespace LMS_Lexicon2015.Controllers
             return View(db.Groups.ToList());
         }
 
-        // GET: Groups
- //       public ActionResult DelGroup(int id)
-        public ActionResult DelGroup(int? id)
-        {
-            ViewBag.Line1 = "/";
-            ViewBag.Line2 = "-";
-
-        //    var groupName = db.Groups.Find(id).Name;
-        //    List<Group> delGroup = new List<Group>();
-        //    foreach (var group in db.Groups) {
-        //    if (group.Name == groupName) delGroup.Add(group);
-        //}
-
-            //ViewBag.userscount = db.Users.Where(gr;
-//             return View(delGroup.ToList());
-           return View(db.Users.ToList());
-        }
-
 
         // GET: Groups/Details/5
         public ActionResult Details(int? id)
