@@ -28,9 +28,9 @@
         <th>
             @Html.DisplayNameFor(model => model.EndDate)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.GroupId)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -58,9 +58,9 @@
             @ViewBag.Line2
             @Html.DisplayFor(modelItem => item.EndDate.Year)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.GroupId)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit/" + item.Id, "CourseOccasions") |
             @Html.ActionLink("Details", "Details/" + item.Id, "CourseOccasions") |
