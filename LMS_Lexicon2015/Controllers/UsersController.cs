@@ -62,7 +62,7 @@ namespace LMS_Lexicon2015.Controllers
             var applicationUsers = db.Users.ToList();
 
             ViewBag.Roles = db.Roles.ToList();
-        //var gruppTest =  db.Groups.Find
+            //var gruppTest =  db.Groups.Find
 
 
             var model =
@@ -100,7 +100,6 @@ namespace LMS_Lexicon2015.Controllers
             ViewBag.EmailHeader = "Epost";
             ViewBag.PhoneHeader = "Mobilnummer";
             ViewBag.UserName = "Användarnamn";
-
 
             if (applicationUser == null)
             {
@@ -144,12 +143,37 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser applicationUser = db.Users.Find(id);
+
+            // Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
+            //ViewBag.Role = new SelectList(db.Roles, "Name", "Name");//en bäg för rullningslistan på formuläret 
+
+            //ViewBag.Group = new SelectList(db.Groups, "Name", "Name");
+
+            var currentUser = db.Users.Where(u => u.Id == id).FirstOrDefault();
+            var model =
+            db.Users.Where(u => u.Id == id).Select(r => new UserListViewModel
+            {
+                Id = r.Id,
+                FirstName = r.FirstName,
+                LastName = r.LastName,
+                Email = r.Email,
+                Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
+                Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
+                PhoneNumber = r.PhoneNumber,
+                UserName = r.UserName
+
+            }).FirstOrDefault();
+
+            var applicationUser = model;
+
             if (applicationUser == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Role = new SelectList(db.Roles, "Name", "Name");//en bäg för rullningslistan på formuläret 
+
+            //return View(ApplicationUserEdit);
+
+
             return View(applicationUser);
         }
 
