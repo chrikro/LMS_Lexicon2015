@@ -13,7 +13,8 @@ namespace LMS_Lexicon2015.Controllers
     public class CourseOccasionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        public static bool ErrorMessageToEarly = false;
+        public static bool ErrorMessageStartAfterEnd = false;
         // GET: CourseOccasions
         public ActionResult Index()
         {
@@ -36,8 +37,9 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: CourseOccasions/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+            ViewBag.GroupId = id;
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace LMS_Lexicon2015.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Namn,Description,StartDate,EndDate,GroupId")] CourseOccasion courseOccasion)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,StartDate,EndDate,GroupId")] CourseOccasion courseOccasion)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +80,7 @@ namespace LMS_Lexicon2015.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Namn,Description,StartDate,EndDate,GroupId")] CourseOccasion courseOccasion)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,StartDate,EndDate,GroupId")] CourseOccasion courseOccasion)
         {
             if (ModelState.IsValid)
             {
