@@ -27,7 +27,9 @@ namespace LMS_Lexicon2015.Models
         [Display(Name = "Epost")]
         [EmailAddress]
         public string Email { get; set; }
-
+        
+        [Display(Name = "Användarnamn")]
+        public string UserName { get; set; }
 
     }
 
