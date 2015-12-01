@@ -7,7 +7,7 @@
 <h2>Kurser</h2>
 
 <p>
-    @Html.ActionLink("Lägg till en ny kurs", "Create")
+    @Html.ActionLink("Lägg till en ny kurs", "Create", "CourseOccasion")
 </p>
 <table class="table">
     <tr>
@@ -47,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.GroupId)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", "CourseOccasion", new { id = item.Id, GroupId = item.GroupId }) |
+            @Html.ActionLink("Details", "Details", "CourseOccasion", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", "CourseOccasion", new { id=item.Id })
         </td>
     </tr>
 }
