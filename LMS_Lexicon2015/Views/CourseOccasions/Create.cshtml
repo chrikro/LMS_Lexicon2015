@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Create";
-    int VGI = ViewBag.GroupId;
+    ViewBag.GroupId2 = ViewBag.GroupId;
 }
 
 <h2>Gruppens namn</h2>
@@ -76,7 +76,7 @@
 
 
 
-    @Html.ActionLink("Tillbaka till gruppen", "Details/" + VGI, "Groups")
+    @Html.ActionLink("Tillbaka till gruppen", "Details/" + (int)ViewBag.GroupId, "Groups")
 
 
 

@@ -54,7 +54,8 @@ namespace LMS_Lexicon2015.Controllers
             {
                 db.CourseOccasions.Add(courseOccasion);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return RedirectToAction("Details/" + (int)courseOccasion.GroupId, "Groups");
             }
 
             return View(courseOccasion);
@@ -84,9 +85,13 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
+                //int GroupId = GroupId;
                 db.Entry(courseOccasion).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
+                //return RedirectToAction("Details" + GroupId,"Groups");
+
+
             }
             return View(courseOccasion);
         }
