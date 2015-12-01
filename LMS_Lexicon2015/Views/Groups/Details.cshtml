@@ -5,19 +5,19 @@
         ViewBag.Title = "Details";
     }
 
-    <h2>Detaljer</h2>
+    <h2>@Html.DisplayFor(model => model.Name)</h2>
 
     <div>
         <h4></h4>
         <hr />
         <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
+                        @*<dt>
+        @Html.DisplayNameFor(model => model.Name)
+    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Name)
-            </dd>
+    <dd>
+        @Html.DisplayFor(model => model.Name)
+    </dd>*@
 
             <dt>
                 @Html.DisplayNameFor(model => model.Description)
@@ -28,7 +28,8 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.StartDate)
+                @*@Html.DisplayNameFor(model => model.StartDate)*@
+                <p>Datum</p>
             </dt>
 
             <dd>
@@ -37,28 +38,29 @@
                 @Html.DisplayFor(model => model.StartDate.Month)
                 @ViewBag.Line2
                 @Html.DisplayFor(model => model.StartDate.Year)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.EndDate)
-            </dt>
-
-            <dd>
+                @ViewBag.Line3
                 @Html.DisplayFor(model => model.EndDate.Day)
                 @ViewBag.Line1
                 @Html.DisplayFor(model => model.EndDate.Month)
                 @ViewBag.Line2
                 @Html.DisplayFor(model => model.EndDate.Year)
             </dd>
+            <dd>
+                @Html.ActionLink("Ändra Gruppens information", "Edit", new { id = Model.Id }) 
+            </dd>
 
         </dl>
     </div>
-    <p>
-        @Html.ActionLink("Ändra", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Tillbaka till listan", "Index")
-    </p>
 
+
+@Html.Partial("_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(r => r.GroupId == Model.Id).ToList() )
+<p>
+    @Html.ActionLink("Tillbaka till Grupplistan", "Index")
+</p>
+
+@*@Html.Partial("_Course", Model)*@
     @*@Html.Partial("_Course", new { Model })*@
+@*@Html.Partial("~/Views/CourseOccasion/index.cshtml", ViewData.Model.Courses)*@
 
 
 
