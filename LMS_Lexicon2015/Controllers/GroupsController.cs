@@ -60,6 +60,7 @@ namespace LMS_Lexicon2015.Controllers
             }
             ViewBag.Line1 = "/";
             ViewBag.Line2 = "-";
+            ViewBag.Line3 = " Till ";
             return View(group);
         }
 
