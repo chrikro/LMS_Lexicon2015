@@ -92,7 +92,7 @@ namespace LMS_Lexicon2015.Migrations
                 new Activity{ Name = activityTypes[0].Name, Description = "text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16), CourseId = 1}
            };
 
-            context.Activityps.AddOrUpdate(at => at.Name, activitys);
+            context.Activitys.AddOrUpdate(at => at.Name, activitys);
             context.SaveChanges();
 
 
