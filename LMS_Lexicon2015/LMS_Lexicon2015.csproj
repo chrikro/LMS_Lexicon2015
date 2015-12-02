@@ -187,6 +187,18 @@
     <Compile Include="Migrations\201511301252463_seed4.Designer.cs">
       <DependentUpon>201511301252463_seed4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512021440176_seed1.cs" />
+    <Compile Include="Migrations\201512021440176_seed1.Designer.cs">
+      <DependentUpon>201512021440176_seed1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512021450108_NamnName.cs" />
+    <Compile Include="Migrations\201512021450108_NamnName.Designer.cs">
+      <DependentUpon>201512021450108_NamnName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512021453119_NamnName2.cs" />
+    <Compile Include="Migrations\201512021453119_NamnName2.Designer.cs">
+      <DependentUpon>201512021453119_NamnName2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -301,6 +313,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511301252463_seed4.resx">
       <DependentUpon>201511301252463_seed4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512021440176_seed1.resx">
+      <DependentUpon>201512021440176_seed1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512021450108_NamnName.resx">
+      <DependentUpon>201512021450108_NamnName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512021453119_NamnName2.resx">
+      <DependentUpon>201512021453119_NamnName2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -90,7 +90,11 @@ namespace LMS_Lexicon2015.Controllers
             ViewBag.Line2 = "-";
 
             var model = db.Users.Where(r => r.GroupId == id).ToList();
-            ViewBag.GroupName = db.Users.Where(r => r.GroupId == id).First().Group.Name;
+            if (model.Any())
+            {
+                ViewBag.GroupName = model.First().Group.Name;
+            }
+            else ViewBag.GroupName = "Tom Grupp";
 
             return View(model);
         }

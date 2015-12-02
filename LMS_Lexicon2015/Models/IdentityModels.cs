@@ -51,7 +51,12 @@ namespace LMS_Lexicon2015.Models
 
         public System.Data.Entity.DbSet<LMS_Lexicon2015.Models.Group> Groups { get; set; }
 
+
         public System.Data.Entity.DbSet<LMS_Lexicon2015.Models.CourseOccasion> CourseOccasions { get; set; }
+
+        public System.Data.Entity.DbSet<LMS_Lexicon2015.Models.ActivityType> ActivityTypes { get; set; }
+
+        public System.Data.Entity.DbSet<LMS_Lexicon2015.Models.Activity> Activityps { get; set; }
 
   //      public System.Data.Entity.DbSet<LMS_Lexicon2015.Models.ApplicationUser> ApplicationUsers { get; set; }
 

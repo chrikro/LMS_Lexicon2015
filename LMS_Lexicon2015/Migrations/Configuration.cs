@@ -23,12 +23,25 @@ namespace LMS_Lexicon2015.Migrations
             //foreach (string roles in new[] { "Studien", "Teatcher"})
             foreach (string roles in new[] { "Elev", "Lärare" })
             {
-                if (!context.Roles.Any(u => u.Name == roles))
+                if (!context.Roles.Any(r => r.Name == roles))
                 {
                     var role = new IdentityRole { Name = roles };
                     roleManager.Create(role);
                 }
             }
+
+    
+                       //Aktivitets typ
+            var activityTypes = new[] {
+                new ActivityType { Name = "Föreläsning" },
+                new ActivityType { Name = "E-learning" },
+                new ActivityType { Name = "ÖvningsUppgift" },
+                new ActivityType { Name = "Projekt" }
+           };
+
+            context.ActivityTypes.AddOrUpdate(at => at.Name, activityTypes);
+            context.SaveChanges();
+
             //grupper
             var groups = new[] {
                 new Group { Name = ".net Maj 2015", Description = "Text text text text", StartDate = new DateTime(2015,05,30), EndDate = new DateTime(2015,08,18)  },
@@ -73,6 +86,16 @@ namespace LMS_Lexicon2015.Migrations
                 var CourseOccasion = new CourseOccasion { Name = "c#", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16), GroupId = groups[0].Id };
                 context.CourseOccasions.Add(CourseOccasion);
             }
+
+            //Aktivitets 
+            var activitys = new[] {
+                new Activity{ Name = activityTypes[0].Name, Description = "text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16), CourseId = 1}
+           };
+
+            context.Activityps.AddOrUpdate(at => at.Name, activitys);
+            context.SaveChanges();
+
+
 
         }
     }

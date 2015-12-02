@@ -11,7 +11,7 @@ namespace LMS_Lexicon2015.Models
     public class Activity
     {
         public int Id { get; set; }
-        public string Namn { get; set; }
+        public string Name { get; set; }
 
         [Display(Name = "Beskrivning")]
         public string Description { get; set; }
