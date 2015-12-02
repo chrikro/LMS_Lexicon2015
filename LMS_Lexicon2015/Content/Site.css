@@ -34,3 +34,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+hr {
+    background-color: red;
+    height:2px;
+}
