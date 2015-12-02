@@ -13,7 +13,8 @@ namespace LMS_Lexicon2015.Controllers
     public class CourseOccasionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        public static bool ErrorMessageToEarly = false;
+        public static bool ErrorMessageStartAfterEnd = false;
         // GET: CourseOccasions
         public ActionResult Index()
         {
@@ -36,8 +37,9 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: CourseOccasions/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+            ViewBag.GroupId = id;
             return View();
         }
 
@@ -46,15 +48,16 @@ namespace LMS_Lexicon2015.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Namn,Description,StartDate,EndDate,GroupId")] CourseOccasion courseOccasion)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,StartDate,EndDate,GroupId")] CourseOccasion courseOccasion)
         {
             if (ModelState.IsValid)
             {
                 db.CourseOccasions.Add(courseOccasion);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return RedirectToAction("Details/" + (int)courseOccasion.GroupId, "Groups");
             }
-
+            //ViewBag.GroupId = id;
             return View(courseOccasion);
         }
 
@@ -70,6 +73,7 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
+           ViewBag.GroupId = id;  //fel
             return View(courseOccasion);
         }
 
@@ -78,14 +82,19 @@ namespace LMS_Lexicon2015.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Namn,Description,StartDate,EndDate,GroupId")] CourseOccasion courseOccasion)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,StartDate,EndDate,GroupId")] CourseOccasion courseOccasion)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(courseOccasion).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details/" + (int)courseOccasion.GroupId, "Groups");
+                //return RedirectToAction("Index");
+
+
+
             }
+            //ViewBag.GroupId = id;
             return View(courseOccasion);
         }
 
@@ -101,6 +110,7 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.GroupId = id; //fel
             return View(courseOccasion);
         }
 
@@ -112,7 +122,8 @@ namespace LMS_Lexicon2015.Controllers
             CourseOccasion courseOccasion = db.CourseOccasions.Find(id);
             db.CourseOccasions.Remove(courseOccasion);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details/" + (int)courseOccasion.GroupId, "Groups");
+            //return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

@@ -2,7 +2,7 @@
 
 
     @{
-        ViewBag.Title = "Details";
+        ViewBag.Title = "Användarens Detailj ";
     }
 
     <h2>@Html.DisplayFor(model => model.Name)</h2>
@@ -29,7 +29,7 @@
 
             <dt>
                 @*@Html.DisplayNameFor(model => model.StartDate)*@
-                <p>Datum</p>
+                Datum
             </dt>
 
             <dd>
@@ -53,7 +53,7 @@
     </div>
 
 
-@Html.Partial("_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(r => r.GroupId == Model.Id).ToList() )
+@Html.Partial("_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == Model.Id).ToList() )
 <p>
     @Html.ActionLink("Tillbaka till Grupplistan", "Index")
 </p>

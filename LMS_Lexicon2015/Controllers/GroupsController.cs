@@ -43,6 +43,7 @@ namespace LMS_Lexicon2015.Controllers
             ViewBag.Line1 = "/";
             ViewBag.Line2 = "-";
             ViewBag.Line3 = " Till ";
+            ViewBag.GroupId = id;
             return View(group);
         }
 
@@ -190,6 +191,11 @@ namespace LMS_Lexicon2015.Controllers
 
             //return View(courses);
 
+            ViewBag.Line1 = "/";
+            ViewBag.Line2 = "-";
+            ViewBag.GroupId = GroupId;
+            ErrorMessageToEarly = false;
+            ErrorMessageStartAfterEnd = false;
             return View(db.CourseOccasions.ToList());
         }
 

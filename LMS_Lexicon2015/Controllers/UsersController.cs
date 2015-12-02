@@ -62,7 +62,7 @@ namespace LMS_Lexicon2015.Controllers
             var applicationUsers = db.Users.ToList();
 
             ViewBag.Roles = db.Roles.ToList();
-        //var gruppTest =  db.Groups.Find
+            //var gruppTest =  db.Groups.Find
 
 
             var model =
@@ -114,7 +114,6 @@ namespace LMS_Lexicon2015.Controllers
             ViewBag.PhoneHeader = "Mobilnummer";
             ViewBag.UserName = "Användarnamn";
 
-
             if (applicationUser == null)
             {
                 return HttpNotFound();
@@ -157,14 +156,33 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser applicationUser = db.Users.Find(id);
+
+            var applicationUser =
+            db.Users.Where(u => u.Id == id).Select(r => new UserListViewModel
+            {
+                Id = r.Id,
+                FirstName = r.FirstName,
+                LastName = r.LastName,
+                Email = r.Email,
+                Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
+                Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
+                PhoneNumber = r.PhoneNumber,
+                UserName = r.UserName
+
+            }).FirstOrDefault();
+
             if (applicationUser == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Role = new SelectList(db.Roles, "Name", "Name");//en bäg för rullningslistan på formuläret 
+
+            //return View(ApplicationUserEdit);
+
+
             return View(applicationUser);
         }
+
+        //vi har ändratedit pga lössenord ändras vid ändringar
 
         // POST: Users/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -172,16 +190,48 @@ namespace LMS_Lexicon2015.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,GroupId,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
-        //        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,GroupId,Email,EmailConfirmed,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
         {
+
+            //var currentUser = applicationUser.Id;
+            var userInDb = db.Users.Where(u => u.Id == applicationUser.Id).FirstOrDefault();
+
+            if (applicationUser.LastName != userInDb.LastName && !String.IsNullOrEmpty(applicationUser.LastName))
+            {
+                userInDb.LastName = applicationUser.LastName;
+            }
+
+
+            if (applicationUser.FirstName != userInDb.FirstName && !String.IsNullOrEmpty(applicationUser.FirstName))
+            {
+                userInDb.FirstName = applicationUser.FirstName;
+            }
+
+            if (applicationUser.Email != userInDb.Email && !String.IsNullOrEmpty(applicationUser.Email))
+            {
+                userInDb.Email = applicationUser.Email;
+            }
+            if (applicationUser.PhoneNumber != userInDb.PhoneNumber)
+            {
+                userInDb.PhoneNumber = applicationUser.PhoneNumber;
+            }
+
+
+            //    // other changed properties
+            db.SaveChanges();
+
+            //db.Users.Where(r => r.GroupId == id).First().Group.Name;
+
             if (ModelState.IsValid)
             {
-                db.Entry(applicationUser).State = EntityState.Modified;
-                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(applicationUser);
+            //            return View(applicationUser);
+            // i fall det knasar måste nedan finnas så att det visas om
+
+            return RedirectToAction("Edit");
+
+
         }
 
         // GET: Users/Delete/5

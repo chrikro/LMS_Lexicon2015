@@ -7,7 +7,12 @@
 <h2>Kurser</h2>
 
 <p>
-    @Html.ActionLink("Lägg till en ny kurs", "Create", "CourseOccasion")
+    @*@Html.ActionLink("Lägg till en ny kurs", "Create/" + Model.First().GroupId, "CourseOccasions")*@
+
+
+    @Html.ActionLink("Lägg till en ny kurs", "Create/" + (int)ViewBag.GroupId, "CourseOccasions")
+
+
 </p>
 <table class="table">
     <tr>
@@ -23,9 +28,9 @@
         <th>
             @Html.DisplayNameFor(model => model.EndDate)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.GroupId)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -38,20 +43,31 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
+           @* @Html.DisplayFor(modelItem => item.StartDate)*@
+            @Html.DisplayFor(modelItem => item.StartDate.Day)
+            @ViewBag.Line1
+            @Html.DisplayFor(modelItem => item.StartDate.Month)
+            @ViewBag.Line2
+            @Html.DisplayFor(modelItem => item.StartDate.Year)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
+            @*@Html.DisplayFor(modelItem => item.EndDate)*@
+            @Html.DisplayFor(modelItem => item.EndDate.Day)
+            @ViewBag.Line1
+            @Html.DisplayFor(modelItem => item.EndDate.Month)
+            @ViewBag.Line2
+            @Html.DisplayFor(modelItem => item.EndDate.Year)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.GroupId)
-        </td>
+        </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", "CourseOccasion", new { id = item.Id, GroupId = item.GroupId }) |
-            @Html.ActionLink("Details", "Details", "CourseOccasion", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", "CourseOccasion", new { id=item.Id })
+            @Html.ActionLink("Ändra", "Edit/" + item.Id, "CourseOccasions") |
+            @Html.ActionLink("Detaljer", "Details/" + item.Id, "CourseOccasions") |
+            @Html.ActionLink("Ta bort", "Delete/" + item.Id, "CourseOccasions")
         </td>
     </tr>
 }
 
 </table>
+
