@@ -36,7 +36,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", type = "date", @Value = Model.StartDate.ToShortDateString() } })  
                 @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -44,18 +44,19 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", type = "date", @Value = Model.EndDate.ToShortDateString() } })  
                 @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
+@Html.HiddenFor(model => model.GroupId)
+        @*<div class="form-group">
+            
             @Html.LabelFor(model => model.GroupId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.GroupId, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.GroupId, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -66,7 +67,9 @@
 }
 
 <div>
-    @Html.ActionLink("Tillbaka till gruppen", "Details/" + (int)ViewBag.GroupId, "Groups")
+
+    @Html.ActionLink("Tillbaka till gruppen", "Details/" + Model.GroupId, "Groups")
+    @*@Html.ActionLink("Tillbaka till gruppen", "Details/" + (int)ViewBag.GroupId, "Groups")*@
 </div>
 
 @section Scripts {

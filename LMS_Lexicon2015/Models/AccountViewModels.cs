@@ -9,9 +9,14 @@ namespace LMS_Lexicon2015.Models
         [Display(Name = "Id")]
         public string Id { get; set; }
 
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} måste vara minst {2} tecken långt.", MinimumLength = 3)]
         [Display(Name = "Förnamn")]
         public string FirstName { get; set; }
 
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} måste vara minst {2} tecken långt.", MinimumLength = 2)]
         [Display(Name = "Efternamn")]
         public string LastName { get; set; }
 
@@ -24,6 +29,7 @@ namespace LMS_Lexicon2015.Models
         [Display(Name = "Mobilnummer")]
         public string PhoneNumber { get; set; }
 
+        [Required]
         [Display(Name = "Epost")]
         [EmailAddress]
         public string Email { get; set; }

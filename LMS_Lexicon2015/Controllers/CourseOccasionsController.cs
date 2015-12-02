@@ -33,6 +33,9 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Line1 = "/";
+            ViewBag.Line2 = "-";
+            ViewBag.Line3 = " Till ";
             return View(courseOccasion);
         }
 
@@ -110,7 +113,9 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.GroupId = id; //fel
+            ViewBag.Line1 = "/";
+            ViewBag.Line2 = "-";
+            ViewBag.Line3 = " Till ";
             return View(courseOccasion);
         }
 
@@ -120,9 +125,10 @@ namespace LMS_Lexicon2015.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             CourseOccasion courseOccasion = db.CourseOccasions.Find(id);
+            int GroupNr = (int)courseOccasion.GroupId;
             db.CourseOccasions.Remove(courseOccasion);
             db.SaveChanges();
-            return RedirectToAction("Details/" + (int)courseOccasion.GroupId, "Groups");
+            return RedirectToAction("Details/" + GroupNr, "Groups");
             //return RedirectToAction("Index");
         }
 
