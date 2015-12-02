@@ -182,6 +182,8 @@ namespace LMS_Lexicon2015.Controllers
             return View(applicationUser);
         }
 
+        //vi har ändratedit pga lössenord ändras vid ändringar
+
         // POST: Users/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.

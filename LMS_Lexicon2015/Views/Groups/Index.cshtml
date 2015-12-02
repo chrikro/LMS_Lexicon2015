@@ -39,8 +39,8 @@
 
         </td>
         <td>
-            @Html.ActionLink(item.Description, "Details", new { id = item.Id })
-            @*@Html.DisplayFor(modelItem => item.Description)*@
+            @*@Html.ActionLink(item.Description, "Details", new { id = item.Id })*@
+            @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
             @Html.DisplayFor(model => item.StartDate.Day) 

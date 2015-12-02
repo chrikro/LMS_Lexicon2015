@@ -4,7 +4,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace LMS_Lexicon2015.Models
 {
-    public class UserListViewModel
+    public class UserListViewModel //Nytt
     {
         [Display(Name = "Id")]
         public string Id { get; set; }

@@ -57,7 +57,7 @@ namespace LMS_Lexicon2015.Controllers
                 //return RedirectToAction("Index");
                 return RedirectToAction("Details/" + (int)courseOccasion.GroupId, "Groups");
             }
-
+            //ViewBag.GroupId = id;
             return View(courseOccasion);
         }
 
@@ -73,6 +73,7 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
+           ViewBag.GroupId = id;  //fel
             return View(courseOccasion);
         }
 
@@ -85,14 +86,15 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
-                //int GroupId = GroupId;
                 db.Entry(courseOccasion).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
-                //return RedirectToAction("Details" + GroupId,"Groups");
+                return RedirectToAction("Details/" + (int)courseOccasion.GroupId, "Groups");
+                //return RedirectToAction("Index");
+
 
 
             }
+            //ViewBag.GroupId = id;
             return View(courseOccasion);
         }
 
@@ -108,6 +110,7 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.GroupId = id; //fel
             return View(courseOccasion);
         }
 
@@ -119,7 +122,8 @@ namespace LMS_Lexicon2015.Controllers
             CourseOccasion courseOccasion = db.CourseOccasions.Find(id);
             db.CourseOccasions.Remove(courseOccasion);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details/" + (int)courseOccasion.GroupId, "Groups");
+            //return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
