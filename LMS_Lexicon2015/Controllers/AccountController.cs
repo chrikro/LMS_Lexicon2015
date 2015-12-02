@@ -22,6 +22,7 @@ namespace LMS_Lexicon2015.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        public static string callbackUrl;
 
         public AccountController()
         {
@@ -249,9 +250,12 @@ namespace LMS_Lexicon2015.Controllers
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+                callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                ViewBag.ResetPasswordUrl = callbackUrl;                
                 await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                return View("ForgotPasswordConfirmation");
+//                return RedirectToAction("ForgotPasswordConfirmation", "Account");
+//                return RedirectToAction("ForgotPasswordConfirmation", callbackUrl);
             }
 
             // If we got this far, something failed, redisplay form
