@@ -168,13 +168,6 @@ namespace LMS_Lexicon2015.Controllers
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
 
- 
-          //  if (!UserManager.FindByName(user.UserName) == model.Email))
-            //    if (!UserManager.FindByName(user.UserName) == model.Email)
-            //{
-
-            //}
-     
 
             if (ModelState.IsValid)
             {
@@ -193,10 +186,7 @@ namespace LMS_Lexicon2015.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-
                     var keeper = UserManager.FindByName(user.UserName);//lägga till roll
-                    //UserManager.AddToRole(keeper.Id, "Teatcher");
                     UserManager.AddToRole(keeper.Id, model.Role); 
                    
                     return RedirectToAction("Index", "Users");
