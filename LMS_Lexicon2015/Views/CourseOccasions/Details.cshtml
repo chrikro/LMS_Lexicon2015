@@ -26,7 +26,7 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.StartDate)
         </dt>
 
@@ -40,19 +40,36 @@
 
         <dd>
             @Html.DisplayFor(model => model.EndDate)
+        </dd>*@
+        <dt>
+            Datum
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartDate.Day)
+            @ViewBag.Line1
+            @Html.DisplayFor(model => model.StartDate.Month)
+            @ViewBag.Line2
+            @Html.DisplayFor(model => model.StartDate.Year)
+            @ViewBag.Line3
+            @Html.DisplayFor(model => model.EndDate.Day)
+            @ViewBag.Line1
+            @Html.DisplayFor(model => model.EndDate.Month)
+            @ViewBag.Line2
+            @Html.DisplayFor(model => model.EndDate.Year)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.GroupId)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.GroupId)
-        </dd>
+        </dd>*@
 
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Tillbaka till gruppen", "Details/" + (int)ViewBag.GroupId, "Groups")
+    @*@Html.ActionLink("Tillbaka till gruppen", "Details/" + (int)ViewBag.GroupId, "Groups")*@
+    @Html.ActionLink("Tillbaka till gruppen", "Details/" + Model.GroupId, "Groups")
 </p>
