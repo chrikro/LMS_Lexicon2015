@@ -68,17 +68,15 @@ namespace LMS_Lexicon2015.Controllers
             //var gruppTest =  db.Groups.Find
             FromPartitialView = false;
 
-            var model =
-                db.Users.Select(r => new UserListViewModel
+            var model = db.Users.Select(r => new UserListViewModel
                 {
-            Id = r.Id,
-            FirstName = r.FirstName,
-          LastName = r.LastName,
-            Email = r.Email,
-            Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault   ().RoleId).FirstOrDefault().Name,
-            Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
-            PhoneNumber = r.PhoneNumber
-
+                Id = r.Id,
+                FirstName = r.FirstName,
+                LastName = r.LastName,
+                Email = r.Email,
+                Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
+                Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
+                PhoneNumber = r.PhoneNumber
     }).ToList();
 
             return View(model);
