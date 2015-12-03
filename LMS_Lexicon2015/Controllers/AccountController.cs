@@ -146,14 +146,9 @@ namespace LMS_Lexicon2015.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            //ApplicationDbContext context = new ApplicationDbContext();
-            //var groups = context.Groups;
-
             List<Group> g = db.Groups.ToList();
             g.Insert(0,null);
-
-   
-
+ 
             //lägg till en gång till "If we got this far, something failed, redisplay form"
              ViewBag.Role = new SelectList(db.Roles, "Name", "Name");//en bäg för rullningslistan på formuläret 
              ViewBag.GroupTeacher = new SelectList(g, "Id", "Name");//en bäg för rullningslistan på formuläret

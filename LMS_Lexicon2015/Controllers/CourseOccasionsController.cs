@@ -23,7 +23,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: CourseOccasions/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, int? id2)
         {
             if (id == null)
             {
@@ -37,6 +37,8 @@ namespace LMS_Lexicon2015.Controllers
             ViewBag.Line1 = "/";
             ViewBag.Line2 = "-";
             ViewBag.Line3 = " Till ";
+            ViewBag.courseOccasionId = id;
+            ViewBag.groupId = id2;
             return View(courseOccasion);
         }
 

@@ -11,7 +11,7 @@
 
     @if (User.IsInRole("Lärare"))
     {
-        @Html.ActionLink("Lägg till en ny kurs", "Create/" + (int)ViewBag.GroupId, "CourseOccasions")
+    @Html.ActionLink("Lägg till en ny kurs", "Create/" + (int)ViewBag.GroupId, "CourseOccasions")
     }
 
 </p>
@@ -30,40 +30,35 @@
             @Html.DisplayNameFor(model => model.EndDate)
         </th>
         @*<th>
-                @Html.DisplayNameFor(model => model.GroupId)
-            </th>*@
+            @Html.DisplayNameFor(model => model.GroupId)
+        </th>*@
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @* @Html.DisplayFor(modelItem => item.StartDate)*@
-                @Html.DisplayFor(modelItem => item.StartDate.Day)
-                @ViewBag.Line1
-                @Html.DisplayFor(modelItem => item.StartDate.Month)
-                @ViewBag.Line2
-                @Html.DisplayFor(modelItem => item.StartDate.Year)
-            </td>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.EndDate)*@
-                @Html.DisplayFor(modelItem => item.EndDate.Day)
-                @ViewBag.Line1
-                @Html.DisplayFor(modelItem => item.EndDate.Month)
-                @ViewBag.Line2
-                @Html.DisplayFor(modelItem => item.EndDate.Year)
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.GroupId)
-                </td>*@
-            <td>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate.Day)
+            @ViewBag.Line1
+            @Html.DisplayFor(modelItem => item.StartDate.Month)
+            @ViewBag.Line2
+            @Html.DisplayFor(modelItem => item.StartDate.Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate.Day)
+            @ViewBag.Line1
+            @Html.DisplayFor(modelItem => item.EndDate.Month)
+            @ViewBag.Line2
+            @Html.DisplayFor(modelItem => item.EndDate.Year)
+        </td>
+        <td>
                 @if (User.IsInRole("Lärare"))
                 {
                     @Html.ActionLink("Ändra", "Edit/" + item.Id, "CourseOccasions") <span>|</span>
@@ -74,10 +69,10 @@
 
                 @if (User.IsInRole("Lärare"))
                 {
-                    @Html.ActionLink("Ta bort", "Delete/" + item.Id, "CourseOccasions")
+            @Html.ActionLink("Ta bort", "Delete/" + item.Id, "CourseOccasions")
                 }
-            </td>
-        </tr>
-    }
+        </td>
+    </tr>
+}
 
 </table>
