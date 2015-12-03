@@ -7,7 +7,7 @@ namespace LMS_Lexicon2015.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-
+    
     internal sealed class Configuration : DbMigrationsConfiguration<LMS_Lexicon2015.Models.ApplicationDbContext>
     {
         public Configuration()
@@ -30,7 +30,7 @@ namespace LMS_Lexicon2015.Migrations
             }
             /////----------------------
 
-            //Aktivitets typ
+            //Aktivitets typ // lägg till activityTypes i IdentityModels
             var activityTypes = new[] {
                 new ActivityType { Name = "Föreläsning" },
                 new ActivityType { Name = "E-learning" },
@@ -92,7 +92,7 @@ namespace LMS_Lexicon2015.Migrations
 
             /////----------------------
 
-            //Aktiviteter 
+            //Aktiviteter // lägg till activitys i IdentityModels
             var activitys = new[] {
                 new Activity{ Name = activityTypes[0].Name, Description = "text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16), CourseId = courses[0].Id},
                 new Activity{ Name = activityTypes[0].Name, Description = "text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16), CourseId = courses[0].Id}

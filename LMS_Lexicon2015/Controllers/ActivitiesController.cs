@@ -21,7 +21,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Activities/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, int? id2)
         {
             if (id == null)
             {
@@ -32,12 +32,17 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.courseOccasionId = id;
+            ViewBag.groupId = id2;
             return View(activity);
         }
 
         // GET: Activities/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id, int? id2)
         {
+            ViewBag.courseOccasionId = id;
+            ViewBag.groupId = id2;
+            ViewBag.Name = new SelectList(db.ActivityTypes, "Name", "Name");//en bäg för rullningslistan på formuläret 
             return View();
         }
 
@@ -52,7 +57,8 @@ namespace LMS_Lexicon2015.Controllers
             {
                 db.Activitys.Add(activity);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                 //return RedirectToAction("Details/" + (int)activity.GroupId, "Groups");
+                 return RedirectToAction("Details/5" , "CourseOccasions");
             }
 
             return View(activity);
