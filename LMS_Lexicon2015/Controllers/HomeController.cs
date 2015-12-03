@@ -16,6 +16,15 @@ namespace LMS_Lexicon2015.Controllers
             return View();
         }
 
+        public ActionResult partialIndexStudent(int id)
+        {
+            return View();
+        }
+
+        //public ActionResult partialIndexTeacher(int id)
+        //{ }
+
+
         public ActionResult About()
         {
             return View();
@@ -25,5 +34,7 @@ namespace LMS_Lexicon2015.Controllers
         {
             return View();
         }
+
+
     }
 }

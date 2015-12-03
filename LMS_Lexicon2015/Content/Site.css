@@ -39,3 +39,7 @@ hr {
     background-color: red;
     height:2px;
 }
+.jumbotron {
+  padding: 5px;
+  margin-bottom: 10px;
+}

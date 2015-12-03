@@ -71,24 +71,25 @@
             @Html.DisplayFor(modelItem => item.EndDate.Year)
         </td>
         <td>
-                @if (User.IsInRole("Lärare"))
-                {
-                    @Html.ActionLink("Ändra", "Edit/" + item.Id, "CourseOccasions") <span>|</span>
-                }
-                @Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
-                @if (User.IsInRole("Lärare")) {
-                    <span>|</span> }
 
                 @if (User.IsInRole("Lärare"))
                 {
-            @Html.ActionLink("Ta bort", "Delete/" + item.Id, "CourseOccasions")
+                    @Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions") <span>|</span>
+                }
+                
+                @if (User.IsInRole("Lärare")) {
+                    @Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")<span>|</span> }
+
+                @if (User.IsInRole("Lärare"))
+                {
+                    @Html.ActionLink("Ta bort", "Delete/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
                 }
                 
         
 
-                @*@Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.groupId,, "CourseOccasions") <span>|</span>*@
-                @*@Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")*@
-                @*@Html.ActionLink("Ta bort", "Delete/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")*@
+                @*@Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions") <span>|</span>
+                @Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
+                @Html.ActionLink("Ta bort", "Delete/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")*@
 
 
             @*@Html.ActionLink("Lägg till en ny kurs", "Create/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "CourseOccasions")*@
