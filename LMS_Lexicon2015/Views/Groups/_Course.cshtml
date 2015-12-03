@@ -69,7 +69,7 @@
                 {
                     @Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions") <span>|</span>
                 }
-                                
+   
                 @Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
                 @if (User.IsInRole("Lärare"))
                     { <span>|</span> }

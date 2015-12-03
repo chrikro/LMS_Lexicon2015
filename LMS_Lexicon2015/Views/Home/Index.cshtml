@@ -1,4 +1,7 @@
-﻿<div class="jumbotron">
+﻿@model LMS_Lexicon2015.Models.Group
+@using LMS_Lexicon2015.Models;
+
+<div class="jumbotron">
     <h1>Lexicon LMS</h1>
     <p class="lead">
 </div>
@@ -9,14 +12,22 @@
 @if (User.IsInRole("Elev"))
 {
     <p>hej eleven!</p>
-}
+    
+    <div>Sidan är <big>påbörjad</big>. Rör ej</div>
+    
+    var GroupId = new LMS_Lexicon2015.Models.ApplicationDbContext().Users.Where(u => u.Email == User.Identity.Name).FirstOrDefault().GroupId;
+    ViewBag.GroupId = GroupId;
+    @Html.Partial("../Groups/_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId).ToList())
+    <div>mellanrum</div>
+    @*@Html.Partial("../Users/PartitialGroup", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId).ToList())*@
+    }
 @{
     ViewBag.Title = "";
 }
 
 @if (!User.IsInRole("Elev") && !User.IsInRole("Lärare"))
 {
-    <p>hej anonym!</p>
+    <p><img src="http://www.lexicon.se/Global/Images/PLUS-580-grey.jpg" alt="Lexicon"></p>
 
 }
 
