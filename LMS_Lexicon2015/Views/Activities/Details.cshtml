@@ -6,6 +6,9 @@
 
 <h2>Details</h2>
 
+<p>groupId</p>@ViewBag.groupId
+<p>courseOccasionId</p>@ViewBag.courseOccasionId
+
 <div>
     <h4>Activity</h4>
     <hr />
@@ -27,32 +30,29 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
+            @*@Html.DisplayNameFor(model => model.StartDate)*@
+            Datum
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.StartDate)
+            @Html.DisplayFor(model => model.StartDate.Day)
+            @ViewBag.Line1
+            @Html.DisplayFor(model => model.StartDate.Month)
+            @ViewBag.Line2
+            @Html.DisplayFor(model => model.StartDate.Year)
+            @ViewBag.Line3
+            @Html.DisplayFor(model => model.EndDate.Day)
+            @ViewBag.Line1
+            @Html.DisplayFor(model => model.EndDate.Month)
+            @ViewBag.Line2
+            @Html.DisplayFor(model => model.EndDate.Year)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EndDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CourseId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CourseId)
-        </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Ändra", "Edit/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |
+    @Html.ActionLink("Tillbaka till kursen", "Details/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.GroupId, "CourseOccasions")
 </p>
