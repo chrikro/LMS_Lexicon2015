@@ -64,7 +64,7 @@ namespace LMS_Lexicon2015.Controllers
 
             ViewBag.Roles = db.Roles.ToList();
             //var gruppTest =  db.Groups.Find
-
+            FromPartitialView = false;
 
             var model =
     db.Users.Select(r => new UserListViewModel
