@@ -21,8 +21,8 @@ namespace LMS_Lexicon2015
 
                 routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}/{id2}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, id2 = UrlParameter.Optional });
+                url: "{controller}/{action}/{id}/{id2}/{id3}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, id2 = UrlParameter.Optional , id3 = UrlParameter.Optional });
 
             //routes.MapRoute(
             //    name: "Default",
