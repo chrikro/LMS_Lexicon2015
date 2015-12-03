@@ -17,6 +17,7 @@ namespace LMS_Lexicon2015.Controllers
 {
     public class UsersController : Controller
     {
+        public static bool FromPartitialView;
         //private ApplicationSignInManager _signInManager;
         //private ApplicationUserManager _userManager;
 
@@ -95,7 +96,7 @@ namespace LMS_Lexicon2015.Controllers
                 ViewBag.GroupName = model.First().Group.Name;
             }
             else ViewBag.GroupName = "Tom Grupp";
-
+            FromPartitialView = true;
             return View(model);
         }
 
