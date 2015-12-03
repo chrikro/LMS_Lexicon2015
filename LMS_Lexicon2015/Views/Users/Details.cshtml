@@ -90,6 +90,8 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Ändra", "Edit", new { id = Model.Id }) |
+@if (User.IsInRole("Lärare")) {
+    @Html.ActionLink("Ändra", "Edit", new { id = Model.Id }) <span>|</span>
+   }
     @Html.ActionLink("Tillbaka till listan", "Index")
 </p>

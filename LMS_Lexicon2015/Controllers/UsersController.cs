@@ -13,8 +13,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
+
 namespace LMS_Lexicon2015.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         //private ApplicationSignInManager _signInManager;
@@ -66,15 +68,15 @@ namespace LMS_Lexicon2015.Controllers
 
 
             var model =
-    db.Users.Select(r => new UserListViewModel
-    {
-        Id = r.Id,
-        FirstName = r.FirstName,
-        LastName = r.LastName,
-        Email = r.Email,
-        Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
-        Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
-        PhoneNumber = r.PhoneNumber
+                db.Users.Select(r => new UserListViewModel
+                {
+            Id = r.Id,
+            FirstName = r.FirstName,
+          LastName = r.LastName,
+            Email = r.Email,
+            Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault   ().RoleId).FirstOrDefault().Name,
+            Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
+            PhoneNumber = r.PhoneNumber
 
     }).ToList();
 
@@ -127,6 +129,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Users/Create
+        [Authorize(Roles="Lärare")]
         public ActionResult Create()
         {
             return View();
@@ -154,6 +157,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Users/Edit/5
+        [Authorize(Roles = "Lärare")]
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -191,6 +195,7 @@ namespace LMS_Lexicon2015.Controllers
         // POST: Users/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Lärare")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,GroupId,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
@@ -239,6 +244,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Users/Delete/5
+        [Authorize(Roles = "Lärare")]
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -254,6 +260,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // POST: Users/Delete/5
+        [Authorize(Roles = "Lärare")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)

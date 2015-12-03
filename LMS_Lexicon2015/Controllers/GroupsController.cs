@@ -10,6 +10,7 @@ using LMS_Lexicon2015.Models;
 
 namespace LMS_Lexicon2015.Controllers
 {
+    [Authorize]
     public class GroupsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -48,6 +49,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Groups/Create
+        [Authorize(Roles = "Lärare")]
         public ActionResult Create()
         {
             if (ErrorMessageToEarly == true)
@@ -64,6 +66,7 @@ namespace LMS_Lexicon2015.Controllers
         // POST: Groups/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Lärare")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Description,StartDate,EndDate")] Group group)
@@ -97,6 +100,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Groups/Edit/5
+        [Authorize(Roles = "Lärare")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -122,6 +126,7 @@ namespace LMS_Lexicon2015.Controllers
         // POST: Groups/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Lärare")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Description,StartDate,EndDate")] Group group)
@@ -155,6 +160,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Groups/Delete/5
+        [Authorize(Roles = "Lärare")]
         public ActionResult Delete(int? id)
         {
             ViewBag.Line1 = "/";
@@ -172,6 +178,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // POST: Groups/Delete/5
+        [Authorize(Roles = "Lärare")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
