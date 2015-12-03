@@ -23,8 +23,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Lexicon", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Om", "About", "Home")</li>
-                    <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Om/Kontakt", "About", "Home")</li>
 
                     @using Microsoft.AspNet.Identity
                     @if (User.Identity.IsAuthenticated)

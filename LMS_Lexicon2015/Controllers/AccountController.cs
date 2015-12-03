@@ -236,7 +236,11 @@ namespace LMS_Lexicon2015.Controllers
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
-                    // return View("ForgotPasswordConfirmation");
+                    if (user == null)
+                    {
+                        ViewBag.ErrorMail = "Du angav en felaktig mail adress!";
+                        return View("ForgotPassword");
+                    }
                 }
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -245,6 +249,7 @@ namespace LMS_Lexicon2015.Controllers
                 callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);                             
                 ViewBag.ResetPasswordUrl = callbackUrl;
                 await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                ViewBag.ErrorMail = "";
                 return View("ForgotPasswordConfirmation");
 //                return RedirectToAction("ForgotPasswordConfirmation", "Account");
 //                return RedirectToAction("ForgotPasswordConfirmation", callbackUrl);

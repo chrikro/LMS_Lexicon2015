@@ -18,15 +18,11 @@ namespace LMS_Lexicon2015.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Om Lexicon AB";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Kontaktsida";
-
             return View();
         }
     }
