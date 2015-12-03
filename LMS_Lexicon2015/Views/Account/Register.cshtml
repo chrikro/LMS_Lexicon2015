@@ -102,7 +102,7 @@
     </div>
 }
 <div>
-    @Html.ActionLink("Tillbaka till listan", "Index", "Users")
+    @Html.ActionLink("Tillbaka till listan", null, null, null, new { href = Request.UrlReferrer })
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
