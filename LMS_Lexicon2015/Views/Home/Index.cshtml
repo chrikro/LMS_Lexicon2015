@@ -1,11 +1,26 @@
-﻿@{
-    ViewBag.Title = "";
-}
-
-<div class="jumbotron">
+﻿<div class="jumbotron">
     <h1>Lexicon LMS</h1>
     <p class="lead">
 </div>
+@if (User.IsInRole("Lärare")){
+    <p>hej läraren!</p>
+}
+
+@if (User.IsInRole("Elev"))
+{
+    <p>hej eleven!</p>
+}
+@{
+    ViewBag.Title = "";
+}
+
+@if (!User.IsInRole("Elev") && !User.IsInRole("Lärare"))
+{
+    <p>hej anonym!</p>
+
+}
+
+
 
 <div class="row">
     <div class="col-md-4">
