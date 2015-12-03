@@ -45,6 +45,7 @@ namespace LMS_Lexicon2015.Controllers
             ViewBag.Line2 = "-";
             ViewBag.Line3 = " Till ";
             ViewBag.GroupId = id;
+
             return View(group);
         }
 
