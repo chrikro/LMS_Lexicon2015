@@ -61,5 +61,7 @@
 
  @*+ "?" + HttpContext.Current.Request.Url.AbsolutPath*@
 <p>
-    @Html.ActionLink("Lägga till användere", "Register", "Account")
+@if (User.IsInRole("Lärare")) {
+    @Html.ActionLink("Lägga till användare", "Register", "Account")
+}
 </p>

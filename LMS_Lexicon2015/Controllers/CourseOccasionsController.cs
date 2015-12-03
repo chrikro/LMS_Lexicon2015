@@ -41,6 +41,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: CourseOccasions/Create
+        [Authorize(Roles="Lärare")]
         public ActionResult Create(int? id)
         {
             ViewBag.GroupId = id;
@@ -50,6 +51,7 @@ namespace LMS_Lexicon2015.Controllers
         // POST: CourseOccasions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Lärare")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Description,StartDate,EndDate,GroupId")] CourseOccasion courseOccasion)
@@ -66,6 +68,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: CourseOccasions/Edit/5
+        [Authorize(Roles = "Lärare")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,6 +87,7 @@ namespace LMS_Lexicon2015.Controllers
         // POST: CourseOccasions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Lärare")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Description,StartDate,EndDate,GroupId")] CourseOccasion courseOccasion)
@@ -94,8 +98,6 @@ namespace LMS_Lexicon2015.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Details/" + (int)courseOccasion.GroupId, "Groups");
                 //return RedirectToAction("Index");
-
-
 
             }
             //ViewBag.GroupId = id;
@@ -120,6 +122,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(courseOccasion);
         }
 
+        [Authorize(Roles = "Lärare")]
         // POST: CourseOccasions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

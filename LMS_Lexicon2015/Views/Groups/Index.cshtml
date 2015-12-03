@@ -2,12 +2,15 @@
 
 @{
     ViewBag.Title = "Grupplista";
-    }
+}
 
 <h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Skapa ny grupp", "Create")
+    @if (User.IsInRole("Lärare"))
+    {
+        @Html.ActionLink("Skapa ny grupp", "Create")
+    }
 </p>
 <table class="table">
     <tr>
@@ -29,42 +32,44 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
+    @foreach (var item in Model)
+    {
+        <tr>
 
-        <td>
-            @Html.ActionLink(item.Name, "Details", new { id = item.Id })
-            @*@Html.DisplayFor(modelItem => item.Name)*@
+            <td>
+                @Html.ActionLink(item.Name, "Details", new { id = item.Id })
+                @*@Html.DisplayFor(modelItem => item.Name)*@
 
 
-        </td>
-        <td>
-            @*@Html.ActionLink(item.Description, "Details", new { id = item.Id })*@
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(model => item.StartDate.Day) 
-            @ViewBag.Line1
-            @Html.DisplayFor(model => item.StartDate.Month)
-            @ViewBag.Line2
-            @Html.DisplayFor(model => item.StartDate.Year)
-        </td>
-        <td>
-            @Html.DisplayFor(model => item.EndDate.Day)
-            @ViewBag.Line1
-            @Html.DisplayFor(model => item.EndDate.Month)
-            @ViewBag.Line2
-            @Html.DisplayFor(model => item.EndDate.Year)
-        </td>
-        <td>
-            @Html.ActionLink(item.GroupName.Count().ToString(), "PartitialGroup/" + item.Id, "Users")
-        </td>
-        <td>
-            @*@Html.ActionLink("Ändra", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Detaljer", "Details", new { id=item.Id }) |*@
-            @Html.ActionLink("Ta bort", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+            </td>
+            <td>
+                @*@Html.ActionLink(item.Description, "Details", new { id = item.Id })*@
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.StartDate.Day)
+                @ViewBag.Line1
+                @Html.DisplayFor(model => item.StartDate.Month)
+                @ViewBag.Line2
+                @Html.DisplayFor(model => item.StartDate.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.EndDate.Day)
+                @ViewBag.Line1
+                @Html.DisplayFor(model => item.EndDate.Month)
+                @ViewBag.Line2
+                @Html.DisplayFor(model => item.EndDate.Year)
+            </td>
+            <td>
+                @Html.ActionLink(item.GroupName.Count().ToString(), "PartitialGroup/" + item.Id, "Users")
+            </td>
+            <td>
+                @if (User.IsInRole("Lärare"))
+                {
+                    @Html.ActionLink("Ta bort", "Delete", new { id = item.Id })
+                }
+            </td>
+        </tr>
+    }
 
 </table>
