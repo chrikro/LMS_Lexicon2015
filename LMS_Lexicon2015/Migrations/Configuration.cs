@@ -4,7 +4,6 @@ namespace LMS_Lexicon2015.Migrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -30,7 +29,7 @@ namespace LMS_Lexicon2015.Migrations
             }
             /////----------------------
 
-            //Aktivitets typ
+            //Aktivitets typ // lägg till activityTypes 
             var activityTypes = new[] {
                 new ActivityType { Name = "Föreläsning" },
                 new ActivityType { Name = "E-learning" },
@@ -43,9 +42,9 @@ namespace LMS_Lexicon2015.Migrations
             /////----------------------
             //grupper
             var groups = new[] {
-                new Group { Name = ".net Maj 2015", Description = "Text text text text", StartDate = new DateTime(2015,05,30), EndDate = new DateTime(2015,08,18)  },
-                new Group { Name = ".net Sep 2015", Description = "Text text text text", StartDate = new DateTime(2015, 08, 30), EndDate = new DateTime(2015, 12, 18) },
-                new Group { Name = ".net Feb 2016", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16) }
+                new Group { Name = ".net Maj 2015", Description = "Text text text text", StartDate = new DateTime(2015,12,20), EndDate = new DateTime(2016,08,18)  },
+                new Group { Name = ".net Sep 2015", Description = "Text text text text", StartDate = new DateTime(2015, 12, 20), EndDate = new DateTime(2016, 12, 18) },
+                new Group { Name = ".net Feb 2016", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16) }
             };
 
             context.Groups.AddOrUpdate(g => g.Name, groups);
@@ -60,13 +59,13 @@ namespace LMS_Lexicon2015.Migrations
             if (UserManager.FindByEmail("nisaw99@hotmail.com") == null)
             {
                 var user = new ApplicationUser { UserName = "nisaw99@hotmail.com", Email = "nisaw99@hotmail.com", FirstName = "Kalle", LastName = "Anka", GroupId = null };
-                UserManager.Create(user, "hej999");// foobar = hej999
+                UserManager.Create(user, "hej999");
                 context.SaveChanges();
             }
             context.SaveChanges();
 
             var roleKeeper = UserManager.FindByEmail("nisaw99@hotmail.com");
-            UserManager.AddToRole(roleKeeper.Id, "Lärare");  //Lägg till en roll för nisaw99@hotmail.com // AddToRole lägger in en ny roll men inte om den redan finns
+            UserManager.AddToRole(roleKeeper.Id, "Lärare");  
 
             if (UserManager.FindByEmail("chrikro129@gmail.com") == null)
             {
@@ -81,22 +80,22 @@ namespace LMS_Lexicon2015.Migrations
             /////----------------------
             //kurser
             var courses = new[] {
-                new CourseOccasion { Name = "c#", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16), GroupId = groups[0].Id  },
-                 new CourseOccasion { Name = "Angular JS", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16), GroupId = groups[0].Id  },
-                new CourseOccasion { Name = "Test", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16), GroupId = groups[1].Id  },
-                new CourseOccasion { Name = "SQL", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16), GroupId = groups[0].Id  }
+                new CourseOccasion { Name = "c#", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16), GroupId = groups[0].Id  },
+                 new CourseOccasion { Name = "Angular JS", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16), GroupId = groups[0].Id  },
+                new CourseOccasion { Name = "Test", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16), GroupId = groups[1].Id  },
+                new CourseOccasion { Name = "SQL", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16), GroupId = groups[0].Id  }
             };
 
             context.CourseOccasions.AddOrUpdate(co => co.Name, courses);
             context.SaveChanges();
 
             /////----------------------
-
+            //Aktiviteter 
             var activitys = new[] {
-                new Activity{ Name = activityTypes[0].Name, Description = "text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16), CourseId = courses[0].Id},
-                new Activity{ Name = activityTypes[0].Name, Description = "text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16), CourseId = courses[0].Id},
-                new Activity{ Name = activityTypes[0].Name, Description = "text text", StartDate = new DateTime(2016, 03, 31), EndDate = new DateTime(2016, 04, 10), CourseId = courses[1].Id }
+                new Activity{ Name = activityTypes[0].Name, Description = "text text", StartDate = new DateTime(2016,02,28), EndDate = new DateTime(2016,06,16), CourseId = courses[0].Id },
+                new Activity{ Name = activityTypes[1].Name, Description = "text text", StartDate = new DateTime(2016,06,18), EndDate = new DateTime(2016,06,20), CourseId = courses[0].Id }
            };
+
             context.Activitys.AddOrUpdate(at => at.Name, activitys);
             context.SaveChanges();
         }

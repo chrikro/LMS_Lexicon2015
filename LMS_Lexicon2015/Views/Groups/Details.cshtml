@@ -1,65 +1,68 @@
 ﻿@model LMS_Lexicon2015.Models.Group
 
 
-    @{
-        ViewBag.Title = "Användarens Detailj ";
-    }
+@{
+    ViewBag.Title = "Användarens Detailj ";
+}
 
-    <h2>@Html.DisplayFor(model => model.Name)</h2>
+<h2>@Html.DisplayFor(model => model.Name)</h2>
 
-    <div>
-        <h4></h4>
-        <hr />
-        <dl class="dl-horizontal">
-                        @*<dt>
-        @Html.DisplayNameFor(model => model.Name)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.Name)
-    </dd>*@
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Description)
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+                @Html.DisplayNameFor(model => model.Name)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Description)
-            </dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>*@
 
-            <dt>
-                @*@Html.DisplayNameFor(model => model.StartDate)*@
-                Datum
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.StartDate.Day)
-                @ViewBag.Line1
-                @Html.DisplayFor(model => model.StartDate.Month)
-                @ViewBag.Line2
-                @Html.DisplayFor(model => model.StartDate.Year)
-                @ViewBag.Line3
-                @Html.DisplayFor(model => model.EndDate.Day)
-                @ViewBag.Line1
-                @Html.DisplayFor(model => model.EndDate.Month)
-                @ViewBag.Line2
-                @Html.DisplayFor(model => model.EndDate.Year)
-            </dd>
-            <dd>
-                @Html.ActionLink("Ändra Gruppens information", "Edit", new { id = Model.Id }) 
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
 
-        </dl>
-    </div>
+        <dt>
+            @*@Html.DisplayNameFor(model => model.StartDate)*@
+            Datum
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate.Day)
+            @ViewBag.Line1
+            @Html.DisplayFor(model => model.StartDate.Month)
+            @ViewBag.Line2
+            @Html.DisplayFor(model => model.StartDate.Year)
+            @ViewBag.Line3
+            @Html.DisplayFor(model => model.EndDate.Day)
+            @ViewBag.Line1
+            @Html.DisplayFor(model => model.EndDate.Month)
+            @ViewBag.Line2
+            @Html.DisplayFor(model => model.EndDate.Year)
+        </dd>
+        <dd>
+            @if (User.IsInRole("Lärare"))
+            {
+                @Html.ActionLink("Ändra Gruppens information", "Edit", new { id = Model.Id })
+            }
+        </dd>
+
+    </dl>
+</div>
 
 
-@Html.Partial("_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == Model.Id).ToList() )
+@Html.Partial("_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == Model.Id).ToList())
 <p>
     @Html.ActionLink("Tillbaka till Grupplistan", "Index")
 </p>
 
 @*@Html.Partial("_Course", Model)*@
-    @*@Html.Partial("_Course", new { Model })*@
+@*@Html.Partial("_Course", new { Model })*@
 @*@Html.Partial("~/Views/CourseOccasion/index.cshtml", ViewData.Model.Courses)*@
 
 

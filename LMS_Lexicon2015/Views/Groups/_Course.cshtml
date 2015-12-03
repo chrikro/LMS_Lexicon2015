@@ -9,9 +9,10 @@
 <p>
     @*@Html.ActionLink("Lägg till en ny kurs", "Create/" + Model.First().GroupId, "CourseOccasions")*@
 
-
+    @if (User.IsInRole("Lärare"))
+    {
     @Html.ActionLink("Lägg till en ny kurs", "Create/" + (int)ViewBag.GroupId, "CourseOccasions")
-
+    }
 
 </p>
 <table class="table">
@@ -34,7 +35,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -43,7 +45,6 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-           @* @Html.DisplayFor(modelItem => item.StartDate)*@
             @Html.DisplayFor(modelItem => item.StartDate.Day)
             @ViewBag.Line1
             @Html.DisplayFor(modelItem => item.StartDate.Month)
@@ -51,23 +52,27 @@
             @Html.DisplayFor(modelItem => item.StartDate.Year)
         </td>
         <td>
-            @*@Html.DisplayFor(modelItem => item.EndDate)*@
             @Html.DisplayFor(modelItem => item.EndDate.Day)
             @ViewBag.Line1
             @Html.DisplayFor(modelItem => item.EndDate.Month)
             @ViewBag.Line2
             @Html.DisplayFor(modelItem => item.EndDate.Year)
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.GroupId)
-        </td>*@
         <td>
-            @Html.ActionLink("Ändra", "Edit/" + item.Id, "CourseOccasions") |
-            @Html.ActionLink("Detaljer", "Details/" + item.Id, "CourseOccasions") |
+                @if (User.IsInRole("Lärare"))
+                {
+                    @Html.ActionLink("Ändra", "Edit/" + item.Id, "CourseOccasions") <span>|</span>
+                }
+                @Html.ActionLink("Detaljer", "Details/" + item.Id, "CourseOccasions") 
+                @if (User.IsInRole("Lärare")) {
+                    <span>|</span> }
+
+                @if (User.IsInRole("Lärare"))
+                {
             @Html.ActionLink("Ta bort", "Delete/" + item.Id, "CourseOccasions")
+                }
         </td>
     </tr>
 }
 
 </table>
-
