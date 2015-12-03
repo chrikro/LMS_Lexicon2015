@@ -11,7 +11,8 @@
 
     @if (User.IsInRole("Lärare"))
     {
-    @Html.ActionLink("Lägg till en ny kurs", "Create/" + (int)ViewBag.GroupId, "CourseOccasions")
+    @Html.ActionLink("Lägg till en ny kurs", "Create/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "CourseOccasions")
+    @*@Html.ActionLink("Lägg till en ny aktiviteter", "Create/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")*@
     }
 
 </p>
@@ -71,6 +72,10 @@
                 {
             @Html.ActionLink("Ta bort", "Delete/" + item.Id, "CourseOccasions")
                 }
+                
+
+
+
         </td>
     </tr>
 }
