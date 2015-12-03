@@ -20,7 +20,6 @@ namespace LMS_Lexicon2015.Migrations
             var roleStore = new RoleStore<IdentityRole>(context);
             var roleManager = new RoleManager<IdentityRole>(roleStore);
 
-            //foreach (string roles in new[] { "Studien", "Teatcher"})
             foreach (string roles in new[] { "Elev", "Lärare" })
             {
                 if (!context.Roles.Any(r => r.Name == roles))
@@ -29,9 +28,9 @@ namespace LMS_Lexicon2015.Migrations
                     roleManager.Create(role);
                 }
             }
+            /////----------------------
 
-    
-                       //Aktivitets typ
+            //Aktivitets typ
             var activityTypes = new[] {
                 new ActivityType { Name = "Föreläsning" },
                 new ActivityType { Name = "E-learning" },
@@ -41,7 +40,7 @@ namespace LMS_Lexicon2015.Migrations
 
             context.ActivityTypes.AddOrUpdate(at => at.Name, activityTypes);
             context.SaveChanges();
-
+            /////----------------------
             //grupper
             var groups = new[] {
                 new Group { Name = ".net Maj 2015", Description = "Text text text text", StartDate = new DateTime(2015,05,30), EndDate = new DateTime(2015,08,18)  },
@@ -51,52 +50,56 @@ namespace LMS_Lexicon2015.Migrations
 
             context.Groups.AddOrUpdate(g => g.Name, groups);
             context.SaveChanges();
-
+            /////----------------------
 
             //Nytt skapa användare med hash lösenord om det inte finns  
             var store = new UserStore<ApplicationUser>(context);
             var UserManager = new UserManager<ApplicationUser>(store);
-            
+
 
             if (UserManager.FindByEmail("nisaw99@hotmail.com") == null)
             {
                 var user = new ApplicationUser { UserName = "nisaw99@hotmail.com", Email = "nisaw99@hotmail.com", FirstName = "Kalle", LastName = "Anka", GroupId = null };
                 UserManager.Create(user, "hej999");// foobar = hej999
                 context.SaveChanges();
- 
             }
             context.SaveChanges();
 
-            var keeper = UserManager.FindByEmail("nisaw99@hotmail.com");
-            UserManager.AddToRole(keeper.Id, "Lärare");  //Lägg till en roll för nisaw99@hotmail.com // AddToRole lägger in en ny roll men inte om den redan finns
+            var roleKeeper = UserManager.FindByEmail("nisaw99@hotmail.com");
+            UserManager.AddToRole(roleKeeper.Id, "Lärare");  //Lägg till en roll för nisaw99@hotmail.com // AddToRole lägger in en ny roll men inte om den redan finns
 
             if (UserManager.FindByEmail("chrikro129@gmail.com") == null)
             {
-                var user = new ApplicationUser { UserName = "chrikro129@gmail.com", Email = "chrikro129@gmail.com", FirstName = "Christina", LastName = "K", GroupId = groups[1].Id };
-                UserManager.Create(user, "hej999");// foobar = hej999
+                var user = new ApplicationUser { UserName = "chrikro129@gmail.com", Email = "chrikro129@gmail.com", FirstName = "Christina", LastName = "Kronblad", GroupId = groups[1].Id };
+                UserManager.Create(user, "hej999");
             }
-
             context.SaveChanges();
 
-            keeper = UserManager.FindByEmail("chrikro129@gmail.com");
-            UserManager.AddToRole(keeper.Id, "Elev");  
+            roleKeeper = UserManager.FindByEmail("chrikro129@gmail.com");
+            UserManager.AddToRole(roleKeeper.Id, "Elev");
 
-            if (!context.CourseOccasions.Any(c => c.Name == "c#"))
-            {
-                var CourseOccasion = new CourseOccasion { Name = "c#", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16), GroupId = groups[0].Id };
-                context.CourseOccasions.Add(CourseOccasion);
-            }
+            /////----------------------
+            //kurser
+            var courses = new[] {
+                new CourseOccasion { Name = "c#", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16), GroupId = groups[0].Id  },
+                 new CourseOccasion { Name = "Angular JS", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16), GroupId = groups[0].Id  },
+                new CourseOccasion { Name = "Test", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16), GroupId = groups[1].Id  },
+                new CourseOccasion { Name = "SQL", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16), GroupId = groups[0].Id  }
+            };
 
-            //Aktivitets 
+            context.CourseOccasions.AddOrUpdate(co => co.Name, courses);
+            context.SaveChanges();
+
+            /////----------------------
+
+            //Aktiviteter 
             var activitys = new[] {
-                new Activity{ Name = activityTypes[0].Name, Description = "text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16), CourseId = 1}
+                new Activity{ Name = activityTypes[0].Name, Description = "text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16), CourseId = courses[0].Id},
+                new Activity{ Name = activityTypes[0].Name, Description = "text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2015, 06, 16), CourseId = courses[0].Id}
            };
 
-            context.Activityps.AddOrUpdate(at => at.Name, activitys);
+            context.Activitys.AddOrUpdate(at => at.Name, activitys);
             context.SaveChanges();
-
-
-
         }
     }
 }
