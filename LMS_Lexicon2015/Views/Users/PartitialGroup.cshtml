@@ -59,6 +59,7 @@
     @Html.ActionLink("Tillbaka till listan", "Index", "Groups")
 </p>
 
+ @*+ "?" + HttpContext.Current.Request.Url.AbsolutPath*@
 <p>
-    @Html.ActionLink("Lägga till användere", "Register/" + "?" + HttpContext.Current.Request.Url.AbsolutPath, "Account")
+    @Html.ActionLink("Lägga till användere", "Register", "Account")
 </p>
