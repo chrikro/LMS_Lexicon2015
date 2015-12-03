@@ -14,6 +14,7 @@ using System.Web.Security;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Net;
 using System.Net.Mail;
+using LMS_Lexicon2015.Controllers;
 
 namespace LMS_Lexicon2015.Controllers
 {
@@ -162,29 +163,35 @@ namespace LMS_Lexicon2015.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-
-
             if (ModelState.IsValid)
             {
+        
                 ApplicationUser user;
+                int? GroupSend;
                 if (model.Role == "Elev") 
                 {
+
+                    GroupSend = model.GroupStudent; 
                     user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber, GroupId = model.GroupStudent };
-      
                 }
                 else
                 {
+                    
                     user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber, GroupId = model.GroupTeacher };
+                    GroupSend = model.GroupTeacher;
                 }
-            
+
                // var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     var keeper = UserManager.FindByName(user.UserName);//lägga till roll
-                    UserManager.AddToRole(keeper.Id, model.Role); 
-                   
-                    return RedirectToAction("Index", "Users");
+                    UserManager.AddToRole(keeper.Id, model.Role);
+
+                    if (LMS_Lexicon2015.Controllers.UsersController.FromPartitialView == true)
+                        return RedirectToAction("PartitialGroup/" + GroupSend, "Users");
+                    else 
+                        return RedirectToAction("Index", "Users");
                 }
                 AddErrors(result);
             }

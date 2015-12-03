@@ -10,6 +10,7 @@ using LMS_Lexicon2015.Models;
 
 namespace LMS_Lexicon2015.Controllers
 {
+    [Authorize]
     public class ActivitiesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
