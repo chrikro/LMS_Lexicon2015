@@ -72,7 +72,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Activities/Edit/5
-        public ActionResult Edit(int? id, int? id2)
+        public ActionResult Edit(int? id, int? id2, int? id3)
         {
             if (id == null)
             {
@@ -83,8 +83,9 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.courseOccasionId = id;
-            ViewBag.groupId = id2;
+            ViewBag.activitiesId = id;
+            ViewBag.courseOccasionId = id2;
+            ViewBag.groupId = id3;
             return View(activity);
         }
 
