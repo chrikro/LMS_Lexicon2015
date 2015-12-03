@@ -56,19 +56,13 @@ namespace LMS_Lexicon2015.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,StartDate,EndDate,CourseId,GroupId")] Activity activity)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,StartDate,EndDate,CourseId")] Activity activity)
         {
             if (ModelState.IsValid)
             {
                 db.Activitys.Add(activity);
                 db.SaveChanges();
-
-                //return RedirectToAction("Details/1/1" , "CourseOccasions");
-                //ViewBag.courseOccasionId = (int)activity.CourseId;
-                //ViewBag.groupId = ViewBag.groupId;
                 return RedirectToAction("Details/" + activity.CourseId + "/" + (int)TempData["GroupId"], "CourseOccasions");
-
-                // return View(activity);
             }
 
             ViewBag.courseOccasionId = activity.CourseId;

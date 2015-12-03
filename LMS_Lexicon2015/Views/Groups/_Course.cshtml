@@ -11,8 +11,10 @@
 
     @if (User.IsInRole("Lärare"))
     {
-    @Html.ActionLink("Lägg till en ny kurs", "Create/" + (int)ViewBag.GroupId, "CourseOccasions")
+            @Html.ActionLink("Lägg till en ny kurs", "Create/" + (int)ViewBag.groupId, "CourseOccasions")
     }
+
+       @* @Html.ActionLink("Lägg till en ny kurs", "Create/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "CourseOccasions")*@
 
 </p>
 <table class="table">
@@ -42,7 +44,10 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
+                @*@for (int i = 0; i < 10; i++)
+                {
+                    @Html.DisplayFor(modelItem => item.Description[i])
+                }*@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.StartDate.Day)
@@ -59,18 +64,29 @@
             @Html.DisplayFor(modelItem => item.EndDate.Year)
         </td>
         <td>
-                @if (User.IsInRole("Lärare"))
-                {
-                    @Html.ActionLink("Ändra", "Edit/" + item.Id, "CourseOccasions") <span>|</span>
-                }
-                @Html.ActionLink("Detaljer", "Details/" + item.Id, "CourseOccasions") 
-                @if (User.IsInRole("Lärare")) {
-                    <span>|</span> }
 
                 @if (User.IsInRole("Lärare"))
                 {
-            @Html.ActionLink("Ta bort", "Delete/" + item.Id, "CourseOccasions")
+                    @Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions") <span>|</span>
                 }
+                
+                @if (User.IsInRole("Lärare")) {
+                    @Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")<span>|</span> }
+
+                @if (User.IsInRole("Lärare"))
+                {
+                    @Html.ActionLink("Ta bort", "Delete/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
+                }
+                
+        
+
+                @*@Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions") <span>|</span>
+                @Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
+                @Html.ActionLink("Ta bort", "Delete/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")*@
+
+
+            @*@Html.ActionLink("Lägg till en ny kurs", "Create/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "CourseOccasions")*@
+
         </td>
     </tr>
 }
