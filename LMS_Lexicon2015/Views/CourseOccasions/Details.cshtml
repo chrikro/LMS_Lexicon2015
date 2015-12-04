@@ -54,9 +54,9 @@
 </div>
 
 
-@*@Html.Partial("_activities", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == Model.Id).ToList())*@
 
-@Html.Partial("_activities", new LMS_Lexicon2015.Models.ApplicationDbContext().Activitys.Where(a => a.CourseId == Model.Id))
+@Html.Partial("_activities", new LMS_Lexicon2015.Models.ApplicationDbContext().Activitys.Where(a => a.CourseId == Model.Id).OrderBy(c => c.StartDate).ToList())
+
 
 <p>
     @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@

@@ -46,6 +46,10 @@ namespace LMS_Lexicon2015.Controllers
         [Authorize(Roles="Lärare")]
         public ActionResult Create(int? id)
         {
+            if (ErrorMessageStartAfterEnd == true)
+            {
+                ViewBag.ErrorMessage = "Du har angivit ett slutdatum före startdatumet ";
+            }     
             ViewBag.GroupId = id;
             return View();
         }
