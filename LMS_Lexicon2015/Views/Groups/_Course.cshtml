@@ -31,6 +31,9 @@
         <th>
             @Html.DisplayNameFor(model => model.EndDate)
         </th>
+        <th>
+            Antalet kurser
+        </th>
         @*<th>
             @Html.DisplayNameFor(model => model.GroupId)
         </th>*@
@@ -44,7 +47,7 @@
                 @Html.ActionLink(item.Name, "Details/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
         </td>
         <td>
-            @if (item.Description.Length < 10)
+            @if (item.Description.Length <= 10)
             {
                 @Html.DisplayFor(modelItem => item.Description)
             }
@@ -71,28 +74,36 @@
             <span>-</span>
             @Html.DisplayFor(modelItem => item.EndDate.Year)
         </td>
+            @*@if (User.IsInRole("Lärare"))
+            {
+                @Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions") <span>|</span>
+            }
+
+            @Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
+            @if (User.IsInRole("Lärare"))
+                    { <span>|</span> }*@
+
         <td>
-
-                @*@if (User.IsInRole("Lärare"))
-                {
-                    @Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions") <span>|</span>
-                }
-   
-                @Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
-                @if (User.IsInRole("Lärare"))
-                        { <span>|</span> }*@
-
-                            
-                @if (User.IsInRole("Lärare"))
-                {
-                    @Html.ActionLink("Ta bort", "Delete/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
-                }
-                
-        
-
-
-
+            @item.Activities.Count
         </td>
+
+    @if (User.IsInRole("Lärare"))
+    {
+        @*if (item.Group.Courses.Count() > 0)
+        {
+        <td>
+            <div>
+                <a href=" " title="Det finns aktiviteter i kuresn." style="background-color:#FFFFFF;color:grey;text-decoration:none">Ta bort</a>
+            </div>
+        </td>
+        }
+        else {*@
+            <td>
+                @Html.ActionLink("Ta bort", "Delete/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
+            </td>
+    //    }
+
+     }
     </tr>
 }
 

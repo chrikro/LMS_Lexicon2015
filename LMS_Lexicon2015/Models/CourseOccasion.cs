@@ -31,6 +31,8 @@ namespace LMS_Lexicon2015.Models
         [Display(Name = "Grupp")]
         public virtual Group Group { get; set; }
 
+        [Display(Name = "Activities")]
+        public virtual ICollection<Activity> Activities { get; set; } 
     }
 }
 

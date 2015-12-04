@@ -24,12 +24,11 @@ namespace LMS_Lexicon2015.Controllers
             ErrorMessageToEarly = false;
             ErrorMessageStartAfterEnd = false;
             return View(db.Groups.ToList());
-            ViewBag.PopupValue = "THIS IS POPUP WINDOW";
         }
 
 
         // GET: Groups/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -43,7 +42,6 @@ namespace LMS_Lexicon2015.Controllers
             }
             ViewBag.Line3 = " Till ";
             ViewBag.GroupId = id;
-
             return View(group);
         }
 

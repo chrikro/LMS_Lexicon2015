@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 
@@ -20,11 +21,15 @@ namespace LMS_Lexicon2015.Models
 
         [Display(Name = "Startdatum")]
         public DateTime StartDate { get; set; }
+
         [Display(Name = "Slutdatum")]
         public DateTime EndDate { get; set; }
 
         [Display(Name = "Kursid")]
+        [ForeignKey("CourseOccasion")]
         public int CourseId { get; set; }
+
+        public virtual CourseOccasion CourseOccasion { get; set; } 
     }
 }
 
