@@ -98,7 +98,9 @@ namespace LMS_Lexicon2015.Controllers
             {
                 db.Entry(courseOccasion).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Details/" + (int)courseOccasion.GroupId, "Groups");
+                return RedirectToAction("Details/" + (int)courseOccasion.Id + "/" + (int)courseOccasion.GroupId, "CourseOccasions");
+
+                //return RedirectToAction("Details/" + (int)courseOccasion.GroupId, "Groups");
                 //return RedirectToAction("Index");
 
             }

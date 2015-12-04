@@ -41,7 +41,7 @@
     {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+                @Html.ActionLink(item.Name, "Details/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
         </td>
         <td>
             @if (item.Description.Length < 10)
@@ -73,14 +73,15 @@
         </td>
         <td>
 
-                @if (User.IsInRole("Lärare"))
+                @*@if (User.IsInRole("Lärare"))
                 {
                     @Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions") <span>|</span>
                 }
    
                 @Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
                 @if (User.IsInRole("Lärare"))
-                    { <span>|</span> }
+                        { <span>|</span> }*@
+
                             
                 @if (User.IsInRole("Lärare"))
                 {
@@ -89,12 +90,7 @@
                 
         
 
-                @*@Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions") <span>|</span>
-                @Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
-                @Html.ActionLink("Ta bort", "Delete/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")*@
 
-
-            @*@Html.ActionLink("Lägg till en ny kurs", "Create/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "CourseOccasions")*@
 
         </td>
     </tr>

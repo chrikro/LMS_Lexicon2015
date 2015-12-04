@@ -22,7 +22,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Activities/Details/5
-        public ActionResult Details(int? id, int? id2)
+        public ActionResult Details(int? id, int? id2, int? id3)
         {
             if (id == null)
             {
@@ -33,11 +33,13 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.courseOccasionId = id;
-            ViewBag.groupId = id2;
+            ViewBag.activitiesId = id;
+            ViewBag.courseOccasionId = id2;
+            ViewBag.groupId = id3;
             ViewBag.Line1 = "/";
             ViewBag.Line2 = "-";
             ViewBag.Line3 = " Till ";
+           
             return View(activity);
         }
 
@@ -88,8 +90,8 @@ namespace LMS_Lexicon2015.Controllers
             ViewBag.courseOccasionId = id2;
             ViewBag.groupId = id3;
             string selectedId = activity.Name;
-            ViewBag.ItemsSelect = new SelectList(db.ActivityTypes, "Name", "Name", selectedId);
-
+            ViewBag.name = new SelectList(db.ActivityTypes, "Name", "Name", selectedId);
+            //ViewBag.name = new SelectList(db.ActivityTypes, "Name", "Name");
 
             return View(activity);
         }
@@ -115,7 +117,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Activities/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, int? id2, int? id3)
         {
             if (id == null)
             {
@@ -126,6 +128,9 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.activitiesId = id;
+            ViewBag.courseOccasionId = id2;
+            ViewBag.groupId = id3;
             return View(activity);
         }
 
@@ -134,10 +139,21 @@ namespace LMS_Lexicon2015.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            //Activity activity = db.Activitys.Find(id);
+            //db.Activitys.Remove(activity);
+            //db.SaveChanges();
+            //return RedirectToAction("Index");
+
+           // return RedirectToAction("Details/" + activity.CourseId + "/" + (int)TempData["GroupId"], "CourseOccasions");
+
+
             Activity activity = db.Activitys.Find(id);
+            int CourseId = (int)activity.CourseId;
             db.Activitys.Remove(activity);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            //return RedirectToAction("Details/" + CourseId, "CourseOccasions");
+            return RedirectToAction("Details/" + CourseId+ "/" + (int)TempData["GroupId"], "CourseOccasions" );
+
         }
 
         protected override void Dispose(bool disposing)

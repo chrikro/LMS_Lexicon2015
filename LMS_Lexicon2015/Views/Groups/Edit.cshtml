@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Redigera</h2>
+<h2>Ändra informationen i gruppen: @Model.Name</h2>
 
 
 @using (Html.BeginForm())
@@ -64,8 +64,10 @@
     </h4>
 </div>
 
+
 <div>
-    @Html.ActionLink("Tillbaka till listan", "Index")
+    @Html.ActionLink("Tillbaka till listan", "Details/" + Model.Id, "Groups")
+    @*@Html.ActionLink("Tillbaka till listan", "Index")*@
 </div>
 
 @section Scripts {

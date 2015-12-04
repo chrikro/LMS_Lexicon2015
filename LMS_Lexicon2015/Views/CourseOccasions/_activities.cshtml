@@ -3,8 +3,8 @@
 @{
     ViewBag.Title = "Index";
 }
-<p>GroupId</p>@ViewBag.groupId
-<p>CourseOccasionId</p>@ViewBag.courseOccasionId
+@*<p>GroupId</p>@ViewBag.groupId
+<p>CourseOccasionId</p>@ViewBag.courseOccasionId*@
 
 <h2>Aktiviteter</h2>
 
@@ -25,16 +25,19 @@
         <th>
             @Html.DisplayNameFor(model => model.EndDate)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.CourseId)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @*@Html.DisplayFor(modelItem => item.Name)*@
+            @Html.ActionLink(item.Name, "Details/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") 
+
+
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
@@ -62,17 +65,12 @@
             @Html.DisplayFor(modelItem => item.EndDate)
         </td>*@
         <td>
-            @*@Html.DisplayFor(modelItem => item.CourseId)*@
-            @Html.DisplayFor(modelItem => item.Id)
+            @*@Html.DisplayFor(modelItem => item.Id)*@
         </td>
         <td>
 
-            @*@Html.ActionLink("Ändra", "Edit/" + item.Id, "Activities") |
-            @Html.ActionLink("Detaljer", "Details/" + item.Id, "Activities") |
-            @Html.ActionLink("Ta bort", "Delete/" + item.Id, "Activities")*@
-
-            @Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |
-            @Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |
+            @*@Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |
+            @Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |*@
             @Html.ActionLink("Ta bort", "Delete/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")
         </td>
     </tr>

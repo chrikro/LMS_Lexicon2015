@@ -1,22 +1,19 @@
 ﻿@model LMS_Lexicon2015.Models.CourseOccasion
 
-@{
-    ViewBag.Title = "Detalj";
-}
 
-<h2>@ViewBag.Title</h2>
+<h2>Kurs: @Model.Name</h2>
 
 <div>
-    <h4>@Model.Name</h4>
+
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Name)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.Description)
@@ -25,22 +22,6 @@
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
-
-        @*<dt>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StartDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EndDate)
-        </dd>*@
         <dt>
             Datum
         </dt>
@@ -58,23 +39,27 @@
             @Html.DisplayFor(model => model.EndDate.Year)
         </dd>
 
-        @*<dt>
-            @Html.DisplayNameFor(model => model.GroupId)
+        <dt>
+
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.GroupId)
-        </dd>*@
+            @if (User.IsInRole("Lärare"))
+                        {
+                @Html.ActionLink("Ändra Kursens information", "Edit/" + Model.Id + "/" + (int)ViewBag.groupId, "CourseOccasions") 
+                        }
+        </dd>
 
     </dl>
 </div>
+
 
 @*@Html.Partial("_activities", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == Model.Id).ToList())*@
 
 @Html.Partial("_activities", new LMS_Lexicon2015.Models.ApplicationDbContext().Activitys.Where(a => a.CourseId == Model.Id))
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
     @*@Html.ActionLink("Tillbaka till gruppen", "Details/" + (int)ViewBag.GroupId, "Groups")*@
     @Html.ActionLink("Tillbaka till gruppen", "Details/" + Model.GroupId, "Groups")
 </p>
