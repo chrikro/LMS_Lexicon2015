@@ -64,8 +64,10 @@
     </h4>
 </div>
 
+
 <div>
-    @Html.ActionLink("Tillbaka till listan", "Index")
+    @Html.ActionLink("Tillbaka till listan", "Details/" + Model.Id, "Groups")
+    @*@Html.ActionLink("Tillbaka till listan", "Index")*@
 </div>
 
 @section Scripts {

@@ -113,10 +113,10 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
-            if (ErrorMessageToEarly == true)
-            {
-                ViewBag.ErrorMessage = "Du har angivit ett startdatum före dagens datum";
-            }
+            //if (ErrorMessageToEarly == true)
+            //{
+            //    ViewBag.ErrorMessage = "Du har angivit ett startdatum före dagens datum";
+            //}
             if (ErrorMessageStartAfterEnd == true)
             {
                 ViewBag.ErrorMessage = "Du har angivit ett slutdatum före startdatumet ";
@@ -134,15 +134,15 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (group.StartDate < DateTime.Now)
-                {
-                    //AddErrors(ModelState);
-                    ErrorMessageToEarly = true;
-                    ErrorMessageStartAfterEnd = false;
-                    return RedirectToAction("Edit");
-                }
+                //if (group.StartDate < DateTime.Now)
+                //{
+                //    //AddErrors(ModelState);
+                //    ErrorMessageToEarly = true;
+                //    ErrorMessageStartAfterEnd = false;
+                //    return RedirectToAction("Edit");
+                //}
 
-                else if (group.StartDate > group.EndDate)
+                if (group.StartDate > group.EndDate)
                 {
                     //AddErrors(ModelState);
                     ErrorMessageStartAfterEnd = true;
@@ -152,9 +152,11 @@ namespace LMS_Lexicon2015.Controllers
 
                 else
                 {
+                    int GroupNr = (int)group.Id;
                     db.Entry(group).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    //return RedirectToAction("Index");
+                    return RedirectToAction("Details/" + GroupNr, "Groups");
                 }
             }
             return View(group);

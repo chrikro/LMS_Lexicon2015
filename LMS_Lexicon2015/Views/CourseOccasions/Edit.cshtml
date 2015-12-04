@@ -1,10 +1,8 @@
 ﻿@model LMS_Lexicon2015.Models.CourseOccasion
 
-@{
-    ViewBag.Title = "Ändra";
-}
 
-<h2>@ViewBag.Title</h2>
+
+<h2>Ändra i Kurs: @Model.Name</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +10,6 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>@Model.Name</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
@@ -67,9 +64,8 @@
 }
 
 <div>
-
-    @Html.ActionLink("Tillbaka till gruppen", "Details/" + Model.GroupId, "Groups")
-    @*@Html.ActionLink("Tillbaka till gruppen", "Details/" + (int)ViewBag.GroupId, "Groups")*@
+   
+    @Html.ActionLink("Tillbaka till Kurs", "Details/" + Model.Id + "/" + Model.GroupId, "CourseOccasions")
 </div>
 
 @section Scripts {

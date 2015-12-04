@@ -22,7 +22,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Activities/Details/5
-        public ActionResult Details(int? id, int? id2)
+        public ActionResult Details(int? id, int? id2, int? id3)
         {
             if (id == null)
             {
@@ -33,11 +33,13 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.courseOccasionId = id;
-            ViewBag.groupId = id2;
+            ViewBag.activitiesId = id;
+            ViewBag.courseOccasionId = id2;
+            ViewBag.groupId = id3;
             ViewBag.Line1 = "/";
             ViewBag.Line2 = "-";
             ViewBag.Line3 = " Till ";
+           
             return View(activity);
         }
 
@@ -88,8 +90,8 @@ namespace LMS_Lexicon2015.Controllers
             ViewBag.courseOccasionId = id2;
             ViewBag.groupId = id3;
             string selectedId = activity.Name;
-            ViewBag.ItemsSelect = new SelectList(db.ActivityTypes, "Name", "Name", selectedId);
-
+            ViewBag.name = new SelectList(db.ActivityTypes, "Name", "Name", selectedId);
+            //ViewBag.name = new SelectList(db.ActivityTypes, "Name", "Name");
 
             return View(activity);
         }
