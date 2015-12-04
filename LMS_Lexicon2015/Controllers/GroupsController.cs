@@ -37,6 +37,10 @@ namespace LMS_Lexicon2015.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Group group = db.Groups.Find(id);
+
+                        //SELECT * FROM Groups WHERE Groups.Id = id ORDER BY Groups.stardatum
+
+
             if (group == null)
             {
                 return HttpNotFound();
@@ -45,6 +49,11 @@ namespace LMS_Lexicon2015.Controllers
             ViewBag.Line2 = "-";
             ViewBag.Line3 = " Till ";
             ViewBag.GroupId = id;
+
+
+
+
+
 
             return View(group);
         }

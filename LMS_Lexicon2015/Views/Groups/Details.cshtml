@@ -9,13 +9,7 @@
 
     <hr />
     <dl class="dl-horizontal">
-        @*<dt>
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Name)
-            </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.Description)
@@ -26,7 +20,6 @@
         </dd>
 
         <dt>
-            @*@Html.DisplayNameFor(model => model.StartDate)*@
             Datum
         </dt>
 
@@ -59,9 +52,7 @@
     @Html.ActionLink("Tillbaka till Grupplistan", "Index")
 </p>
 
-@*@Html.Partial("_Course", Model)*@
-@*@Html.Partial("_Course", new { Model })*@
-@*@Html.Partial("~/Views/CourseOccasion/index.cshtml", ViewData.Model.Courses)*@
+
 
 
 
