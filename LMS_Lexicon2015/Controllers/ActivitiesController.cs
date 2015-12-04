@@ -117,7 +117,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Activities/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, int? id2, int? id3)
         {
             if (id == null)
             {
@@ -128,6 +128,9 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.activitiesId = id;
+            ViewBag.courseOccasionId = id2;
+            ViewBag.groupId = id3;
             return View(activity);
         }
 
@@ -136,10 +139,21 @@ namespace LMS_Lexicon2015.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            //Activity activity = db.Activitys.Find(id);
+            //db.Activitys.Remove(activity);
+            //db.SaveChanges();
+            //return RedirectToAction("Index");
+
+           // return RedirectToAction("Details/" + activity.CourseId + "/" + (int)TempData["GroupId"], "CourseOccasions");
+
+
             Activity activity = db.Activitys.Find(id);
+            int CourseId = (int)activity.CourseId;
             db.Activitys.Remove(activity);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            //return RedirectToAction("Details/" + CourseId, "CourseOccasions");
+            return RedirectToAction("Details/" + CourseId+ "/" + (int)TempData["GroupId"], "CourseOccasions" );
+
         }
 
         protected override void Dispose(bool disposing)

@@ -34,7 +34,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @*@Html.DisplayFor(modelItem => item.Name)*@
+            @Html.ActionLink(item.Name, "Details/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") 
+
+
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
@@ -66,8 +69,8 @@
         </td>
         <td>
 
-            @Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |
-            @Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |
+            @*@Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |
+            @Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |*@
             @Html.ActionLink("Ta bort", "Delete/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")
         </td>
     </tr>

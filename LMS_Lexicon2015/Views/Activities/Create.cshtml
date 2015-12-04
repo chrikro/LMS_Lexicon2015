@@ -4,7 +4,8 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Skapa ny aktivitet</h2>
+
 
 @*<p>groupId</p>@ViewBag.groupId
 <p>courseOccasionId</p>@ViewBag.courseOccasionId*@
@@ -14,8 +15,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Activity</h4>
-        <hr />
+         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         
@@ -68,7 +68,7 @@
             
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Skapa" class="btn btn-default" />
             </div>
         </div>
     </div>
