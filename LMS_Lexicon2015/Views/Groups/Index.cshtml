@@ -12,6 +12,13 @@
         @Html.ActionLink("Skapa ny grupp", "Create")
     }
 </p>
+@*<script language="javascript">
+    function openPopupWindow() {
+        window.open("Text", 'Page', "width=300, height=200");
+        return false;
+    }
+</script>*@
+
 <table class="table">
     <tr>
         <th>
@@ -29,10 +36,11 @@
         <th>
             Antal Elever
         </th>
+
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model) 
     {
         <tr>
 
@@ -58,28 +66,57 @@
             </td>
             <td>
                 @Html.DisplayFor(model => item.StartDate.Day)
-                @ViewBag.Line1
+                <span>/</span>
                 @Html.DisplayFor(model => item.StartDate.Month)
-                @ViewBag.Line2
+                <span>-</span>
                 @Html.DisplayFor(model => item.StartDate.Year)
             </td>
             <td>
                 @Html.DisplayFor(model => item.EndDate.Day)
-                @ViewBag.Line1
+                <span>/</span>
                 @Html.DisplayFor(model => item.EndDate.Month)
-                @ViewBag.Line2
+                <span>-</span>
                 @Html.DisplayFor(model => item.EndDate.Year)
             </td>
             <td>
                 @Html.ActionLink(item.GroupName.Count().ToString(), "PartitialGroup/" + item.Id, "Users")
             </td>
+    @if (User.IsInRole("Lärare"))
+    {
+        if ((item.Courses.Count() > 0) && (item.GroupName.Count() > 0))
+        {
             <td>
-                @if (User.IsInRole("Lärare"))
-                {
-                    @Html.ActionLink("Ta bort", "Delete", new { id = item.Id })
-                }
+                <div>
+                    <a href=" " title="Det finns elever och kurser i gruppen." style="background-color:#FFFFFF;color:grey;text-decoration:none">Ta bort</a>
+                </div>
             </td>
+        }
+        else if (item.GroupName.Count() > 0)
+        {
+                <td>
+                    <div>
+                        @*<input type="submit" value="Click To Open" onclick="javascript:return openPopupWindow();" />*@
+                        <a href=" " title="Det finns elever i gruppen." style="background-color:#FFFFFF;color:grey;text-decoration:none">Ta bort</a>
+                    </div>
+                </td>
+            }
+
+        else if (item.Courses.Count() > 0)
+            {
+                <td>
+                        <div>
+                            <a href=" " title="Det finns kurser i gruppen." style="background-color:#FFFFFF;color:grey;text-decoration:none">Ta bort</a>
+                        </div>
+                 </td>
+            }
+        else
+        {
+            <td>
+                @Html.ActionLink("Ta bort", "Delete", new { id = item.Id })
+            </td>
+        }
+    }
         </tr>
     }
 
-</table>
+   </table>

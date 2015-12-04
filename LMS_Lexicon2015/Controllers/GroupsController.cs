@@ -21,11 +21,10 @@ namespace LMS_Lexicon2015.Controllers
         public ActionResult Index()
         {
             //ViewBag.userscount = db.Users.Where(gr;
-            ViewBag.Line1 = "/";
-            ViewBag.Line2 = "-";
             ErrorMessageToEarly = false;
             ErrorMessageStartAfterEnd = false;
             return View(db.Groups.ToList());
+            ViewBag.PopupValue = "THIS IS POPUP WINDOW";
         }
 
 
@@ -41,8 +40,6 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Line1 = "/";
-            ViewBag.Line2 = "-";
             ViewBag.Line3 = " Till ";
             ViewBag.GroupId = id;
 
@@ -164,8 +161,7 @@ namespace LMS_Lexicon2015.Controllers
         [Authorize(Roles = "Lärare")]
         public ActionResult Delete(int? id)
         {
-            ViewBag.Line1 = "/";
-            ViewBag.Line2 = "-";
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -199,8 +195,7 @@ namespace LMS_Lexicon2015.Controllers
 
             //return View(courses);
 
-            ViewBag.Line1 = "/";
-            ViewBag.Line2 = "-";
+ 
             ViewBag.GroupId = GroupId;
             ErrorMessageToEarly = false;
             ErrorMessageStartAfterEnd = false;
