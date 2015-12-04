@@ -7,7 +7,7 @@
 <h2>Ta bort</h2>
 
 <h3>Är du säker?</h3>
-<div>
+
     <h4></h4>
     <hr />
     <dl class="dl-horizontal">
@@ -33,9 +33,9 @@
 
         <dd>
             @Html.DisplayFor(model => model.StartDate.Day)
-            @ViewBag.Line1
+            <span>/</span>
             @Html.DisplayFor(model => model.StartDate.Month)
-            @ViewBag.Line2
+            <span>-</span>
             @Html.DisplayFor(model => model.StartDate.Year)
         </dd>
 
@@ -45,9 +45,9 @@
 
         <dd>
             @Html.DisplayFor(model => model.EndDate.Day)
-            @ViewBag.Line1
+            <span>/</span>
             @Html.DisplayFor(model => model.EndDate.Month)
-            @ViewBag.Line2
+            <span>-</span>
             @Html.DisplayFor(model => model.EndDate.Year)
         </dd>
 
