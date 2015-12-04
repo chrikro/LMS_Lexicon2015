@@ -13,28 +13,14 @@ namespace LMS_Lexicon2015.Controllers
     {
         public ActionResult Index()
         {
+
             return View();
         }
-
-        public ActionResult partialIndexStudent(int id)
-        {
-            return View();
-        }
-
-        //public ActionResult partialIndexTeacher(int id)
-        //{ }
-
 
         public ActionResult About()
         {
             return View();
         }
-
-        public ActionResult Contact()
-        {
-            return View();
-        }
-
 
     }
 }
