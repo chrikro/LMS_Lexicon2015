@@ -9,8 +9,14 @@ namespace LMS_Lexicon2015.Models
     public class CourseOccasion
     {
         public int Id { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} måste vara minst {2} tecken långt.", MinimumLength = 3)]
+        [Display(Name = "Namn")]
         public string Name { get; set; }
 
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} måste vara minst {2} tecken långt.", MinimumLength = 3)]
         [Display(Name = "Beskrivning")]
         public string Description { get; set; }
 

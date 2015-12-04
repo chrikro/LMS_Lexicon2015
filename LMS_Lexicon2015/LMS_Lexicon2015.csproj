@@ -216,6 +216,14 @@
     <Compile Include="Migrations\201512041529136_ForeignKey_to_Course_in_activity.Designer.cs">
       <DependentUpon>201512041529136_ForeignKey_to_Course_in_activity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512041543279_Required.cs" />
+    <Compile Include="Migrations\201512041543279_Required.Designer.cs">
+      <DependentUpon>201512041543279_Required.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512041545319_Required2.cs" />
+    <Compile Include="Migrations\201512041545319_Required2.Designer.cs">
+      <DependentUpon>201512041545319_Required2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -357,6 +365,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512041529136_ForeignKey_to_Course_in_activity.resx">
       <DependentUpon>201512041529136_ForeignKey_to_Course_in_activity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512041543279_Required.resx">
+      <DependentUpon>201512041543279_Required.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512041545319_Required2.resx">
+      <DependentUpon>201512041545319_Required2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
