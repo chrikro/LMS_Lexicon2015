@@ -34,8 +34,6 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Line1 = "/";
-            ViewBag.Line2 = "-";
             ViewBag.Line3 = " Till ";
             ViewBag.courseOccasionId = id;
             ViewBag.groupId = id2;
