@@ -29,7 +29,7 @@ namespace LMS_Lexicon2015.Controllers
 
 
         // GET: Groups/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
             if (id == null)
             {
@@ -37,20 +37,12 @@ namespace LMS_Lexicon2015.Controllers
             }
             Group group = db.Groups.Find(id);
 
-                        //SELECT * FROM Groups WHERE Groups.Id = id ORDER BY Groups.stardatum
-
-
             if (group == null)
             {
                 return HttpNotFound();
             }
             ViewBag.Line3 = " Till ";
             ViewBag.GroupId = id;
-
-
-
-
-
 
             return View(group);
         }

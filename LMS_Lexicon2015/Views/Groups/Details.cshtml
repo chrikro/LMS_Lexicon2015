@@ -47,7 +47,7 @@
 </div>
 
 
-@Html.Partial("_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == Model.Id).ToList())
+@Html.Partial("_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == Model.Id).OrderBy(c => c.StartDate).ToList())
 <p>
     @Html.ActionLink("Tillbaka till Grupplistan", "Index")
 </p>
