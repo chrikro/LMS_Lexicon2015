@@ -45,6 +45,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Activities/Create
+        [Authorize(Roles = "Lärare")]
         public ActionResult Create(int? id, int? id2)
         {
             ViewBag.courseOccasionId = id;
@@ -62,6 +63,7 @@ namespace LMS_Lexicon2015.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Lärare")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Description,StartDate,EndDate,CourseId")] Activity activity)
         {
@@ -90,6 +92,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Activities/Edit/5
+        [Authorize(Roles = "Lärare")]
         public ActionResult Edit(int? id, int? id2, int? id3)
         {
             if (id == null)
@@ -119,6 +122,7 @@ namespace LMS_Lexicon2015.Controllers
         // POST: Activities/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Lärare")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Description,StartDate,EndDate,CourseId")] Activity activity)
@@ -148,6 +152,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Activities/Delete/5
+        [Authorize(Roles = "Lärare")]
         public ActionResult Delete(int? id, int? id2, int? id3)
         {
             if (id == null)
@@ -166,6 +171,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // POST: Activities/Delete/5
+        [Authorize(Roles = "Lärare")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

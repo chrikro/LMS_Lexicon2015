@@ -143,7 +143,7 @@ namespace LMS_Lexicon2015.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        [Authorize(Roles = "Lärare")]
         public ActionResult Register()
         {
             List<Group> g = db.Groups.ToList();
@@ -159,7 +159,7 @@ namespace LMS_Lexicon2015.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "Lärare")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
