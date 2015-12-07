@@ -11,9 +11,10 @@ namespace LMS_Lexicon2015.Controllers
 {
     public class HomeController : Controller
     {
+        public static bool HomeIndex = false;
         public ActionResult Index()
         {
-
+            HomeIndex = true;
             return View();
         }
 
