@@ -75,7 +75,7 @@ namespace LMS_Lexicon2015.Migrations
             context.SaveChanges();
 
             roleKeeper = UserManager.FindByEmail("chrikro129@gmail.com");
-            UserManager.AddToRole(roleKeeper.Id, "Lärare");
+            UserManager.AddToRole(roleKeeper.Id, "Elev");
 
             /////----------------------
             //kurser

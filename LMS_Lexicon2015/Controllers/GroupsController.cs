@@ -23,6 +23,7 @@ namespace LMS_Lexicon2015.Controllers
             //ViewBag.userscount = db.Users.Where(gr;
             //ErrorMessageToEarly = false;
             //ErrorMessageStartAfterEnd = false;
+            LMS_Lexicon2015.Controllers.HomeController.HomeIndex = false;
             return View(db.Groups.ToList());
         }
 
