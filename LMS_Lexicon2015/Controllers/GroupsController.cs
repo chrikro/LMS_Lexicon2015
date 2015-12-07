@@ -14,17 +14,69 @@ namespace LMS_Lexicon2015.Controllers
     public class GroupsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        //public static bool ErrorMessageToEarly = false;
-        //public static bool ErrorMessageStartAfterEnd = false;
 
         // GET: Groups
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
-            //ViewBag.userscount = db.Users.Where(gr;
-            //ErrorMessageToEarly = false;
-            //ErrorMessageStartAfterEnd = false;
-            return View(db.Groups.ToList());
-        }
+            {
+                ViewBag.NameSortParm = sortOrder == "Name" ? "Name_desc" : "Name";
+                ViewBag.DescriptionSortParm = sortOrder == "Description" ? "Description_desc" : "Description";
+                ViewBag.StartDateSortParm = sortOrder == "StartDate" ? "StartDate_desc" : "StartDate";
+                ViewBag.EndDateSortParm = sortOrder == "EndDate" ? "EndDate_desc" : "EndDate";
+
+                ViewBag.searchString = searchString;
+                var Groups = from s in db.Groups select s;
+
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    Groups = Groups.Where(s => s.Name.Contains(searchString)
+                    || (s.EndDate.ToString()).Contains(searchString)
+                    || (s.StartDate.ToString()).Contains(searchString)
+                    || s.Description.Contains(searchString)
+                     );
+                }
+
+                switch (sortOrder)
+                {
+                    case "Name_desc":
+                        Groups = Groups.OrderByDescending(s => s.Name);
+                        break;
+                    case "Name":
+                        Groups = Groups.OrderBy(s => s.Name);
+                        break;
+
+                    case "Description_desc":
+                        Groups = Groups.OrderByDescending(s => s.Description);
+                        break;
+                    case "Description":
+                        Groups = Groups.OrderBy(s => s.Description);
+                        break;
+                    case "StartDate_desc":
+                        Groups = Groups.OrderByDescending(s => s.StartDate);
+                        break;
+                    case "StartDate":
+                        Groups = Groups.OrderBy(s => s.StartDate);
+                        break;
+                    case "EndDate_desc":
+                        Groups = Groups.OrderByDescending(s => s.EndDate);
+                        break;
+                    case "EndDate":
+                        Groups = Groups.OrderBy(s => s.EndDate);
+                        break;
+                    default:
+                        Groups = Groups.OrderByDescending(s => s.Name);
+                        break;
+                    }
+                        return View(Groups.ToList());
+                }
+            }
+  
+
+
+
+
+        //    return View(db.Groups.ToList());
+        //}
 
 
         // GET: Groups/Details/5
@@ -49,14 +101,7 @@ namespace LMS_Lexicon2015.Controllers
         [Authorize(Roles = "Lärare")]
         public ActionResult Create()
         {
-            //if (ErrorMessageToEarly == true)
-            //{
-            //    ViewBag.ErrorMessage = "Du har angivit ett startdatum före dagens datum";
-            //}
-            //if (ErrorMessageStartAfterEnd == true)
-            //{
-            //    ViewBag.ErrorMessage = "Du har angivit ett slutdatum före startdatumet ";
-            //}             
+             
             return View();
         }
 
@@ -68,28 +113,22 @@ namespace LMS_Lexicon2015.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Description,StartDate,EndDate")] Group group)
         {
-            //ErrorMessageToEarly = false;
-            //ErrorMessageStartAfterEnd = false;
+
             if (ModelState.IsValid)
             {
                 if (group.StartDate < DateTime.Now)
                 {
-                    //AddErrors(ModelState);
-                    //ErrorMessageToEarly = true;
-                    //ErrorMessageStartAfterEnd = false;
+
                     ModelState.AddModelError("", "Du har angivit ett startdatum före dagens datum");
                     return View(group);
-                    // return RedirectToAction("Create");
+
                 }
 
                 else if (group.StartDate > group.EndDate)
                 {
-                    //AddErrors(ModelState);
-                    //ErrorMessageStartAfterEnd = true;
-                    //ErrorMessageToEarly = false;
+
                     ModelState.AddModelError("", "Du har angivit ett slutdatum före startdatumet ");
                     return View(group);
-                   // return RedirectToAction("Create");
                 }
 
                 else
@@ -115,14 +154,7 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
-            //if (ErrorMessageToEarly == true)
-            //{
-            //    ViewBag.ErrorMessage = "Du har angivit ett startdatum före dagens datum";
-            //}
-            //if (ErrorMessageStartAfterEnd == true)
-            //{
-            //    ViewBag.ErrorMessage = "Du har angivit ett slutdatum före startdatumet ";
-            //}       
+    
 
             return View(group);
         }
@@ -138,15 +170,11 @@ namespace LMS_Lexicon2015.Controllers
             if (ModelState.IsValid)
             {
 
-              //  ErrorMessageStartAfterEnd = false;
                 if (group.StartDate > group.EndDate)
                 {
-                    //AddErrors(ModelState);
-                    //ErrorMessageStartAfterEnd = true;
-                    //ErrorMessageToEarly = false;
+
                     ModelState.AddModelError("", "Du har angivit ett slutdatum före startdatumet ");
                     return View(group);
-                    // return RedirectToAction("Create");
                }
 
                 else
@@ -193,8 +221,6 @@ namespace LMS_Lexicon2015.Controllers
         {
  
             ViewBag.GroupId = GroupId;
-            //ErrorMessageToEarly = false;
-            //ErrorMessageStartAfterEnd = false;
             return View(db.CourseOccasions.ToList());
         }
 
