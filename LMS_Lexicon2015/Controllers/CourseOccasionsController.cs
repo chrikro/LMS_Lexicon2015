@@ -14,11 +14,9 @@ namespace LMS_Lexicon2015.Controllers
     public class CourseOccasionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        public static bool ErrorMessageStartAfterEnd = false;
         // GET: CourseOccasions
         public ActionResult Index()
         {
-            ErrorMessageStartAfterEnd = false;
             return View(db.CourseOccasions.ToList());
         }
 
@@ -44,10 +42,19 @@ namespace LMS_Lexicon2015.Controllers
         [Authorize(Roles = "Lärare")]
         public ActionResult Create(int? id)
         {
-            if (ErrorMessageStartAfterEnd == true)
-            {
-                ViewBag.ErrorMessage = "Du har angivit ett slutdatum före startdatumet ";
-            }
+
+
+                //var model = db.CourseOccasions.Select(c => new CourseOccasionViewModel
+                //{
+                //Id = c.Id,
+                //Name = c.Name,
+                //Description = c.Description,
+                //StartDate = c.StartDate,
+                //EndDate = c.EndDate,
+                //GroupStartDate = db.Groups.Where(G => G.Id == c.GroupId).FirstOrDefault().StartDate     
+                //}).ToList();
+
+
             ViewBag.GroupId = id;
             return View();
         }
@@ -62,12 +69,28 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
-                ErrorMessageStartAfterEnd = false;
-                if (courseOccasion.StartDate > courseOccasion.EndDate)
+                if (courseOccasion.StartDate < courseOccasion.Group.StartDate)
                 {
                     //AddErrors(ModelState);
-                    ErrorMessageStartAfterEnd = true;
-                    return RedirectToAction("Create");
+                    ViewBag.GroupId = courseOccasion.GroupId;
+                    ModelState.AddModelError("", "Du har angivit ett startdatumet före gruppens startdatumet");
+                    return View(courseOccasion);
+                }
+
+                if (courseOccasion.EndDate > courseOccasion.Group.EndDate)
+                {
+                    //AddErrors(ModelState);
+                    ViewBag.GroupId = courseOccasion.GroupId;
+                    ModelState.AddModelError("", "Du har angivit ett slutdatum efter gruppens slutdatum");
+                    return View(courseOccasion);
+                }
+                
+                else if (courseOccasion.StartDate > courseOccasion.EndDate)
+                {
+                    //AddErrors(ModelState);
+                    ViewBag.GroupId = courseOccasion.GroupId;
+                    ModelState.AddModelError("", "Du har angivit ett slutdatum före startdatumet ");
+                    return View(courseOccasion);
                 }
 
                 else
@@ -77,11 +100,8 @@ namespace LMS_Lexicon2015.Controllers
                     return RedirectToAction("Details/" + (int)courseOccasion.GroupId, "Groups");
                 }
 
-
-                //db.CourseOccasions.Add(courseOccasion);
-                //db.SaveChanges();
-                //return RedirectToAction("Details/" + (int)courseOccasion.GroupId, "Groups");
             }
+            ViewBag.GroupId = courseOccasion.GroupId;
             return View(courseOccasion);
         }
 
@@ -101,10 +121,7 @@ namespace LMS_Lexicon2015.Controllers
                 return HttpNotFound();
             }
             ViewBag.GroupId = id;  //fel
-            if (ErrorMessageStartAfterEnd == true)
-            {
-                ViewBag.ErrorMessage = "Du har angivit ett slutdatum före startdatumet ";
-            }      
+    
             return View(courseOccasion);
         }
 
@@ -118,12 +135,12 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
-                ErrorMessageStartAfterEnd = false;
+
                 if (courseOccasion.StartDate > courseOccasion.EndDate)
                 {
                     //AddErrors(ModelState);
-                    ErrorMessageStartAfterEnd = true;
-                    return RedirectToAction("Edit");
+                    ModelState.AddModelError("", "Du har angivit ett slutdatum före startdatumet ");
+                    return View(courseOccasion);
                 }
 
                 else
