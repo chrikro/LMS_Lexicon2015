@@ -65,7 +65,7 @@ namespace LMS_Lexicon2015.Migrations
             context.SaveChanges();
 
             var roleKeeper = UserManager.FindByEmail("nisaw99@hotmail.com");
-            UserManager.AddToRole(roleKeeper.Id, "Elev");  
+            UserManager.AddToRole(roleKeeper.Id, "Lärare");  
 
             if (UserManager.FindByEmail("chrikro129@gmail.com") == null)
             {
@@ -75,7 +75,7 @@ namespace LMS_Lexicon2015.Migrations
             context.SaveChanges();
 
             roleKeeper = UserManager.FindByEmail("chrikro129@gmail.com");
-            UserManager.AddToRole(roleKeeper.Id, "Elev");
+            UserManager.AddToRole(roleKeeper.Id, "Lärare");
 
             /////----------------------
             //kurser

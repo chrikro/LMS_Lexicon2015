@@ -21,7 +21,7 @@
     <div>mellanrum</div>
     @*@Html.Partial("../Users/PartitialGroup/" + GroupId, new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId).ToList())*@
      @*@Html.Partial("../Users/PartitialGroup", new {id = GroupId})*@
-    @*@Html.Action("PartitialGroup", "Users")*@
+    @Html.Action("PartitialGroup", "Users", new { id = GroupId })
     
     ViewBag.Title = "";
 }
