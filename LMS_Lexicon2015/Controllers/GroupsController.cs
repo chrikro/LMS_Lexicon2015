@@ -68,6 +68,8 @@ namespace LMS_Lexicon2015.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Description,StartDate,EndDate")] Group group)
         {
+            ErrorMessageToEarly = false;
+            ErrorMessageStartAfterEnd = false;
             if (ModelState.IsValid)
             {
                 if (group.StartDate < DateTime.Now)
@@ -137,7 +139,7 @@ namespace LMS_Lexicon2015.Controllers
                 //    ErrorMessageStartAfterEnd = false;
                 //    return RedirectToAction("Edit");
                 //}
-
+                ErrorMessageStartAfterEnd = false;
                 if (group.StartDate > group.EndDate)
                 {
                     //AddErrors(ModelState);
@@ -151,7 +153,6 @@ namespace LMS_Lexicon2015.Controllers
                     int GroupNr = (int)group.Id;
                     db.Entry(group).State = EntityState.Modified;
                     db.SaveChanges();
-                    //return RedirectToAction("Index");
                     return RedirectToAction("Details/" + GroupNr, "Groups");
                 }
             }

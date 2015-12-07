@@ -60,6 +60,12 @@
 }
 
 <div>
+    <h4>
+        @ViewBag.ErrorMessage
+    </h4>
+</div>
+
+<div>
     @Html.ActionLink("Tillbaka till kursen", "Details/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.GroupId, "CourseOccasions")
 </div>
 

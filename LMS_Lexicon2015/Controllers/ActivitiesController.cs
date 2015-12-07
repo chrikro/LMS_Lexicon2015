@@ -14,10 +14,11 @@ namespace LMS_Lexicon2015.Controllers
     public class ActivitiesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        public static bool ErrorMessageStartAfterEnd = false;
         // GET: Activities
         public ActionResult Index()
         {
+            ErrorMessageStartAfterEnd = false;
             return View(db.Activitys.ToList());
         }
 
@@ -48,6 +49,10 @@ namespace LMS_Lexicon2015.Controllers
         {
             ViewBag.courseOccasionId = id;
             ViewBag.groupId = id2;
+            if (ErrorMessageStartAfterEnd == true)
+            {
+                ViewBag.ErrorMessage = "Du har angivit ett slutdatum före startdatumet ";
+            }
             ViewBag.Name = new SelectList(db.ActivityTypes, "Name", "Name");//en bäg för rullningslistan på formuläret 
 
              return View();
@@ -62,9 +67,20 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Activitys.Add(activity);
-                db.SaveChanges();
-                return RedirectToAction("Details/" + activity.CourseId + "/" + (int)TempData["GroupId"], "CourseOccasions");
+                ErrorMessageStartAfterEnd = false;
+                if (activity.StartDate > activity.EndDate)
+                {
+                    //AddErrors(ModelState);
+                    ErrorMessageStartAfterEnd = true;
+                    return RedirectToAction("Create");
+                }
+
+                else
+                {
+                    db.Activitys.Add(activity);
+                    db.SaveChanges();
+                    return RedirectToAction("Details/" + activity.CourseId + "/" + (int)TempData["GroupId"], "CourseOccasions");
+                }
             }
 
             ViewBag.courseOccasionId = activity.CourseId;
@@ -90,6 +106,10 @@ namespace LMS_Lexicon2015.Controllers
             ViewBag.courseOccasionId = id2;
             ViewBag.groupId = id3;
             string selectedId = activity.Name;
+            if (ErrorMessageStartAfterEnd == true)
+            {
+                ViewBag.ErrorMessage = "Du har angivit ett slutdatum före startdatumet ";
+            }      
             ViewBag.name = new SelectList(db.ActivityTypes, "Name", "Name", selectedId);
             //ViewBag.name = new SelectList(db.ActivityTypes, "Name", "Name");
 
@@ -105,10 +125,21 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(activity).State = EntityState.Modified;
-                db.SaveChanges();
-                //return RedirectToAction("Index");
-                return RedirectToAction("Details/" + activity.CourseId + "/" + (int)TempData["GroupId"], "CourseOccasions");
+                ErrorMessageStartAfterEnd = false;
+                if (activity.StartDate > activity.EndDate)
+                {
+                    //AddErrors(ModelState);
+                    ErrorMessageStartAfterEnd = true;
+                    return RedirectToAction("Edit");
+                }
+
+                else
+                {
+                    db.Entry(activity).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Details/" + activity.CourseId + "/" + (int)TempData["GroupId"], "CourseOccasions");
+                }
+
             }
             ViewBag.courseOccasionId = activity.CourseId;
             ViewBag.groupId = (int)TempData["GroupId"];

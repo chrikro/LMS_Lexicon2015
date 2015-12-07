@@ -64,6 +64,12 @@
 }
 
 <div>
+    <h4>
+        @ViewBag.ErrorMessage
+    </h4>
+</div>
+
+<div>
    
     @Html.ActionLink("Tillbaka till Kurs", "Details/" + Model.Id + "/" + Model.GroupId, "CourseOccasions")
 </div>

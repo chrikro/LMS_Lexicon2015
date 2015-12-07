@@ -14,11 +14,11 @@ namespace LMS_Lexicon2015.Controllers
     public class CourseOccasionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        public static bool ErrorMessageToEarly = false;
         public static bool ErrorMessageStartAfterEnd = false;
         // GET: CourseOccasions
         public ActionResult Index()
         {
+            ErrorMessageStartAfterEnd = false;
             return View(db.CourseOccasions.ToList());
         }
 
@@ -41,13 +41,13 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: CourseOccasions/Create
-        [Authorize(Roles="Lärare")]
+        [Authorize(Roles = "Lärare")]
         public ActionResult Create(int? id)
         {
             if (ErrorMessageStartAfterEnd == true)
             {
                 ViewBag.ErrorMessage = "Du har angivit ett slutdatum före startdatumet ";
-            }     
+            }
             ViewBag.GroupId = id;
             return View();
         }
@@ -62,14 +62,30 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.CourseOccasions.Add(courseOccasion);
-                db.SaveChanges();
-                //return RedirectToAction("Index");
-                return RedirectToAction("Details/" + (int)courseOccasion.GroupId, "Groups");
+                ErrorMessageStartAfterEnd = false;
+                if (courseOccasion.StartDate > courseOccasion.EndDate)
+                {
+                    //AddErrors(ModelState);
+                    ErrorMessageStartAfterEnd = true;
+                    return RedirectToAction("Create");
+                }
+
+                else
+                {
+                    db.CourseOccasions.Add(courseOccasion);
+                    db.SaveChanges();
+                    return RedirectToAction("Details/" + (int)courseOccasion.GroupId, "Groups");
+                }
+
+
+                //db.CourseOccasions.Add(courseOccasion);
+                //db.SaveChanges();
+                //return RedirectToAction("Details/" + (int)courseOccasion.GroupId, "Groups");
             }
-            //ViewBag.GroupId = id;
             return View(courseOccasion);
         }
+
+
 
         // GET: CourseOccasions/Edit/5
         [Authorize(Roles = "Lärare")]
@@ -84,7 +100,11 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
-           ViewBag.GroupId = id;  //fel
+            ViewBag.GroupId = id;  //fel
+            if (ErrorMessageStartAfterEnd == true)
+            {
+                ViewBag.ErrorMessage = "Du har angivit ett slutdatum före startdatumet ";
+            }      
             return View(courseOccasion);
         }
 
@@ -98,15 +118,21 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(courseOccasion).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Details/" + (int)courseOccasion.Id + "/" + (int)courseOccasion.GroupId, "CourseOccasions");
+                ErrorMessageStartAfterEnd = false;
+                if (courseOccasion.StartDate > courseOccasion.EndDate)
+                {
+                    //AddErrors(ModelState);
+                    ErrorMessageStartAfterEnd = true;
+                    return RedirectToAction("Edit");
+                }
 
-                //return RedirectToAction("Details/" + (int)courseOccasion.GroupId, "Groups");
-                //return RedirectToAction("Index");
-
+                else
+                {
+                    db.Entry(courseOccasion).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Details/" + (int)courseOccasion.Id + "/" + (int)courseOccasion.GroupId, "CourseOccasions");
+                }
             }
-            //ViewBag.GroupId = id;
             return View(courseOccasion);
         }
 
