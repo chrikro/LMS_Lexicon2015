@@ -19,12 +19,16 @@ namespace LMS_Lexicon2015.Controllers
         public ActionResult Index(string sortOrder, string searchString)
         {
             {
+
                 ViewBag.NameSortParm = sortOrder == "Name" ? "Name_desc" : "Name";
                 ViewBag.DescriptionSortParm = sortOrder == "Description" ? "Description_desc" : "Description";
                 ViewBag.StartDateSortParm = sortOrder == "StartDate" ? "StartDate_desc" : "StartDate";
                 ViewBag.EndDateSortParm = sortOrder == "EndDate" ? "EndDate_desc" : "EndDate";
 
                 ViewBag.searchString = searchString;
+
+                LMS_Lexicon2015.Controllers.HomeController.HomeIndex = false;
+
                 var Groups = from s in db.Groups select s;
 
                 if (!String.IsNullOrEmpty(searchString))
