@@ -18,7 +18,7 @@ namespace LMS_Lexicon2015.Controllers
         public ActionResult Index()
         {
             ViewBag.NoActivities = "Inga kurser listas här. De finns under respektive grupp";
-            ErrorMessageStartAfterEnd = false;
+            //ErrorMessageStartAfterEnd = false;
             return View(db.CourseOccasions.ToList());
         }
 
