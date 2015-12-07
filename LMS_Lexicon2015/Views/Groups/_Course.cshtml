@@ -2,6 +2,9 @@
 
 @{
     ViewBag.Title = "Kurser";
+
+    DateTime checkEndDate = new DateTime(2010, 01, 01);
+    var checkEndDateExplanation = false;
 }
 
 <h2>Kurser</h2>
@@ -48,19 +51,30 @@
             </td>
             <td>
                 @if (item.Description.Length <= 10)
-            {
-                    @Html.DisplayFor(modelItem => item.Description)
-            }
-            else
-            {
-                for (int i = 0; i < 10; i++)
                 {
-                    @Html.DisplayFor(modelItem => item.Description[i])
+                    @Html.DisplayFor(modelItem => item.Description)
                 }
-                <span>...</span>
-            }
+                else
+                {
+                    for (int i = 0; i < 10; i++)
+                    {
+                        @Html.DisplayFor(modelItem => item.Description[i])
+                    }
+                    <span>...</span>
+                }
             </td>
             <td>
+
+
+                @if (checkEndDate > item.StartDate)
+                {
+                    <span style="color:red">***</span>
+                    checkEndDateExplanation = true;
+                }
+                @{
+                    checkEndDate = item.EndDate;
+                }
+
                 @Html.DisplayFor(modelItem => item.StartDate.Day)
                 <span>/</span>
                 @Html.DisplayFor(modelItem => item.StartDate.Month)
@@ -68,6 +82,7 @@
                 @Html.DisplayFor(modelItem => item.StartDate.Year)
             </td>
             <td>
+
                 @Html.DisplayFor(modelItem => item.EndDate.Day)
                 <span>/</span>
                 @Html.DisplayFor(modelItem => item.EndDate.Month)
@@ -93,18 +108,25 @@
                 {
                     <td>
                         <div>
-                            <a href=" " title="Det finns aktiviteter i kuresn." style="background-color:#FFFFFF;color:grey;text-decoration:none">Ta bort</a>
+                            <a href=" " title="Det finns aktiviteter i kursen." style="background-color:#FFFFFF;color:grey;text-decoration:none">Ta bort</a>
                         </div>
                     </td>
                 }
-                else {
-                     <td>
-                         @Html.ActionLink("Ta bort", "Delete/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
+                else
+                {
+                    <td>
+                        @Html.ActionLink("Ta bort", "Delete/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
                     </td>
+                }
+
             }
+        </tr>
+    }
 
-     }
-</tr>
+</table>
+
+@if (!checkEndDateExplanation == false)
+{
+    <span style="color:red">*** = Dubbelt Kursdatum</span>
+    <br />
 }
-
-        </table>

@@ -30,19 +30,20 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
+            Datum
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.StartDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EndDate)
+            @Html.DisplayFor(model => model.StartDate.Day)
+            @ViewBag.Line1
+            @Html.DisplayFor(model => model.StartDate.Month)
+            @ViewBag.Line2
+            @Html.DisplayFor(model => model.StartDate.Year)
+            @ViewBag.Line3
+            @Html.DisplayFor(model => model.EndDate.Day)
+            @ViewBag.Line1
+            @Html.DisplayFor(model => model.EndDate.Month)
+            @ViewBag.Line2
+            @Html.DisplayFor(model => model.EndDate.Year)
         </dd>
 
         @*<dt>

@@ -51,6 +51,24 @@
         @Html.HiddenFor(model => model.CourseId)
         @{TempData["GroupId"] = ViewBag.GroupId;}
 
+        <div>
+            <b>Kursens StartDate:</b>
+            @{ var db = new LMS_Lexicon2015.Models.ApplicationDbContext();
+             if (ViewBag.courseOccasionId != null)
+             {
+                 int CourseId = ViewBag.courseOccasionId;
+                @db.CourseOccasions.Where(c => c.Id == CourseId).FirstOrDefault().StartDate.ToShortDateString();
+             }}
+            <b>Kursens Slut Date:</b>
+            @{ if (ViewBag.courseOccasionId != null)
+             {
+                 int CourseId = ViewBag.courseOccasionId;
+                @db.CourseOccasions.Where(c => c.Id == CourseId).FirstOrDefault().EndDate.ToShortDateString();
+
+             }}
+        </div>
+
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Spara" class="btn btn-default" />
