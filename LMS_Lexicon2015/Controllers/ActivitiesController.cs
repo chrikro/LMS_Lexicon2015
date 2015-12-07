@@ -14,7 +14,6 @@ namespace LMS_Lexicon2015.Controllers
     public class ActivitiesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        public static bool ErrorMessageStartAfterEnd = false;
         // GET: Activities
         public ActionResult Index()
         {
@@ -52,11 +51,7 @@ namespace LMS_Lexicon2015.Controllers
         {
             ViewBag.courseOccasionId = id;
             ViewBag.groupId = id2;
-            if (ErrorMessageStartAfterEnd == true)
-            {
-                ViewBag.ErrorMessage = "Du har angivit ett slutdatum före startdatumet ";
-            }
-            ViewBag.Name = new SelectList(db.ActivityTypes, "Name", "Name");//en bäg för rullningslistan på formuläret 
+                ViewBag.Name = new SelectList(db.ActivityTypes, "Name", "Name");//en bäg för rullningslistan på formuläret 
 
              return View();
         }
@@ -71,12 +66,37 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
-                ErrorMessageStartAfterEnd = false;
-                if (activity.StartDate > activity.EndDate)
+
+                DateTime CoursesStartDate = db.CourseOccasions.Where(c => c.Id == activity.CourseId).FirstOrDefault().StartDate;
+                DateTime CoursesEndDate = db.CourseOccasions.Where(c =>c.Id == activity.CourseId).FirstOrDefault().EndDate;
+
+                if (activity.StartDate < CoursesStartDate)
                 {
                     //AddErrors(ModelState);
-                    ErrorMessageStartAfterEnd = true;
-                    return RedirectToAction("Create");
+                    ViewBag.courseOccasionId = activity.CourseId;
+                    ViewBag.groupId = (int)TempData["GroupId"];
+                    ViewBag.Name = new SelectList(db.ActivityTypes, "Name", "Name");//en bäg för rullningslistan på formuläret 
+                    ModelState.AddModelError("", "Du har angivit ett startdatumet före kursens startdatumet");
+                    return View(activity);
+                }
+
+                else if (activity.EndDate > CoursesEndDate)
+                {
+                    //AddErrors(ModelState);
+                    ViewBag.courseOccasionId = activity.CourseId;
+                    ViewBag.groupId = (int)TempData["GroupId"];
+                    ViewBag.Name = new SelectList(db.ActivityTypes, "Name", "Name");//en bäg för rullningslistan på formuläret 
+                    ModelState.AddModelError("", "Du har angivit ett slutdatum efter kursens slutdatum");
+                    return View(activity);
+                }
+                else if (activity.StartDate > activity.EndDate)
+                {
+                    //AddErrors(ModelState);
+                    ViewBag.courseOccasionId = activity.CourseId;
+                    ViewBag.groupId = (int)TempData["GroupId"];
+                    ViewBag.Name = new SelectList(db.ActivityTypes, "Name", "Name");//en bäg för rullningslistan på formuläret 
+                    ModelState.AddModelError("", "Du har angivit ett slutdatum före startdatumet ");
+                    return View(activity);
                 }
 
                 else
@@ -111,12 +131,9 @@ namespace LMS_Lexicon2015.Controllers
             ViewBag.courseOccasionId = id2;
             ViewBag.groupId = id3;
             string selectedId = activity.Name;
-            if (ErrorMessageStartAfterEnd == true)
-            {
-                ViewBag.ErrorMessage = "Du har angivit ett slutdatum före startdatumet ";
-            }      
+      
             ViewBag.name = new SelectList(db.ActivityTypes, "Name", "Name", selectedId);
-            //ViewBag.name = new SelectList(db.ActivityTypes, "Name", "Name");
+
 
             return View(activity);
         }
@@ -131,12 +148,36 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
-                ErrorMessageStartAfterEnd = false;
-                if (activity.StartDate > activity.EndDate)
+                DateTime CoursesStartDate = db.CourseOccasions.Where(c => c.Id == activity.CourseId).FirstOrDefault().StartDate;
+                DateTime CoursesEndDate = db.CourseOccasions.Where(c => c.Id == activity.CourseId).FirstOrDefault().EndDate;
+
+                if (activity.StartDate < CoursesStartDate)
                 {
                     //AddErrors(ModelState);
-                    ErrorMessageStartAfterEnd = true;
-                    return RedirectToAction("Edit");
+                    ViewBag.courseOccasionId = activity.CourseId;
+                    ViewBag.groupId = (int)TempData["GroupId"];
+                    ViewBag.Name = new SelectList(db.ActivityTypes, "Name", "Name");//en bäg för rullningslistan på formuläret 
+                    ModelState.AddModelError("", "Du har angivit ett startdatumet före kursens startdatumet");
+                    return View(activity);
+                }
+
+                else if (activity.EndDate > CoursesEndDate)
+                {
+                    //AddErrors(ModelState);
+                    ViewBag.courseOccasionId = activity.CourseId;
+                    ViewBag.groupId = (int)TempData["GroupId"];
+                    ViewBag.Name = new SelectList(db.ActivityTypes, "Name", "Name");//en bäg för rullningslistan på formuläret 
+                    ModelState.AddModelError("", "Du har angivit ett slutdatum efter kursens slutdatum");
+                    return View(activity);
+                }
+                else if (activity.StartDate > activity.EndDate)
+                {
+                    //AddErrors(ModelState);
+                    ViewBag.courseOccasionId = activity.CourseId;
+                    ViewBag.groupId = (int)TempData["GroupId"];
+                    ViewBag.Name = new SelectList(db.ActivityTypes, "Name", "Name");//en bäg för rullningslistan på formuläret 
+                    ModelState.AddModelError("", "Du har angivit ett slutdatum före startdatumet ");
+                    return View(activity);
                 }
 
                 else
@@ -145,6 +186,7 @@ namespace LMS_Lexicon2015.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Details/" + activity.CourseId + "/" + (int)TempData["GroupId"], "CourseOccasions");
                 }
+
 
             }
             ViewBag.courseOccasionId = activity.CourseId;
@@ -169,6 +211,9 @@ namespace LMS_Lexicon2015.Controllers
             ViewBag.activitiesId = id;
             ViewBag.courseOccasionId = id2;
             ViewBag.groupId = id3;
+            ViewBag.Line1 = "/";
+            ViewBag.Line2 = "-";
+            ViewBag.Line3 = " Till ";
             return View(activity);
         }
 

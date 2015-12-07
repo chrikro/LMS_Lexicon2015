@@ -13,6 +13,19 @@
     }
 
 </p>
+
+<h3>Ange söksträng</h3>
+
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.TextBox("SearchString")
+        <input type="submit" value="Sök" />
+    </p>
+}
+
+
+<br />
 <table class="table">
     <tr>
         <th>

@@ -71,7 +71,11 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (courseOccasion.StartDate < courseOccasion.Group.StartDate)
+
+                DateTime GroupsStartDate = db.Groups.Where(g => g.Id == courseOccasion.GroupId).FirstOrDefault().StartDate;
+                DateTime GroupsEndDate = db.Groups.Where(g => g.Id == courseOccasion.GroupId).FirstOrDefault().EndDate;
+
+                if (courseOccasion.StartDate < GroupsStartDate)
                 {
                     //AddErrors(ModelState);
                     ViewBag.GroupId = courseOccasion.GroupId;
@@ -79,7 +83,7 @@ namespace LMS_Lexicon2015.Controllers
                     return View(courseOccasion);
                 }
 
-                if (courseOccasion.EndDate > courseOccasion.Group.EndDate)
+                else if (courseOccasion.EndDate > GroupsEndDate)
                 {
                     //AddErrors(ModelState);
                     ViewBag.GroupId = courseOccasion.GroupId;
@@ -138,9 +142,28 @@ namespace LMS_Lexicon2015.Controllers
             if (ModelState.IsValid)
             {
 
-                if (courseOccasion.StartDate > courseOccasion.EndDate)
+                DateTime GroupsStartDate = db.Groups.Where(g => g.Id == courseOccasion.GroupId).FirstOrDefault().StartDate;
+                DateTime GroupsEndDate = db.Groups.Where(g => g.Id == courseOccasion.GroupId).FirstOrDefault().EndDate;
+
+                if (courseOccasion.StartDate < GroupsStartDate)
                 {
                     //AddErrors(ModelState);
+                    ViewBag.GroupId = courseOccasion.GroupId;
+                    ModelState.AddModelError("", "Du har angivit ett startdatumet före gruppens startdatumet");
+                    return View(courseOccasion);
+                }
+
+                else if (courseOccasion.EndDate > GroupsEndDate)
+                {
+                    //AddErrors(ModelState);
+                    ViewBag.GroupId = courseOccasion.GroupId;
+                    ModelState.AddModelError("", "Du har angivit ett slutdatum efter gruppens slutdatum");
+                    return View(courseOccasion);
+                }
+                else if (courseOccasion.StartDate > courseOccasion.EndDate)
+                {
+                    //AddErrors(ModelState);
+                    ViewBag.GroupId = courseOccasion.GroupId;
                     ModelState.AddModelError("", "Du har angivit ett slutdatum före startdatumet ");
                     return View(courseOccasion);
                 }

@@ -56,7 +56,9 @@
 </table>
 
 <p>
+    @if (!LMS_Lexicon2015.Controllers.HomeController.HomeIndex) { 
     @Html.ActionLink("Tillbaka till listan", "Index", "Groups")
+    }
 </p>
 
  @*+ "?" + HttpContext.Current.Request.Url.AbsolutPath*@
