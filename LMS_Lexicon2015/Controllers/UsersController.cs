@@ -60,16 +60,56 @@ namespace LMS_Lexicon2015.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Users
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            var applicationUsers = db.Users.ToList();
+            //var applicationUsers = db.Users.ToList();
+
+            //ViewBag.Roles = db.Roles.ToList();
+            //FromPartitialView = false;
+
+            //var model = db.Users.Select(r => new UserListViewModel
+            //    {
+            //        Id = r.Id,
+            //        FirstName = r.FirstName,
+            //        LastName = r.LastName,
+            //        Email = r.Email,
+            //        Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
+            //        Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
+            //        PhoneNumber = r.PhoneNumber
+            //    }).ToList();
+
+            //return View(model);
+
+
+
+            //__________________________________________
+
+            ViewBag.searchString = searchString;
+            var Users = from s in db.Users select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Users = Users.Where(s => s.FirstName.Contains(searchString)
+                || (s.LastName.ToString()).Contains(searchString)
+                || (s.FirstName + " " + s.LastName).Contains(searchString)
+                    //|| (s.Role.ToString()).Contains(searchString)
+                || s.Group.Name.Contains(searchString)
+                || s.Email.Contains(searchString)
+                || s.PhoneNumber.Contains(searchString)
+                 );
+            }
+
+            Users = Users.OrderByDescending(s => s.LastName);
+            //return View(Users.ToList());
+
+
+
+            var applicationUsers = Users.ToList();
 
             ViewBag.Roles = db.Roles.ToList();
-            //var gruppTest =  db.Groups.Find
             FromPartitialView = false;
 
-            var model = db.Users.Select(r => new UserListViewModel
-                {
+            var model = Users.Select(r => new UserListViewModel
+            {
                 Id = r.Id,
                 FirstName = r.FirstName,
                 LastName = r.LastName,
@@ -77,9 +117,10 @@ namespace LMS_Lexicon2015.Controllers
                 Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
                 Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
                 PhoneNumber = r.PhoneNumber
-    }).ToList();
+            }).ToList();
 
             return View(model);
+
 
         }
 
