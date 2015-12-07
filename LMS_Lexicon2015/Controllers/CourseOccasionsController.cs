@@ -18,7 +18,7 @@ namespace LMS_Lexicon2015.Controllers
         public ActionResult Index()
         {
             ViewBag.NoActivities = "Inga kurser listas här. De finns under respektive grupp";
-            ErrorMessageStartAfterEnd = false;
+            //ErrorMessageStartAfterEnd = false;
             return View(db.CourseOccasions.ToList());
         }
 
@@ -71,7 +71,11 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (courseOccasion.StartDate < courseOccasion.Group.StartDate)
+
+                DateTime GroupsStartDate = db.Groups.Where(g => g.Id == courseOccasion.GroupId).FirstOrDefault().StartDate;
+                DateTime GroupsEndDate = db.Groups.Where(g => g.Id == courseOccasion.GroupId).FirstOrDefault().EndDate;
+
+                if (courseOccasion.StartDate < GroupsStartDate)
                 {
                     //AddErrors(ModelState);
                     ViewBag.GroupId = courseOccasion.GroupId;
@@ -79,7 +83,7 @@ namespace LMS_Lexicon2015.Controllers
                     return View(courseOccasion);
                 }
 
-                if (courseOccasion.EndDate > courseOccasion.Group.EndDate)
+                if (courseOccasion.EndDate > GroupsEndDate)
                 {
                     //AddErrors(ModelState);
                     ViewBag.GroupId = courseOccasion.GroupId;
