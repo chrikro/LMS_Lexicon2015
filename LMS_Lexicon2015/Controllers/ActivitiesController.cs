@@ -18,8 +18,10 @@ namespace LMS_Lexicon2015.Controllers
         // GET: Activities
         public ActionResult Index()
         {
-            ErrorMessageStartAfterEnd = false;
-            return View(db.Activitys.ToList());
+
+            ViewBag.NoActivities = "Inga aktiviteter listas här." ;
+            return View(db.Activitys.ToList()); //vyn tom gör inget om kvar
+            
         }
 
         // GET: Activities/Details/5

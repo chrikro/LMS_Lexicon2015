@@ -5,10 +5,10 @@
 <h2>Aktivitet detailj</h2>
 
 @*<p>groupId</p>@ViewBag.groupId
-<p>courseOccasionId</p>@ViewBag.courseOccasionId*@
+    <p>courseOccasionId</p>@ViewBag.courseOccasionId*@
 
 <div>
- 
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -46,16 +46,19 @@
             @Html.DisplayFor(model => model.EndDate.Year)
         </dd>
 
-    
+
     </dl>
 </div>
 <p>
     @*@{TempData["GroupId"] = ViewBag.GroupId;}*@
     @*@Html.ActionLink("Ändra", "Edit/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |*@
 
-    @Html.ActionLink("Ändra", "Edit/" + (int)ViewBag.activitiesId + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |
+    @if (User.IsInRole("Lärare"))
+    {
+        @Html.ActionLink("Ändra", "Edit/" + (int)ViewBag.activitiesId + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")
+        <span>|</span>
+    }
 
     @Html.ActionLink("Tillbaka till kursen", "Details/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.GroupId, "CourseOccasions")
-    
+
 </p>
-  

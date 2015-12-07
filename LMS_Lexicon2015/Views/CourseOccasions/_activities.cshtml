@@ -9,7 +9,9 @@
 <h2>Aktiviteter</h2>
 
 <p>
+@if (User.IsInRole("Lärare")) { 
      @Html.ActionLink("Lägg till en ny aktiviteter", "Create/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")
+}
 </p>
 <table class="table">
     <tr>
@@ -71,7 +73,11 @@
 
             @*@Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |
             @Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |*@
-            @Html.ActionLink("Ta bort", "Delete/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")
+            
+            @if (User.IsInRole("Lärare")) { 
+
+                @Html.ActionLink("Ta bort", "Delete/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")
+            }
         </td>
     </tr>
 }
