@@ -17,6 +17,8 @@ namespace LMS_Lexicon2015.Controllers
         // GET: CourseOccasions
         public ActionResult Index()
         {
+            ViewBag.NoActivities = "Inga kurser listas här. De finns under respektive grupp";
+            ErrorMessageStartAfterEnd = false;
             return View(db.CourseOccasions.ToList());
         }
 
@@ -154,6 +156,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: CourseOccasions/Delete/5
+        [Authorize(Roles = "Lärare")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

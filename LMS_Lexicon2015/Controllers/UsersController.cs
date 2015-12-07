@@ -150,6 +150,7 @@ namespace LMS_Lexicon2015.Controllers
 
             return View(applicationUser);
         }
+        [Authorize(Roles = "Lärare")] //var används denna action?
         public ActionResult Register()
         {
             return View();

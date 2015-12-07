@@ -80,7 +80,7 @@ namespace LMS_Lexicon2015.Migrations
             /////----------------------
             //kurser
             var courses = new[] {
-                new CourseOccasion { Name = "c#", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16), GroupId = groups[0].Id  },
+                new CourseOccasion { Name = "csharp", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16), GroupId = groups[0].Id  },
                  new CourseOccasion { Name = "Angular JS", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16), GroupId = groups[0].Id  },
                 new CourseOccasion { Name = "Test", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16), GroupId = groups[1].Id  },
                 new CourseOccasion { Name = "SQL", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16), GroupId = groups[0].Id  }
