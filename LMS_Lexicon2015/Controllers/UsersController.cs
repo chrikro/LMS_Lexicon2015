@@ -70,14 +70,14 @@ namespace LMS_Lexicon2015.Controllers
 
             var model = db.Users.Select(r => new UserListViewModel
                 {
-                Id = r.Id,
-                FirstName = r.FirstName,
-                LastName = r.LastName,
-                Email = r.Email,
-                Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
-                Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
-                PhoneNumber = r.PhoneNumber
-    }).ToList();
+                    Id = r.Id,
+                    FirstName = r.FirstName,
+                    LastName = r.LastName,
+                    Email = r.Email,
+                    Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
+                    Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
+                    PhoneNumber = r.PhoneNumber
+                }).ToList();
 
             return View(model);
 
@@ -128,7 +128,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Users/Create
-        [Authorize(Roles="Lärare")]
+        [Authorize(Roles = "Lärare")]
         public ActionResult Create()
         {
             return View();
@@ -165,7 +165,7 @@ namespace LMS_Lexicon2015.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var applicationUser =
+            var model =
             db.Users.Where(u => u.Id == id).Select(r => new UserListViewModel
             {
                 Id = r.Id,
@@ -179,15 +179,14 @@ namespace LMS_Lexicon2015.Controllers
 
             }).FirstOrDefault();
 
-            if (applicationUser == null)
+           // if (String.IsNullOrEmpty(model.Group)) model.Group = "c"; //test ck
+
+            if (model == null)
             {
                 return HttpNotFound();
             }
 
-            //return View(ApplicationUserEdit);
-
-
-            return View(applicationUser);
+            return View(model);
         }
 
         //vi har ändratedit pga lössenord ändras vid ändringar
@@ -198,30 +197,53 @@ namespace LMS_Lexicon2015.Controllers
         [Authorize(Roles = "Lärare")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,GroupId,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+        //public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,GroupId,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,Role,Group,PhoneNumber,UserName")] UserListViewModel listUser)
         {
 
             //var currentUser = applicationUser.Id;
-            var userInDb = db.Users.Where(u => u.Id == applicationUser.Id).FirstOrDefault();
+            var userInDb = db.Users.Where(u => u.Id == listUser.Id).FirstOrDefault();
 
-            if (applicationUser.LastName != userInDb.LastName && !String.IsNullOrEmpty(applicationUser.LastName))
+            if (listUser.LastName != userInDb.LastName && !String.IsNullOrEmpty(listUser.LastName))
             {
-                userInDb.LastName = applicationUser.LastName;
+                userInDb.LastName = listUser.LastName;
             }
 
 
-            if (applicationUser.FirstName != userInDb.FirstName && !String.IsNullOrEmpty(applicationUser.FirstName))
+            if (listUser.FirstName != userInDb.FirstName && !String.IsNullOrEmpty(listUser.FirstName))
             {
-                userInDb.FirstName = applicationUser.FirstName;
+                userInDb.FirstName = listUser.FirstName;
             }
 
-            if (applicationUser.Email != userInDb.Email && !String.IsNullOrEmpty(applicationUser.Email))
+
+            //lärare kan vara utan grupp 
+            //  både före och efter ändring
+            //if (String.IsNullOrEmpty(listUser.Group) && (listUser.Role == "Lärare"))
+            //{
+            //    userInDb.Group.Name = listUser.Group;
+            //}
+
+            //userInDb.Group.Name.
+
+            if (!String.IsNullOrEmpty(listUser.Group))
             {
-                userInDb.Email = applicationUser.Email;
+             //   userInDb.Group = listUser.GroupId; //testar inte på förändring. Blir ingen skillnad. Mindre krångligt då Lärare byter från ingen grupp till en grupp
+                
             }
-            if (applicationUser.PhoneNumber != userInDb.PhoneNumber)
+
+            if (String.IsNullOrEmpty(listUser.Group) && (listUser.Role == "Elev"))
             {
-                userInDb.PhoneNumber = applicationUser.PhoneNumber;
+                //error
+            }
+
+            if (listUser.Email != userInDb.Email && !String.IsNullOrEmpty(listUser.Email))
+            {
+                userInDb.Email = listUser.Email;
+            }
+            if (listUser.PhoneNumber != userInDb.PhoneNumber)
+            {
+                userInDb.PhoneNumber = listUser.PhoneNumber;
             }
 
 

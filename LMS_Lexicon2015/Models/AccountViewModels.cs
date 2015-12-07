@@ -9,7 +9,6 @@ namespace LMS_Lexicon2015.Models
         [Display(Name = "Id")]
         public string Id { get; set; }
 
-
         [Required]
         [StringLength(100, ErrorMessage = "{0} måste vara minst {2} tecken långt.", MinimumLength = 3)]
         [Display(Name = "Förnamn")]
