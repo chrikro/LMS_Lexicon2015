@@ -14,15 +14,15 @@ namespace LMS_Lexicon2015.Controllers
     public class GroupsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        public static bool ErrorMessageToEarly = false;
-        public static bool ErrorMessageStartAfterEnd = false;
+        //public static bool ErrorMessageToEarly = false;
+        //public static bool ErrorMessageStartAfterEnd = false;
 
         // GET: Groups
         public ActionResult Index()
         {
             //ViewBag.userscount = db.Users.Where(gr;
-            ErrorMessageToEarly = false;
-            ErrorMessageStartAfterEnd = false;
+            //ErrorMessageToEarly = false;
+            //ErrorMessageStartAfterEnd = false;
             return View(db.Groups.ToList());
         }
 
@@ -49,14 +49,14 @@ namespace LMS_Lexicon2015.Controllers
         [Authorize(Roles = "Lärare")]
         public ActionResult Create()
         {
-            if (ErrorMessageToEarly == true)
-            {
-                ViewBag.ErrorMessage = "Du har angivit ett startdatum före dagens datum";
-            }
-            if (ErrorMessageStartAfterEnd == true)
-            {
-                ViewBag.ErrorMessage = "Du har angivit ett slutdatum före startdatumet ";
-            }             
+            //if (ErrorMessageToEarly == true)
+            //{
+            //    ViewBag.ErrorMessage = "Du har angivit ett startdatum före dagens datum";
+            //}
+            //if (ErrorMessageStartAfterEnd == true)
+            //{
+            //    ViewBag.ErrorMessage = "Du har angivit ett slutdatum före startdatumet ";
+            //}             
             return View();
         }
 
@@ -68,24 +68,28 @@ namespace LMS_Lexicon2015.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Description,StartDate,EndDate")] Group group)
         {
-            ErrorMessageToEarly = false;
-            ErrorMessageStartAfterEnd = false;
+            //ErrorMessageToEarly = false;
+            //ErrorMessageStartAfterEnd = false;
             if (ModelState.IsValid)
             {
                 if (group.StartDate < DateTime.Now)
                 {
                     //AddErrors(ModelState);
-                    ErrorMessageToEarly = true;
-                    ErrorMessageStartAfterEnd = false;
-                    return RedirectToAction("Create");
+                    //ErrorMessageToEarly = true;
+                    //ErrorMessageStartAfterEnd = false;
+                    ModelState.AddModelError("", "Du har angivit ett startdatum före dagens datum");
+                    return View(group);
+                    // return RedirectToAction("Create");
                 }
 
                 else if (group.StartDate > group.EndDate)
                 {
                     //AddErrors(ModelState);
-                    ErrorMessageStartAfterEnd = true;
-                    ErrorMessageToEarly = false;
-                    return RedirectToAction("Create");
+                    //ErrorMessageStartAfterEnd = true;
+                    //ErrorMessageToEarly = false;
+                    ModelState.AddModelError("", "Du har angivit ett slutdatum före startdatumet ");
+                    return View(group);
+                   // return RedirectToAction("Create");
                 }
 
                 else
@@ -115,10 +119,11 @@ namespace LMS_Lexicon2015.Controllers
             //{
             //    ViewBag.ErrorMessage = "Du har angivit ett startdatum före dagens datum";
             //}
-            if (ErrorMessageStartAfterEnd == true)
-            {
-                ViewBag.ErrorMessage = "Du har angivit ett slutdatum före startdatumet ";
-            }         
+            //if (ErrorMessageStartAfterEnd == true)
+            //{
+            //    ViewBag.ErrorMessage = "Du har angivit ett slutdatum före startdatumet ";
+            //}       
+
             return View(group);
         }
 
@@ -132,20 +137,16 @@ namespace LMS_Lexicon2015.Controllers
         {
             if (ModelState.IsValid)
             {
-                //if (group.StartDate < DateTime.Now)
-                //{
-                //    //AddErrors(ModelState);
-                //    ErrorMessageToEarly = true;
-                //    ErrorMessageStartAfterEnd = false;
-                //    return RedirectToAction("Edit");
-                //}
-                ErrorMessageStartAfterEnd = false;
+
+              //  ErrorMessageStartAfterEnd = false;
                 if (group.StartDate > group.EndDate)
                 {
                     //AddErrors(ModelState);
-                    ErrorMessageStartAfterEnd = true;
-                    ErrorMessageToEarly = false;
-                    return RedirectToAction("Edit");
+                    //ErrorMessageStartAfterEnd = true;
+                    //ErrorMessageToEarly = false;
+                    ModelState.AddModelError("", "Du har angivit ett slutdatum före startdatumet ");
+                    return View(group);
+                    // return RedirectToAction("Create");
                }
 
                 else
@@ -190,17 +191,10 @@ namespace LMS_Lexicon2015.Controllers
 
         public ActionResult _Course(int GroupId) 
         {
-            //foreach (var Group in group.Courses)
-            //{
-            //    var courses = group.Courses.Where(c => c.GroupId == group.Id);
-            //}
-
-            //return View(courses);
-
  
             ViewBag.GroupId = GroupId;
-            ErrorMessageToEarly = false;
-            ErrorMessageStartAfterEnd = false;
+            //ErrorMessageToEarly = false;
+            //ErrorMessageStartAfterEnd = false;
             return View(db.CourseOccasions.ToList());
         }
 
