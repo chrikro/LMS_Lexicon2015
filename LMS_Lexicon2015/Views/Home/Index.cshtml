@@ -6,22 +6,24 @@
     <p class="lead">
 </div>
 @if (User.IsInRole("Lärare")){
-    <p>hej läraren!</p>
+    <h3>Hej läraren!</h3>
 }
 
 @if (User.IsInRole("Elev"))
 {
-    <p>hej eleven!</p>
-    
-    <div>Sidan är <big>påbörjad</big>. Rör ej</div>
+    <h3>Hej eleven!</h3>
+    <h4>Dagens schema</h4>
     
     var GroupId = new LMS_Lexicon2015.Models.ApplicationDbContext().Users.Where(u => u.Email == User.Identity.Name).FirstOrDefault().GroupId;
     ViewBag.GroupId = GroupId;
+    
     @Html.Partial("../Groups/_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId && o.StartDate < DateTime.Today && o.EndDate > DateTime.Today).ToList())
-    <div>mellanrum</div>
-    @*@Html.Partial("../Users/PartitialGroup/" + GroupId, new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId).ToList())*@
+    <div></div>
+  
+    @Html.Partial("../Users/PartitialGroup", new LMS_Lexicon2015.Models.ApplicationDbContext().Users.Where(o => o.GroupId == (int)GroupId))
      @*@Html.Partial("../Users/PartitialGroup", new {id = GroupId})*@
-    @Html.Action("PartitialGroup", "Users", new { id = GroupId })
+    
+    @*@Html.Action("PartitialGroup", "Users", new { id = GroupId })*@
     
     ViewBag.Title = "";
 }
