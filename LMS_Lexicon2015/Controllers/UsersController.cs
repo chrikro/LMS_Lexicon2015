@@ -59,29 +59,12 @@ namespace LMS_Lexicon2015.Controllers
 
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        
+
         // GET: Users
         public ActionResult Index(string sortOrder, string searchString)
         {
-            //var applicationUsers = db.Users.ToList();
 
-            //ViewBag.Roles = db.Roles.ToList();
-            //FromPartitialView = false;
-
-            //var model = db.Users.Select(r => new UserListViewModel
-            //    {
-            //        Id = r.Id,
-            //        FirstName = r.FirstName,
-            //        LastName = r.LastName,
-            //        Email = r.Email,
-            //        Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
-            //        Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
-            //        PhoneNumber = r.PhoneNumber
-            //    }).ToList();
-
-            //return View(model);
-
-  
-            //__________________________________________
             ViewBag.FirstNameSortParm = sortOrder == "FirstName" ? "FirstName_desc" : "FirstName";
             ViewBag.LastNameSortParm = sortOrder == "LastName" ? "LastName_desc" : "LastName";
             ViewBag.RolesSortParm = sortOrder == "Roles" ? "Roles_desc" : "Roles";
@@ -153,8 +136,7 @@ namespace LMS_Lexicon2015.Controllers
                     Users = Users.OrderByDescending(s => s.LastName);
                     break;
             }
-            //Users = Users.OrderByDescending(s => s.LastName);
-            //return View(Users.ToList());
+
 
 
 
@@ -164,6 +146,7 @@ namespace LMS_Lexicon2015.Controllers
             FromPartitialView = false;
 
             var model = Users.Select(r => new UserListViewModel
+            //var model = db.Users.Select(r => new UserListViewModel
                 {
                 Id = r.Id,
                 FirstName = r.FirstName,
@@ -403,5 +386,13 @@ namespace LMS_Lexicon2015.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        public ActionResult Upload()
+        {
+            return View();
+        }
+
+
     }
 }
