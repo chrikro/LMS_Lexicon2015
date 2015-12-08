@@ -13,7 +13,7 @@
     }
 </p>
 
-<h3>Ange söksträng</h3>
+<h3>Sök på gruppnamn</h3>
 
 @using (Html.BeginForm())
 {
@@ -27,25 +27,7 @@
 <br />
 
 <table class="table">
-    @*<tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </th>
-        <th>
-            Antal Elever
-        </th>
 
-        <th></th>
-    </tr>*@
     <tr>
     <th>
         @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Name).ToString()), "index", new { sortOrder = ViewBag.NameSortParm, searchString = ViewBag.searchString })
