@@ -1,23 +1,7 @@
-﻿
-@{
-    ViewBag.Title = "download";
-}
-
-<h2>download</h2>
-
-@using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{ @Html.AntiForgeryToken() 
-    
-    <fieldset> 
-       <legend>Upload a file</legend> 
-           <div class="editor-field">
-                @Html.TextBox("file", "", new { type = "file" }) 
-           </div> 
-    
-           <div class="editor-field"> 
-                <input type="submit" value="Upload" /> 
-           </div> 
-    </fieldset> 
-}
-
- - See more at: http://rachelappel.com/upload-and-download-files-using-asp.net-mvc#sthash.jTckiU4m.dpuf
+﻿<div id="UploadSection">
+    <% using (Html.BeginForm("fileUpload", "home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {%><br />
+    <p><input type="file" name="fileUpload1" /> </p>
+    <p><input type="submit" value="Upload file" /></p>
+    <% } %>
+</div>

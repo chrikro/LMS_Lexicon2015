@@ -49,7 +49,11 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Group.StartDate)
+            @Html.DisplayFor(model => model.Group.StartDate.Day)
+            <span>/</span>
+            @Html.DisplayFor(model => model.Group.StartDate.Month)
+            <span>-</span>
+            @Html.DisplayFor(model => model.Group.StartDate.Year)
         </dd>
 
 
@@ -58,8 +62,14 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Group.EndDate)
+            @Html.DisplayFor(model => model.Group.EndDate.Day)
+            <span>/</span>
+            @Html.DisplayFor(model => model.Group.EndDate.Month)
+            <span>-</span>
+            @Html.DisplayFor(model => model.Group.EndDate.Year)
         </dd>
+
+
 
         <dt>
             @ViewBag.EmailHeader

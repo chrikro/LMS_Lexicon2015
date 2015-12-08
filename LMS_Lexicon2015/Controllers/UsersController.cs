@@ -12,13 +12,19 @@ using System.Security.Claims;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using System.IO;
+
 
 
 namespace LMS_Lexicon2015.Controllers
 {
+    
+    
     [Authorize]
     public class UsersController : Controller
     {
+
+
         public static bool FromPartitialView;
         //private ApplicationSignInManager _signInManager;
         //private ApplicationUserManager _userManager;
@@ -59,7 +65,7 @@ namespace LMS_Lexicon2015.Controllers
 
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        
+
 
         // GET: Users
         public ActionResult Index(string sortOrder, string searchString)
@@ -68,7 +74,7 @@ namespace LMS_Lexicon2015.Controllers
             ViewBag.FirstNameSortParm = sortOrder == "FirstName" ? "FirstName_desc" : "FirstName";
             ViewBag.LastNameSortParm = sortOrder == "LastName" ? "LastName_desc" : "LastName";
             ViewBag.RolesSortParm = sortOrder == "Roles" ? "Roles_desc" : "Roles";
-  
+
             ViewBag.GroupSortParm = sortOrder == "Group" ? "Group_desc" : "Group";
             ViewBag.EmailSortParm = sortOrder == "Email" ? "Email_desc" : "Email";
             ViewBag.PhoneNumberSortParm = sortOrder == "PhoneNumber" ? "PhoneNumber_desc" : "PhoneNumber";
@@ -76,16 +82,16 @@ namespace LMS_Lexicon2015.Controllers
             ViewBag.searchString = searchString;
             var Users = from s in db.Users select s;
             if (!String.IsNullOrEmpty(searchString))
-        {
+            {
                 Users = Users.Where(s => s.FirstName.Contains(searchString)
                 || s.LastName.Contains(searchString)
                 || (s.FirstName + " " + s.LastName).Contains(searchString)
-                
+
                 //|| s.Roles.FirstOrDefault().RoleId.Contains(searchString)
-                //|| ((s.Roles.FirstOrDefault().RoleId).ToString().(string).Name).Contains(searchString)
-                 //|| s.Group.Name.Contains(searchString)
-                //|| s.Email.Contains(searchString)
-                //|| s.PhoneNumber.Contains(searchString)
+                    //|| ((s.Roles.FirstOrDefault().RoleId).ToString().(string).Name).Contains(searchString)
+                    //|| s.Group.Name.Contains(searchString)
+                    //|| s.Email.Contains(searchString)
+                    //|| s.PhoneNumber.Contains(searchString)
                  );
             }
 
@@ -146,17 +152,17 @@ namespace LMS_Lexicon2015.Controllers
             FromPartitialView = false;
 
             var model = Users.Select(r => new UserListViewModel
-            //var model = db.Users.Select(r => new UserListViewModel
+                //var model = db.Users.Select(r => new UserListViewModel
                 {
-                Id = r.Id,
-                FirstName = r.FirstName,
-                LastName = r.LastName,
-                Email = r.Email,
-                Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
-                Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
-                GroupId = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Id,
-                PhoneNumber = r.PhoneNumber
-    }).ToList();
+                    Id = r.Id,
+                    FirstName = r.FirstName,
+                    LastName = r.LastName,
+                    Email = r.Email,
+                    Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
+                    Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
+                    GroupId = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Id,
+                    PhoneNumber = r.PhoneNumber
+                }).ToList();
 
             return View(model);
 
@@ -260,7 +266,7 @@ namespace LMS_Lexicon2015.Controllers
 
             }).FirstOrDefault();
 
-           // if (String.IsNullOrEmpty(model.Group)) model.Group = "c"; //test ck
+            // if (String.IsNullOrEmpty(model.Group)) model.Group = "c"; //test ck
 
             if (model == null)
             {
@@ -274,7 +280,7 @@ namespace LMS_Lexicon2015.Controllers
             //lägg till en gång till "If we got this far, something failed, redisplay form"
             ViewBag.Role = new SelectList(db.Roles, "Name", "Name");//en bäg för rullningslistan på formuläret 
             ViewBag.GroupTeacher = new SelectList(g, "Id", "Name");//en bäg för rullningslistan på formuläret
-            ViewBag.GroupId = new SelectList(g, "Id", "Name",model.GroupId);//en bäg för rullningslistan på formuläret
+            ViewBag.GroupId = new SelectList(g, "Id", "Name", model.GroupId);//en bäg för rullningslistan på formuläret
             //return View();
 
 
@@ -321,7 +327,7 @@ namespace LMS_Lexicon2015.Controllers
             if (listUser.GroupId.HasValue)
             {
                 userInDb.GroupId = listUser.GroupId; //testar inte på förändring. Blir ingen skillnad. Mindre krångligt då Lärare byter från ingen grupp till en grupp
-                
+
             }
 
             if (!listUser.GroupId.HasValue && listUser.Role == "Elev")
@@ -341,7 +347,7 @@ namespace LMS_Lexicon2015.Controllers
                 //return View();
 
                 return View(listUser);
-                
+
             }
 
             if (listUser.Email != userInDb.Email && !String.IsNullOrEmpty(listUser.Email))
@@ -410,11 +416,12 @@ namespace LMS_Lexicon2015.Controllers
             base.Dispose(disposing);
         }
 
-
         public ActionResult Upload()
         {
             return View();
         }
+
+
 
 
     }
