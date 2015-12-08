@@ -13,11 +13,7 @@
 {
     <h3>Hej eleven!</h3>
     <h4>Dagens schema</h4>
-    
-  
-    
-    
-    
+     
     var GroupId = new LMS_Lexicon2015.Models.ApplicationDbContext().Users.Where(u => u.Email == User.Identity.Name).FirstOrDefault().GroupId;
     ViewBag.GroupId = GroupId;
 
