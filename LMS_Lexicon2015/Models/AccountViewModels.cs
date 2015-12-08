@@ -19,6 +19,9 @@ namespace LMS_Lexicon2015.Models
         [Display(Name = "Efternamn")]
         public string LastName { get; set; }
 
+        [Display(Name = "GruppId")]
+        public int? GroupId { get; set; }
+
         [Display(Name = "Grupp")]
         public string Group { get; set; }
 

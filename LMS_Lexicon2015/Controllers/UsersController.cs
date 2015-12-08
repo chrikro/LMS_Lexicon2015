@@ -154,6 +154,7 @@ namespace LMS_Lexicon2015.Controllers
                 Email = r.Email,
                 Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
                 Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
+                GroupId = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Id,
                 PhoneNumber = r.PhoneNumber
     }).ToList();
 
@@ -253,6 +254,7 @@ namespace LMS_Lexicon2015.Controllers
                 Email = r.Email,
                 Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
                 Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
+                GroupId = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Id,
                 PhoneNumber = r.PhoneNumber,
                 UserName = r.UserName
 
@@ -264,6 +266,17 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
+
+            List<Group> g = db.Groups.ToList();
+            g.Insert(0, null);
+
+
+            //lägg till en gång till "If we got this far, something failed, redisplay form"
+            ViewBag.Role = new SelectList(db.Roles, "Name", "Name");//en bäg för rullningslistan på formuläret 
+            ViewBag.GroupTeacher = new SelectList(g, "Id", "Name");//en bäg för rullningslistan på formuläret
+            ViewBag.GroupId = new SelectList(g, "Id", "Name",model.GroupId);//en bäg för rullningslistan på formuläret
+            //return View();
+
 
             return View(model);
         }
@@ -278,7 +291,7 @@ namespace LMS_Lexicon2015.Controllers
         [ValidateAntiForgeryToken]
         //public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,GroupId,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
 
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,Role,Group,PhoneNumber,UserName")] UserListViewModel listUser)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,Role,GroupId,PhoneNumber,UserName,GroupStudent,GroupTeacher")] UserListViewModel listUser)
         {
 
             //var currentUser = applicationUser.Id;
@@ -297,23 +310,38 @@ namespace LMS_Lexicon2015.Controllers
 
 
             //lärare kan vara utan grupp 
-            //  både före och efter ändring
-            //if (String.IsNullOrEmpty(listUser.Group) && (listUser.Role == "Lärare"))
-            //{
-            //    userInDb.Group.Name = listUser.Group;
-            //}
+            //  både före och efter ändring FIXA. GroupId=12, Group=NULL
+            if (!listUser.GroupId.HasValue && listUser.Role == "Lärare")
+            {
+                userInDb.GroupId = listUser.GroupId;
+            }
 
             //userInDb.Group.Name.
 
-            if (!String.IsNullOrEmpty(listUser.Group))
+            if (listUser.GroupId.HasValue)
             {
-             //   userInDb.Group = listUser.GroupId; //testar inte på förändring. Blir ingen skillnad. Mindre krångligt då Lärare byter från ingen grupp till en grupp
+                userInDb.GroupId = listUser.GroupId; //testar inte på förändring. Blir ingen skillnad. Mindre krångligt då Lärare byter från ingen grupp till en grupp
                 
             }
 
-            if (String.IsNullOrEmpty(listUser.Group) && (listUser.Role == "Elev"))
+            if (!listUser.GroupId.HasValue && listUser.Role == "Elev")
             {
-                //error
+                ModelState.AddModelError("", "Du försökte att ta bort grupp från en elev. Elev kan bara byta grupp.");
+                //return RedirectToAction("Edit");
+
+
+                List<Group> g = db.Groups.ToList();
+                g.Insert(0, null);
+
+
+                //lägg till en gång till "If we got this far, something failed, redisplay form"
+                ViewBag.Role = new SelectList(db.Roles, "Name", "Name");//en bäg för rullningslistan på formuläret 
+                ViewBag.GroupTeacher = new SelectList(g, "Id", "Name");//en bäg för rullningslistan på formuläret
+                ViewBag.GroupId = new SelectList(g, "Id", "Name", userInDb.GroupId);//en bäg för rullningslistan på formuläret
+                //return View();
+
+                return View(listUser);
+                
             }
 
             if (listUser.Email != userInDb.Email && !String.IsNullOrEmpty(listUser.Email))
@@ -326,19 +354,14 @@ namespace LMS_Lexicon2015.Controllers
             }
 
 
-            //    // other changed properties
             db.SaveChanges();
-
-            //db.Users.Where(r => r.GroupId == id).First().Group.Name;
 
             if (ModelState.IsValid)
             {
                 return RedirectToAction("Index");
             }
 
-            //            return View(applicationUser);
             // i fall det knasar måste nedan finnas så att det visas om
-
             return RedirectToAction("Edit");
 
 
