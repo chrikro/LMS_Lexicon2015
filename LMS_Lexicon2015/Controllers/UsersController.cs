@@ -60,7 +60,7 @@ namespace LMS_Lexicon2015.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Users
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string sortOrder, string searchString)
         {
             //var applicationUsers = db.Users.ToList();
 
@@ -80,25 +80,80 @@ namespace LMS_Lexicon2015.Controllers
 
             //return View(model);
 
-
-
+  
             //__________________________________________
+            ViewBag.FirstNameSortParm = sortOrder == "FirstName" ? "FirstName_desc" : "FirstName";
+            ViewBag.LastNameSortParm = sortOrder == "LastName" ? "LastName_desc" : "LastName";
+            ViewBag.RolesSortParm = sortOrder == "Roles" ? "Roles_desc" : "Roles";
+  
+            ViewBag.GroupSortParm = sortOrder == "Group" ? "Group_desc" : "Group";
+            ViewBag.EmailSortParm = sortOrder == "Email" ? "Email_desc" : "Email";
+            ViewBag.PhoneNumberSortParm = sortOrder == "PhoneNumber" ? "PhoneNumber_desc" : "PhoneNumber";
 
             ViewBag.searchString = searchString;
             var Users = from s in db.Users select s;
             if (!String.IsNullOrEmpty(searchString))
             {
                 Users = Users.Where(s => s.FirstName.Contains(searchString)
-                || (s.LastName.ToString()).Contains(searchString)
+                || s.LastName.Contains(searchString)
                 || (s.FirstName + " " + s.LastName).Contains(searchString)
-                    //|| (s.Role.ToString()).Contains(searchString)
-                || s.Group.Name.Contains(searchString)
-                || s.Email.Contains(searchString)
-                || s.PhoneNumber.Contains(searchString)
+                
+                //|| s.Roles.FirstOrDefault().RoleId.Contains(searchString)
+                //|| ((s.Roles.FirstOrDefault().RoleId).ToString().(string).Name).Contains(searchString)
+                 //|| s.Group.Name.Contains(searchString)
+                //|| s.Email.Contains(searchString)
+                //|| s.PhoneNumber.Contains(searchString)
                  );
             }
 
-            Users = Users.OrderByDescending(s => s.LastName);
+
+
+            switch (sortOrder)
+            {
+                case "FirstName_desc":
+                    Users = Users.OrderByDescending(s => s.FirstName);
+                    break;
+                case "FirstName":
+                    Users = Users.OrderBy(s => s.FirstName);
+                    break;
+
+                case "LastName_desc":
+                    Users = Users.OrderByDescending(s => s.LastName);
+                    break;
+                case "LastName":
+                    Users = Users.OrderBy(s => s.LastName);
+                    break;
+                case "Roles_desc":
+                    Users = Users.OrderByDescending(s => s.Roles.FirstOrDefault().RoleId);
+                    break;
+                case "Roles":
+                    Users = Users.OrderBy(s => s.Roles.FirstOrDefault().RoleId);
+                    break;
+
+                case "Group_desc":
+                    Users = Users.OrderByDescending(s => s.Group.Name);
+                    break;
+                case "Group":
+                    Users = Users.OrderBy(s => s.Group.Name);
+                    break;
+
+                case "Email_desc":
+                    Users = Users.OrderByDescending(s => s.Email);
+                    break;
+                case "Email":
+                    Users = Users.OrderBy(s => s.Email);
+                    break;
+                case "PhoneNumber_desc":
+                    Users = Users.OrderByDescending(s => s.PhoneNumber);
+                    break;
+                case "PhoneNumber":
+                    Users = Users.OrderBy(s => s.PhoneNumber);
+                    break;
+                default:
+                    Users = Users.OrderByDescending(s => s.LastName);
+                    break;
+            }
+            //Users = Users.OrderByDescending(s => s.LastName);
             //return View(Users.ToList());
 
 

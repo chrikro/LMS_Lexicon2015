@@ -34,9 +34,9 @@ namespace LMS_Lexicon2015.Controllers
                 if (!String.IsNullOrEmpty(searchString))
                 {
                     Groups = Groups.Where(s => s.Name.Contains(searchString)
-                    || (s.EndDate.ToString()).Contains(searchString)
-                    || (s.StartDate.ToString()).Contains(searchString)
-                    || s.Description.Contains(searchString)
+                    //|| (s.EndDate.ToString()).Contains(searchString)
+                    //|| (s.StartDate.ToString()).Contains(searchString)
+                    //|| s.Description.Contains(searchString)
                      );
                 }
 
