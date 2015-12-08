@@ -9,7 +9,6 @@ namespace LMS_Lexicon2015.Models
         [Display(Name = "Id")]
         public string Id { get; set; }
 
-
         [Required]
         [StringLength(100, ErrorMessage = "{0} måste vara minst {2} tecken långt.", MinimumLength = 3)]
         [Display(Name = "Förnamn")]
@@ -19,6 +18,9 @@ namespace LMS_Lexicon2015.Models
         [StringLength(100, ErrorMessage = "{0} måste vara minst {2} tecken långt.", MinimumLength = 2)]
         [Display(Name = "Efternamn")]
         public string LastName { get; set; }
+
+        [Display(Name = "GruppId")]
+        public int? GroupId { get; set; }
 
         [Display(Name = "Grupp")]
         public string Group { get; set; }

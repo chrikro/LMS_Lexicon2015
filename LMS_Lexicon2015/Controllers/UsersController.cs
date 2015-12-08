@@ -59,47 +59,84 @@ namespace LMS_Lexicon2015.Controllers
 
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        
+
         // GET: Users
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string sortOrder, string searchString)
         {
-            //var applicationUsers = db.Users.ToList();
 
-            //ViewBag.Roles = db.Roles.ToList();
-            //FromPartitialView = false;
-
-            //var model = db.Users.Select(r => new UserListViewModel
-            //    {
-            //        Id = r.Id,
-            //        FirstName = r.FirstName,
-            //        LastName = r.LastName,
-            //        Email = r.Email,
-            //        Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
-            //        Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
-            //        PhoneNumber = r.PhoneNumber
-            //    }).ToList();
-
-            //return View(model);
-
-
-
-            //__________________________________________
+            ViewBag.FirstNameSortParm = sortOrder == "FirstName" ? "FirstName_desc" : "FirstName";
+            ViewBag.LastNameSortParm = sortOrder == "LastName" ? "LastName_desc" : "LastName";
+            ViewBag.RolesSortParm = sortOrder == "Roles" ? "Roles_desc" : "Roles";
+  
+            ViewBag.GroupSortParm = sortOrder == "Group" ? "Group_desc" : "Group";
+            ViewBag.EmailSortParm = sortOrder == "Email" ? "Email_desc" : "Email";
+            ViewBag.PhoneNumberSortParm = sortOrder == "PhoneNumber" ? "PhoneNumber_desc" : "PhoneNumber";
 
             ViewBag.searchString = searchString;
             var Users = from s in db.Users select s;
             if (!String.IsNullOrEmpty(searchString))
-            {
+        {
                 Users = Users.Where(s => s.FirstName.Contains(searchString)
-                || (s.LastName.ToString()).Contains(searchString)
+                || s.LastName.Contains(searchString)
                 || (s.FirstName + " " + s.LastName).Contains(searchString)
-                    //|| (s.Role.ToString()).Contains(searchString)
-                || s.Group.Name.Contains(searchString)
-                || s.Email.Contains(searchString)
-                || s.PhoneNumber.Contains(searchString)
+                
+                //|| s.Roles.FirstOrDefault().RoleId.Contains(searchString)
+                //|| ((s.Roles.FirstOrDefault().RoleId).ToString().(string).Name).Contains(searchString)
+                 //|| s.Group.Name.Contains(searchString)
+                //|| s.Email.Contains(searchString)
+                //|| s.PhoneNumber.Contains(searchString)
                  );
             }
 
-            Users = Users.OrderByDescending(s => s.LastName);
-            //return View(Users.ToList());
+
+
+            switch (sortOrder)
+            {
+                case "FirstName_desc":
+                    Users = Users.OrderByDescending(s => s.FirstName);
+                    break;
+                case "FirstName":
+                    Users = Users.OrderBy(s => s.FirstName);
+                    break;
+
+                case "LastName_desc":
+                    Users = Users.OrderByDescending(s => s.LastName);
+                    break;
+                case "LastName":
+                    Users = Users.OrderBy(s => s.LastName);
+                    break;
+                case "Roles_desc":
+                    Users = Users.OrderByDescending(s => s.Roles.FirstOrDefault().RoleId);
+                    break;
+                case "Roles":
+                    Users = Users.OrderBy(s => s.Roles.FirstOrDefault().RoleId);
+                    break;
+
+                case "Group_desc":
+                    Users = Users.OrderByDescending(s => s.Group.Name);
+                    break;
+                case "Group":
+                    Users = Users.OrderBy(s => s.Group.Name);
+                    break;
+
+                case "Email_desc":
+                    Users = Users.OrderByDescending(s => s.Email);
+                    break;
+                case "Email":
+                    Users = Users.OrderBy(s => s.Email);
+                    break;
+                case "PhoneNumber_desc":
+                    Users = Users.OrderByDescending(s => s.PhoneNumber);
+                    break;
+                case "PhoneNumber":
+                    Users = Users.OrderBy(s => s.PhoneNumber);
+                    break;
+                default:
+                    Users = Users.OrderByDescending(s => s.LastName);
+                    break;
+            }
+
 
 
 
@@ -109,15 +146,17 @@ namespace LMS_Lexicon2015.Controllers
             FromPartitialView = false;
 
             var model = Users.Select(r => new UserListViewModel
-            {
+            //var model = db.Users.Select(r => new UserListViewModel
+                {
                 Id = r.Id,
                 FirstName = r.FirstName,
                 LastName = r.LastName,
                 Email = r.Email,
                 Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
                 Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
+                GroupId = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Id,
                 PhoneNumber = r.PhoneNumber
-            }).ToList();
+    }).ToList();
 
             return View(model);
 
@@ -169,7 +208,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Users/Create
-        [Authorize(Roles="Lärare")]
+        [Authorize(Roles = "Lärare")]
         public ActionResult Create()
         {
             return View();
@@ -206,7 +245,7 @@ namespace LMS_Lexicon2015.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var applicationUser =
+            var model =
             db.Users.Where(u => u.Id == id).Select(r => new UserListViewModel
             {
                 Id = r.Id,
@@ -215,20 +254,31 @@ namespace LMS_Lexicon2015.Controllers
                 Email = r.Email,
                 Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
                 Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
+                GroupId = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Id,
                 PhoneNumber = r.PhoneNumber,
                 UserName = r.UserName
 
             }).FirstOrDefault();
 
-            if (applicationUser == null)
+           // if (String.IsNullOrEmpty(model.Group)) model.Group = "c"; //test ck
+
+            if (model == null)
             {
                 return HttpNotFound();
             }
 
-            //return View(ApplicationUserEdit);
+            List<Group> g = db.Groups.ToList();
+            g.Insert(0, null);
 
 
-            return View(applicationUser);
+            //lägg till en gång till "If we got this far, something failed, redisplay form"
+            ViewBag.Role = new SelectList(db.Roles, "Name", "Name");//en bäg för rullningslistan på formuläret 
+            ViewBag.GroupTeacher = new SelectList(g, "Id", "Name");//en bäg för rullningslistan på formuläret
+            ViewBag.GroupId = new SelectList(g, "Id", "Name",model.GroupId);//en bäg för rullningslistan på formuläret
+            //return View();
+
+
+            return View(model);
         }
 
         //vi har ändratedit pga lössenord ändras vid ändringar
@@ -239,46 +289,79 @@ namespace LMS_Lexicon2015.Controllers
         [Authorize(Roles = "Lärare")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,GroupId,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+        //public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,GroupId,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,Role,GroupId,PhoneNumber,UserName,GroupStudent,GroupTeacher")] UserListViewModel listUser)
         {
 
             //var currentUser = applicationUser.Id;
-            var userInDb = db.Users.Where(u => u.Id == applicationUser.Id).FirstOrDefault();
+            var userInDb = db.Users.Where(u => u.Id == listUser.Id).FirstOrDefault();
 
-            if (applicationUser.LastName != userInDb.LastName && !String.IsNullOrEmpty(applicationUser.LastName))
+            if (listUser.LastName != userInDb.LastName && !String.IsNullOrEmpty(listUser.LastName))
             {
-                userInDb.LastName = applicationUser.LastName;
+                userInDb.LastName = listUser.LastName;
             }
 
 
-            if (applicationUser.FirstName != userInDb.FirstName && !String.IsNullOrEmpty(applicationUser.FirstName))
+            if (listUser.FirstName != userInDb.FirstName && !String.IsNullOrEmpty(listUser.FirstName))
             {
-                userInDb.FirstName = applicationUser.FirstName;
-            }
-
-            if (applicationUser.Email != userInDb.Email && !String.IsNullOrEmpty(applicationUser.Email))
-            {
-                userInDb.Email = applicationUser.Email;
-            }
-            if (applicationUser.PhoneNumber != userInDb.PhoneNumber)
-            {
-                userInDb.PhoneNumber = applicationUser.PhoneNumber;
+                userInDb.FirstName = listUser.FirstName;
             }
 
 
-            //    // other changed properties
+            //lärare kan vara utan grupp 
+            //  både före och efter ändring FIXA. GroupId=12, Group=NULL
+            if (!listUser.GroupId.HasValue && listUser.Role == "Lärare")
+            {
+                userInDb.GroupId = listUser.GroupId;
+            }
+
+            //userInDb.Group.Name.
+
+            if (listUser.GroupId.HasValue)
+            {
+                userInDb.GroupId = listUser.GroupId; //testar inte på förändring. Blir ingen skillnad. Mindre krångligt då Lärare byter från ingen grupp till en grupp
+                
+            }
+
+            if (!listUser.GroupId.HasValue && listUser.Role == "Elev")
+            {
+                ModelState.AddModelError("", "Du försökte att ta bort grupp från en elev. Elev kan bara byta grupp.");
+                //return RedirectToAction("Edit");
+
+
+                List<Group> g = db.Groups.ToList();
+                g.Insert(0, null);
+
+
+                //lägg till en gång till "If we got this far, something failed, redisplay form"
+                ViewBag.Role = new SelectList(db.Roles, "Name", "Name");//en bäg för rullningslistan på formuläret 
+                ViewBag.GroupTeacher = new SelectList(g, "Id", "Name");//en bäg för rullningslistan på formuläret
+                ViewBag.GroupId = new SelectList(g, "Id", "Name", userInDb.GroupId);//en bäg för rullningslistan på formuläret
+                //return View();
+
+                return View(listUser);
+                
+            }
+
+            if (listUser.Email != userInDb.Email && !String.IsNullOrEmpty(listUser.Email))
+            {
+                userInDb.Email = listUser.Email;
+            }
+            if (listUser.PhoneNumber != userInDb.PhoneNumber)
+            {
+                userInDb.PhoneNumber = listUser.PhoneNumber;
+            }
+
+
             db.SaveChanges();
-
-            //db.Users.Where(r => r.GroupId == id).First().Group.Name;
 
             if (ModelState.IsValid)
             {
                 return RedirectToAction("Index");
             }
 
-            //            return View(applicationUser);
             // i fall det knasar måste nedan finnas så att det visas om
-
             return RedirectToAction("Edit");
 
 
@@ -326,5 +409,13 @@ namespace LMS_Lexicon2015.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        public ActionResult Upload()
+        {
+            return View();
+        }
+
+
     }
 }
