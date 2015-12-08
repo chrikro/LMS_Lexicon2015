@@ -277,7 +277,6 @@ namespace LMS_Lexicon2015.Controllers
 
             }).FirstOrDefault();
 
-           // if (String.IsNullOrEmpty(model.Group)) model.Group = "c"; //test ck
 
             if (model == null)
             {

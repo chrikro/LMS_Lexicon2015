@@ -19,7 +19,13 @@ namespace LMS_Lexicon2015.Controllers
         public ActionResult Index(string sortOrder, string searchString)
         {
             {
+                var groupIdInMenu = new LMS_Lexicon2015.Models.ApplicationDbContext().Users.Where(u => u.Email == User.Identity.Name).FirstOrDefault().GroupId;
 
+                var studentIdWithPath = "Details/" + groupIdInMenu;
+
+                if (User.IsInRole("Elev")) {
+                  return RedirectToAction("Details/" + groupIdInMenu);
+                }
                 ViewBag.NameSortParm = sortOrder == "Name" ? "Name_desc" : "Name";
                 ViewBag.DescriptionSortParm = sortOrder == "Description" ? "Description_desc" : "Description";
                 ViewBag.StartDateSortParm = sortOrder == "StartDate" ? "StartDate_desc" : "StartDate";
