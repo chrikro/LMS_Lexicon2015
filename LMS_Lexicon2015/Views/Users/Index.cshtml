@@ -49,10 +49,10 @@
             @*@Html.DisplayNameFor(model => model.Email)*@
         </th>
 
-        <th>
+        @*<th>
             @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.PhoneNumber).ToString()), "index", new { sortOrder = ViewBag.PhoneNumberSortParm, searchString = ViewBag.searchString })
-            @*@Html.DisplayNameFor(model => model.PhoneNumber)*@
-        </th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>*@
 
         <th></th>
     </tr>
@@ -77,9 +77,9 @@
             </td>
 
 
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
+            </td>*@
 
             <td>
                 @if (User.IsInRole("Lärare"))
