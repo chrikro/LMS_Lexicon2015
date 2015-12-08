@@ -1,0 +1,7 @@
+﻿<div id="UploadSection">
+    <% using (Html.BeginForm("fileUpload", "home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {%><br />
+    <p><input type="file" name="fileUpload1" /> </p>
+    <p><input type="submit" value="Upload file" /></p>
+    <% } %>
+</div>

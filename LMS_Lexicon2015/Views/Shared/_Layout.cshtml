@@ -28,6 +28,7 @@
                     {
                         <li>@Html.ActionLink("Grupper", "Index", "Groups")</li>
                         <li>@Html.ActionLink("Användare", "Index", "Users")</li>
+                        <li>@Html.ActionLink("Dokument", "Upload", "Users")</li>
                     }
 
 
@@ -40,11 +41,11 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Lexicon LMS</p>
-        </footer>
-    </div>
+       <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Lexicon LMS</p>
+            </footer>
+     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
