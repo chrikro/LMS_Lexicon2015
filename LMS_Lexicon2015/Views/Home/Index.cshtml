@@ -13,7 +13,16 @@
 {
     <h3>Hej eleven!</h3>
     <h4>Dagens schema</h4>
-     
+    
+    @*var groupId = new LMS_Lexicon2015.Models.ApplicationDbContext().Users.Where(u => u.Email == User.Identity.Name).FirstOrDefault().GroupId;
+
+    var CourseId = new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)groupId && o.StartDate < DateTime.Today && o.EndDate > DateTime.Today).First().Activities.First().CourseId;
+    
+    @Html.Partial("../CourseOccasions/_activities", new LMS_Lexicon2015.Models.ApplicationDbContext().Activitys.Where(a => a.CourseId == (int)CourseId).OrderBy(c => c.StartDate).ToList())
+    
+    @groupId
+    @CourseId*@
+    
     var GroupId = new LMS_Lexicon2015.Models.ApplicationDbContext().Users.Where(u => u.Email == User.Identity.Name).FirstOrDefault().GroupId;
     ViewBag.GroupId = GroupId;
 

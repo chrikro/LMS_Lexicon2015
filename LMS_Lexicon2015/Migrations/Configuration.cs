@@ -44,39 +44,58 @@ namespace LMS_Lexicon2015.Migrations
             var groups = new[] {
                 new Group { Name = ".net Maj 2015", Description = "Text text text text", StartDate = new DateTime(2015,11,20), EndDate = new DateTime(2015,12,24)  },
                 new Group { Name = ".net Sep 2015", Description = "Text text text text", StartDate = new DateTime(2015, 12, 20), EndDate = new DateTime(2016, 12, 18) },
+                new Group { Name = "Java Sep 2015", Description = "Text text text text", StartDate = new DateTime(2015, 12, 20), EndDate = new DateTime(2016, 12, 21) },
                 new Group { Name = ".net Feb 2016", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16) }
             };
 
             context.Groups.AddOrUpdate(g => g.Name, groups);
             context.SaveChanges();
-            /////----------------------
+            /////-------------------------------------------------------------------------------------------
 
             //Nytt skapa användare med hash lösenord om det inte finns  
             var store = new UserStore<ApplicationUser>(context);
             var UserManager = new UserManager<ApplicationUser>(store);
 
-
-            if (UserManager.FindByEmail("nisaw99@hotmail.com") == null)
-            {
+            //user 1
+            if (UserManager.FindByEmail("nisaw99@hotmail.com") == null)   {
                 var user = new ApplicationUser { UserName = "nisaw99@hotmail.com", Email = "nisaw99@hotmail.com", FirstName = "Kalle", LastName = "Anka", GroupId = groups[1].Id };
                 UserManager.Create(user, "hej999");
                 context.SaveChanges();
             }
-            context.SaveChanges();
-
             var roleKeeper = UserManager.FindByEmail("nisaw99@hotmail.com");
             UserManager.AddToRole(roleKeeper.Id, "Lärare");  
 
-            if (UserManager.FindByEmail("chrikro129@gmail.com") == null)
-            {
-                var user = new ApplicationUser { UserName = "chrikro129@gmail.com", Email = "chrikro129@gmail.com", FirstName = "Christina", LastName = "Kronblad", GroupId = groups[0].Id };
+            //user 2
+            if (UserManager.FindByEmail("chrikro129@gmail.com") == null) {
+                var user = new ApplicationUser { UserName = "chrikro129@gmail.com", Email = "chrikro129@gmail.com", FirstName = "Christina", LastName = "XXX", GroupId = groups[0].Id };
                 UserManager.Create(user, "hej999");
+                context.SaveChanges();
             }
-            context.SaveChanges();
-
             roleKeeper = UserManager.FindByEmail("chrikro129@gmail.com");
             UserManager.AddToRole(roleKeeper.Id, "Elev");
 
+            //user 3
+            if (UserManager.FindByEmail("jultomten@home.se") == null)
+            {
+                var user = new ApplicationUser { UserName = "jultomten@nordpoolen.org", Email = "jultomten@nordpoolen.org", FirstName = "Tomte", LastName = "von Nordpoolen", GroupId = groups[1].Id };
+                UserManager.Create(user, "hej999");
+                context.SaveChanges();
+            }
+            roleKeeper = UserManager.FindByEmail("jultomten@nordpoolen.org");
+            UserManager.AddToRole(roleKeeper.Id, "Elev");
+
+            //user 4
+            if (UserManager.FindByEmail("lucia@roma.it") == null)
+            {
+                var user = new ApplicationUser { UserName = "lucia@roma.it", Email = "lucia@roma.it", FirstName = "Lucia", LastName = "von Roma", GroupId = groups[0].Id };
+                UserManager.Create(user, "hej999");
+                context.SaveChanges();
+            }
+            roleKeeper = UserManager.FindByEmail("lucia@roma.it");
+            UserManager.AddToRole(roleKeeper.Id, "Lärare");
+
+
+            context.SaveChanges();
             /////----------------------
             //kurser
             var courses = new[] {
@@ -84,6 +103,8 @@ namespace LMS_Lexicon2015.Migrations
                 new CourseOccasion { Name = "Angular JS", Description = "Text text text text", StartDate = new DateTime(2016, 02, 27), EndDate = new DateTime(2016, 06, 16), GroupId = groups[0].Id  },
                 new CourseOccasion { Name = "Test", Description = "Text text text text", StartDate = new DateTime(2016, 02, 26), EndDate = new DateTime(2016, 06, 17), GroupId = groups[1].Id  },
                 new CourseOccasion { Name = "SQL", Description = "Text text text text", StartDate = new DateTime(2016, 02, 25), EndDate = new DateTime(2016, 06, 18), GroupId = groups[0].Id  },
+                new CourseOccasion { Name = "JQuery", Description = "Text text text text", StartDate = new DateTime(2015, 12, 27), EndDate = new DateTime(2016, 01, 02), GroupId = groups[2].Id  },
+                new CourseOccasion { Name = "Git/Versionshantering", Description = "Text text text text", StartDate = new DateTime(2016, 01, 10), EndDate = new DateTime(2016, 06, 18), GroupId = groups[2].Id  },
                 new CourseOccasion { Name = "Nuvarande", Description = "Hej Hopp", StartDate = new DateTime(2015, 12, 03), EndDate = new DateTime(2015, 12, 20), GroupId = groups[0].Id  }
             };
 
@@ -96,6 +117,8 @@ namespace LMS_Lexicon2015.Migrations
             var activitys = new[] {
                 new Activity{ Name = activityTypes[0].Name, Description = "text text", StartDate = new DateTime(2016,02,28), EndDate = new DateTime(2016,06,16), CourseId = courses[4].Id },
                 new Activity{ Name = activityTypes[1].Name, Description = "text text", StartDate = new DateTime(2016,06,18), EndDate = new DateTime(2016,06,20), CourseId = courses[4].Id },
+                new Activity{ Name = activityTypes[2].Name, Description = "text text", StartDate = new DateTime(2016,06,18), EndDate = new DateTime(2016,06,23), CourseId = courses[3].Id },
+                new Activity{ Name = activityTypes[0].Name, Description = "text text", StartDate = new DateTime(2016,05,18), EndDate = new DateTime(2016,06,10), CourseId = courses[3].Id },
                 new Activity{ Name = activityTypes[0].Name, Description = "text text", StartDate = new DateTime(2016,06,17), EndDate = new DateTime(2016,06,22), CourseId = courses[4].Id }
            };
 
