@@ -385,6 +385,15 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.GroupName = "Gruppnamn";
+            ViewBag.RoleHeader = "Roll";
+            ViewBag.EmailHeader = "Epost";
+            ViewBag.PhoneHeader = "Mobilnummer";
+            ViewBag.UserName = "Användarnamn";
+
+
+
+
             return View(applicationUser);
         }
 
