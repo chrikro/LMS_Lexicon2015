@@ -42,7 +42,7 @@ namespace LMS_Lexicon2015.Migrations
             /////----------------------
             //grupper
             var groups = new[] {
-                new Group { Name = ".net Maj 2015", Description = "Text text text text", StartDate = new DateTime(2015,12,20), EndDate = new DateTime(2016,08,18)  },
+                new Group { Name = ".net Maj 2015", Description = "Text text text text", StartDate = new DateTime(2015,11,20), EndDate = new DateTime(2015,12,24)  },
                 new Group { Name = ".net Sep 2015", Description = "Text text text text", StartDate = new DateTime(2015, 12, 20), EndDate = new DateTime(2016, 12, 18) },
                 new Group { Name = ".net Feb 2016", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16) }
             };
@@ -58,7 +58,7 @@ namespace LMS_Lexicon2015.Migrations
 
             if (UserManager.FindByEmail("nisaw99@hotmail.com") == null)
             {
-                var user = new ApplicationUser { UserName = "nisaw99@hotmail.com", Email = "nisaw99@hotmail.com", FirstName = "Kalle", LastName = "Anka", GroupId = null };
+                var user = new ApplicationUser { UserName = "nisaw99@hotmail.com", Email = "nisaw99@hotmail.com", FirstName = "Kalle", LastName = "Anka", GroupId = groups[1].Id };
                 UserManager.Create(user, "hej999");
                 context.SaveChanges();
             }
@@ -69,7 +69,7 @@ namespace LMS_Lexicon2015.Migrations
 
             if (UserManager.FindByEmail("chrikro129@gmail.com") == null)
             {
-                var user = new ApplicationUser { UserName = "chrikro129@gmail.com", Email = "chrikro129@gmail.com", FirstName = "Christina", LastName = "Kronblad", GroupId = groups[1].Id };
+                var user = new ApplicationUser { UserName = "chrikro129@gmail.com", Email = "chrikro129@gmail.com", FirstName = "Christina", LastName = "Kronblad", GroupId = groups[0].Id };
                 UserManager.Create(user, "hej999");
             }
             context.SaveChanges();
@@ -81,9 +81,10 @@ namespace LMS_Lexicon2015.Migrations
             //kurser
             var courses = new[] {
                 new CourseOccasion { Name = "csharp", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16), GroupId = groups[0].Id  },
-                 new CourseOccasion { Name = "Angular JS", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16), GroupId = groups[0].Id  },
-                new CourseOccasion { Name = "Test", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16), GroupId = groups[1].Id  },
-                new CourseOccasion { Name = "SQL", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16), GroupId = groups[0].Id  }
+                new CourseOccasion { Name = "Angular JS", Description = "Text text text text", StartDate = new DateTime(2016, 02, 27), EndDate = new DateTime(2016, 06, 16), GroupId = groups[0].Id  },
+                new CourseOccasion { Name = "Test", Description = "Text text text text", StartDate = new DateTime(2016, 02, 26), EndDate = new DateTime(2016, 06, 17), GroupId = groups[1].Id  },
+                new CourseOccasion { Name = "SQL", Description = "Text text text text", StartDate = new DateTime(2016, 02, 25), EndDate = new DateTime(2016, 06, 18), GroupId = groups[0].Id  },
+                new CourseOccasion { Name = "Nuvarande", Description = "Hej Hopp", StartDate = new DateTime(2015, 12, 03), EndDate = new DateTime(2015, 12, 20), GroupId = groups[0].Id  }
             };
 
             context.CourseOccasions.AddOrUpdate(co => co.Name, courses);
@@ -95,7 +96,7 @@ namespace LMS_Lexicon2015.Migrations
             var activitys = new[] {
                 new Activity{ Name = activityTypes[0].Name, Description = "text text", StartDate = new DateTime(2016,02,28), EndDate = new DateTime(2016,06,16), CourseId = courses[0].Id },
                 new Activity{ Name = activityTypes[1].Name, Description = "text text", StartDate = new DateTime(2016,06,18), EndDate = new DateTime(2016,06,20), CourseId = courses[0].Id },
-                new Activity{ Name = activityTypes[0].Name, Description = "text text", StartDate = new DateTime(2016,06,18), EndDate = new DateTime(2016,06,22), CourseId = courses[0].Id }
+                new Activity{ Name = activityTypes[0].Name, Description = "text text", StartDate = new DateTime(2016,06,17), EndDate = new DateTime(2016,06,22), CourseId = courses[0].Id }
            };
 
             context.Activitys.AddOrUpdate(at => at.EndDate, activitys);

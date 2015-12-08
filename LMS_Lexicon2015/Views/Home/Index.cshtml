@@ -17,7 +17,7 @@
     
     var GroupId = new LMS_Lexicon2015.Models.ApplicationDbContext().Users.Where(u => u.Email == User.Identity.Name).FirstOrDefault().GroupId;
     ViewBag.GroupId = GroupId;
-    @Html.Partial("../Groups/_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId).ToList())
+    @Html.Partial("../Groups/_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId && o.StartDate < DateTime.Today && o.EndDate > DateTime.Today).ToList())
     <div>mellanrum</div>
     @*@Html.Partial("../Users/PartitialGroup/" + GroupId, new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId).ToList())*@
      @*@Html.Partial("../Users/PartitialGroup", new {id = GroupId})*@
