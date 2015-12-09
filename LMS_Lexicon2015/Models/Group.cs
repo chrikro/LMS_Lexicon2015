@@ -11,7 +11,7 @@ namespace LMS_Lexicon2015.Models
         public int Id { get; set; }
 
         [Required]
-        [StringLength(1000, ErrorMessage = "{0} måste vara minst {2} tecken och max 1000 tecken långt.", MinimumLength = 3)]
+        [StringLength(3000, ErrorMessage = "{0} måste vara minst {2} tecken och max 1000 tecken långt.", MinimumLength = 3)]
         [Display(Name = "Namn")]
         public string Name { get; set; }
 
