@@ -439,10 +439,14 @@ namespace LMS_Lexicon2015.Controllers
                     var file = HttpContext.Request.Files["files" + i];
                     if (file != null)
                     {
+                        // var slupm
+
                         var fileSavePath = Path.Combine(Server.MapPath("/Files"), file.FileName);
                         file.SaveAs(fileSavePath);
                     }
                 }
+
+
             }
             return View();
         }

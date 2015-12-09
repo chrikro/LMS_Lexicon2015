@@ -63,12 +63,7 @@
     </div>
 }
 
-@*<div>
-    <b>Gruppens StartDate:</b>@Model.Group.StartDate.ToShortDateString()
-    <b>Gruppens Slut Date:</b>@Model.Group.EndDate.ToShortDateString()
-</div>*@
-
-@*<div>
+<div>
     <b>Gruppens StartDate:</b>
     @{ var db = new LMS_Lexicon2015.Models.ApplicationDbContext();
      if (ViewBag.GroupId != null)
@@ -83,7 +78,7 @@
         @db.Groups.Where(g => g.Id == groupId).FirstOrDefault().EndDate.ToShortDateString();
 
      }}
-</div>*@
+</div>
 
 
 

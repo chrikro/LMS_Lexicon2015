@@ -115,7 +115,7 @@ namespace LMS_Lexicon2015.Controllers
 
         // GET: CourseOccasions/Edit/5
         [Authorize(Roles = "Lärare")]
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, int? id2)
         {
             if (id == null)
             {
@@ -126,7 +126,8 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.GroupId = id;  //fel
+            ViewBag.courseOccasionId = id;
+            ViewBag.groupId = id2;
     
             return View(courseOccasion);
         }
