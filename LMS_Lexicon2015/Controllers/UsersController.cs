@@ -436,13 +436,20 @@ namespace LMS_Lexicon2015.Controllers
             {
                 for (int i = 0; i <= HttpContext.Request.Files.Count; i++)
                 {
-                    var file = HttpContext.Request.Files["files" + i];
-                    if (file != null)
+                    var uploadFile = HttpContext.Request.Files["files" + i];
+                    if (uploadFile != null)
                     {
-                        // var slupm
 
-                        var fileSavePath = Path.Combine(Server.MapPath("/Files"), file.FileName);
-                        file.SaveAs(fileSavePath);
+                        //spara uploadFile i databas
+                        // spara GetRandomFileName i databas
+
+                        string fileExtension = uploadFile.FileName.Split('.').Last();
+                        var fileName = Path.GetRandomFileName() + '.' + fileExtension;
+
+
+                        var fileSavePath = Path.Combine(Server.MapPath("/Files"), fileName);
+
+                        uploadFile.SaveAs(fileSavePath);
                     }
                 }
 
