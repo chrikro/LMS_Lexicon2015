@@ -33,6 +33,10 @@ namespace LMS_Lexicon2015.Models
 
         [Display(Name = "AktivitetsId")]
         public int ActivityId { get; set; }
+
+
+        //spara uploadFile i databas
+        // spara GetRandomFileName i databas
     }
 }
 
