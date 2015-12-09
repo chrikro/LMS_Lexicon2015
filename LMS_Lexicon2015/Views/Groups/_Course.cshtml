@@ -14,7 +14,9 @@
 
     @if (User.IsInRole("Lärare"))
     {
+        if (ViewBag.groupId != null) { 
         @Html.ActionLink("Lägg till en ny kurs", "Create/" + (int)ViewBag.groupId, "CourseOccasions")
+        }
     }
 
     @* @Html.ActionLink("Lägg till en ny kurs", "Create/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "CourseOccasions")*@
