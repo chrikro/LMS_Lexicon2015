@@ -101,11 +101,11 @@ namespace LMS_Lexicon2015.Migrations
             var courses = new[] {
                 new CourseOccasion { Name = "csharp", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16), GroupId = groups[0].Id  },
                 new CourseOccasion { Name = "Angular JS", Description = "Text text text text", StartDate = new DateTime(2016, 02, 27), EndDate = new DateTime(2016, 06, 16), GroupId = groups[0].Id  },
-                new CourseOccasion { Name = "Test", Description = "Text text text text", StartDate = new DateTime(2016, 02, 26), EndDate = new DateTime(2016, 06, 17), GroupId = groups[1].Id  },
+                new CourseOccasion { Name = "Testigen", Description = "Text text text text", StartDate = new DateTime(2016, 02, 26), EndDate = new DateTime(2016, 06, 17), GroupId = groups[1].Id  },
                 new CourseOccasion { Name = "SQL", Description = "Text text text text", StartDate = new DateTime(2016, 02, 25), EndDate = new DateTime(2016, 06, 18), GroupId = groups[0].Id  },
                 new CourseOccasion { Name = "JQuery", Description = "Text text text text", StartDate = new DateTime(2015, 12, 27), EndDate = new DateTime(2016, 01, 02), GroupId = groups[2].Id  },
                 new CourseOccasion { Name = "Git/Versionshantering", Description = "Text text text text", StartDate = new DateTime(2016, 01, 10), EndDate = new DateTime(2016, 06, 18), GroupId = groups[2].Id  },
-                new CourseOccasion { Name = "Nuvarande", Description = "Hej Hopp", StartDate = new DateTime(2015, 12, 03), EndDate = new DateTime(2015, 12, 20), GroupId = groups[0].Id  }
+                new CourseOccasion { Name = "Nuvarande", Description = "Hej Hopp", StartDate = new DateTime(2015, 12, 03), EndDate = new DateTime(2015, 12, 25), GroupId = groups[0].Id  }
             };
 
             context.CourseOccasions.AddOrUpdate(co => co.Name, courses);
