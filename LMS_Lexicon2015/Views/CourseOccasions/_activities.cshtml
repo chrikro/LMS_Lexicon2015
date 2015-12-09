@@ -13,7 +13,7 @@
 <p>
     @if (User.IsInRole("Lärare"))
     {
-        @Html.ActionLink("Lägg till en ny aktiviteter", "Create/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")
+        @Html.ActionLink("Lägg till en ny aktivitet", "Create/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")
     }
 </p>
 <table class="table">
@@ -30,9 +30,6 @@
         <th>
             @Html.DisplayNameFor(model => model.EndDate)
         </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.CourseId)
-            </th>*@
         <th></th>
     </tr>
 
@@ -43,19 +40,15 @@
 
                 @if (checkDateNow.Date >= item.StartDate.Date && checkDateNow.Date <= item.EndDate.Date)
                 {
-                    <span style="color:green; font-size: 18pt;">*</span>
+                    <span class="content_info_ok">*</span>
                     checkDateNowExplanation = true;
                 }
 
                 @*@Html.DisplayFor(modelItem => item.Name)*@
                 @Html.ActionLink(item.Name, "Details/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")
 
-
             </td>
             <td>
-
-
-
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
 
@@ -74,15 +67,6 @@
                 @Html.DisplayFor(modelItem => item.EndDate.Year)
             </td>
 
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.StartDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EndDate)
-                </td>*@
-            <td>
-                @*@Html.DisplayFor(modelItem => item.Id)*@
-            </td>
             <td>
 
                 @*@Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |
@@ -101,6 +85,6 @@
 </table>
 @if (!checkDateNowExplanation == false)
 {
-    <span style="color:green; font-size: 18pt;">*</span><span style="color:green;"> Dagens datum</span>
+    <span class="content_info_ok">*</span><span class="content_info_ok_normal"> Dagens datum</span>
     <br />
 }

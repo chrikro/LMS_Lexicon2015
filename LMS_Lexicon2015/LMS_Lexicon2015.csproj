@@ -236,6 +236,10 @@
     <Compile Include="Migrations\201512091047284_ökat_fältlängd_för_beskrivningsfält_till_3000tkn_i_modelerna.Designer.cs">
       <DependentUpon>201512091047284_ökat_fältlängd_för_beskrivningsfält_till_3000tkn_i_modelerna.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512091349181_name i activity-model har fått längdkontroll.cs" />
+    <Compile Include="Migrations\201512091349181_name i activity-model har fått längdkontroll.Designer.cs">
+      <DependentUpon>201512091349181_name i activity-model har fått längdkontroll.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -398,6 +402,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512091047284_ökat_fältlängd_för_beskrivningsfält_till_3000tkn_i_modelerna.resx">
       <DependentUpon>201512091047284_ökat_fältlängd_för_beskrivningsfält_till_3000tkn_i_modelerna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512091349181_name i activity-model har fått längdkontroll.resx">
+      <DependentUpon>201512091349181_name i activity-model har fått längdkontroll.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

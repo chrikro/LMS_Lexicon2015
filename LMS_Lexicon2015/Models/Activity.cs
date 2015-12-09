@@ -12,6 +12,9 @@ namespace LMS_Lexicon2015.Models
     public class Activity
     {
         public int Id { get; set; }
+
+        [Display(Name = "Namn")]
+        [StringLength(100, ErrorMessage = "{0} måste vara minst {2} tecken och max 100 tecken långt.", MinimumLength = 2)]
         public string Name { get; set; }
 
         [Required]
