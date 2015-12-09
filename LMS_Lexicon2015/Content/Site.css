@@ -19,6 +19,7 @@
 .navbar-inverse .navbar-nav > li > a {
     /*color: #41dd92;*/
     color: #8eff96;
+    /*background-color: #222222;*/ /*avvaktar*/
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -42,8 +43,10 @@ hr {
 .jumbotron {
   padding: 5px;
   margin-bottom: 10px;
+  /*position:relative;*/ /*blev inge bättre*/
 }
 
 .Grey_Button {
     color: grey;
 }
+
