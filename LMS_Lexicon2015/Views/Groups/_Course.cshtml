@@ -34,9 +34,9 @@
         <th>
             @Html.DisplayNameFor(model => model.EndDate)
         </th>
-        <th>
+        @*<th>
             Antalet aktiviteter
-        </th>
+        </th>*@
         @*<th>
                 @Html.DisplayNameFor(model => model.GroupId)
             </th>*@
@@ -98,9 +98,9 @@
                 @if (User.IsInRole("Lärare"))
                         { <span>|</span> }*@
 
-            <td>
+            @*<td>
                 @item.Activities.Count
-            </td>
+            </td>*@
 
             @if (User.IsInRole("Lärare"))
             {
