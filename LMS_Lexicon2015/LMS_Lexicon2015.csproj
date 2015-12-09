@@ -224,6 +224,14 @@
     <Compile Include="Migrations\201512041545319_Required2.Designer.cs">
       <DependentUpon>201512041545319_Required2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512091009497_fler_tecken_beskrivningsfält.cs" />
+    <Compile Include="Migrations\201512091009497_fler_tecken_beskrivningsfält.Designer.cs">
+      <DependentUpon>201512091009497_fler_tecken_beskrivningsfält.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512091042364_Ökat_fältlängd_för_beskrivning_i_fler_modeller.cs" />
+    <Compile Include="Migrations\201512091042364_Ökat_fältlängd_för_beskrivning_i_fler_modeller.Designer.cs">
+      <DependentUpon>201512091042364_Ökat_fältlängd_för_beskrivning_i_fler_modeller.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -375,6 +383,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512041545319_Required2.resx">
       <DependentUpon>201512041545319_Required2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512091009497_fler_tecken_beskrivningsfält.resx">
+      <DependentUpon>201512091009497_fler_tecken_beskrivningsfält.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512091042364_Ökat_fältlängd_för_beskrivning_i_fler_modeller.resx">
+      <DependentUpon>201512091042364_Ökat_fältlängd_för_beskrivning_i_fler_modeller.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
