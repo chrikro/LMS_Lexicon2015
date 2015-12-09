@@ -16,7 +16,7 @@
 
         @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(model => model.Role, "Role", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Role, "Roll", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
 
             @Html.DropDownList("Role", null, htmlAttributes: new { @class = "form-control", @onchange = "ChangeRoll('GroupTeacher')" })
@@ -25,7 +25,7 @@
     </div>
 
     <div class="form-group" id="GroupStudent">
-        @Html.LabelFor(model => model.GroupStudent, "Group", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.GroupStudent, "Grupp", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("GroupStudent", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.GroupStudent, "", new { @class = "text-danger" })
