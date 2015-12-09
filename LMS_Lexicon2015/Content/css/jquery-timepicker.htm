@@ -1,0 +1,2058 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class=" is-copy-enabled">
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=1020">
+    
+    
+    <title>jonthornton/jquery-timepicker</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-144.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144.png">
+    <meta property="fb:app_id" content="1401488693436528">
+
+      <meta content="@github" name="twitter:site" /><meta content="summary" name="twitter:card" /><meta content="jonthornton/jquery-timepicker" name="twitter:title" /><meta content="jquery-timepicker - A javascript timepicker plugin for jQuery inspired by Google Calendar." name="twitter:description" /><meta content="https://avatars3.githubusercontent.com/u/196831?v=3&amp;s=400" name="twitter:image:src" />
+      <meta content="GitHub" property="og:site_name" /><meta content="object" property="og:type" /><meta content="https://avatars3.githubusercontent.com/u/196831?v=3&amp;s=400" property="og:image" /><meta content="jonthornton/jquery-timepicker" property="og:title" /><meta content="https://github.com/jonthornton/jquery-timepicker" property="og:url" /><meta content="jquery-timepicker - A javascript timepicker plugin for jQuery inspired by Google Calendar." property="og:description" />
+      <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+    <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+    <link rel="assets" href="https://assets-cdn.github.com/">
+    <link rel="web-socket" href="wss://live.github.com/_sockets/MTQ5OTY2MDQ6NDNmNGRhODI4YmEwZTA2ZjBmNTM1ZDg2OWI0N2JlMGE6ZDllMGQyNzc0MmM2MjliMjYxNTcyYTAxNTliN2FlOTZkNDRmOWRmYTMyZThmMDNlOWUwNjNhZmUwNTcxMWMwNQ==--720131fcebe4441b16d34991c34a050dcd63c8ef">
+    <meta name="pjax-timeout" content="1000">
+    <link rel="sudo-modal" href="/sessions/sudo_modal">
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="selected-link" value="repo_source" data-pjax-transient>
+
+    <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+    <meta name="google-analytics" content="UA-3769691-2">
+
+<meta content="collector.githubapp.com" name="octolytics-host" /><meta content="github" name="octolytics-app-id" /><meta content="5D9E7DBA:2F41:278B995:56683E48" name="octolytics-dimension-request_id" /><meta content="14996604" name="octolytics-actor-id" /><meta content="nille99" name="octolytics-actor-login" /><meta content="e88a1787a925c6b5c5dad35fbb4147507007456cf93bf3c150d24e6d92360e2d" name="octolytics-actor-hash" />
+<meta content="/&lt;user-name&gt;/&lt;repo-name&gt;" data-pjax-transient="true" name="analytics-location" />
+<meta content="Rails, view, files#disambiguate" data-pjax-transient="true" name="analytics-event" />
+
+
+  <meta class="js-ga-set" name="dimension1" content="Logged In">
+
+
+
+        <meta name="hostname" content="github.com">
+    <meta name="user-login" content="nille99">
+
+        <meta name="expected-hostname" content="github.com">
+
+      <link rel="mask-icon" href="https://assets-cdn.github.com/pinned-octocat.svg" color="#4078c0">
+      <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+
+    <meta content="168da15b87001a1915bf6ae45aa5aec2f22c8825" name="form-nonce" />
+
+    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github-e22d623d751b610e17d11f367d278f39da959fc110f2fce97536b485292df111.css" media="all" rel="stylesheet" />
+    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github2-437a4328e52a95ed09a1fa29276622738971546748cbd528b4f1bd3a5462d981.css" media="all" rel="stylesheet" />
+    
+    
+    
+
+
+    <meta http-equiv="x-pjax-version" content="936c52b5fe122be85732f548899c81e9">
+
+      
+  <meta name="description" content="jquery-timepicker - A javascript timepicker plugin for jQuery inspired by Google Calendar.">
+  <meta name="go-import" content="github.com/jonthornton/jquery-timepicker git https://github.com/jonthornton/jquery-timepicker.git">
+
+  <meta content="196831" name="octolytics-dimension-user_id" /><meta content="jonthornton" name="octolytics-dimension-user_login" /><meta content="2753802" name="octolytics-dimension-repository_id" /><meta content="jonthornton/jquery-timepicker" name="octolytics-dimension-repository_nwo" /><meta content="true" name="octolytics-dimension-repository_public" /><meta content="false" name="octolytics-dimension-repository_is_fork" /><meta content="2753802" name="octolytics-dimension-repository_network_root_id" /><meta content="jonthornton/jquery-timepicker" name="octolytics-dimension-repository_network_root_nwo" />
+  <link href="https://github.com/jonthornton/jquery-timepicker/commits/master.atom" rel="alternate" title="Recent Commits to jquery-timepicker:master" type="application/atom+xml">
+
+  </head>
+
+
+  <body class="logged_in   env-production windows vis-public">
+    <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
+
+    
+    
+    
+
+
+
+      <div class="header header-logged-in true" role="banner">
+  <div class="container clearfix">
+
+    <a class="header-logo-invertocat" href="https://github.com/" data-hotkey="g d" aria-label="Homepage" data-ga-click="Header, go to dashboard, icon:logo">
+  <span class="mega-octicon octicon-mark-github"></span>
+</a>
+
+
+      <div class="site-search repo-scope js-site-search" role="search">
+          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/jonthornton/jquery-timepicker/search" class="js-site-search-form" data-global-search-url="/search" data-repo-search-url="/jonthornton/jquery-timepicker/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <label class="js-chromeless-input-container form-control">
+    <div class="scope-badge">This repository</div>
+    <input type="text"
+      class="js-site-search-focus js-site-search-field is-clearable chromeless-input"
+      data-hotkey="s"
+      name="q"
+      placeholder="Search"
+      aria-label="Search this repository"
+      data-global-scope-placeholder="Search GitHub"
+      data-repo-scope-placeholder="Search"
+      tabindex="1"
+      autocapitalize="off">
+  </label>
+</form>
+      </div>
+
+      <ul class="header-nav left" role="navigation">
+        <li class="header-nav-item">
+          <a href="/pulls" class="js-selected-navigation-item header-nav-link" data-ga-click="Header, click, Nav menu - item:pulls context:user" data-hotkey="g p" data-selected-links="/pulls /pulls/assigned /pulls/mentioned /pulls">
+            Pull requests
+</a>        </li>
+        <li class="header-nav-item">
+          <a href="/issues" class="js-selected-navigation-item header-nav-link" data-ga-click="Header, click, Nav menu - item:issues context:user" data-hotkey="g i" data-selected-links="/issues /issues/assigned /issues/mentioned /issues">
+            Issues
+</a>        </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://gist.github.com/" data-ga-click="Header, go to gist, text:gist">Gist</a>
+          </li>
+      </ul>
+
+    
+<ul class="header-nav user-nav right" id="user-links">
+  <li class="header-nav-item">
+      <span class="js-socket-channel js-updatable-content"
+        data-channel="notification-changed:nille99"
+        data-url="/notifications/header">
+      <a href="/notifications" aria-label="You have no unread notifications" class="header-nav-link notification-indicator tooltipped tooltipped-s" data-ga-click="Header, go to notifications, icon:read" data-hotkey="g n">
+          <span class="mail-status all-read"></span>
+          <span class="octicon octicon-bell"></span>
+</a>  </span>
+
+  </li>
+
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link tooltipped tooltipped-s js-menu-target" href="/new"
+       aria-label="Create new…"
+       data-ga-click="Header, create new, icon:add">
+      <span class="octicon octicon-plus left"></span>
+      <span class="dropdown-caret"></span>
+    </a>
+
+    <div class="dropdown-menu-content js-menu-content">
+      <ul class="dropdown-menu dropdown-menu-sw">
+        
+<a class="dropdown-item" href="/new" data-ga-click="Header, create new repository">
+  New repository
+</a>
+
+
+  <a class="dropdown-item" href="/organizations/new" data-ga-click="Header, create new organization">
+    New organization
+  </a>
+
+
+
+  <div class="dropdown-divider"></div>
+  <div class="dropdown-header">
+    <span title="jonthornton/jquery-timepicker">This repository</span>
+  </div>
+    <a class="dropdown-item" href="/jonthornton/jquery-timepicker/issues/new" data-ga-click="Header, create new issue">
+      New issue
+    </a>
+
+      </ul>
+    </div>
+  </li>
+
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link name tooltipped tooltipped-sw js-menu-target" href="/nille99"
+       aria-label="View profile and more"
+       data-ga-click="Header, show menu, icon:avatar">
+      <img alt="@nille99" class="avatar" height="20" src="https://avatars2.githubusercontent.com/u/14996604?v=3&amp;s=40" width="20" />
+      <span class="dropdown-caret"></span>
+    </a>
+
+    <div class="dropdown-menu-content js-menu-content">
+      <div class="dropdown-menu  dropdown-menu-sw">
+        <div class=" dropdown-header header-nav-current-user css-truncate">
+            Signed in as <strong class="css-truncate-target">nille99</strong>
+
+        </div>
+
+
+        <div class="dropdown-divider"></div>
+
+          <a class="dropdown-item" href="/nille99" data-ga-click="Header, go to profile, text:your profile">
+            Your profile
+          </a>
+        <a class="dropdown-item" href="/stars" data-ga-click="Header, go to starred repos, text:your stars">
+          Your stars
+        </a>
+        <a class="dropdown-item" href="/explore" data-ga-click="Header, go to explore, text:explore">
+          Explore
+        </a>
+          <a class="dropdown-item" href="/integrations" data-ga-click="Header, go to integrations, text:integrations">
+            Integrations
+          </a>
+        <a class="dropdown-item" href="https://help.github.com" data-ga-click="Header, go to help, text:help">
+          Help
+        </a>
+
+          <div class="dropdown-divider"></div>
+
+          <a class="dropdown-item" href="/settings/profile" data-ga-click="Header, go to settings, icon:settings">
+            Settings
+          </a>
+
+          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/logout" class="logout-form" data-form-nonce="168da15b87001a1915bf6ae45aa5aec2f22c8825" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="KCk0qAKDbQZfrZ01mR8EAfLDsbn+x/LXN+Kfw98daaBZL511+3dNLBFFOjySZfU7ruVd2PzxDNXwLv+6LmB2Xg==" /></div>
+            <button class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout">
+              Sign out
+            </button>
+</form>
+      </div>
+    </div>
+  </li>
+</ul>
+
+
+    
+  </div>
+</div>
+
+      
+
+      
+
+
+    <div id="start-of-content" class="accessibility-aid"></div>
+
+      <div id="js-flash-container">
+</div>
+
+
+    <div role="main" class="main-content">
+        <div itemscope itemtype="http://schema.org/WebPage">
+    <div id="js-repo-pjax-container" class="context-loader-container js-repo-nav-next" data-pjax-container>
+      
+<div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav">
+  <div class="container repohead-details-container">
+
+    
+
+<ul class="pagehead-actions">
+
+  <li>
+        <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-form-nonce="168da15b87001a1915bf6ae45aa5aec2f22c8825" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="5Im/lSKCPeLxw53Qba9B6YuuprINZ2xHoUMgPOP2WCApKpNRRH3z9grofjxUOgpPtUBp2TM6d4O/V1MGkbCaUg==" /></div>      <input id="repository_id" name="repository_id" type="hidden" value="2753802" />
+
+        <div class="select-menu js-menu-container js-select-menu">
+          <a href="/jonthornton/jquery-timepicker/subscription"
+            class="btn btn-sm btn-with-count select-menu-button js-menu-target" role="button" tabindex="0" aria-haspopup="true"
+            data-ga-click="Repository, click Watch settings, action:files#disambiguate">
+            <span class="js-select-button">
+              <span class="octicon octicon-eye"></span>
+              Watch
+            </span>
+          </a>
+          <a class="social-count js-social-count" href="/jonthornton/jquery-timepicker/watchers">
+            63
+          </a>
+
+        <div class="select-menu-modal-holder">
+          <div class="select-menu-modal subscription-menu-modal js-menu-content" aria-hidden="true">
+            <div class="select-menu-header">
+              <span class="octicon octicon-x js-menu-close" role="button" aria-label="Close"></span>
+              <span class="select-menu-title">Notifications</span>
+            </div>
+
+              <div class="select-menu-list js-navigation-container" role="menu">
+
+                <div class="select-menu-item js-navigation-item selected" role="menuitem" tabindex="0">
+                  <span class="select-menu-item-icon octicon octicon-check"></span>
+                  <div class="select-menu-item-text">
+                    <input checked="checked" id="do_included" name="do" type="radio" value="included" />
+                    <span class="select-menu-item-heading">Not watching</span>
+                    <span class="description">Be notified when participating or @mentioned.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <span class="octicon octicon-eye"></span>
+                      Watch
+                    </span>
+                  </div>
+                </div>
+
+                <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                  <span class="select-menu-item-icon octicon octicon octicon-check"></span>
+                  <div class="select-menu-item-text">
+                    <input id="do_subscribed" name="do" type="radio" value="subscribed" />
+                    <span class="select-menu-item-heading">Watching</span>
+                    <span class="description">Be notified of all conversations.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <span class="octicon octicon-eye"></span>
+                      Unwatch
+                    </span>
+                  </div>
+                </div>
+
+                <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                  <span class="select-menu-item-icon octicon octicon-check"></span>
+                  <div class="select-menu-item-text">
+                    <input id="do_ignore" name="do" type="radio" value="ignore" />
+                    <span class="select-menu-item-heading">Ignoring</span>
+                    <span class="description">Never be notified.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <span class="octicon octicon-mute"></span>
+                      Stop ignoring
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+</form>
+  </li>
+
+  <li>
+    
+  <div class="js-toggler-container js-social-container starring-container ">
+
+    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/jonthornton/jquery-timepicker/unstar" class="js-toggler-form starred js-unstar-button" data-form-nonce="168da15b87001a1915bf6ae45aa5aec2f22c8825" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="jquWTGlrcAVoVXtSXngNYCtaOHQ/rjnA+okWfZ355IkwlPbCDeFgstyhVL1vtHz79byZ62Mr6q0W3tpIeXJJHQ==" /></div>
+      <button
+        class="btn btn-sm btn-with-count js-toggler-target"
+        aria-label="Unstar this repository" title="Unstar jonthornton/jquery-timepicker"
+        data-ga-click="Repository, click unstar button, action:files#disambiguate; text:Unstar">
+        <span class="octicon octicon-star"></span>
+        Unstar
+      </button>
+        <a class="social-count js-social-count" href="/jonthornton/jquery-timepicker/stargazers">
+          1,201
+        </a>
+</form>
+    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/jonthornton/jquery-timepicker/star" class="js-toggler-form unstarred js-star-button" data-form-nonce="168da15b87001a1915bf6ae45aa5aec2f22c8825" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="5iAEKThIotxpfMBqQtOZiTB9d16dBIVWgoIzZ1PeolHQ9S0cUF0xidxua8gbsVpuqiJPbaE5jFasO2/rYn8w6w==" /></div>
+      <button
+        class="btn btn-sm btn-with-count js-toggler-target"
+        aria-label="Star this repository" title="Star jonthornton/jquery-timepicker"
+        data-ga-click="Repository, click star button, action:files#disambiguate; text:Star">
+        <span class="octicon octicon-star"></span>
+        Star
+      </button>
+        <a class="social-count js-social-count" href="/jonthornton/jquery-timepicker/stargazers">
+          1,201
+        </a>
+</form>  </div>
+
+  </li>
+
+  <li>
+          <a href="#fork-destination-box" class="btn btn-sm btn-with-count"
+              title="Fork your own copy of jonthornton/jquery-timepicker to your account"
+              aria-label="Fork your own copy of jonthornton/jquery-timepicker to your account"
+              rel="facebox"
+              data-ga-click="Repository, show fork modal, action:files#disambiguate; text:Fork">
+            <span class="octicon octicon-repo-forked"></span>
+            Fork
+          </a>
+
+          <div id="fork-destination-box" style="display: none;">
+            <h2 class="facebox-header" data-facebox-id="facebox-header">Where should we fork this repository?</h2>
+            <include-fragment src=""
+                class="js-fork-select-fragment fork-select-fragment"
+                data-url="/jonthornton/jquery-timepicker/fork?fragment=1">
+              <img alt="Loading" height="64" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-128.gif" width="64" />
+            </include-fragment>
+          </div>
+
+    <a href="/jonthornton/jquery-timepicker/network" class="social-count">
+      382
+    </a>
+  </li>
+</ul>
+
+    <h1 itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="entry-title public ">
+  <span class="octicon octicon-repo"></span>
+  <span class="author"><a href="/jonthornton" class="url fn" itemprop="url" rel="author"><span itemprop="title">jonthornton</span></a></span><!--
+--><span class="path-divider">/</span><!--
+--><strong><a href="/jonthornton/jquery-timepicker" data-pjax="#js-repo-pjax-container">jquery-timepicker</a></strong>
+
+  <span class="page-context-loader">
+    <img alt="" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+  </span>
+
+</h1>
+
+  </div>
+  <div class="container">
+    
+<nav class="reponav js-repo-nav js-sidenav-container-pjax js-octicon-loaders"
+     role="navigation"
+     data-pjax="#js-repo-pjax-container">
+
+  <a href="/jonthornton/jquery-timepicker" aria-label="Code" aria-selected="true" class="js-selected-navigation-item selected reponav-item" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches /jonthornton/jquery-timepicker">
+    <span class="octicon octicon-code"></span>
+    Code
+</a>
+    <a href="/jonthornton/jquery-timepicker/issues" class="js-selected-navigation-item reponav-item" data-hotkey="g i" data-selected-links="repo_issues repo_labels repo_milestones /jonthornton/jquery-timepicker/issues">
+      <span class="octicon octicon-issue-opened"></span>
+      Issues
+      <span class="counter">10</span>
+</a>
+  <a href="/jonthornton/jquery-timepicker/pulls" class="js-selected-navigation-item reponav-item" data-hotkey="g p" data-selected-links="repo_pulls /jonthornton/jquery-timepicker/pulls">
+    <span class="octicon octicon-git-pull-request"></span>
+    Pull requests
+    <span class="counter">2</span>
+</a>
+    <a href="/jonthornton/jquery-timepicker/wiki" class="js-selected-navigation-item reponav-item" data-hotkey="g w" data-selected-links="repo_wiki /jonthornton/jquery-timepicker/wiki">
+      <span class="octicon octicon-book"></span>
+      Wiki
+</a>
+  <a href="/jonthornton/jquery-timepicker/pulse" class="js-selected-navigation-item reponav-item" data-selected-links="pulse /jonthornton/jquery-timepicker/pulse">
+    <span class="octicon octicon-pulse"></span>
+    Pulse
+</a>
+  <a href="/jonthornton/jquery-timepicker/graphs" class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors /jonthornton/jquery-timepicker/graphs">
+    <span class="octicon octicon-graph"></span>
+    Graphs
+</a>
+
+</nav>
+
+  </div>
+</div>
+
+<div class="container new-discussion-timeline experiment-repo-nav">
+  <div class="repository-content">
+
+    
+<div class="repository-meta js-details-container">
+  <span class="repository-meta-content">
+        A javascript timepicker plugin for jQuery inspired by Google Calendar.
+        <a href="http://jonthornton.github.com/jquery-timepicker" rel="nofollow">http://jonthornton.github.com/jquery-timepicker</a>
+  </span>
+
+</div>
+
+
+<div class="overall-summary overall-summary-bottomless">
+
+  <div class="stats-switcher-viewport js-stats-switcher-viewport">
+    <div class="stats-switcher-wrapper">
+    <ul class="numbers-summary">
+      <li class="commits">
+        <a data-pjax href="/jonthornton/jquery-timepicker/commits/master">
+            <span class="octicon octicon-history"></span>
+            <span class="num text-emphasized">
+              364
+            </span>
+            commits
+        </a>
+      </li>
+      <li>
+        <a data-pjax href="/jonthornton/jquery-timepicker/branches">
+          <span class="octicon octicon-git-branch"></span>
+          <span class="num text-emphasized">
+            2
+          </span>
+          branches
+        </a>
+      </li>
+
+      <li>
+        <a data-pjax href="/jonthornton/jquery-timepicker/releases">
+          <span class="octicon octicon-tag"></span>
+          <span class="num text-emphasized">
+            85
+          </span>
+          releases
+        </a>
+      </li>
+
+      <li>
+        
+  <a href="/jonthornton/jquery-timepicker/graphs/contributors">
+    <span class="octicon octicon-organization"></span>
+    <span class="num text-emphasized">
+      44
+    </span>
+    contributors
+  </a>
+      </li>
+    </ul>
+
+      <div class="repository-lang-stats">
+        <ol class="repository-lang-stats-numbers">
+          <li>
+              <a href="/jonthornton/jquery-timepicker/search?l=javascript">
+                <span class="color-block language-color" style="background-color:#f1e05a;"></span>
+                <span class="lang">JavaScript</span>
+                <span class="percent">61.7%</span>
+              </a>
+          </li>
+          <li>
+              <a href="/jonthornton/jquery-timepicker/search?l=html">
+                <span class="color-block language-color" style="background-color:#e44b23;"></span>
+                <span class="lang">HTML</span>
+                <span class="percent">29.8%</span>
+              </a>
+          </li>
+          <li>
+              <a href="/jonthornton/jquery-timepicker/search?l=css">
+                <span class="color-block language-color" style="background-color:#563d7c;"></span>
+                <span class="lang">CSS</span>
+                <span class="percent">8.5%</span>
+              </a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  <div class="repository-lang-stats-graph js-toggle-lang-stats" title="Click for language details">
+    <span class="language-color" aria-label="JavaScript 61.7%" style="width:61.7%; background-color:#f1e05a;" itemprop="keywords">JavaScript</span>
+    <span class="language-color" aria-label="HTML 29.8%" style="width:29.8%; background-color:#e44b23;" itemprop="keywords">HTML</span>
+    <span class="language-color" aria-label="CSS 8.5%" style="width:8.5%; background-color:#563d7c;" itemprop="keywords">CSS</span>
+  </div>
+
+<include-fragment src="/jonthornton/jquery-timepicker/show_partial?partial=tree%2Frecently_touched_branches_list"></include-fragment>
+
+<div class="file-navigation in-mid-page file-navigation-new">
+  <div class="right">
+    <div class="btn-group">
+      
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/jonthornton/jquery-timepicker/new/master" class="button_to js-new-blob-form" data-form-nonce="168da15b87001a1915bf6ae45aa5aec2f22c8825" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="/84/Mm7pIjfXvzagOgWUu21DfS+/GgArtUzBDS3i3ftcY6wrUUnzYsjWQPyR+ZOjoW5iqq7imJFG5wjhUEOhVA==" /></div>
+    <button class="btn btn-sm tooltipped tooltipped-n js-new-blob-submit" type="submit"
+      data-disable-with="working…" aria-label="Fork this project and create a new file">
+      New file
+    </button>
+</form>
+
+
+      <a href="/jonthornton/jquery-timepicker/find/master"
+        class="btn btn-sm empty-icon right js-show-file-finder"
+        data-pjax
+        data-hotkey="t"
+        data-ga-click="Repository, find file, location:repo overview">
+        Find file
+      </a>
+    </div>
+      <div class="file-navigation-options" data-multiple>
+
+        <div class="file-navigation-option">
+          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/users/set_protocol" class="js-set-user-protocol-preference" data-form-nonce="168da15b87001a1915bf6ae45aa5aec2f22c8825" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="NxyBZliMAxtCC13T2CLNnViH0U5sLm18BhsXjzfRWytpaX1GpL/6l+6ObaVO1RVb9h41VKdMCYAV5UJ9v+I1Qw==" /></div>
+            <input type="hidden" name="protocol_type" value="clone">
+
+            <div class="select-menu js-menu-container js-select-menu">
+              <div class="input-group js-select-button js-zeroclipboard-container">
+                <div class="input-group-button">
+  <button type="button" class="btn btn-sm select-menu-button js-menu-target" data-ga-click="Repository, clone HTTPS, location:repo overview">
+    HTTPS
+  </button>
+</div>
+<input type="text" class="input-monospace input-mini js-zeroclipboard-target js-url-field" value="https://github.com/jonthornton/jquery-timepicker.git" readonly>
+<div class="input-group-button">
+  <button aria-label="Copy to clipboard" class="js-zeroclipboard btn btn-sm zeroclipboard-button tooltipped tooltipped-s" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+</div>
+
+              </div>
+
+              <div class="select-menu-modal-holder">
+                <div class="select-menu-modal js-menu-content" aria-hidden="true">
+                  <div class="select-menu-header">
+                    <span class="octicon octicon-x js-menu-close" role="button" aria-label="Close"></span>
+                    <span class="select-menu-title">Choose a clone URL</span>
+                  </div>
+
+                  <div class="select-menu-list js-navigation-container" role="menu">
+                      <div class="select-menu-item js-navigation-item selected" role="menuitem" tabindex="0">
+                        <span class="select-menu-item-icon octicon octicon-check"></span>
+                        <div class="select-menu-item-text">
+                          <input type="radio" name="protocol_selector" value="http" checked>
+                          <span class="select-menu-item-heading">
+                            HTTPS
+                            (recommended)
+                          </span>
+                            <span class="description">
+                              Clone with Git or checkout with SVN using the repository's web address.
+                            </span>
+                          <span class="js-select-button-text hidden-select-button-text">
+                            <div class="input-group-button">
+  <button type="button" class="btn btn-sm select-menu-button js-menu-target" data-ga-click="Repository, clone HTTPS, location:repo overview">
+    HTTPS
+  </button>
+</div>
+<input type="text" class="input-monospace input-mini js-zeroclipboard-target js-url-field" value="https://github.com/jonthornton/jquery-timepicker.git" readonly>
+<div class="input-group-button">
+  <button aria-label="Copy to clipboard" class="js-zeroclipboard btn btn-sm zeroclipboard-button tooltipped tooltipped-s" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+</div>
+
+                          </span>
+                        </div>
+                      </div>
+                      <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                        <span class="select-menu-item-icon octicon octicon-check"></span>
+                        <div class="select-menu-item-text">
+                          <input type="radio" name="protocol_selector" value="ssh" >
+                          <span class="select-menu-item-heading">
+                            SSH
+                            
+                          </span>
+                            <span class="description">
+                              Clone with an SSH key and passphrase from your GitHub settings.
+                            </span>
+                          <span class="js-select-button-text hidden-select-button-text">
+                            <div class="input-group-button">
+  <button type="button" class="btn btn-sm select-menu-button js-menu-target" data-ga-click="Repository, clone SSH, location:repo overview">
+    SSH
+  </button>
+</div>
+<input type="text" class="input-monospace input-mini js-zeroclipboard-target js-url-field" value="git@github.com:jonthornton/jquery-timepicker.git" readonly>
+<div class="input-group-button">
+  <button aria-label="Copy to clipboard" class="js-zeroclipboard btn btn-sm zeroclipboard-button tooltipped tooltipped-s" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+</div>
+
+                          </span>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="select-menu-list" role="menu">
+                    <a class="select-menu-item select-menu-action" href="https://help.github.com/articles/which-remote-url-should-i-use" target="_blank">
+                      <span class="select-menu-item-icon octicon octicon-question"></span>
+                      <div class="select-menu-item-text">
+                        Learn more about clone URLs
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+</form>        </div>
+
+        <div class="file-navigation-option">
+    <a href="https://windows.github.com" class="btn btn-sm tooltipped tooltipped-s tooltipped-multiline" aria-label="Save jonthornton/jquery-timepicker to your computer and use it in GitHub Desktop.">
+      <span class="octicon octicon-desktop-download"></span>
+    </a>
+</div>
+
+
+        <div class="file-navigation-option">
+          <a href="/jonthornton/jquery-timepicker/archive/master.zip"
+             class="btn btn-sm"
+             rel="nofollow"
+             data-ga-click="Repository, download zip, location:repo overview">
+            Download ZIP
+          </a>
+        </div>
+      </div>
+  </div>
+
+  
+<div class="select-menu js-menu-container js-select-menu left">
+  <button class="btn btn-sm select-menu-button js-menu-target css-truncate" data-hotkey="w"
+    title="master"
+    type="button" aria-label="Switch branches or tags" tabindex="0" aria-haspopup="true">
+    <i>Branch:</i>
+    <span class="js-select-button css-truncate-target">master</span>
+  </button>
+
+  <div class="select-menu-modal-holder js-menu-content js-navigation-container" data-pjax aria-hidden="true">
+
+    <div class="select-menu-modal">
+      <div class="select-menu-header">
+        <span class="octicon octicon-x js-menu-close" role="button" aria-label="Close"></span>
+        <span class="select-menu-title">Switch branches/tags</span>
+      </div>
+
+      <div class="select-menu-filters">
+        <div class="select-menu-text-filter">
+          <input type="text" aria-label="Filter branches/tags" id="context-commitish-filter-field" class="js-filterable-field js-navigation-enable" placeholder="Filter branches/tags">
+        </div>
+        <div class="select-menu-tabs">
+          <ul>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="branches" data-filter-placeholder="Filter branches/tags" class="js-select-menu-tab" role="tab">Branches</a>
+            </li>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="tags" data-filter-placeholder="Find a tag…" class="js-select-menu-tab" role="tab">Tags</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="branches" role="menu">
+
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="/jonthornton/jquery-timepicker/tree/gh-pages"
+               data-name="gh-pages"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="gh-pages">
+                gh-pages
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open selected"
+               href="/jonthornton/jquery-timepicker/tree/master"
+               data-name="master"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="master">
+                master
+              </span>
+            </a>
+        </div>
+
+          <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="tags">
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.8.8"
+                 data-name="1.8.8"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.8.8">1.8.8</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.8.7"
+                 data-name="1.8.7"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.8.7">1.8.7</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.8.6"
+                 data-name="1.8.6"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.8.6">1.8.6</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.8.5"
+                 data-name="1.8.5"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.8.5">1.8.5</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.8.4"
+                 data-name="1.8.4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.8.4">1.8.4</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.8.3"
+                 data-name="1.8.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.8.3">1.8.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.8.1"
+                 data-name="1.8.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.8.1">1.8.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.8.0"
+                 data-name="1.8.0"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.8.0">1.8.0</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.7.0"
+                 data-name="1.7.0"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.7.0">1.7.0</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.6.12"
+                 data-name="1.6.12"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.6.12">1.6.12</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.6.11"
+                 data-name="1.6.11"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.6.11">1.6.11</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.6.10"
+                 data-name="1.6.10"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.6.10">1.6.10</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.6.9"
+                 data-name="1.6.9"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.6.9">1.6.9</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.6.8"
+                 data-name="1.6.8"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.6.8">1.6.8</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.6.7"
+                 data-name="1.6.7"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.6.7">1.6.7</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.6.6"
+                 data-name="1.6.6"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.6.6">1.6.6</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.6.5"
+                 data-name="1.6.5"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.6.5">1.6.5</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.6.4"
+                 data-name="1.6.4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.6.4">1.6.4</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.6.3"
+                 data-name="1.6.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.6.3">1.6.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.6.2"
+                 data-name="1.6.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.6.2">1.6.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.6.1"
+                 data-name="1.6.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.6.1">1.6.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.6.0"
+                 data-name="1.6.0"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.6.0">1.6.0</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.5.3"
+                 data-name="1.5.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.5.3">1.5.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.4.13"
+                 data-name="1.4.13"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.13">1.4.13</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.4.12"
+                 data-name="1.4.12"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.12">1.4.12</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.4.11"
+                 data-name="1.4.11"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.11">1.4.11</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.4.10"
+                 data-name="1.4.10"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.10">1.4.10</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.4.9"
+                 data-name="1.4.9"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.9">1.4.9</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.4.8"
+                 data-name="1.4.8"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.8">1.4.8</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.4.7"
+                 data-name="1.4.7"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.7">1.4.7</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.4.6"
+                 data-name="1.4.6"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.6">1.4.6</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.4.5"
+                 data-name="1.4.5"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.5">1.4.5</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.4.4"
+                 data-name="1.4.4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.4">1.4.4</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.4.3"
+                 data-name="1.4.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.3">1.4.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.4.2"
+                 data-name="1.4.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.2">1.4.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.3.10"
+                 data-name="1.3.10"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.10">1.3.10</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.3.9"
+                 data-name="1.3.9"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.9">1.3.9</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.3.8"
+                 data-name="1.3.8"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.8">1.3.8</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.3.7"
+                 data-name="1.3.7"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.7">1.3.7</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.3.6"
+                 data-name="1.3.6"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.6">1.3.6</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.3.5"
+                 data-name="1.3.5"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.5">1.3.5</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.3.4"
+                 data-name="1.3.4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.4">1.3.4</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.3.3"
+                 data-name="1.3.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.3">1.3.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.3.2"
+                 data-name="1.3.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.2">1.3.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.3.1"
+                 data-name="1.3.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.1">1.3.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.3.0"
+                 data-name="1.3.0"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.0">1.3.0</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.2.17"
+                 data-name="1.2.17"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.17">1.2.17</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.2.16"
+                 data-name="1.2.16"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.16">1.2.16</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.2.15"
+                 data-name="1.2.15"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.15">1.2.15</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.2.14"
+                 data-name="1.2.14"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.14">1.2.14</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.2.13"
+                 data-name="1.2.13"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.13">1.2.13</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.2.12"
+                 data-name="1.2.12"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.12">1.2.12</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.2.11"
+                 data-name="1.2.11"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.11">1.2.11</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.2.10"
+                 data-name="1.2.10"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.10">1.2.10</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.2.9"
+                 data-name="1.2.9"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.9">1.2.9</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.2.8"
+                 data-name="1.2.8"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.8">1.2.8</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.2.7"
+                 data-name="1.2.7"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.7">1.2.7</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.2.4"
+                 data-name="1.2.4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.4">1.2.4</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.2.3"
+                 data-name="1.2.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.3">1.2.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.2.2"
+                 data-name="1.2.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.2">1.2.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.2.1"
+                 data-name="1.2.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.1">1.2.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.2.0"
+                 data-name="1.2.0"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.0">1.2.0</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.1.12"
+                 data-name="1.1.12"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.1.12">1.1.12</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.1.11"
+                 data-name="1.1.11"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.1.11">1.1.11</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.1.9"
+                 data-name="1.1.9"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.1.9">1.1.9</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.1.8"
+                 data-name="1.1.8"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.1.8">1.1.8</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.1.7"
+                 data-name="1.1.7"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.1.7">1.1.7</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.1.6"
+                 data-name="1.1.6"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.1.6">1.1.6</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.1.5"
+                 data-name="1.1.5"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.1.5">1.1.5</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.1.4"
+                 data-name="1.1.4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.1.4">1.1.4</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.1.3"
+                 data-name="1.1.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.1.3">1.1.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.1.2"
+                 data-name="1.1.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.1.2">1.1.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.1.1"
+                 data-name="1.1.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.1.1">1.1.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.1"
+                 data-name="1.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.1">1.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.0.11"
+                 data-name="1.0.11"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.0.11">1.0.11</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.0.10"
+                 data-name="1.0.10"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.0.10">1.0.10</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.0.9"
+                 data-name="1.0.9"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.0.9">1.0.9</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.0.8"
+                 data-name="1.0.8"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.0.8">1.0.8</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.0.7"
+                 data-name="1.0.7"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.0.7">1.0.7</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.0.6"
+                 data-name="1.0.6"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.0.6">1.0.6</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.0.5"
+                 data-name="1.0.5"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.0.5">1.0.5</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.0.4"
+                 data-name="1.0.4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.0.4">1.0.4</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.0.3"
+                 data-name="1.0.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.0.3">1.0.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.0.2"
+                 data-name="1.0.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.0.2">1.0.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/jonthornton/jquery-timepicker/tree/1.0.0"
+                 data-name="1.0.0"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.0.0">1.0.0</a>
+            </div>
+        </div>
+
+        <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+    <a href="/jonthornton/jquery-timepicker/pull/new/master" class="btn btn-sm btn-primary" data-pjax data-ga-click="Repository, new pull request, location:repo overview">
+      New pull request
+    </a>
+
+  <div class="breadcrumb">
+    
+  </div>
+</div>
+
+
+
+
+  <div class="commit-tease js-details-container">
+    <span class="right">
+      Latest commit
+      <a class="commit-tease-sha" href="/jonthornton/jquery-timepicker/commit/107ab7344ddaa5275ffb20c13bef6fb40027ead2" data-pjax>
+        107ab73
+      </a>
+      <time datetime="2015-11-28T17:31:12Z" is="relative-time">Nov 28, 2015</time>
+    </span>
+
+
+    <span class="commit-author-section">
+      <img alt="@jonthornton" class="avatar" height="20" src="https://avatars0.githubusercontent.com/u/196831?v=3&amp;s=40" width="20" />
+      <a href="/jonthornton" class="user-mention" rel="author">jonthornton</a>
+    </span>
+
+        <a href="/jonthornton/jquery-timepicker/commit/107ab7344ddaa5275ffb20c13bef6fb40027ead2" class="message" data-pjax="true" title="Add am/pm classes to dropdown items
+
+Close #459">Add am/pm classes to dropdown items</a>
+          <span class="hidden-text-expander inline">
+            <a href="#" class="js-details-target">…</a>
+          </span>
+    </span>
+
+      <div class="commit-desc"><pre class="text-small">Close <a href="https://github.com/jonthornton/jquery-timepicker/issues/459" class="issue-link" title="request: ability to add classes to li elements">#459</a></pre></div>
+  </div>
+
+
+<div class="file-wrap">
+  <a href="/jonthornton/jquery-timepicker/tree/107ab7344ddaa5275ffb20c13bef6fb40027ead2" class="hidden js-permalink-shortcut" data-hotkey="y">Permalink</a>
+
+  <table class="files js-navigation-container js-active-navigation-container" data-pjax>
+
+
+    <tbody>
+      <tr class="warning include-fragment-error">
+        <td class="icon"><span class="octicon octicon-alert"></span></td>
+        <td class="content" colspan="3">Failed to load latest commit information.</td>
+      </tr>
+
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/jonthornton/jquery-timepicker/tree/master/lib" class="js-directory-link js-navigation-open" id="e8acc63b1e238f3255c900eed37254b8-98d9a6d9f8ccc99c339584235b8a2cd3d212efed" title="lib">lib</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/jonthornton/jquery-timepicker/commit/0326f5be4d0296bcb8fc5aca343db2f9c2fd39ac" class="message" data-pjax="true" title="Updated demo page styling">Updated demo page styling</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2014-03-04T04:09:53Z" is="time-ago">Mar 3, 2014</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/jonthornton/jquery-timepicker/blob/master/.gitignore" class="js-directory-link js-navigation-open" id="a084b794bc0759e7a6b77810e01874f2-b30511df490c619ec5a6ee60af0763e4c2c8cc98" title=".gitignore">.gitignore</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/jonthornton/jquery-timepicker/commit/25a70bbf91120059981d19dac884ab6a0038b847" class="message" data-pjax="true" title="fix &quot;for in&quot;">fix "for in"</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2014-05-28T09:50:53Z" is="time-ago">May 28, 2014</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/jonthornton/jquery-timepicker/blob/master/GruntFile.js" class="js-directory-link js-navigation-open" id="cb6458b4b9159be7c69b01439613a106-7692c06d385ac9a6a325dfcbf8d860dd17ab25bd" title="GruntFile.js">GruntFile.js</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/jonthornton/jquery-timepicker/commit/21b504ae646777fc8f22152d3e83e1ecbd4059e2" class="message" data-pjax="true" title="Fix show2400 option
+
+Close #449. Thanks @low!">Fix show2400 option</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-11-02T03:27:47Z" is="time-ago">Nov 1, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/jonthornton/jquery-timepicker/blob/master/README.md" class="js-directory-link js-navigation-open" id="04c6e90faac2675aa89e2176d2eec7d8-f4dc100232a062ed85623567e867ebddae559d1e" title="README.md">README.md</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/jonthornton/jquery-timepicker/commit/107ab7344ddaa5275ffb20c13bef6fb40027ead2" class="message" data-pjax="true" title="Add am/pm classes to dropdown items
+
+Close #459">Add am/pm classes to dropdown items</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-11-28T17:31:30Z" is="time-ago">Nov 28, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/jonthornton/jquery-timepicker/blob/master/bower.json" class="js-directory-link js-navigation-open" id="0a08a7565aba4405282251491979bb6b-558815b0cec4d9f0643d94328a62fc60cdf9cf62" title="bower.json">bower.json</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/jonthornton/jquery-timepicker/commit/107ab7344ddaa5275ffb20c13bef6fb40027ead2" class="message" data-pjax="true" title="Add am/pm classes to dropdown items
+
+Close #459">Add am/pm classes to dropdown items</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-11-28T17:31:30Z" is="time-ago">Nov 28, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/jonthornton/jquery-timepicker/blob/master/index.html" class="js-directory-link js-navigation-open" id="eacf331f0ffc35d4b482f1d15a887d3b-8cf017a002d26c8e573531a39c7bfb475e22993a" title="index.html">index.html</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/jonthornton/jquery-timepicker/commit/107ff6085bb88c9a36e9ec199a5cb1ce7454b24f" class="message" data-pjax="true" title="Revert change to index.html">Revert change to index.html</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-11-10T00:58:28Z" is="time-ago">Nov 9, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/jonthornton/jquery-timepicker/blob/master/jquery.timepicker.css" class="js-directory-link js-navigation-open" id="a87303f778d70ab049284007ef8cf18f-cd75f13f837b184e025276f22a46761690c60094" title="jquery.timepicker.css">jquery.timepicker.css</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/jonthornton/jquery-timepicker/commit/bb93ed5d7f21afdfc6ce3843b98550231d188715" class="message" data-pjax="true" title="Fixed missing param in _int2duration(). Closes #246">Fixed missing param in _int2duration(). Closes</a> <a href="https://github.com/jonthornton/jquery-timepicker/pull/246" class="issue-link" title="Add step as argument in _int2duration">#246</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2014-05-23T19:14:05Z" is="time-ago">May 23, 2014</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/jonthornton/jquery-timepicker/blob/master/jquery.timepicker.js" class="js-directory-link js-navigation-open" id="36e5d075e844422e9e74338cb6a2bb20-2fca8ae26495365b69701820080eb106cf3ebe4a" title="jquery.timepicker.js">jquery.timepicker.js</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/jonthornton/jquery-timepicker/commit/107ab7344ddaa5275ffb20c13bef6fb40027ead2" class="message" data-pjax="true" title="Add am/pm classes to dropdown items
+
+Close #459">Add am/pm classes to dropdown items</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-11-28T17:31:30Z" is="time-ago">Nov 28, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/jonthornton/jquery-timepicker/blob/master/jquery.timepicker.min.js" class="js-directory-link js-navigation-open" id="e665a789ba9d49ec91fdc713ff3d6085-2408bcf82d5d5fcf052c8e4d1e63703682bb3f33" title="jquery.timepicker.min.js">jquery.timepicker.min.js</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/jonthornton/jquery-timepicker/commit/107ab7344ddaa5275ffb20c13bef6fb40027ead2" class="message" data-pjax="true" title="Add am/pm classes to dropdown items
+
+Close #459">Add am/pm classes to dropdown items</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-11-28T17:31:30Z" is="time-ago">Nov 28, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/jonthornton/jquery-timepicker/blob/master/jt.timepicker.jquery.json" class="js-directory-link js-navigation-open" id="7cae106ee3b502e46e451f1550096107-16902d5d2ccd2ef610fb31fc0c123ee79effe28c" title="jt.timepicker.jquery.json">jt.timepicker.jquery.json</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/jonthornton/jquery-timepicker/commit/c38d3e354871f8c65dfae8a0bf4c93fa9b43e7ca" class="message" data-pjax="true" title="Setting minTime and maxTime results in 1 dropdown option
+
+Closes #351">Setting minTime and maxTime results in 1 dropdown option</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-02-11T04:49:19Z" is="time-ago">Feb 10, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/jonthornton/jquery-timepicker/blob/master/package.json" class="js-directory-link js-navigation-open" id="b9cfc7f2cdf78a7f4b91a753d10865a2-11b01886492271f60ba2ea3046acaa38cf4b8e48" title="package.json">package.json</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/jonthornton/jquery-timepicker/commit/107ab7344ddaa5275ffb20c13bef6fb40027ead2" class="message" data-pjax="true" title="Add am/pm classes to dropdown items
+
+Close #459">Add am/pm classes to dropdown items</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-11-28T17:31:30Z" is="time-ago">Nov 28, 2015</time></span>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+  <div id="readme" class="boxed-group flush clearfix announce instapaper_body md">
+    <h3>
+      <span class="octicon octicon-book"></span>
+      README.md
+    </h3>
+
+    <article class="markdown-body entry-content" itemprop="mainContentOfPage"><h1><a id="user-content-timepicker-plugin-for-jquery" class="anchor" href="#timepicker-plugin-for-jquery" aria-hidden="true"><span class="octicon octicon-link"></span></a>Timepicker Plugin for jQuery</h1>
+
+<p><a href="http://jonthornton.github.com/jquery-timepicker"><img src="https://camo.githubusercontent.com/9d17129a5fd1be3872fdf699c8dd0f446d3ba855/687474703a2f2f6a6f6e74686f726e746f6e2e6769746875622e636f6d2f6a71756572792d74696d657069636b65722f6c69622f73637265656e73686f742e706e67" alt="timepicker screenshot" data-canonical-src="http://jonthornton.github.com/jquery-timepicker/lib/screenshot.png" style="max-width:100%;"></a></p>
+
+<p><a href="http://jonthornton.github.com/jquery-timepicker">See a demo and examples here</a></p>
+
+<p>jquery.timepicker is a lightweight timepicker plugin for jQuery inspired by Google Calendar. It supports both mouse and keyboard navigation, and weighs in at 2.7kb minified and gzipped.</p>
+
+<h2><a id="user-content-requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li><a href="http://jquery.com/">jQuery</a> (&gt;= 1.7)</li>
+</ul>
+
+<h2><a id="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>.some-time-inputs<span class="pl-pds">'</span></span>).<span class="pl-en">timepicker</span>(options);</pre></div>
+
+<p>Include <code>jquery.timepicker.css</code> and <code>jquery.timepicker.min.js</code> in your page.</p>
+
+<p><code>options</code> is an optional javascript object with parameters explained below.</p>
+
+<p>You can also set options as <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes">data attributes</a> on the intput elements, like <code>&lt;input type="text" data-time-format="H:i:s" /&gt;</code>. Timepicker still needs to be initialized by calling <code>$('#someElement').timepicker();</code>.</p>
+
+<p>The defaults for all options are exposed through the <code>$.fn.timepicker.defaults</code> object. Properties changed in this object (same properties configurable through the constructor) will take effect for every instance created after the change.</p>
+
+<h2><a id="user-content-options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
+
+<ul>
+<li><p><strong>appendTo</strong><br>
+Override where the dropdown is appended.<br>
+Takes either a <code>string</code> to use as a selector, a <code>function</code> that gets passed the clicked input element as argument or a jquery <code>object</code> to use directly.<br>
+<em>default: "body"</em></p></li>
+<li><p><strong>className</strong><br>
+A class name to apply to the HTML element that contains the timepicker dropdown.<br>
+<em>default: null</em></p></li>
+<li><p><strong>closeOnWindowScroll</strong><br>
+Close the timepicker when the window is scrolled. (Replicates <code>&lt;select&gt;</code> behavior.)<br>
+<em>default: false</em></p></li>
+<li><p><strong>disableTimeRanges</strong><br>
+Disable selection of certain time ranges. Input is an array of time pairs, like `<code>[['3:00am', '4:30am'], ['5:00pm', '8:00pm']]</code>. The start of the interval will be disabled but the end won't.
+<em>default: []</em></p></li>
+<li><p><strong>disableTextInput</strong><br>
+Disable typing in the timepicker input box; force users to select from list. <a href="https://github.com/jonthornton/jquery-timepicker/issues/425#issuecomment-133262458">More information here.</a><br>
+<em>default: false</em></p></li>
+<li><p><strong>disableTouchKeyboard</strong><br>
+Disable the onscreen keyboard for touch devices. There can be instances where Firefox or Chrome have touch events enabled (such as on Surface tablets but not actually be a touch device. In this case <code>disableTouchKeyboard</code> will prevent the timepicker input field from being focused. <a href="https://github.com/jonthornton/jquery-timepicker/issues/413">More information here.</a><br>
+<em>default: false</em></p></li>
+<li><p><strong>durationTime</strong><br>
+The time against which <code>showDuration</code> will compute relative times. If this is a function, its result will be used.<br>
+<em>default: minTime</em></p></li>
+<li><p><strong>forceRoundTime</strong><br>
+Force update the time to <code>step</code> settings as soon as it loses focus.<br>
+<em>default: false</em></p></li>
+<li><p><strong>lang</strong><br>
+Language constants used in the timepicker. Can override the defaults by passing an object with one or more of the following properties: decimal, mins, hr, hrs.<br>
+<em>default:</em> <code>{
+am: 'am',
+pm: 'pm',
+AM: 'AM',
+PM: 'PM',
+decimal: '.',
+mins: 'mins',
+hr: 'hr',
+hrs: 'hrs'
+}</code></p></li>
+<li><p><strong>maxTime</strong><br>
+The time that should appear last in the dropdown list. Can be used to limit the range of time options.<br>
+<em>default: 24 hours after minTime</em></p></li>
+<li><p><strong>minTime</strong><br>
+The time that should appear first in the dropdown list.<br>
+<em>default: 12:00am</em></p></li>
+<li><p><strong>noneOption</strong><br>
+Adds one or more custom options to the top of the dropdown. Can accept several different value types:<br>
+Boolean (<code>true</code>): Adds a "None" option that results in an empty input value<br>
+String: Adds an option with a custom label that results in an empty input value<br>
+Object: Similar to string, but allows customizing the element's class name and the resulting input value. Can contain <code>label</code>, <code>value</code>, and <code>className</code> properties. <code>value</code> must be a string type.<br>
+Array: An array of strings or objects to add multiple non-time options<br>
+<em>default: false</em></p></li>
+<li><p><strong>orientation</strong><br>
+By default the timepicker dropdown will be aligned to the bottom right of the input element, or aligned to the top left if there isn't enough room below the input. Force alignment with <code>l</code> (left), <code>r</code> (right), <code>t</code> (top), and <code>b</code> (bottom). Examples: <code>tl</code>, <code>rb</code>.
+<em>default: 'l'</em></p></li>
+<li><p><strong>roundingFunction</strong><br>
+Function used to compute rounded times. The function will receive time in seconds and a settings object as arguments. The functino should handle a null value for seconds.
+<em>default: round to nearest step</em></p></li>
+<li><p><strong>scrollDefault</strong><br>
+If no time value is selected, set the dropdown scroll position to show the time provided, e.g. "09:00". A time string, Date object, or integer (seconds past midnight) is acceptible, as well as the string <code>'now'</code>.<br>
+<em>default: null</em></p></li>
+<li><p><strong>selectOnBlur</strong><br>
+Update the input with the currently highlighted time value when the timepicker loses focus.<br>
+<em>default: false</em></p></li>
+<li><p><strong>show2400</strong><br>
+Show "24:00" as an option when using 24-hour time format.<br>
+<em>default: false</em></p></li>
+<li><p><strong>showDuration</strong><br>
+Shows the relative time for each item in the dropdown. <code>minTime</code> or <code>durationTime</code> must be set.<br>
+<em>default: false</em></p></li>
+<li><p><strong>showOn</strong><br>
+Display a timepicker dropdown when the input fires a particular event. Set to null or an empty array to disable automatic display. Setting should be an array of strings.
+<em>default: ['focus']</em></p></li>
+<li><p><strong>showOnFocus</strong><br>
+DEPRECATED: Display a timepicker dropdown when the input gains focus.<br>
+<em>default: true</em></p></li>
+<li><p><strong>step</strong><br>
+The amount of time, in minutes, between each item in the dropdown. Alternately, you can specify a function to generate steps dynamically. The function will receive a count integer (0, 1, 2...) and is expected to return a step integer.<br>
+<em>default: 30</em></p></li>
+<li><p><strong>stopScrollPropagation</strong><br>
+When scrolling on the edge of the picker, it prevent parent containers () to scroll.
+<em>default: false</em></p></li>
+<li><p><strong>timeFormat</strong><br>
+How times should be displayed in the list and input element. Uses <a href="http://php.net/manual/en/function.date.php">PHP's date() formatting syntax</a>. Characters can be escaped with a preceeding double slash (e.g. <code>H\\hi</code>). Alternatively, you can specify a function instead of a string, to use completely custom time formatting. In this case, the format function receives a Date object and is expected to return a formatted time as a string.
+<em>default: 'g:ia'</em></p></li>
+<li><p><strong>typeaheadHighlight</strong><br>
+Highlight the nearest corresponding time option as a value is typed into the form input.<br>
+<em>default: true</em></p></li>
+<li><p><strong>useSelect</strong><br>
+Convert the input to an HTML <code>&lt;SELECT&gt;</code> control. This is ideal for small screen devices, or if you want to prevent the user from entering arbitrary values. This option is not compatible with the following options: <code>appendTo</code>, <code>closeOnWindowScroll</code>, <code>disableTouchKeyboard</code>, <code>forceRoundTime</code>, <code>scrollDefault</code>, <code>selectOnBlur</code>, <code>typeAheadHighlight</code>.<br>
+<em>default: false</em></p></li>
+</ul>
+
+<h2><a id="user-content-methods" class="anchor" href="#methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods</h2>
+
+<ul>
+<li><p><strong>getSecondsFromMidnight</strong><br>
+Get the time as an integer, expressed as seconds from 12am.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#getTimeExample<span class="pl-pds">'</span></span>).<span class="pl-en">timepicker</span>(<span class="pl-s"><span class="pl-pds">'</span>getSecondsFromMidnight<span class="pl-pds">'</span></span>);</pre></div></li>
+<li><p><strong>getTime</strong><br>
+Get the time using a Javascript Date object, relative to a Date object (default: Jan 1, 1970).</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#getTimeExample<span class="pl-pds">'</span></span>).<span class="pl-en">timepicker</span>(<span class="pl-s"><span class="pl-pds">'</span>getTime<span class="pl-pds">'</span></span>);
+<span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#getTimeExample<span class="pl-pds">'</span></span>).<span class="pl-en">timepicker</span>(<span class="pl-s"><span class="pl-pds">'</span>getTime<span class="pl-pds">'</span></span>, <span class="pl-k">new</span> <span class="pl-en">Date</span>());</pre></div>
+
+<p>You can get the time as a string using jQuery's built-in <code>val()</code> function:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#getTimeExample<span class="pl-pds">'</span></span>).<span class="pl-en">val</span>();</pre></div></li>
+<li><p><strong>hide</strong><br>
+Close the timepicker dropdown.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#hideExample<span class="pl-pds">'</span></span>).<span class="pl-en">timepicker</span>(<span class="pl-s"><span class="pl-pds">'</span>hide<span class="pl-pds">'</span></span>);</pre></div></li>
+<li><p><strong>option</strong><br>
+Change the settings of an existing timepicker. Calling <code>option</code> on a visible timepicker will cause the picker to be hidden.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#optionExample<span class="pl-pds">'</span></span>).<span class="pl-en">timepicker</span>({ <span class="pl-s"><span class="pl-pds">'</span>timeFormat<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>g:ia<span class="pl-pds">'</span></span> }); <span class="pl-c">// initialize the timepicker sometime earlier in your code</span>
+...
+<span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#optionExample<span class="pl-pds">'</span></span>).<span class="pl-en">timepicker</span>(<span class="pl-s"><span class="pl-pds">'</span>option<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>minTime<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>2:00am<span class="pl-pds">'</span></span>);
+<span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#optionExample<span class="pl-pds">'</span></span>).<span class="pl-en">timepicker</span>(<span class="pl-s"><span class="pl-pds">'</span>option<span class="pl-pds">'</span></span>, { <span class="pl-s"><span class="pl-pds">'</span>minTime<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>4:00am<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>timeFormat<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>H:i<span class="pl-pds">'</span></span> });</pre></div></li>
+<li><p><strong>remove</strong><br>
+Unbind an existing timepicker element.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#removeExample<span class="pl-pds">'</span></span>).<span class="pl-en">timepicker</span>(<span class="pl-s"><span class="pl-pds">'</span>remove<span class="pl-pds">'</span></span>);</pre></div></li>
+<li><p><strong>setTime</strong><br>
+Set the time using a Javascript Date object.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#setTimeExample<span class="pl-pds">'</span></span>).<span class="pl-en">timepicker</span>(<span class="pl-s"><span class="pl-pds">'</span>setTime<span class="pl-pds">'</span></span>, <span class="pl-k">new</span> <span class="pl-en">Date</span>());</pre></div></li>
+<li><p><strong>show</strong><br>
+Display the timepicker dropdown.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#showExample<span class="pl-pds">'</span></span>).<span class="pl-en">timepicker</span>(<span class="pl-s"><span class="pl-pds">'</span>show<span class="pl-pds">'</span></span>);</pre></div></li>
+</ul>
+
+<h2><a id="user-content-events" class="anchor" href="#events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Events</h2>
+
+<ul>
+<li><p><strong>change</strong><br>
+The native <code>onChange</code> event will fire any time the input value is updated, whether by selection from the timepicker list or manual entry into the text input. Your code should bind to <code>change</code> after initializing timepicker, or use <a href="http://api.jquery.com/on/">event delegation</a>.</p></li>
+<li><p><strong>changeTime</strong><br>
+Called after a valid time value is entered or selected. See <code>timeFormatError</code> and <code>timeRangeError</code> for error events. Fires before <code>change</code> event.</p></li>
+<li><p><strong>hideTimepicker</strong><br>
+Called after the timepicker is closed.</p></li>
+<li><p><strong>selectTime</strong><br>
+Called after a time value is selected from the timepicker list. Fires before <code>change</code> event.</p></li>
+<li><p><strong>showTimepicker</strong><br>
+Called after the timepicker is shown.</p></li>
+<li><p><strong>timeFormatError</strong><br>
+Called if an unparseable time string is manually entered into the timepicker input. Fires before <code>change</code> event.</p></li>
+<li><p><strong>timeRangeError</strong><br>
+Called if a maxTime, minTime, or disableTimeRanges is set and an invalid time is manually entered into the timepicker input. Fires before <code>change</code> event.</p></li>
+</ul>
+
+<p>The <code>selectTime</code> and <code>hideTimepicker</code> events fire slightly differently when using the <code>useSelect</code> option. See <a href="https://github.com/jonthornton/jquery-timepicker/issues/427">https://github.com/jonthornton/jquery-timepicker/issues/427</a> for more information.</p>
+
+<h2><a id="user-content-theming" class="anchor" href="#theming" aria-hidden="true"><span class="octicon octicon-link"></span></a>Theming</h2>
+
+<p>Sample markup with class names:</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">input</span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>5:00pm<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>ui-timepicker-input<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span>&gt;
+...
+&lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>ui-timepicker-wrapper ui-timepicker-positioned-top optional-custom-classname<span class="pl-pds">"</span></span> <span class="pl-e">tabindex</span>=<span class="pl-s"><span class="pl-pds">"</span>-1<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">ul</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>ui-timepicker-list<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">li</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>ui-timepicker-am<span class="pl-pds">"</span></span>&gt;12:00am&lt;/<span class="pl-ent">li</span>&gt;
+        &lt;<span class="pl-ent">li</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>ui-timepicker-am<span class="pl-pds">"</span></span>&gt;12:30am&lt;/<span class="pl-ent">li</span>&gt;
+        ...
+        &lt;<span class="pl-ent">li</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>ui-timepicker-pm<span class="pl-pds">"</span></span>&gt;4:30pm&lt;/<span class="pl-ent">li</span>&gt;
+        &lt;<span class="pl-ent">li</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>ui-timepicker-pm ui-timepicker-selected<span class="pl-pds">"</span></span>&gt;5:00pm&lt;/<span class="pl-ent">li</span>&gt;
+        &lt;<span class="pl-ent">li</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>ui-timepicker-pm ui-timepicker-disabled<span class="pl-pds">"</span></span>&gt;5:30pm&lt;/<span class="pl-ent">li</span>&gt;
+        &lt;<span class="pl-ent">li</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>ui-timepicker-pm<span class="pl-pds">"</span></span>&gt;6:00pm &lt;<span class="pl-ent">span</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>ui-timepicker-duration<span class="pl-pds">"</span></span>&gt;(1 hour)&lt;/<span class="pl-ent">span</span>&gt;&lt;/<span class="pl-ent">li</span>&gt;
+        &lt;<span class="pl-ent">li</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>ui-timepicker-pm<span class="pl-pds">"</span></span>&gt;6:30pm&lt;/<span class="pl-ent">li</span>&gt;
+        ...
+        &lt;<span class="pl-ent">li</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>ui-timepicker-pm<span class="pl-pds">"</span></span>&gt;11:30pm&lt;/<span class="pl-ent">li</span>&gt;
+    &lt;/<span class="pl-ent">ul</span>&gt;
+&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<p>The <code>ui-timepicker-positioned-top</code> class will be applied only when the dropdown is positioned above the input.</p>
+
+<h2><a id="user-content-packaging" class="anchor" href="#packaging" aria-hidden="true"><span class="octicon octicon-link"></span></a>Packaging</h2>
+
+<p>Install from <a href="http://bower.io/">Bower</a> as <code>jquery-timepicker-jt</code>.</p>
+
+<p>An AngularJS directive is available at <a href="https://github.com/Recras/angular-jquery-timepicker">https://github.com/Recras/angular-jquery-timepicker</a></p>
+
+<p>Available via CDN at <a href="https://cdnjs.com/libraries/jquery-timepicker">https://cdnjs.com/libraries/jquery-timepicker</a>.</p>
+
+<h2><a id="user-content-help" class="anchor" href="#help" aria-hidden="true"><span class="octicon octicon-link"></span></a>Help</h2>
+
+<p>Submit a <a href="https://github.com/jonthornton/jquery-timepicker/issues/new">GitHub Issues request</a>. Please try provide code that demonstrates the problem; you can use <a href="http://jsfiddle.net/jonthornton/28uvg/">this jsFiddle</a> as a starting point.</p>
+
+<h2><a id="user-content-development-guidelines" class="anchor" href="#development-guidelines" aria-hidden="true"><span class="octicon octicon-link"></span></a>Development guidelines</h2>
+
+<ol>
+<li>Install dependencies (jquery + grunt) <code>npm install</code></li>
+<li>For sanity checks and minification run <code>grunt</code>, or just <code>grunt lint</code> to have the code linted</li>
+</ol>
+
+<p>jquery-timepicker follows <a href="http://semver.org/">semantic versioning</a>.</p>
+
+<hr>
+
+<p>This software is made available under the open source MIT License. © 2014 <a href="http://www.jonthornton.com">Jon Thornton</a> and <a href="https://github.com/jonthornton/jquery-timepicker/graphs/contributors">contributors</a></p>
+</article>
+  </div>
+
+
+  </div>
+  <div class="modal-backdrop"></div>
+</div>
+
+    </div>
+  </div>
+
+    </div>
+
+        <div class="container">
+  <div class="site-footer" role="contentinfo">
+    <ul class="site-footer-links right">
+        <li><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+      <li><a href="https://developer.github.com" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li><a href="https://training.github.com" data-ga-click="Footer, go to training, text:training">Training</a></li>
+      <li><a href="https://shop.github.com" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
+        <li><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
+        <li><a href="https://github.com/pricing" data-ga-click="Footer, go to pricing, text:pricing">Pricing</a></li>
+
+    </ul>
+
+    <a href="https://github.com" aria-label="Homepage">
+      <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+</a>
+    <ul class="site-footer-links">
+      <li>&copy; 2015 <span title="0.10829s from github-fe120-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+        <li><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+        <li><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+        <li><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
+        <li><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact</a></li>
+        <li><a href="https://help.github.com" data-ga-click="Footer, go to help, text:help">Help</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+    
+    
+    
+
+    <div id="ajax-error-message" class="flash flash-error">
+      <span class="octicon octicon-alert"></span>
+      <button type="button" class="flash-close js-flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+        <span class="octicon octicon-x"></span>
+      </button>
+      Something went wrong with that request. Please try again.
+    </div>
+
+
+      <script crossorigin="anonymous" src="https://assets-cdn.github.com/assets/frameworks-b7c9523d93e6cd0235a0a8b7d1a691f7909d3834cd9c9caa7b1674ba508b644c.js"></script>
+      <script async="async" crossorigin="anonymous" src="https://assets-cdn.github.com/assets/github-b42430c121e963c7370a99d029c78f3c2fdc9b75b73adf817f07802e33988e81.js"></script>
+      
+      
+      
+    <div class="js-stale-session-flash stale-session-flash flash flash-warn flash-banner hidden">
+      <span class="octicon octicon-alert"></span>
+      <span class="signed-in-tab-flash">You signed in with another tab or window. <a href="">Reload</a> to refresh your session.</span>
+      <span class="signed-out-tab-flash">You signed out in another tab or window. <a href="">Reload</a> to refresh your session.</span>
+    </div>
+  </body>
+</html>
+
