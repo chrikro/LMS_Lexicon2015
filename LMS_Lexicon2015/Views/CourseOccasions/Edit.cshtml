@@ -63,9 +63,28 @@
     </div>
 }
 
+@{TempData["GroupId"] = ViewBag.GroupId;}
+
 @*<div>
     <b>Gruppens StartDate:</b>@Model.Group.StartDate.ToShortDateString()
     <b>Gruppens Slut Date:</b>@Model.Group.EndDate.ToShortDateString()
+</div>*@
+
+@*<div>
+    <b>Gruppens StartDate:</b>
+    @{ var db = new LMS_Lexicon2015.Models.ApplicationDbContext();
+     if (ViewBag.GroupId != null)
+     {
+         int groupId = ViewBag.GroupId;
+       // @db.Groups.Where(g => g.Id == groupId).FirstOrDefault().StartDate.ToShortDateString();
+        @groupId;
+     }}
+    <b>Gruppens Slut Date:</b>
+    @{ if (ViewBag.GroupId != null)
+     {
+         int groupId = ViewBag.GroupId;
+       // @db.Groups.Where(g => g.Id == groupId).FirstOrDefault().EndDate.ToShortDateString();
+     }}
 </div>*@
 
 <div>
