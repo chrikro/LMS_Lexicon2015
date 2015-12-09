@@ -58,6 +58,9 @@ a.content_info_dont_delete {
     color:#41AD49; /*lexicon-grön*/
     font-size:18pt;
 }
+.content_info_ok_normal {
+    color:#41AD49; /*lexicon-grön*/
+}
 
 .jumbotron {
   padding: 5px;
