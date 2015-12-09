@@ -229,7 +229,15 @@ namespace LMS_Lexicon2015.Controllers
 
         public ActionResult _Course(int GroupId) 
         {
- 
+
+             //var checkCourseOccasions = db.CourseOccasions.Where(o => o.GroupId == GroupId);
+
+             //foreach (var item in checkCourseOccasions)
+             //{
+             //    ViewBag.checkStartDate(item.Id) = item.StartDate;
+             //    ViewBag.checkStartDate(item.Id) = item.StartDate;
+             //}
+
             ViewBag.GroupId = GroupId;
             return View(db.CourseOccasions.ToList());
         }

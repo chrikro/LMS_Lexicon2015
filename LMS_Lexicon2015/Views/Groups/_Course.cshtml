@@ -10,14 +10,12 @@
 <h2>Kurser</h2>
 
 <p>
-    @*@Html.ActionLink("Lägg till en ny kurs", "Create/" + Model.First().GroupId, "CourseOccasions")*@
 
     @if (User.IsInRole("Lärare"))
     {
         @Html.ActionLink("Lägg till en ny kurs", "Create/" + (int)ViewBag.groupId, "CourseOccasions")
     }
 
-    @* @Html.ActionLink("Lägg till en ny kurs", "Create/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "CourseOccasions")*@
 
 </p>
 <table class="table">
@@ -35,13 +33,14 @@
             @Html.DisplayNameFor(model => model.EndDate)
         </th>
         @*<th>
-            Antalet aktiviteter
-        </th>*@
+                Antalet aktiviteter
+            </th>*@
         @*<th>
                 @Html.DisplayNameFor(model => model.GroupId)
             </th>*@
         <th></th>
     </tr>
+
 
     @foreach (var item in Model)
     {
@@ -66,13 +65,14 @@
             <td>
 
 
+
                 @if (checkEndDate > item.StartDate)
                 {
                     <span style="color:red">***</span>
                     checkEndDateExplanation = true;
                 }
                 @{
-                    checkEndDate = item.EndDate;
+        checkEndDate = item.EndDate;
                 }
 
                 @Html.DisplayFor(modelItem => item.StartDate.Day)
@@ -99,8 +99,8 @@
                         { <span>|</span> }*@
 
             @*<td>
-                @item.Activities.Count
-            </td>*@
+                    @item.Activities.Count
+                </td>*@
 
             @if (User.IsInRole("Lärare"))
             {
