@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using LMS_Lexicon2015.Models;
+using System.IO;
+using Microsoft.AspNet.Identity;
 
 namespace LMS_Lexicon2015.Controllers
 {
@@ -38,25 +40,58 @@ namespace LMS_Lexicon2015.Controllers
         // GET: Documents/Create
         public ActionResult Create()
         {
+            ViewBag.Groupid = new SelectList(db.Groups, "Id", "Name");//en bäg för rullningslistan på formuläret
             return View();
         }
+   
 
-        // POST: Documents/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //POST: Documents/Create
+        //To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Url,Description,Timestamp,Deadline,UserId,GroupId,CourseOccasionId,ActivityId")] Document document)
+        //   public ActionResult Create([Bind(Include = "Id,Name,Url,Description,Timestamp,Deadline,UserId,GroupId,CourseOccasionId,ActivityId")] Document document, HttpPostedFileBase Name)
+
+        public ActionResult Create([Bind(Include = "Id,Name,Description,Deadline,GroupId,CourseOccasionId,ActivityId")] Document document, HttpPostedFileBase Name)
         {
+
             if (ModelState.IsValid)
             {
-                db.Documents.Add(document);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+                        string fileExtension = Name.FileName.Split('.').Last();
+                        string fileName = Guid.NewGuid().ToString() + '.' + fileExtension;
+                        var fileSavePath = Path.Combine(Server.MapPath("/Files"), fileName);
+                        Name.SaveAs(fileSavePath);
+
+                        var doc = new Document
+                        {
+                            Name = Name.FileName,
+                            Url = fileSavePath,
+                            Description = document.Description,
+                            Timestamp = DateTime.Now,
+                            Deadline = document.Deadline,
+                            UserId = User.Identity.GetUserId(),
+                            GroupId = document.GroupId,
+
+                            CourseOccasionId = document.CourseOccasionId,
+                            ActivityId = document.ActivityId
+                        };
+
+                        db.Documents.Add(doc);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
             }
 
             return View(document);
         }
+
+
+
+
+
+
+
+
 
         // GET: Documents/Edit/5
         public ActionResult Edit(int? id)

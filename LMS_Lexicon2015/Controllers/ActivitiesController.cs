@@ -51,6 +51,8 @@ namespace LMS_Lexicon2015.Controllers
         {
             ViewBag.courseOccasionId = id;
             ViewBag.groupId = id2;
+            ViewBag.StartDate = DateTime.Now;
+            ViewBag.EndDate = DateTime.Now; 
                 ViewBag.Name = new SelectList(db.ActivityTypes, "Name", "Name");//en bäg för rullningslistan på formuläret 
 
              return View();
