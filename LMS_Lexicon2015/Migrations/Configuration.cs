@@ -154,6 +154,9 @@ namespace LMS_Lexicon2015.Migrations
 
              /////----------------------
             //Documents
+
+            //lägg till public System.Data.Entity.DbSet<LMS_Lexicon2015.Models.Document> Documents { get; set; } i identityModels
+            // för att lägga in Documents context
             var documents = new[] {
                     new Document { Name = "Test.docx", 
                     Url = "Files/gagibcqr.mbh.docx", 
