@@ -158,8 +158,8 @@ namespace LMS_Lexicon2015.Migrations
             //lägg till public System.Data.Entity.DbSet<LMS_Lexicon2015.Models.Document> Documents { get; set; } i identityModels
             // för att lägga in Documents context
             var documents = new[] {
-                    new Document { Name = "Test.docx", 
-                    Url = "Files/gagibcqr.mbh.docx", 
+                    new Document { Name = "ReadMe.txt", 
+                    Url = "Files/ReadMe.txt", 
                     Description = "text text", 
                     Timestamp = new DateTime(2015, 09, 30), 
                     GroupId = groups[0].Id , 

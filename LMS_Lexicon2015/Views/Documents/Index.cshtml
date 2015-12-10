@@ -44,7 +44,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @*@Html.DisplayFor(modelItem => item.Name)*@
+            @Html.ActionLink(item.Name, "DownloadFile", new { fileUrl = item.Url, fileName = item.Name })
+
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Url)

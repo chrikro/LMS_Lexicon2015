@@ -150,6 +150,12 @@ namespace LMS_Lexicon2015.Controllers
             return RedirectToAction("Index");
         }
 
+        public FileResult DownloadFile(string fileUrl, string fileName)
+        {
+            var filepath = System.IO.Path.Combine(Server.MapPath("/Files/"), fileUrl);
+            return File(filepath, MimeMapping.GetMimeMapping(filepath), fileName);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
