@@ -58,6 +58,10 @@
                 @Html.DisplayFor(modelItem => item.StartDate.Month)
                 <span>-</span>
                 @Html.DisplayFor(modelItem => item.StartDate.Year)
+                <span>  </span>
+                @Html.DisplayFor(modelItem => item.StartDate.Hour)
+                <span>:</span>
+                @Html.DisplayFor(modelItem => item.StartDate.Minute)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.EndDate.Day)
@@ -65,6 +69,10 @@
                 @Html.DisplayFor(modelItem => item.EndDate.Month)
                 <span>-</span>
                 @Html.DisplayFor(modelItem => item.EndDate.Year)
+                <span>  </span>
+                @Html.DisplayFor(modelItem => item.EndDate.Hour)
+                <span>:</span>
+                @Html.DisplayFor(modelItem => item.EndDate.Minute)
             </td>
 
             <td>
