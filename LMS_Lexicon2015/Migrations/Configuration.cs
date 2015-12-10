@@ -44,7 +44,7 @@ namespace LMS_Lexicon2015.Migrations
             var groups = new[] {
                 new Group { Name = ".net Maj 2015", Description = "Text text text text", StartDate = new DateTime(2015,11,20), EndDate = new DateTime(2015,12,24)  },
                 new Group { Name = ".net Sep 2015", Description = "Text text text text", StartDate = new DateTime(2015, 12, 20), EndDate = new DateTime(2016, 12, 18) },
-                new Group { Name = "Java Sep 2015", Description = "Text text text text", StartDate = new DateTime(2015, 12, 20), EndDate = new DateTime(2016, 12, 21) },
+                new Group { Name = "Java Sep 2015", Description = "Text text text text", StartDate = new DateTime(2015, 11, 20), EndDate = new DateTime(2015, 12, 29) },
                 new Group { Name = ".net Feb 2016", Description = "Text text text text", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16) }
             };
 
@@ -75,8 +75,7 @@ namespace LMS_Lexicon2015.Migrations
             UserManager.AddToRole(roleKeeper.Id, "Elev");
 
             //user 3
-            if (UserManager.FindByEmail("jultomten@home.se") == null)
-            {
+            if (UserManager.FindByEmail("jultomten@home.se") == null)             {
                 var user = new ApplicationUser { UserName = "jultomten@nordpoolen.org", Email = "jultomten@nordpoolen.org", FirstName = "Tomte", LastName = "von Nordpoolen", GroupId = groups[1].Id };
                 UserManager.Create(user, "hej999");
                 context.SaveChanges();
@@ -85,8 +84,7 @@ namespace LMS_Lexicon2015.Migrations
             UserManager.AddToRole(roleKeeper.Id, "Elev");
 
             //user 4
-            if (UserManager.FindByEmail("lucia@roma.it") == null)
-            {
+            if (UserManager.FindByEmail("lucia@roma.it") == null) {
                 var user = new ApplicationUser { UserName = "lucia@roma.it", Email = "lucia@roma.it", FirstName = "Lucia", LastName = "von Roma", GroupId = groups[0].Id };
                 UserManager.Create(user, "hej999");
                 context.SaveChanges();
@@ -94,6 +92,35 @@ namespace LMS_Lexicon2015.Migrations
             roleKeeper = UserManager.FindByEmail("lucia@roma.it");
             UserManager.AddToRole(roleKeeper.Id, "Lärare");
 
+            //user 5
+            if (UserManager.FindByEmail("donald.trump@muppetshow.com") == null)
+            {
+                var user = new ApplicationUser { UserName = "donald.trump@muppetshow.com", Email = "donald.trump@muppetshow.com", FirstName = "Donald", LastName = "Trump", GroupId = groups[2].Id };
+                UserManager.Create(user, "hej999");
+                context.SaveChanges();
+            }
+            roleKeeper = UserManager.FindByEmail("donald.trump@muppetshow.com");
+            UserManager.AddToRole(roleKeeper.Id, "Elev");
+
+            //user 6
+            if (UserManager.FindByEmail("angela.merkel@yahoo.de") == null)
+            {
+                var user = new ApplicationUser { UserName = "angela.merkel@yahoo.de", Email = "angela.merkel@yahoo.de", FirstName = "Angela", LastName = "Merkel", GroupId = groups[0].Id };
+                UserManager.Create(user, "hej999");
+                context.SaveChanges();
+            }
+            roleKeeper = UserManager.FindByEmail("angela.merkel@yahoo.de");
+            UserManager.AddToRole(roleKeeper.Id, "Lärare");
+
+            //user 7
+            if (UserManager.FindByEmail("a.ronnegard@gmail.com") == null)
+            {
+                var user = new ApplicationUser { UserName = "a.ronnegard@gmail.com", Email = "a.ronnegard@gmail.com", FirstName = "Anna-Karin", LastName = "Rönnegård", GroupId = groups[1].Id };
+                UserManager.Create(user, "hej999");
+                context.SaveChanges();
+            }
+            roleKeeper = UserManager.FindByEmail("a.ronnegard@gmail.com");
+            UserManager.AddToRole(roleKeeper.Id, "Lärare");
 
             context.SaveChanges();
             /////----------------------
