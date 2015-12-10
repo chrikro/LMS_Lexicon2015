@@ -151,6 +151,24 @@ namespace LMS_Lexicon2015.Migrations
 
             context.Activitys.AddOrUpdate(at => at.EndDate, activitys);
             context.SaveChanges();
+
+             /////----------------------
+            //Documents
+            var documents = new[] {
+                    new Document { Name = "Test.docx", 
+                    Url = "Files/gagibcqr.mbh.docx", 
+                    Description = "text text", 
+                    Timestamp = new DateTime(2015, 09, 30), 
+                    GroupId = groups[0].Id , 
+                    UserId = context.Users.Where(u => u.UserName == "nisaw99@hotmail.com").FirstOrDefault().Id },  
+                };
+
+            context.Documents.AddOrUpdate(d => d.Name, documents);
+            context.SaveChanges();
         }
     }
 }
+
+
+
+
