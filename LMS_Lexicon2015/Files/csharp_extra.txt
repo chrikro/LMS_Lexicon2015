@@ -1,0 +1,12 @@
+        protected override void Seed(LMS_Lexicon2015.Models.ApplicationDbContext context)
+        {
+            var roleStore = new RoleStore<IdentityRole>(context);
+            var roleManager = new RoleManager<IdentityRole>(roleStore);
+
+            foreach (string roles in new[] { "Elev", "Lärare" })
+            {
+                if (!context.Roles.Any(r => r.Name == roles))
+                {
+                    var role = new IdentityRole { Name = roles };
+                    roleManager.Create(role);
+                }
