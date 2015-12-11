@@ -342,7 +342,7 @@
     <Content Include="Views\Activities\Index.cshtml" />
     <Content Include="Views\CourseOccasions\_activities.cshtml" />
     <Content Include="Views\Users\Upload.cshtml" />
-    <Content Include="Views\Documents\Create.cshtml" />
+    <Content Include="Views\Documents\upload.cshtml" />
     <Content Include="Views\Documents\Delete.cshtml" />
     <Content Include="Views\Documents\Details.cshtml" />
     <Content Include="Views\Documents\Edit.cshtml" />

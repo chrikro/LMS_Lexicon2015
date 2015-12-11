@@ -37,22 +37,22 @@ namespace LMS_Lexicon2015.Controllers
             return View(document);
         }
 
-        // GET: Documents/Create
-        public ActionResult Create()
+        // GET: Documents/upload
+        public ActionResult upload()
         {
             ViewBag.Groupid = new SelectList(db.Groups, "Id", "Name");//en bäg för rullningslistan på formuläret
             return View();
         }
-   
 
-        //POST: Documents/Create
+
+        //POST: Documents/upload
         //To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         //more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         //   public ActionResult Create([Bind(Include = "Id,Name,Url,Description,Timestamp,Deadline,UserId,GroupId,CourseOccasionId,ActivityId")] Document document, HttpPostedFileBase Name)
 
-        public ActionResult Create([Bind(Include = "Id,Name,Description,Deadline,GroupId,CourseOccasionId,ActivityId")] Document document, HttpPostedFileBase Name)
+        public ActionResult upload([Bind(Include = "Id,Name,Description,Deadline,GroupId,CourseOccasionId,ActivityId")] Document document, HttpPostedFileBase Name)
         {
 
             if (ModelState.IsValid)
@@ -66,7 +66,8 @@ namespace LMS_Lexicon2015.Controllers
                         var doc = new Document
                         {
                             Name = Name.FileName,
-                            Url = fileSavePath,
+                            //Url = fileSavePath,
+                            Url = fileName,
                             Description = document.Description,
                             Timestamp = DateTime.Now,
                             Deadline = document.Deadline,

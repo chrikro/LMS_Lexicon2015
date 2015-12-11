@@ -18,9 +18,9 @@ namespace LMS_Lexicon2015.Controllers
         public ActionResult Index()
         {
 
-            ViewBag.NoActivities = "Inga aktiviteter listas här." ;
+            ViewBag.NoActivities = "Inga aktiviteter listas här.";
             return View(db.Activitys.ToList()); //vyn tom gör inget om kvar
-            
+
         }
 
         // GET: Activities/Details/5
@@ -41,7 +41,7 @@ namespace LMS_Lexicon2015.Controllers
             ViewBag.Line1 = "/";
             ViewBag.Line2 = "-";
             ViewBag.Line3 = " Till ";
-           
+
             return View(activity);
         }
 
@@ -52,7 +52,21 @@ namespace LMS_Lexicon2015.Controllers
             ViewBag.courseOccasionId = id;
             ViewBag.groupId = id2;
             ViewBag.StartDate = DateTime.Now;
-            ViewBag.EndDate = DateTime.Now; 
+            ViewBag.EndDate = DateTime.Now;
+
+            DateTime StartDate = DateTime.Now;
+            TimeSpan tStartDate = new TimeSpan(09, 00, 0);
+            StartDate = StartDate.Date + tStartDate;
+
+            DateTime EndDate = DateTime.Now;
+            TimeSpan tEndDate = new TimeSpan(17, 00, 0);
+            EndDate = EndDate.Date + tEndDate;
+
+
+
+            ViewBag.StartDate = StartDate;
+            ViewBag.EndDate = EndDate;
+
                 ViewBag.Name = new SelectList(db.ActivityTypes, "Name", "Name");//en bäg för rullningslistan på formuläret 
 
              return View();
@@ -70,7 +84,7 @@ namespace LMS_Lexicon2015.Controllers
             {
 
                 DateTime CoursesStartDate = db.CourseOccasions.Where(c => c.Id == activity.CourseId).FirstOrDefault().StartDate;
-                DateTime CoursesEndDate = db.CourseOccasions.Where(c =>c.Id == activity.CourseId).FirstOrDefault().EndDate;
+                DateTime CoursesEndDate = db.CourseOccasions.Where(c => c.Id == activity.CourseId).FirstOrDefault().EndDate;
 
                 if (activity.StartDate < CoursesStartDate)
                 {
@@ -141,7 +155,7 @@ namespace LMS_Lexicon2015.Controllers
             ViewBag.courseOccasionId = id2;
             ViewBag.groupId = id3;
             string selectedId = activity.Name;
-      
+
             ViewBag.name = new SelectList(db.ActivityTypes, "Name", "Name", selectedId);
 
 
@@ -246,7 +260,7 @@ namespace LMS_Lexicon2015.Controllers
             //db.SaveChanges();
             //return RedirectToAction("Index");
 
-           // return RedirectToAction("Details/" + activity.CourseId + "/" + (int)TempData["GroupId"], "CourseOccasions");
+            // return RedirectToAction("Details/" + activity.CourseId + "/" + (int)TempData["GroupId"], "CourseOccasions");
 
 
             Activity activity = db.Activitys.Find(id);
@@ -254,7 +268,7 @@ namespace LMS_Lexicon2015.Controllers
             db.Activitys.Remove(activity);
             db.SaveChanges();
             //return RedirectToAction("Details/" + CourseId, "CourseOccasions");
-            return RedirectToAction("Details/" + CourseId+ "/" + (int)TempData["GroupId"], "CourseOccasions" );
+            return RedirectToAction("Details/" + CourseId + "/" + (int)TempData["GroupId"], "CourseOccasions");
 
         }
 
