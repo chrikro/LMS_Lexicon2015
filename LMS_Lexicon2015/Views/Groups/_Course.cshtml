@@ -8,7 +8,7 @@
 }
 
 <h2>Kurser</h2>
-
+@ViewBag.dbStartDate
 <p>
 
     @if (User.IsInRole("Lärare"))
@@ -73,8 +73,9 @@
                     <span class="content_info_problem">***</span>
                     checkEndDateExplanation = true;
                 }
-                @{
-        checkEndDate = item.EndDate;
+                @if (checkEndDate < item.EndDate)
+                {
+                    checkEndDate = item.EndDate;
                 }
 
                 @Html.DisplayFor(modelItem => item.StartDate.Day)
@@ -129,6 +130,6 @@
 
 @if (!checkEndDateExplanation == false)
 {
-    <span class="content_info_problem">*** = Dubbelt Kursdatum</span>
+    <span class="content_info_problem">*** = Kursens datum krockar med någon av ovanstående kurs.</span>
     <br />
 }

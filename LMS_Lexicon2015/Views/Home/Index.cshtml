@@ -11,7 +11,7 @@
     var GroupId = new LMS_Lexicon2015.Models.ApplicationDbContext().Users.Where(u => u.Email == User.Identity.Name).FirstOrDefault().GroupId;
 
     if (GroupId == null)
-        {
+    {
            @Html.Partial("../Groups/Index", new LMS_Lexicon2015.Models.ApplicationDbContext().Groups.ToList())
 
         }

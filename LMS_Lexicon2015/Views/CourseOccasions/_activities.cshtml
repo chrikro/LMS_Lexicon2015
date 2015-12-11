@@ -53,18 +53,40 @@
             </td>
 
             <td>
+                <span>Kl:</span>
+                @Html.DisplayFor(modelItem => item.StartDate.Hour)
+                <span>:</span>
+                @if (item.StartDate.Minute < 10)
+                {
+                    <span>0</span>
+                }
+                @Html.DisplayFor(modelItem => item.StartDate.Minute)
+                <span>(</span>
+
                 @Html.DisplayFor(modelItem => item.StartDate.Day)
                 <span>/</span>
                 @Html.DisplayFor(modelItem => item.StartDate.Month)
                 <span>-</span>
                 @Html.DisplayFor(modelItem => item.StartDate.Year)
+                <span>)</span>
             </td>
             <td>
+                <span>Kl:</span>
+                @Html.DisplayFor(modelItem => item.EndDate.Hour)
+                <span>:</span>
+                @if (item.EndDate.Minute < 10)
+                {
+                    <span>0</span>
+                }
+                @Html.DisplayFor(modelItem => item.EndDate.Minute)
+                <span>(</span>
+
                 @Html.DisplayFor(modelItem => item.EndDate.Day)
                 <span>/</span>
                 @Html.DisplayFor(modelItem => item.EndDate.Month)
                 <span>-</span>
                 @Html.DisplayFor(modelItem => item.EndDate.Year)
+                <span>)</span>
             </td>
 
             <td>

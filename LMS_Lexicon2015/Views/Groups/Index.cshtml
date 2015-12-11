@@ -53,7 +53,8 @@
 <tr>
 
             <td>
-                @Html.ActionLink(item.Name, "Details", new { id = item.Id })
+                @Html.ActionLink(item.Name, "../Groups/Details", new { id = item.Id })
+               @* @Html.ActionLink(item.Name, new { controller = "Groups", action = "Details", id = item.Id })*@
                 @*@Html.DisplayFor(modelItem => item.Name)*@
 
 

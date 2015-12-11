@@ -161,6 +161,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActivitiesController.cs" />
     <Compile Include="Controllers\CourseOccasionsController.cs" />
+    <Compile Include="Controllers\DocumentsController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -239,6 +240,10 @@
     <Compile Include="Migrations\201512091349181_name i activity-model har fått längdkontroll.cs" />
     <Compile Include="Migrations\201512091349181_name i activity-model har fått längdkontroll.Designer.cs">
       <DependentUpon>201512091349181_name i activity-model har fått längdkontroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512101007524_documents.cs" />
+    <Compile Include="Migrations\201512101007524_documents.Designer.cs">
+      <DependentUpon>201512101007524_documents.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -339,6 +344,11 @@
     <Content Include="Views\Activities\Index.cshtml" />
     <Content Include="Views\CourseOccasions\_activities.cshtml" />
     <Content Include="Views\Users\Upload.cshtml" />
+    <Content Include="Views\Documents\upload.cshtml" />
+    <Content Include="Views\Documents\Delete.cshtml" />
+    <Content Include="Views\Documents\Details.cshtml" />
+    <Content Include="Views\Documents\Edit.cshtml" />
+    <Content Include="Views\Documents\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -407,6 +417,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512091349181_name i activity-model har fått längdkontroll.resx">
       <DependentUpon>201512091349181_name i activity-model har fått längdkontroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512101007524_documents.resx">
+      <DependentUpon>201512101007524_documents.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
