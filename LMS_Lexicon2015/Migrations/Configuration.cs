@@ -57,70 +57,21 @@ namespace LMS_Lexicon2015.Migrations
             var UserManager = new UserManager<ApplicationUser>(store);
 
             //user 1
-            if (UserManager.FindByEmail("nisaw99@hotmail.com") == null)   {
-                var user = new ApplicationUser { UserName = "nisaw99@hotmail.com", Email = "nisaw99@hotmail.com", FirstName = "Kalle", LastName = "Anka", GroupId = groups[1].Id };
-                UserManager.Create(user, "hej999");
-                context.SaveChanges();
-            }
-            var roleKeeper = UserManager.FindByEmail("nisaw99@hotmail.com");
-            UserManager.AddToRole(roleKeeper.Id, "Lärare");  
-
+            createNewUser(context, groups[1].Id, UserManager, "Kalle", "Anka", "Lärare", "nisaw99@hotmail.com");            
             //user 2
-            if (UserManager.FindByEmail("chrikro129@gmail.com") == null) {
-                var user = new ApplicationUser { UserName = "chrikro129@gmail.com", Email = "chrikro129@gmail.com", FirstName = "Christina", LastName = "XXX", GroupId = groups[0].Id };
-                UserManager.Create(user, "hej999");
-                context.SaveChanges();
-            }
-            roleKeeper = UserManager.FindByEmail("chrikro129@gmail.com");
-            UserManager.AddToRole(roleKeeper.Id, "Elev");
-
+            createNewUser(context, groups[0].Id, UserManager, "Christina", "Kaffekopp", "Elev", "chrikro129@gmail.com");
             //user 3
-            if (UserManager.FindByEmail("jultomten@home.se") == null)             {
-                var user = new ApplicationUser { UserName = "jultomten@nordpoolen.org", Email = "jultomten@nordpoolen.org", FirstName = "Tomte", LastName = "von Nordpoolen", GroupId = groups[1].Id };
-                UserManager.Create(user, "hej999");
-                context.SaveChanges();
-            }
-            roleKeeper = UserManager.FindByEmail("jultomten@nordpoolen.org");
-            UserManager.AddToRole(roleKeeper.Id, "Elev");
-
-            //user 4
-            if (UserManager.FindByEmail("lucia@roma.it") == null) {
-                var user = new ApplicationUser { UserName = "lucia@roma.it", Email = "lucia@roma.it", FirstName = "Lucia", LastName = "von Roma", GroupId = groups[0].Id };
-                UserManager.Create(user, "hej999");
-                context.SaveChanges();
-            }
-            roleKeeper = UserManager.FindByEmail("lucia@roma.it");
-            UserManager.AddToRole(roleKeeper.Id, "Lärare");
-
-            //user 5
-            if (UserManager.FindByEmail("donald.trump@muppetshow.com") == null)
-            {
-                var user = new ApplicationUser { UserName = "donald.trump@muppetshow.com", Email = "donald.trump@muppetshow.com", FirstName = "Donald", LastName = "Trump", GroupId = groups[2].Id };
-                UserManager.Create(user, "hej999");
-                context.SaveChanges();
-            }
-            roleKeeper = UserManager.FindByEmail("donald.trump@muppetshow.com");
-            UserManager.AddToRole(roleKeeper.Id, "Elev");
-
-            //user 6
-            if (UserManager.FindByEmail("angela.merkel@yahoo.de") == null)
-            {
-                var user = new ApplicationUser { UserName = "angela.merkel@yahoo.de", Email = "angela.merkel@yahoo.de", FirstName = "Angela", LastName = "Merkel", GroupId = groups[0].Id };
-                UserManager.Create(user, "hej999");
-                context.SaveChanges();
-            }
-            roleKeeper = UserManager.FindByEmail("angela.merkel@yahoo.de");
-            UserManager.AddToRole(roleKeeper.Id, "Lärare");
-
-            //user 7
-            if (UserManager.FindByEmail("a.ronnegard@gmail.com") == null)
-            {
-                var user = new ApplicationUser { UserName = "a.ronnegard@gmail.com", Email = "a.ronnegard@gmail.com", FirstName = "Anna-Karin", LastName = "Rönnegård", GroupId = groups[1].Id };
-                UserManager.Create(user, "hej999");
-                context.SaveChanges();
-            }
-            roleKeeper = UserManager.FindByEmail("a.ronnegard@gmail.com");
-            UserManager.AddToRole(roleKeeper.Id, "Lärare");
+            createNewUser(context, groups[1].Id, UserManager, "Tomte", "von Nordpoolen", "Elev", "tomten@nordpoolen.org");
+            ////user 4
+            createNewUser(context, groups[0].Id, UserManager, "Lucia", "da Roma", "Lärare", "lucia@roma.it");
+            ////user 5
+            createNewUser(context, groups[2].Id, UserManager, "Donald", "Trump", "Elev", "donald.trump@muppetshow.com");
+            ////user 6
+            createNewUser(context, groups[2].Id, UserManager, "Angela", "Merkel", "Lärare", "angela.merkel@yahoo.de");
+            ////user 7
+            createNewUser(context, groups[1].Id, UserManager, "Anna-Karin", "Rönnegård", "Lärare", "a.ronnegard@gmail.com");
+            ////user 8
+            createNewUser(context, groups[2].Id, UserManager, "Angela", "Merkel", "Lärare", "angela.merkel@yahoo.de");
 
             context.SaveChanges();
             /////----------------------
@@ -140,7 +91,7 @@ namespace LMS_Lexicon2015.Migrations
 
             /////----------------------
             //Aktiviteter 
-                //obs end i seeden. Olika End-datum
+            //obs end i seeden. Olika End-datum
             var activitys = new[] {
                 new Activity{ Name = activityTypes[0].Name, Description = "text text", StartDate = new DateTime(2016,02,28), EndDate = new DateTime(2016,06,16), CourseId = courses[4].Id },
                 new Activity{ Name = activityTypes[1].Name, Description = "text text", StartDate = new DateTime(2016,06,18), EndDate = new DateTime(2016,06,20), CourseId = courses[4].Id },
@@ -152,14 +103,14 @@ namespace LMS_Lexicon2015.Migrations
             context.Activitys.AddOrUpdate(at => at.EndDate, activitys);
             context.SaveChanges();
 
-             /////----------------------
+            /////----------------------
             //Documents
 
             //lägg till public System.Data.Entity.DbSet<LMS_Lexicon2015.Models.Document> Documents { get; set; } i identityModels
             // för att lägga in Documents context
             var documents = new[] {
                     new Document { Name = "ReadMe.txt", 
-                    Url = "Files/ReadMe.txt", 
+                    Url = "ReadMe.txt", 
                     Description = "text text", 
                     Timestamp = new DateTime(2015, 09, 30), 
                     GroupId = groups[0].Id , 
@@ -169,29 +120,24 @@ namespace LMS_Lexicon2015.Migrations
             context.Documents.AddOrUpdate(d => d.Name, documents);
             context.SaveChanges();
         }
+
+        // ------------- separat metod för att skapa användare. Anropas fr ovan -----------------------
+        private static void createNewUser(LMS_Lexicon2015.Models.ApplicationDbContext context, int gruppId, UserManager<ApplicationUser> UserManager, string firstNameNew, string lastNameNew, string roleNew, string epostAdressNew)
+        {
+            if (UserManager.FindByEmail(epostAdressNew) == null)
+            {
+                var user = new ApplicationUser { UserName = epostAdressNew, Email = epostAdressNew, FirstName = firstNameNew, LastName = lastNameNew, GroupId = gruppId };
+                UserManager.Create(user, "hej999");
+                context.SaveChanges();
+            }
+            var roleKeeper = UserManager.FindByEmail(epostAdressNew);
+            UserManager.AddToRole(roleKeeper.Id, roleNew);
+            context.SaveChanges();
+        }
     }
 }
 
 
-//Förnamn	Efternamn	Roll	Grupp	Epost	
-//Lucia	von Roma	Lärare	.net Maj 2015	lucia@roma.it	Ändra | Detaljer| Ta bort
-//Tomte	von Nordpoolen	Elev	.net Sep 2015	jultomten@nordpoolen.org	Ändra | Detaljer| Ta bort
-//Donald	Trump	Elev	Java Sep 2015	donald.trump@muppetshow.com	Ändra | Detaljer| Ta bort
-//Anna-Karin	Rönnegård	Lärare	.net Sep 2015	a.ronnegard@gmail.com	Ändra | Detaljer| Ta bort
-//Angela	Merkel	Lärare	.net Maj 2015	angela.merkel@yahoo.de	Ändra | Detaljer| Ta bort
-//kalle	Lundvall	Elev	.net Feb 2016	nille23@hotmial.com	Ändra | Detaljer| Ta bort
-//Alfred	Lejon	Lärare		ff@ff.se	Ändra | Detaljer| Ta bort
-//Alexander	Jonasson	Lärare		ff@ff.sef	Ändra | Detaljer| Ta bort
-//Leo	Henning	Elev	.net Sep 2015	fgfg2@dfdf.se	Ändra | Detaljer| Ta bort
-//Oscar	Gustavsson	Elev	.net Maj 2015	gfggfg@dfdf.se	Ändra | Detaljer| Ta bort
-//Christina	Fagerberg	Elev	.net Sep 2015	chrikro129@gmail.com	Ändra | Detaljer| Ta bort
-//Lilly	Bergquist	Elev	.net Sep 2015	sara2@ander.se	Ändra | Detaljer| Ta bort
-//Wilma	Benjaminsson	Lärare	.net Feb 2016	45@hotmail.com	Ändra | Detaljer| Ta bort
-//Kalle	Anka	Lärare		nisaw99@hotmail.com	Ändra | Detaljer
-//Elsa	Andreasson	Lärare	.net Feb 2016	343@hej.se	Ändra | Detaljer| Ta bort
-//ingvar	anderson	Elev	.net Maj 2015	dfdfdfw88@hotmail.com	Ändra | Detaljer| Ta bort
-//Kalle	Anderson	Elev	.net Maj 2015	Kalle@Kalle.se	Ändra | Detaljer| Ta bort
-//Liam	Ahlqvist	Elev	.net Maj 2015	fff@fff.se	Ändra | Detaljer| Ta bort
 
 
 
