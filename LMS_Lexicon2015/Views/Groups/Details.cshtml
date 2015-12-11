@@ -8,56 +8,65 @@
 <div>
 
     <hr />
-    <dl class="dl-horizontal">
+
+    <div class="row">
+        <div class="col-md-4">
+
+            @* <dl class="dl-horizontal">*@
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dt>
+                Datum
+            </dt>
 
-        <dt>
-            Datum
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StartDate.Day)
+                <span>/</span>
+                @Html.DisplayFor(model => model.StartDate.Month)
+                <span>-</span>
+                @Html.DisplayFor(model => model.StartDate.Year)
+                @ViewBag.Line3
+                @Html.DisplayFor(model => model.EndDate.Day)
+                <span>/</span>
+                @Html.DisplayFor(model => model.EndDate.Month)
+                <span>-</span>
+                @Html.DisplayFor(model => model.EndDate.Year)
+            </dd>
+            <dd>
+                @if (User.IsInRole("Lärare"))
+                {
+                    @Html.ActionLink("Ändra Gruppens information", "Edit", new { id = Model.Id })
+                }
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.StartDate.Day)
-            <span>/</span>
-            @Html.DisplayFor(model => model.StartDate.Month)
-            <span>-</span>
-            @Html.DisplayFor(model => model.StartDate.Year)
-            @ViewBag.Line3
-            @Html.DisplayFor(model => model.EndDate.Day)
-            <span>/</span>
-            @Html.DisplayFor(model => model.EndDate.Month)
-            <span>-</span>
-            @Html.DisplayFor(model => model.EndDate.Year)
-        </dd>
-        <dd>
-            @if (User.IsInRole("Lärare"))
-            {
-                @Html.ActionLink("Ändra Gruppens information", "Edit", new { id = Model.Id })
+            @* </dl>*@
+        </div>
+        <div class="col-md-8">
+            @{
+                TempData["GroupId"] = Model.Id;
+                TempData["view"] = "Group";
             }
-        </dd>
 
-    </dl>
-</div>
-@{
-    TempData["GroupId"] = Model.Id;
-    TempData["view"] = "Group"; 
- }
+            @Html.Partial("../documents/download", new LMS_Lexicon2015.Models.ApplicationDbContext().Documents.Where(o => o.GroupId == Model.Id && o.CourseOccasionId == null && o.ActivityId == null).OrderBy(c => c.Timestamp).ToList())
 
-@Html.Partial("../documents/download", new LMS_Lexicon2015.Models.ApplicationDbContext().Documents.Where(o => o.GroupId == Model.Id && o.CourseOccasionId == null && o.ActivityId == null).OrderBy(c => c.Timestamp).ToList())
+        </div>
+    </div>
+    <hr />
 
-@Html.Partial("_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == Model.Id).OrderBy(c => c.StartDate).ToList())
-@*@{Html.RenderAction("_Course", "Groups", new { id = Model.Id });}*@
+    @Html.Partial("_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == Model.Id).OrderBy(c => c.StartDate).ToList())
+    @*@{Html.RenderAction("_Course", "Groups", new { id = Model.Id });}*@
 
-<p>
-    @Html.ActionLink("Tillbaka till Grupplistan", "Index")
-</p>
+    <p>
+        @Html.ActionLink("Tillbaka till Grupplistan", "Index")
+    </p>
 
 
 
