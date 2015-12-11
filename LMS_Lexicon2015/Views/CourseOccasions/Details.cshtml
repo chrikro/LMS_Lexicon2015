@@ -53,6 +53,13 @@
     </dl>
 </div>
 
+@{
+    TempData["groupId"] = (int)ViewBag.groupId;
+    TempData["CourseOccasionId"] = Model.Id;
+    TempData["view"] = "Course";
+}
+
+@Html.Partial("../documents/download", new LMS_Lexicon2015.Models.ApplicationDbContext().Documents.Where(o => o.CourseOccasionId == Model.Id).OrderBy(c => c.Timestamp).ToList())
 
 
 @Html.Partial("_activities", new LMS_Lexicon2015.Models.ApplicationDbContext().Activitys.Where(a => a.CourseId == Model.Id).OrderBy(c => c.StartDate).ToList())

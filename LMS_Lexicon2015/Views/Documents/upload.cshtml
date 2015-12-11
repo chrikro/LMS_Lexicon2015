@@ -1,40 +1,40 @@
-﻿@model LMS_Lexicon2015.Models.Document
+﻿@model LMS_Lexicon2015.Models.CreateDocumentViewModel
 
 
 @{
     ViewBag.Title = "Create";
     string GroupView = ViewBag.view;
-    ViewBag.GroupId = ViewBag.id;
+    int? CourseOccasionId = ViewBag.CourseOccasionId;
+    ViewBag.View = ViewBag.view;
+    ViewBag.GroupId = ViewBag.GroupId;
+    ViewBag.CourseOccasionId = ViewBag.CourseOccasionId;
 }
 
 <h2>Ladda upp dokument</h2>
 
 
 @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
-
-
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>@ViewBag.view</h4>
         <hr />
 
-        @ViewBag.id
+        @ViewBag.GroupId
+        @ViewBag.CourseOccasionId
         @ViewBag.view
         <br><br>
 
 
-
-
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @*<div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "fcontrol-label col-md-2 " })
-            <div class="col-md-10">
-              @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @type = "file" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "fcontrol-label col-md-2 " })
+                <div class="col-md-10">
+                  @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @type = "file" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -44,69 +44,90 @@
             </div>
         </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Deadline, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Deadline, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Deadline, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Deadline, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Deadline, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Deadline, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
+
 
         <div class="form-group" style="display: none;">
                 @Html.EditorFor(model => model.GroupId, new { htmlAttributes = new { @class = "form-control", @Value = @ViewBag.GroupId } })
+                </div>
+
+        <div class="form-group" style="display: none;">
+                @Html.EditorFor(model => model.CourseOccasionId, new { htmlAttributes = new { @class = "form-control", @Value = @ViewBag.CourseOccasionId } })
             </div>
 
+            <div class="form-group" style="display: none;">
+                @Html.EditorFor(model => model.ActivityId, new { htmlAttributes = new { @class = "form-control", @Value = @ViewBag.ActivityId } })
+            </div>
+
+        @{TempData["view"] = ViewBag.view;}
 
         @*<div class="form-group">
-            @Html.LabelFor(model => model.GroupId, "Grupp", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Groupid", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.GroupId, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control", @value="asdf" } })
+                @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
             </div>
         </div>*@
 
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.GroupId, "Grupp", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Groupid", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.GroupId, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
-    @*<div class="form-group">
-        @Html.LabelFor(model => model.CourseOccasionId, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.CourseOccasionId, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.CourseOccasionId, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ActivityId, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ActivityId, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ActivityId, "", new { @class = "text-danger" })
-        </div>
-    </div>*@
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.CourseOccasionId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CourseOccasionId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CourseOccasionId, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-   
+            <div class="form-group">
+                @Html.LabelFor(model => model.ActivityId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ActivityId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ActivityId, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+
         <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Ladda upp dokument" class="btn btn-default" />
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Ladda upp dokument" class="btn btn-default" />
+            </div>
         </div>
     </div>
-    </div>
 }
 
 
 
 
-
+<div>
     @if (GroupView == "Group")
-{
-    <div>
-        @Html.ActionLink("Gå tillbaka till GroupView", "../Groups/Details/" + (int)ViewBag.Id)
-    </div>
-}
+    {
+        @Html.ActionLink("Gå tillbaka till Group View", "../Groups/Details/" + (int)ViewBag.GroupId)
+    }
+    else if (GroupView == "Course")
+    {
+        @Html.ActionLink("Gå tillbaka till Kurs View", "../CourseOccasions/Details/" + (int)ViewBag.GroupId + "/" + CourseOccasionId)
+    }
+</div>
