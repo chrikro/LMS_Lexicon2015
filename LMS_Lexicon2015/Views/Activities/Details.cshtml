@@ -70,3 +70,5 @@
     @Html.ActionLink("Tillbaka till kursen", "Details/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.GroupId, "CourseOccasions")
 
 </p>
+
+@Html.Partial("../documents/download", new LMS_Lexicon2015.Models.ApplicationDbContext().Documents.Where(o => o.ActivityId == Model.Id).OrderBy(c => c.Timestamp).ToList())

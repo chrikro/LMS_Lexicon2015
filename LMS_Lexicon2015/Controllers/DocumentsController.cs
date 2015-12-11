@@ -77,7 +77,7 @@ namespace LMS_Lexicon2015.Controllers
                 var fileSavePath = Path.Combine(Server.MapPath("/Files"), fileName);
                 Name.SaveAs(fileSavePath);
 
-                var doc = new Document
+                  var doc = new Document
                 {
                     Name = Name.FileName,
                     //Url = fileSavePath,
@@ -102,11 +102,11 @@ namespace LMS_Lexicon2015.Controllers
                 }
                 else if (view == "Course")
                 {
-                    return RedirectToAction("Details/" + document.GroupId + "/" + document.CourseOccasionId, "CourseOccasions");
+                    return RedirectToAction("Details/" + document.CourseOccasionId + "/" + document.GroupId, "CourseOccasions");
                 }
                 else if (view == "Activity")
                 {
-                    return RedirectToAction("Details/" + document.GroupId + "/" + document.CourseOccasionId + "/" + document.ActivityId, "Activities");
+                    return RedirectToAction("Details/" + document.ActivityId+ "/"+ document.CourseOccasionId + "/" + document.GroupId  , "Activities");
                 }
                 else
                 {
