@@ -173,5 +173,25 @@ namespace LMS_Lexicon2015.Migrations
 }
 
 
+//Förnamn	Efternamn	Roll	Grupp	Epost	
+//Lucia	von Roma	Lärare	.net Maj 2015	lucia@roma.it	Ändra | Detaljer| Ta bort
+//Tomte	von Nordpoolen	Elev	.net Sep 2015	jultomten@nordpoolen.org	Ändra | Detaljer| Ta bort
+//Donald	Trump	Elev	Java Sep 2015	donald.trump@muppetshow.com	Ändra | Detaljer| Ta bort
+//Anna-Karin	Rönnegård	Lärare	.net Sep 2015	a.ronnegard@gmail.com	Ändra | Detaljer| Ta bort
+//Angela	Merkel	Lärare	.net Maj 2015	angela.merkel@yahoo.de	Ändra | Detaljer| Ta bort
+//kalle	Lundvall	Elev	.net Feb 2016	nille23@hotmial.com	Ändra | Detaljer| Ta bort
+//Alfred	Lejon	Lärare		ff@ff.se	Ändra | Detaljer| Ta bort
+//Alexander	Jonasson	Lärare		ff@ff.sef	Ändra | Detaljer| Ta bort
+//Leo	Henning	Elev	.net Sep 2015	fgfg2@dfdf.se	Ändra | Detaljer| Ta bort
+//Oscar	Gustavsson	Elev	.net Maj 2015	gfggfg@dfdf.se	Ändra | Detaljer| Ta bort
+//Christina	Fagerberg	Elev	.net Sep 2015	chrikro129@gmail.com	Ändra | Detaljer| Ta bort
+//Lilly	Bergquist	Elev	.net Sep 2015	sara2@ander.se	Ändra | Detaljer| Ta bort
+//Wilma	Benjaminsson	Lärare	.net Feb 2016	45@hotmail.com	Ändra | Detaljer| Ta bort
+//Kalle	Anka	Lärare		nisaw99@hotmail.com	Ändra | Detaljer
+//Elsa	Andreasson	Lärare	.net Feb 2016	343@hej.se	Ändra | Detaljer| Ta bort
+//ingvar	anderson	Elev	.net Maj 2015	dfdfdfw88@hotmail.com	Ändra | Detaljer| Ta bort
+//Kalle	Anderson	Elev	.net Maj 2015	Kalle@Kalle.se	Ändra | Detaljer| Ta bort
+//Liam	Ahlqvist	Elev	.net Maj 2015	fff@fff.se	Ändra | Detaljer| Ta bort
+
 
 
