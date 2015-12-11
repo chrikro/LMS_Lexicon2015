@@ -22,6 +22,12 @@ namespace LMS_Lexicon2015.Controllers
             return View(db.Documents.ToList());
         }
 
+        public ActionResult download()
+        {
+            return View(db.Documents.ToList());
+        }
+
+
         // GET: Documents/Details/5
         public ActionResult Details(int? id)
         {
@@ -38,9 +44,16 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Documents/upload
-        public ActionResult upload()
+        public ActionResult upload(string id, int id2, int? id3, int? id4)
+
         {
             ViewBag.Groupid = new SelectList(db.Groups, "Id", "Name");//en bäg för rullningslistan på formuläret
+
+            
+            ViewBag.view = id;
+            ViewBag.GroupId = id2;
+            ViewBag.CourseOccasionId = id3;
+            ViewBag.ActivityId = id4;
             return View();
         }
 
@@ -50,46 +63,65 @@ namespace LMS_Lexicon2015.Controllers
         //more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //   public ActionResult Create([Bind(Include = "Id,Name,Url,Description,Timestamp,Deadline,UserId,GroupId,CourseOccasionId,ActivityId")] Document document, HttpPostedFileBase Name)
+          // public ActionResult Create([Bind(Include = "Id,Name,Url,Description,Timestamp,Deadline,UserId,GroupId,CourseOccasionId,ActivityId")] Document document, HttpPostedFileBase Name)
 
-        public ActionResult upload([Bind(Include = "Id,Name,Description,Deadline,GroupId,CourseOccasionId,ActivityId")] Document document, HttpPostedFileBase Name)
+
+
+        public ActionResult upload([Bind(Include = "Name,Description,GroupId,CourseOccasionId,ActivityId")] CreateDocumentViewModel document, HttpPostedFileBase Name)
         {
 
             if (ModelState.IsValid)
             {
+                var view = (string)TempData["view"];
+                string fileExtension = Name.FileName.Split('.').Last();
+                string fileName = Guid.NewGuid().ToString() + '.' + fileExtension;
+                var fileSavePath = Path.Combine(Server.MapPath("/Files"), fileName);
+                Name.SaveAs(fileSavePath);
 
-                        string fileExtension = Name.FileName.Split('.').Last();
-                        string fileName = Guid.NewGuid().ToString() + '.' + fileExtension;
-                        var fileSavePath = Path.Combine(Server.MapPath("/Files"), fileName);
-                        Name.SaveAs(fileSavePath);
+                  var doc = new Document
+                {
+                    Name = Name.FileName,
+                    //Url = fileSavePath,
+                    Url = fileName,
+                    Description = document.Description,
+                    Timestamp = DateTime.Now,
+                    Deadline = document.Deadline,
+                    UserId = User.Identity.GetUserId(),
+                    GroupId = document.GroupId,
+                    CourseOccasionId = document.CourseOccasionId,
+                    ActivityId = document.ActivityId
+                };
 
-                        var doc = new Document
-                        {
-                            Name = Name.FileName,
-                            //Url = fileSavePath,
-                            Url = fileName,
-                            Description = document.Description,
-                            Timestamp = DateTime.Now,
-                            Deadline = document.Deadline,
-                            UserId = User.Identity.GetUserId(),
-                            GroupId = document.GroupId,
+                db.Documents.Add(doc);
+                db.SaveChanges();
 
-                            CourseOccasionId = document.CourseOccasionId,
-                            ActivityId = document.ActivityId
-                        };
 
-                        db.Documents.Add(doc);
-                        db.SaveChanges();
-                        return RedirectToAction("Index");
+
+                if (view == "Group")
+                {
+                    return RedirectToAction("Details/" + document.GroupId, "Groups");
+                }
+                else if (view == "Course")
+                {
+                    return RedirectToAction("Details/" + document.CourseOccasionId + "/" + document.GroupId, "CourseOccasions");
+                }
+                else if (view == "Activities")
+                {
+                    return RedirectToAction("Details/" + document.ActivityId+ "/"+ document.CourseOccasionId + "/" + document.GroupId  , "Activities");
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
+
             }
+
+            ViewBag.GroupId = document.GroupId;
+            ViewBag.CourseOccasionId = document.CourseOccasionId;
+            ViewBag.view = (string)TempData["view"];
 
             return View(document);
         }
-
-
-
-
-
 
 
 

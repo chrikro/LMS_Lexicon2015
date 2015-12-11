@@ -39,8 +39,33 @@ namespace LMS_Lexicon2015.Models
         public int? ActivityId { get; set; }
 
     }
-}
 
+    public class CreateDocumentViewModel
+    {
+        [Display(Name = "Namn")]//uploadFile
+        public string Name { get; set; }
+
+        [Display(Name = "Url")]   //GetRandomFileName
+        public string Url { get; set; }
+
+        [Display(Name = "Beskrivning")]
+        [StringLength(3000, ErrorMessage = "{0} måste vara minst {2} tecken och max 1000 tecken långt.", MinimumLength = 3)]
+        public string Description { get; set; }
+
+        [Display(Name = "Sista inlämningstid")]
+        public DateTime? Deadline { get; set; }
+
+        [Display(Name = "GruppId")]
+        public int? GroupId { get; set; }
+
+        [Display(Name = "KursId")]
+        public int? CourseOccasionId { get; set; }
+
+        [Display(Name = "AktivitetsId")]
+        public int? ActivityId { get; set; }
+    }
+
+}
 
 //public class DownloadResult : ActionResult
 //{
