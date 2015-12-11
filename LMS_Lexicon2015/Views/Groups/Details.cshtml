@@ -45,7 +45,12 @@
 
     </dl>
 </div>
+@{
+    TempData["GroupId"] = Model.Id;
+    TempData["view"] = "Group"; 
+ }
 
+@Html.Partial("../documents/download", new LMS_Lexicon2015.Models.ApplicationDbContext().Documents.Where(o => o.GroupId == Model.Id).OrderBy(c => c.Timestamp).ToList())
 
 @Html.Partial("_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == Model.Id).OrderBy(c => c.StartDate).ToList())
 @*@{Html.RenderAction("_Course", "Groups", new { id = Model.Id });}*@

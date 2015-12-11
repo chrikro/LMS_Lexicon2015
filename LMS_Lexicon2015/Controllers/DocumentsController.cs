@@ -22,6 +22,12 @@ namespace LMS_Lexicon2015.Controllers
             return View(db.Documents.ToList());
         }
 
+         public ActionResult download()
+        {
+            return View(db.Documents.ToList());
+        }
+
+                
         // GET: Documents/Details/5
         public ActionResult Details(int? id)
         {
@@ -38,9 +44,13 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Documents/upload
-        public ActionResult upload()
+        public ActionResult upload(int id, string id2)
         {
             ViewBag.Groupid = new SelectList(db.Groups, "Id", "Name");//en bäg för rullningslistan på formuläret
+
+            ViewBag.id = id;
+            ViewBag.view = id2;
+
             return View();
         }
 
@@ -73,7 +83,6 @@ namespace LMS_Lexicon2015.Controllers
                             Deadline = document.Deadline,
                             UserId = User.Identity.GetUserId(),
                             GroupId = document.GroupId,
-
                             CourseOccasionId = document.CourseOccasionId,
                             ActivityId = document.ActivityId
                         };

@@ -3,9 +3,11 @@
 
 @{
     ViewBag.Title = "Create";
+    string GroupView = ViewBag.view;
+    ViewBag.GroupId = ViewBag.id;
 }
 
-<h2>Create</h2>
+<h2>Ladda upp dokument</h2>
 
 
 @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -15,18 +17,27 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Document</h4>
+        <h4>@ViewBag.view</h4>
         <hr />
 
-
+        @ViewBag.id
+        @ViewBag.view
         <br><br>
 
 
 
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "fcontrol-label col-md-2 " })
+            <div class="col-md-10">
+              @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @type = "file" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @type = "file" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
@@ -50,18 +61,21 @@
         </div>
     </div>
 
- 
+        <div class="form-group" style="display: none;">
+                @Html.EditorFor(model => model.GroupId, new { htmlAttributes = new { @class = "form-control", @Value = @ViewBag.GroupId } })
+            </div>
 
-        <div class="form-group">
+
+        @*<div class="form-group">
             @Html.LabelFor(model => model.GroupId, "Grupp", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Groupid", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.GroupId, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
 
-    <div class="form-group">
+    @*<div class="form-group">
         @Html.LabelFor(model => model.CourseOccasionId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.CourseOccasionId, new { htmlAttributes = new { @class = "form-control" } })
@@ -75,12 +89,12 @@
             @Html.EditorFor(model => model.ActivityId, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.ActivityId, "", new { @class = "text-danger" })
         </div>
-    </div>
+    </div>*@
 
    
         <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Upload Image" class="btn btn-default" />
+            <input type="submit" value="Ladda upp dokument" class="btn btn-default" />
         </div>
     </div>
     </div>
@@ -88,6 +102,11 @@
 
 
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+
+    @if (GroupView == "Group")
+{
+    <div>
+        @Html.ActionLink("Gå tillbaka till GroupView", "../Groups/Details/" + (int)ViewBag.Id)
+    </div>
+}
