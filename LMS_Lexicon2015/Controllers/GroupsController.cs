@@ -23,6 +23,8 @@ namespace LMS_Lexicon2015.Controllers
 
                 var studentIdWithPath = "Details/" + groupIdInMenu;
 
+                ViewBag.OptionsDropDown = new SelectList(new[] { "Alla kurser", "Aktiva kurser" });
+
                 if (User.IsInRole("Elev")) {
                   return RedirectToAction("Details/" + groupIdInMenu);
                 }
