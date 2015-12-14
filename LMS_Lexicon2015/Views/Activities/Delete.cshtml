@@ -1,69 +1,83 @@
 ﻿@model LMS_Lexicon2015.Models.Activity
+<div class="row">
+    <div class="col-md-12 extratoppadding">
+        @{
+            ViewBag.Title = "Ta bort";
+        }
+    </div>
+</div>
 
-@{
-    ViewBag.Title = "Ta bort";
-}
+<div class="row">
+    <div class="col-md-12">
+        <h2>@ViewBag.Title</h2>
 
-<h2>@ViewBag.Title</h2>
-
-<h3>Är du säker att du vill ta bort denna aktivitet?</h3>
+        <h3>Är du säker att du vill ta bort denna aktivitet?</h3>
 
 
-<div>
-   
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+        <div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
 
-        <dt>
-            Datum
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.StartDate.Day)
-            @ViewBag.Line1
-            @Html.DisplayFor(model => model.StartDate.Month)
-            @ViewBag.Line2
-            @Html.DisplayFor(model => model.StartDate.Year)
-            @ViewBag.Line3
-            @Html.DisplayFor(model => model.EndDate.Day)
-            @ViewBag.Line1
-            @Html.DisplayFor(model => model.EndDate.Month)
-            @ViewBag.Line2
-            @Html.DisplayFor(model => model.EndDate.Year)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
 
-        @*<dt>
-            @Html.DisplayNameFor(model => model.CourseId)
-        </dt>
+                <dt>
+                    Datum
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.StartDate.Day)
+                    @ViewBag.Line1
+                    @Html.DisplayFor(model => model.StartDate.Month)
+                    @ViewBag.Line2
+                    @Html.DisplayFor(model => model.StartDate.Year)
+                    @ViewBag.Line3
+                    @Html.DisplayFor(model => model.EndDate.Day)
+                    @ViewBag.Line1
+                    @Html.DisplayFor(model => model.EndDate.Month)
+                    @ViewBag.Line2
+                    @Html.DisplayFor(model => model.EndDate.Year)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CourseId)
-        </dd>*@
-        @{TempData["GroupId"] = ViewBag.GroupId;}
-    </dl>
+                @*<dt>
+                        @Html.DisplayNameFor(model => model.CourseId)
+                    </dt>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+                    <dd>
+                        @Html.DisplayFor(model => model.CourseId)
+                    </dd>*@
+                @{TempData["GroupId"] = ViewBag.GroupId;}
+            </dl>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Ta bort" class="btn btn-default" /> |
-            @*@Html.ActionLink("Back to List", "Index")*@
-            @Html.ActionLink("Tillbaka till aktiviteten", "Details/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.GroupId, "CourseOccasions")
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()}
 
+            <div class="form-actions no-color">
+                <input type="submit" value="Ta bort" class="btn btn-default" /> 
+            </div>
         </div>
-    }
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @*@Html.ActionLink("Back to List", "Index")*@
+
+
+            @Html.ActionLink("Tillbaka till aktiviteten", "Details/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.GroupId, "CourseOccasions")
+            
+        </div>
+
+    </div>
 </div>

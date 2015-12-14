@@ -9,7 +9,6 @@
     padding-right: 15px;
 }
 
-
 .navbar {
     display: inline;
     font-family: Garamond;
@@ -63,12 +62,30 @@ a.content_info_dont_delete {
 }
 
 .jumbotron {
+margin-top:auto;
   padding: 5px;
   margin-bottom: 10px;
-  /*position:relative;*/ /*blev inge bättre*/
+  position:relative; /*blev inge bättre*/
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .container .jumbotron {
+    padding-top:30px;
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+  .jumbotron h1 {
+    font-size: 60px;
+  }
 }
 
 .Grey_Button {
     color: grey;
 }
-
+.extratoppadding    {
+    padding-top:30px;
+}

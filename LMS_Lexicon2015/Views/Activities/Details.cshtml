@@ -1,11 +1,15 @@
 ﻿@model LMS_Lexicon2015.Models.Activity
+<div class="row">
+    <div class="col-md-12 extratoppadding">
 
 <h2>Aktivitet detailj</h2>
-
+    </div>
+</div>
 @*<p>groupId</p>@ViewBag.groupId
     <p>courseOccasionId</p>@ViewBag.courseOccasionId*@
 
-<div>
+<div class="row">
+    <div class="col-md-12 extratoppadding">
 
     <hr />
     <dl class="dl-horizontal">
@@ -55,6 +59,9 @@
 
     </dl>
 </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
 <p>
     @*@{TempData["GroupId"] = ViewBag.GroupId;}*@
     @*@Html.ActionLink("Ändra", "Edit/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |*@
@@ -68,7 +75,10 @@
     @Html.ActionLink("Tillbaka till kursen", "Details/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.GroupId, "CourseOccasions")
 
 </p>
-
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
 @{
     TempData["groupId"] = (int)ViewBag.groupId;
     TempData["CourseOccasionId"] = (int)ViewBag.courseOccasionId;
