@@ -62,14 +62,14 @@
 
 
         <div>
-            <b>Gruppens StartDate:</b>
+            <b>Gruppens startdatum:</b>
             @{ var db = new LMS_Lexicon2015.Models.ApplicationDbContext();
              if (ViewBag.GroupId != null)
              {
                  int groupId = ViewBag.GroupId;
                 @db.Groups.Where(g => g.Id == groupId).FirstOrDefault().StartDate.ToShortDateString();
              }}
-            <b>Gruppens Slut Date:</b>
+            <b>Gruppens slutdatum:</b>
             @{ if (ViewBag.GroupId != null)
              {
                  int groupId = ViewBag.GroupId;
