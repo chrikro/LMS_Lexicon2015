@@ -40,7 +40,7 @@
 
     @*@Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (int)ViewBag.groupId + "/" + (string)ViewBag.view)*@
 
-    @if (view == "Group")
+    @*@if (view == "Group")
     {
         @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId)
     }
@@ -51,7 +51,7 @@
     else
     {
         @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (int)ViewBag.groupId + "/" + (string)ViewBag.view)
-    }
+    }*@
 
 </p>
 <table class="table">
@@ -68,21 +68,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Timestamp)
         </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.Deadline)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserId)
-            </th>*@
-        @*<th>
-                @Html.DisplayNameFor(model => model.GroupId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CourseOccasionId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ActivityId)
-            </th>*@
+
 
     </tr>
 
@@ -103,7 +89,8 @@
 
             
             <td>
-                @Html.DisplayFor(modelItem => item.Timestamp)
+                @*@Html.DisplayFor(modelItem => item.Timestamp)*@
+                @item.Timestamp.ToShortDateString()
             </td>
             @*<td>
                     @Html.DisplayFor(modelItem => item.Deadline)
