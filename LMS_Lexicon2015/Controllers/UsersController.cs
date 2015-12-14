@@ -23,10 +23,7 @@ namespace LMS_Lexicon2015.Controllers
     [Authorize]
     public class UsersController : Controller
     {
-
-
-        public static bool FromPartitialView;
-        //private ApplicationSignInManager _signInManager;
+       //private ApplicationSignInManager _signInManager;
         //private ApplicationUserManager _userManager;
 
         //public UsersController()
@@ -62,6 +59,7 @@ namespace LMS_Lexicon2015.Controllers
         //        _userManager = value;
         //    }
         //}
+        public static bool FromPartitialView;
 
         private ApplicationDbContext db = new ApplicationDbContext();
 
@@ -80,6 +78,7 @@ namespace LMS_Lexicon2015.Controllers
             ViewBag.PhoneNumberSortParm = sortOrder == "PhoneNumber" ? "PhoneNumber_desc" : "PhoneNumber";
 
             ViewBag.searchString = searchString;
+
             var Users = from s in db.Users select s;
             if (!String.IsNullOrEmpty(searchString))
         {
@@ -144,27 +143,32 @@ namespace LMS_Lexicon2015.Controllers
             }
 
 
+            var checkBox = Request.Form["ActiveChoise"];
+            var applicationUsers = Users;
 
-
-            var applicationUsers = Users.ToList();
+            if (checkBox == "on")
+            {
+                applicationUsers = Users.Where(o => o.Group.EndDate > DateTime.Today);
+            }
 
             ViewBag.Roles = db.Roles.ToList();
             FromPartitialView = false;
 
-            var model = Users.Select(r => new UserListViewModel
-                //var model = db.Users.Select(r => new UserListViewModel
+            //var model = Users.Select(r => new UserListViewModel
+            var model = applicationUsers.Select(r => new UserListViewModel
                 {
-                Id = r.Id,
-                FirstName = r.FirstName,
-                LastName = r.LastName,
-                Email = r.Email,
-                Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
-                Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
-                GroupId = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Id,
-                PhoneNumber = r.PhoneNumber
-    }).ToList();
+                    Id = r.Id,
+                    FirstName = r.FirstName,
+                    LastName = r.LastName,
+                    Email = r.Email,
+                    Role = db.Roles.Where(R => R.Id == r.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name,
+                    Group = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Name,
+                    GroupId = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Id,
+                    PhoneNumber = r.PhoneNumber
+                }).ToList();
 
-            return View(model);
+
+           return View(model);
 
 
         }

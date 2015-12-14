@@ -25,8 +25,9 @@ namespace LMS_Lexicon2015.Controllers
 
                 ViewBag.OptionsDropDown = new SelectList(new[] { "Alla kurser", "Aktiva kurser" });
 
-                if (User.IsInRole("Elev")) {
-                  return RedirectToAction("Details/" + groupIdInMenu);
+                if (User.IsInRole("Elev"))
+                {
+                    return RedirectToAction("Details/" + groupIdInMenu);
                 }
                 ViewBag.NameSortParm = sortOrder == "Name" ? "Name_desc" : "Name";
                 ViewBag.DescriptionSortParm = sortOrder == "Description" ? "Description_desc" : "Description";
@@ -42,9 +43,9 @@ namespace LMS_Lexicon2015.Controllers
                 if (!String.IsNullOrEmpty(searchString))
                 {
                     Groups = Groups.Where(s => s.Name.Contains(searchString)
-                    //|| (s.EndDate.ToString()).Contains(searchString)
-                    //|| (s.StartDate.ToString()).Contains(searchString)
-                    //|| s.Description.Contains(searchString)
+                        //|| (s.EndDate.ToString()).Contains(searchString)
+                        //|| (s.StartDate.ToString()).Contains(searchString)
+                        //|| s.Description.Contains(searchString)
                      );
                 }
 
@@ -78,9 +79,21 @@ namespace LMS_Lexicon2015.Controllers
                     default:
                         Groups = Groups.OrderByDescending(s => s.Name);
                         break;
-                    }
-                        return View(Groups.ToList());
                 }
+
+                var checkBox = Request.Form["ActiveChoise"];
+
+                if (checkBox == "on")
+                {
+                    Groups = Groups.Where(o => o.EndDate > DateTime.Today);
+                }
+                else
+                {
+                    Groups = Groups;
+                }
+
+                return View(Groups.ToList());
+            }
         }
 
 
