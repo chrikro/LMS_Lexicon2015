@@ -11,23 +11,7 @@
 }
 
 <h2>Skapa ny aktivitet</h2>
-
-<script>
-    function calculate() {
-
-
-        StartDate1 = document.theForm.StartDate1.value;
-        StartDate2 = document.theForm.StartDate2.value;
-        total = StartDate1 + " " + StartDate2;
-        document.theForm.StartDate.value = total;
-
-        EndDate1 = document.theForm.EndDate1.value;
-        EndDate2 = document.theForm.EndDate2.value;
-        total2 = EndDate1 + " " + EndDate2;
-        document.theForm.EndDate.value = total2;
-
-    }
-</script>
+<script src="~/Scripts/Berakna_Datum.js"></script>
 
 @*<p>groupId</p>@ViewBag.groupId
     <p>courseOccasionId</p>@ViewBag.courseOccasionId*@
@@ -47,7 +31,7 @@
 
         <div class="form-group">
             @*@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })*@
-            @Html.LabelFor(model => model.Name, "Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Name, "Namn", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Name", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })

@@ -130,10 +130,10 @@
 <div>
             @if (view == "Group")
     {
-        @Html.ActionLink("Gå tillbaka till Group View", "../Groups/Details/" + (int)ViewBag.GroupId)
+        @Html.ActionLink("Gå tillbaka till Gruppvy", "../Groups/Details/" + (int)ViewBag.GroupId)
     }
     else if (view == "Course")
     {
-        @Html.ActionLink("Gå tillbaka till Kurs View", "../CourseOccasions/Details/" + (int)ViewBag.GroupId + "/" + CourseOccasionId)
+        @Html.ActionLink("Gå tillbaka till Kursvy", "../CourseOccasions/Details/" + (int)ViewBag.GroupId + "/" + CourseOccasionId)
     }
 </div>
