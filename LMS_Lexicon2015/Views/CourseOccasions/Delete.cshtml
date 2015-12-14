@@ -3,78 +3,85 @@
 @{
     ViewBag.Title = "Ta bort";
 }
+<div class="row">
+    <div class="col-md-12 extratoppadding">
+        <h2>@ViewBag.Title</h2>
 
-<h2>@ViewBag.Title</h2>
+        <h3>Är du säker at du vill ta bort denna Kurs?</h3>
+        <div>
+            <h4>@Model.Name</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
 
-<h3>Är du säker at du vill ta bort denna Kurs?</h3>
-<div>
-    <h4>@Model.Name</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+                @*<dt>
+                        @Html.DisplayNameFor(model => model.StartDate)
+                    </dt>
 
-        @*<dt>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.StartDate)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.StartDate)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.EndDate)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.EndDate)
+                    </dd>*@
+                <dt>
+                    Datum
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.StartDate.Day)
+                    @ViewBag.Line1
+                    @Html.DisplayFor(model => model.StartDate.Month)
+                    @ViewBag.Line2
+                    @Html.DisplayFor(model => model.StartDate.Year)
+                    @ViewBag.Line3
+                    @Html.DisplayFor(model => model.EndDate.Day)
+                    @ViewBag.Line1
+                    @Html.DisplayFor(model => model.EndDate.Month)
+                    @ViewBag.Line2
+                    @Html.DisplayFor(model => model.EndDate.Year)
+                </dd>
+                @*<dt>
+                        @Html.DisplayNameFor(model => model.GroupId)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EndDate)
-        </dd>*@
-        <dt>
-            Datum
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.StartDate.Day)
-            @ViewBag.Line1
-            @Html.DisplayFor(model => model.StartDate.Month)
-            @ViewBag.Line2
-            @Html.DisplayFor(model => model.StartDate.Year)
-            @ViewBag.Line3
-            @Html.DisplayFor(model => model.EndDate.Day)
-            @ViewBag.Line1
-            @Html.DisplayFor(model => model.EndDate.Month)
-            @ViewBag.Line2
-            @Html.DisplayFor(model => model.EndDate.Year)
-        </dd>
-        @*<dt>
-            @Html.DisplayNameFor(model => model.GroupId)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.GroupId)
+                    </dd>*@
 
-        <dd>
-            @Html.DisplayFor(model => model.GroupId)
-        </dd>*@
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Ta bort" class="btn btn-default" /> |
-            @Html.ActionLink("Tillbaka till gruppen", "Details/" + Model.GroupId, "Groups")
-            @*@Html.ActionLink("Tillbaka till gruppen", "Details/" + (int)ViewBag.GroupId, "Groups")*@
+            </dl>
         </div>
-    }
+    </div>
+    <div class="row">
+        <div class="col-md-12 extratoppadding">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Ta bort" class="btn btn-default" /> |
+                    @Html.ActionLink("Tillbaka till gruppen", "Details/" + Model.GroupId, "Groups")
+                    @*@Html.ActionLink("Tillbaka till gruppen", "Details/" + (int)ViewBag.GroupId, "Groups")*@
+                </div>
+            }
+        </div>
+    </div>
 </div>
