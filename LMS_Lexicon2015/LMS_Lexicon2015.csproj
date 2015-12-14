@@ -263,6 +263,10 @@
     <Content Include="Content\css\bootstrap-datepicker.htm" />
     <Content Include="Content\css\jquery-timepicker.htm" />
     <Content Include="favicon.ico" />
+    <Content Include="Files\csharp_extra.txt" />
+    <Content Include="Files\ReadMe.txt" />
+    <Content Include="Files\scrum_process.png" />
+    <Content Include="Files\test.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -272,6 +276,9 @@
     <Content Include="ClassDiagram1.cd" />
     <Content Include="Scripts\ChangeRole.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Files\Övning_7-CSS-Lite_skinn_på_skelettet.pdf" />
+    <Content Include="Files\C# Bible.pdf" />
+    <Content Include="Files\vyer.pptx" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -284,7 +291,8 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="sqlextra\tabort_testdata.sql" />
+    <Content Include="sqlextra\visa_bara_dok.sql" />
+    <Content Include="sqlextra\visa_testdata.sql" />
     <Content Include="sqlextra\delete_data.sql" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -355,7 +363,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Files\" />
     <Folder Include="Document\" />
-    <Folder Include="Files\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

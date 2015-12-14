@@ -35,8 +35,6 @@ namespace LMS_Lexicon2015.Models
         }
     }
 
-
-
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
