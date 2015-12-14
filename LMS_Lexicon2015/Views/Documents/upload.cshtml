@@ -10,8 +10,9 @@
     ViewBag.GroupId = ViewBag.GroupId;
     ViewBag.CourseOccasionId = ViewBag.CourseOccasionId;
     ViewBag.ActivityId = ViewBag.ActivityId;
-    
-    
+    string AktivitetTyp = ViewBag.AktivitetTyp;
+
+
 }
 
 <h2>Ladda upp dokument</h2>
@@ -22,12 +23,29 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>@ViewBag.view</h4>
+
+        @if (view == "Group")
+        {
+            <h4>för Gruppen</h4>
+        }
+        else if (view == "Course")
+        {
+            <h4>för Kursen</h4>
+        }
+        else if (view == "Activities")
+        {
+            <h4>för Aktiviteten (@ViewBag.AktivitetTyp)</h4>
+        }
+        else
+        {
+            <h4>för ??????</h4>
+        }  
         <hr />
 
         @ViewBag.GroupId
         @ViewBag.CourseOccasionId
         @ViewBag.view
+        @ViewBag.AktivitetTyp
         <br><br>
 
 
@@ -58,11 +76,12 @@
 
 
 
-        @if (view == "Activities") { 
+        @if (view == "Activities" && AktivitetTyp == "ÖvningsUppgift")
+        { 
         <div class="form-group">
             @Html.LabelFor(model => model.Deadline, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Deadline, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Deadline, new { htmlAttributes = new { @class = "form-control", @type = "date"  } })
                 @Html.ValidationMessageFor(model => model.Deadline, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -134,6 +153,10 @@
     }
     else if (view == "Course")
     {
-        @Html.ActionLink("Gå tillbaka till Kursvy", "../CourseOccasions/Details/" + (int)ViewBag.GroupId + "/" + CourseOccasionId)
+        @Html.ActionLink("Gå tillbaka till Kursvy", "../CourseOccasions/Details/" + CourseOccasionId + "/" + (int)ViewBag.GroupId )
     }
+            else if (view == "Activities")
+            {
+                @Html.ActionLink("Gå tillbaka till Aktivitetsvy", "../Activities/Details/" + ActivityId + "/" + CourseOccasionId + "/" + (int)ViewBag.GroupId)
+            }
 </div>
