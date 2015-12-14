@@ -40,7 +40,7 @@
 
     @*@Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (int)ViewBag.groupId + "/" + (string)ViewBag.view)*@
 
-    @*@if (view == "Group")
+    @if (view == "Group")
     {
         @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId)
     }
@@ -50,8 +50,8 @@
     }
     else
     {
-        @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (int)ViewBag.groupId + "/" + (string)ViewBag.view)
-    }*@
+        @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId)
+    }
 
 </p>
 <table class="table">
