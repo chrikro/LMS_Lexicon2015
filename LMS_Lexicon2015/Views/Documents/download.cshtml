@@ -12,139 +12,146 @@
     ViewBag.AktivitetTyp = TempData["AktivitetTyp"];
     var AktivitetTyp = "";
     AktivitetTyp = ViewBag.AktivitetTyp;
-    
+
 }
 
+<div class="row">
+    <div class="col-md-12 extratoppadding">
 
-    
-    @if (view == "Group")
-    {
-        <h2>Dokument för Gruppen</h2>
-    }
-    else if (view == "Course")
-    {
-        <h2>Dokument för Kursen</h2>
-    }
-    else if (view == "Activities")
-    {
-        <h2>Dokument för Aktiviteten</h2>
-        
-    }
-    else
-    {
-        <h2>Dokument för ??????</h2>
-    }  
+        @if (view == "Group")
+        {
+            <h2>Dokument för Gruppen</h2>
+        }
+        else if (view == "Course")
+        {
+            <h2>Dokument för Kursen</h2>
+        }
+        else if (view == "Activities")
+        {
+            <h2>Dokument för Aktiviteten</h2>
+
+        }
+        else
+        {
+            <h2>Dokument för ??????</h2>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 extratoppadding">
+        @ViewBag.CourseOccasionId
+        @ViewBag.GroupId
+        @ViewBag.view
+        @ViewBag.ActivityId
+        @TempData["AktivitetTyp"]
 
 
-@ViewBag.CourseOccasionId
-@ViewBag.GroupId
-@ViewBag.view
-@ViewBag.ActivityId
-@TempData["AktivitetTyp"]
-
-<p>
+        <p>
 
 
-    @*@Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (int)ViewBag.groupId + "/" + (string)ViewBag.view)*@
+            @*@Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (int)ViewBag.groupId + "/" + (string)ViewBag.view)*@
 
-    @if (view == "Group")
-    {
-        @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId)
-    }
-    else if (view == "Course")
-    {
-        @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId) 
-    }
-    else if (view == "Activities")
-    {
-        @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId + "/" + (string)ViewBag.AktivitetTyp)
-       // @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId)
-    }
-    else
-    {
-        @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId)
-    }
-
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.Url)
-            </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Timestamp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserId)
-        </th>
-        <th>
-            @if (view == "Activities")
+            @if (view == "Group")
             {
-
-                <p>Inläming</p>
+                @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId)
+            }
+            else if (view == "Course")
+            {
+                @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId)
+            }
+            else if (view == "Activities")
+            {
+                @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId + "/" + (string)ViewBag.AktivitetTyp)
+                // @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId)
+            }
+            else
+            {
+                @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId)
             }
 
-        </th>
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Url)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Timestamp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserId)
+                </th>
+                <th>
+                    @if (view == "Activities")
+                    {
 
-    </tr>
+                        <p>Inlämning</p>
+                    }
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.Name)*@
-                @Html.ActionLink(item.Name, "../Documents/DownloadFile", new { fileUrl = item.Url, fileName = item.Name })
-              @*@Html.ActionLink(item.Name, "../Documents/DownloadFile", new { fileUrl = item.Url, fileName = item.Name },
-    +new { title = "Beskrivning:\n" + item.Description + "\n\nSkapades:\n" + item.Timestamp })*@
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.Url)
-                </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
+                </th>
 
-            
-            <td>
-                @*@Html.DisplayFor(modelItem => item.Timestamp)*@
-                @item.Timestamp.ToShortDateString()
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.Deadline)
-                </td>*@
-            <td>
-                    @Html.DisplayFor(modelItem => item.UserId)
-                </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.GroupId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CourseOccasionId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ActivityId)
-                </td>*@
+            </tr>
 
-            <th>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Name)*@
+                        @Html.ActionLink(item.Name, "../Documents/DownloadFile", new { fileUrl = item.Url, fileName = item.Name })
+                        @*@Html.ActionLink(item.Name, "../Documents/DownloadFile", new { fileUrl = item.Url, fileName = item.Name },
+                            +new { title = "Beskrivning:\n" + item.Description + "\n\nSkapades:\n" + item.Timestamp })*@
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Url)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
 
 
-                @if (view == "Activities" && AktivitetTyp == "ÖvningsUppgift")
-                                      
-                {
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Timestamp)*@
+                        @item.Timestamp.ToShortDateString()
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Deadline)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserId)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.GroupId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CourseOccasionId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ActivityId)
+                        </td>*@
 
-                    <p>@Html.ActionLink("Ladda upp Inlämningsuppgiften", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId + "/inlämning")
-</p>
-                }
-            </th>
+                    <th>
 
-        </tr>
-    }
 
-</table>
+                        @if (view == "Activities" && AktivitetTyp == "ÖvningsUppgift")
+                        {
 
+                            <p>
+                                @Html.ActionLink("Ladda upp Inlämningsuppgiften", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId + "/inlämning")
+                            </p>
+                        }
+                    </th>
+
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
