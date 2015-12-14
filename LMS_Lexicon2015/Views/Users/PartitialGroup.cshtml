@@ -1,69 +1,78 @@
 ﻿@model IEnumerable<LMS_Lexicon2015.Models.ApplicationUser>
 
-<h2>@ViewBag.GroupName</h2>
-<h3>Elevlista</h3>
+<div class="row">
+    <div class="col-md-12 extratoppadding">
+        <h2>@ViewBag.GroupName</h2>
+        <h3>Elevlista</h3>
 
-@*<p>
-    @Html.ActionLink("Create New", "Register")
-</p>*@
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @*@Html.DisplayNameFor(model => model.PhoneNumber)*@
-            <span>Mobilnummer</span>
-        </th>
-        <th>
-            @*@Html.DisplayNameFor(model => model.UserName)*@
-            <span>Användarnamn</span>
-        </th>
-        <th></th>
-    </tr>
+        @*<p>
+                @Html.ActionLink("Create New", "Register")
+            </p>*@
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.PhoneNumber)*@
+                    <span>Mobilnummer</span>
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.UserName)*@
+                    <span>Användarnamn</span>
+                </th>
+                <th></th>
+            </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-          <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
-        </td>
-    </tr>
-}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+                    </td>
+                </tr>
+            }
 
-</table>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            @if (!LMS_Lexicon2015.Controllers.HomeController.HomeIndex)
+            {
+                @Html.ActionLink("Tillbaka till listan", "Index", "Groups")
+            }
+        </p>
 
-<p>
-    @if (!LMS_Lexicon2015.Controllers.HomeController.HomeIndex) { 
-    @Html.ActionLink("Tillbaka till listan", "Index", "Groups")
-    }
-</p>
-
- @*+ "?" + HttpContext.Current.Request.Url.AbsolutPath*@
-<p>
-@if (User.IsInRole("Lärare")) {
-    @Html.ActionLink("Lägga till användare", "Register", "Account")
-}
-</p>
+        @*+ "?" + HttpContext.Current.Request.Url.AbsolutPath*@
+        <p>
+            @if (User.IsInRole("Lärare"))
+            {
+                @Html.ActionLink("Lägga till användare", "Register", "Account")
+            }
+        </p>
+</div></div>

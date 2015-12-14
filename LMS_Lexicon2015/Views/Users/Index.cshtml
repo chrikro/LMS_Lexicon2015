@@ -4,106 +4,112 @@
 @{
     ViewBag.Title = "Användarlista";
 }
+<div class="row">
+    <div class="col-md-12 extratoppadding">
+        <h2>@ViewBag.Title</h2>
 
-<h2>@ViewBag.Title</h2>
+        <p>
+            @if (User.IsInRole("Lärare"))
+            {
+                @Html.ActionLink("Skapa Användare", "Register", "Account")
+            }
 
-<p>
-    @if (User.IsInRole("Lärare")) {
-        @Html.ActionLink("Skapa Användare", "Register", "Account")
-    }
+        </p>
 
-</p>
+        <h3>Sök på användarnamn</h3>
 
-<h3>Sök på användarnamn</h3>
+        @using (Html.BeginForm())
+        {
+            <p>
+                @Html.TextBox("SearchString")
+                <input type="submit" value="Sök" />
 
-@using (Html.BeginForm())
-{
-    <p>
-        @Html.TextBox("SearchString")
-        <input type="submit" value="Sök" />
+                <label for="ActiveChoise">  Enbart aktiva </label>
+                <input type="checkbox" name="ActiveChoise" />
+            </p>
+        }
 
-        <label for="ActiveChoise">  Enbart aktiva </label>
-        <input type="checkbox" name="ActiveChoise"/>
-    </p>
-}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.FirstName).ToString()), "index", new { sortOrder = ViewBag.FirstNameSortParm, searchString = ViewBag.searchString })
+                    @*@Html.DisplayNameFor(model => model.FirstName)*@
+                </th>
+                <th>
+                    @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.LastName).ToString()), "index", new { sortOrder = ViewBag.LastNameSortParm, searchString = ViewBag.searchString })
+                    @*@Html.DisplayNameFor(model => model.LastName)*@
+                </th>
+                <th>
+                    @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Role).ToString()), "index", new { sortOrder = ViewBag.RolesSortParm, searchString = ViewBag.searchString })
+                    @*@Html.DisplayNameFor(model => model.Role)*@
+                </th>
+                <th>
+                    @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Group).ToString()), "index", new { sortOrder = ViewBag.GroupSortParm, searchString = ViewBag.searchString })
+                    @*@Html.DisplayNameFor(model => model.Group)*@
+                </th>
+                <th>
+                    @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Email).ToString()), "index", new { sortOrder = ViewBag.EmailSortParm, searchString = ViewBag.searchString })
+                    @*@Html.DisplayNameFor(model => model.Email)*@
+                </th>
 
+                @*<th>
+                        @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.PhoneNumber).ToString()), "index", new { sortOrder = ViewBag.PhoneNumberSortParm, searchString = ViewBag.searchString })
+                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                    </th>*@
 
-<br />
-<table class="table">
-    <tr>
-        <th>
-            @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.FirstName).ToString()), "index", new { sortOrder = ViewBag.FirstNameSortParm, searchString = ViewBag.searchString })
-            @*@Html.DisplayNameFor(model => model.FirstName)*@
-        </th>
-        <th>
-            @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.LastName).ToString()), "index", new { sortOrder = ViewBag.LastNameSortParm, searchString = ViewBag.searchString })
-            @*@Html.DisplayNameFor(model => model.LastName)*@
-        </th>
-        <th>
-            @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Role).ToString()), "index", new { sortOrder = ViewBag.RolesSortParm, searchString = ViewBag.searchString })
-            @*@Html.DisplayNameFor(model => model.Role)*@
-        </th>
-        <th>
-            @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Group).ToString()), "index", new { sortOrder = ViewBag.GroupSortParm, searchString = ViewBag.searchString })
-            @*@Html.DisplayNameFor(model => model.Group)*@
-        </th>
-        <th>
-            @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Email).ToString()), "index", new { sortOrder = ViewBag.EmailSortParm, searchString = ViewBag.searchString })
-            @*@Html.DisplayNameFor(model => model.Email)*@
-        </th>
+                <th></th>
+            </tr>
 
-        @*<th>
-            @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.PhoneNumber).ToString()), "index", new { sortOrder = ViewBag.PhoneNumberSortParm, searchString = ViewBag.searchString })
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </th>*@
-
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Role)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Group)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-
-
-            @*<td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>*@
-
-            <td>
-                @if (User.IsInRole("Lärare"))
-                {
-                    @Html.ActionLink("Ändra", "Edit", new { id = item.Id }) <span>|</span>
-                }                              
-                @if (User.IsInRole("Lärare") || item.Id == User.Identity.GetUserId())
-                {
-                    @Html.ActionLink("Detaljer", "Details", new { id = item.Id }) 
-                    if (item.Id != User.Identity.GetUserId())
-                    {<span>|</span>
-                }
-                }
-                @if (User.IsInRole("Lärare") && item.Id != User.Identity.GetUserId())
-                {
-                    @Html.ActionLink("Ta bort", "Delete", new { id = item.Id })
-                }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Role)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Group)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
 
 
-            </td>
-        </tr>
-    }
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td>*@
 
-</table>
+                    <td>
+                        @if (User.IsInRole("Lärare"))
+                        {
+                            @Html.ActionLink("Ändra", "Edit", new { id = item.Id }) <span>|</span>
+                        }
+                        @if (User.IsInRole("Lärare") || item.Id == User.Identity.GetUserId())
+                        {
+                            @Html.ActionLink("Detaljer", "Details", new { id = item.Id })
+                            if (item.Id != User.Identity.GetUserId())
+                            {<span>|</span>
+                            }
+                        }
+                        @if (User.IsInRole("Lärare") && item.Id != User.Identity.GetUserId())
+                        {
+                            @Html.ActionLink("Ta bort", "Delete", new { id = item.Id })
+                        }
+
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+</div></div>

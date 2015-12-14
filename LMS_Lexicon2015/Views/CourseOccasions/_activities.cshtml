@@ -7,106 +7,109 @@
 }
 @*<p>GroupId</p>@ViewBag.groupId
     <p>CourseOccasionId</p>@ViewBag.courseOccasionId*@
+<div class="row">
+    <div class="col-md-12">
+        <h2>Aktiviteter</h2>
 
-<h2>Aktiviteter</h2>
+        <p>
+            @if (User.IsInRole("Lärare"))
+            {
+                @Html.ActionLink("Lägg till en ny aktivitet", "Create/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")
+            }
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </th>
+                <th></th>
+            </tr>
 
-<p>
-    @if (User.IsInRole("Lärare"))
-    {
-        @Html.ActionLink("Lägg till en ny aktivitet", "Create/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")
-    }
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </th>
-        <th></th>
-    </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
+                        @if (checkDateNow.Date >= item.StartDate.Date && checkDateNow.Date <= item.EndDate.Date)
+                        {
+                            <span class="content_info_ok">*</span>
+                            checkDateNowExplanation = true;
+                        }
 
-                @if (checkDateNow.Date >= item.StartDate.Date && checkDateNow.Date <= item.EndDate.Date)
-                {
-                    <span class="content_info_ok">*</span>
-                    checkDateNowExplanation = true;
-                }
+                        @*@Html.DisplayFor(modelItem => item.Name)*@
+                        @Html.ActionLink(item.Name, "Details/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")
 
-                @*@Html.DisplayFor(modelItem => item.Name)*@
-                @Html.ActionLink(item.Name, "Details/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
 
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
+                    <td>
+                        <span>Kl:</span>
+                        @Html.DisplayFor(modelItem => item.StartDate.Hour)
+                        <span>:</span>
+                        @if (item.StartDate.Minute < 10)
+                        {
+                            <span>0</span>
+                        }
+                        @Html.DisplayFor(modelItem => item.StartDate.Minute)
+                        <span>(</span>
 
-            <td>
-                <span>Kl:</span>
-                @Html.DisplayFor(modelItem => item.StartDate.Hour)
-                <span>:</span>
-                @if (item.StartDate.Minute < 10)
-                {
-                    <span>0</span>
-                }
-                @Html.DisplayFor(modelItem => item.StartDate.Minute)
-                <span>(</span>
+                        @Html.DisplayFor(modelItem => item.StartDate.Day)
+                        <span>/</span>
+                        @Html.DisplayFor(modelItem => item.StartDate.Month)
+                        <span>-</span>
+                        @Html.DisplayFor(modelItem => item.StartDate.Year)
+                        <span>)</span>
+                    </td>
+                    <td>
+                        <span>Kl:</span>
+                        @Html.DisplayFor(modelItem => item.EndDate.Hour)
+                        <span>:</span>
+                        @if (item.EndDate.Minute < 10)
+                        {
+                            <span>0</span>
+                        }
+                        @Html.DisplayFor(modelItem => item.EndDate.Minute)
+                        <span>(</span>
 
-                @Html.DisplayFor(modelItem => item.StartDate.Day)
-                <span>/</span>
-                @Html.DisplayFor(modelItem => item.StartDate.Month)
-                <span>-</span>
-                @Html.DisplayFor(modelItem => item.StartDate.Year)
-                <span>)</span>
-            </td>
-            <td>
-                <span>Kl:</span>
-                @Html.DisplayFor(modelItem => item.EndDate.Hour)
-                <span>:</span>
-                @if (item.EndDate.Minute < 10)
-                {
-                    <span>0</span>
-                }
-                @Html.DisplayFor(modelItem => item.EndDate.Minute)
-                <span>(</span>
+                        @Html.DisplayFor(modelItem => item.EndDate.Day)
+                        <span>/</span>
+                        @Html.DisplayFor(modelItem => item.EndDate.Month)
+                        <span>-</span>
+                        @Html.DisplayFor(modelItem => item.EndDate.Year)
+                        <span>)</span>
+                    </td>
 
-                @Html.DisplayFor(modelItem => item.EndDate.Day)
-                <span>/</span>
-                @Html.DisplayFor(modelItem => item.EndDate.Month)
-                <span>-</span>
-                @Html.DisplayFor(modelItem => item.EndDate.Year)
-                <span>)</span>
-            </td>
+                    <td>
 
-            <td>
+                        @*@Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |
+                            @Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |*@
 
-                @*@Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |
-                    @Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |*@
+                        @if (User.IsInRole("Lärare"))
+                        {
 
-                @if (User.IsInRole("Lärare"))
-                {
-
-                    @Html.ActionLink("Ta bort", "Delete/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")
-                }
-            </td>
-        </tr>
-    }
+                            @Html.ActionLink("Ta bort", "Delete/" + item.Id + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")
+                        }
+                    </td>
+                </tr>
+            }
 
 
-</table>
-@if (!checkDateNowExplanation == false)
-{
-    <span class="content_info_ok">*</span><span class="content_info_ok_normal"> Dagens datum</span>
-    <br />
-}
+        </table>
+        @if (!checkDateNowExplanation == false)
+        {
+            <span class="content_info_ok">*</span><span class="content_info_ok_normal"> Dagens datum</span>
+            <br />
+        }
+    </div>
+</div>

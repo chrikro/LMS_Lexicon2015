@@ -6,130 +6,132 @@
     DateTime checkEndDate = new DateTime(2010, 01, 01);
     var checkEndDateExplanation = false;
 }
-
-<h2>Kurser</h2>
-@ViewBag.dbStartDate
-<p>
-
-    @if (User.IsInRole("Lärare"))
-    {
-        if (ViewBag.groupId != null) { 
-        @Html.ActionLink("Lägg till en ny kurs", "Create/" + (int)ViewBag.groupId, "CourseOccasions")
-        }
-    }
-
-
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </th>
-        @*<th>
-                Antalet aktiviteter
-            </th>*@
-        @*<th>
-                @Html.DisplayNameFor(model => model.GroupId)
-            </th>*@
-        <th></th>
-    </tr>
-
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.ActionLink(item.Name, "Details/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
-            </td>
-            <td>
-                @if (item.Description.Length <= 10)
-                {
-                    @Html.DisplayFor(modelItem => item.Description)
-                }
-                else
-                {
-                    for (int i = 0; i < 10; i++)
-                    {
-                        @Html.DisplayFor(modelItem => item.Description[i])
-                    }
-                    <span>...</span>
-                }
-            </td>
-            <td>
-
-
-
-                @if (checkEndDate > item.StartDate)
-                {
-                    <span class="content_info_problem">***</span>
-                    checkEndDateExplanation = true;
-                }
-                @if (checkEndDate < item.EndDate)
-                {
-                    checkEndDate = item.EndDate;
-                }
-
-                @Html.DisplayFor(modelItem => item.StartDate.Day)
-                <span>/</span>
-                @Html.DisplayFor(modelItem => item.StartDate.Month)
-                <span>-</span>
-                @Html.DisplayFor(modelItem => item.StartDate.Year)
-            </td>
-            <td>
-
-                @Html.DisplayFor(modelItem => item.EndDate.Day)
-                <span>/</span>
-                @Html.DisplayFor(modelItem => item.EndDate.Month)
-                <span>-</span>
-                @Html.DisplayFor(modelItem => item.EndDate.Year)
-            </td>
-            @*@if (User.IsInRole("Lärare"))
-                {
-                    @Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions") <span>|</span>
-                }
-
-                @Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
-                @if (User.IsInRole("Lärare"))
-                        { <span>|</span> }*@
-
-            @*<td>
-                    @item.Activities.Count
-                </td>*@
+<div class="row">
+    <div class="col-md-12">
+        <h2>Kurser</h2>
+        @ViewBag.dbStartDate
+        <p>
 
             @if (User.IsInRole("Lärare"))
             {
-                if (item.Activities.Count > 0)
+                if (ViewBag.groupId != null)
                 {
-                    <td>
-                        <div>
-                            <a href=" " title="Det finns aktiviteter i kursen." class="content_info_dont_delete">Ta bort</a>
-                        </div>
-                    </td>
+                    @Html.ActionLink("Lägg till en ny kurs", "Create/" + (int)ViewBag.groupId, "CourseOccasions")
                 }
-                else
-                {
-                    <td>
-                        @Html.ActionLink("Ta bort", "Delete/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
-                    </td>
-                }
-
             }
-        </tr>
-    }
 
-</table>
 
-@if (!checkEndDateExplanation == false)
-{
-    <span class="content_info_problem">*** Kursens period överlappar en tidigare kurs.</span>
-    <br />
-}
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </th>
+                @*<th>
+                        Antalet aktiviteter
+                    </th>*@
+                @*<th>
+                        @Html.DisplayNameFor(model => model.GroupId)
+                    </th>*@
+                <th></th>
+            </tr>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.Name, "Details/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
+                    </td>
+                    <td>
+                        @if (item.Description.Length <= 10)
+                        {
+                            @Html.DisplayFor(modelItem => item.Description)
+                        }
+                        else
+                        {
+                            for (int i = 0; i < 10; i++)
+                            {
+                                @Html.DisplayFor(modelItem => item.Description[i])
+                            }
+                            <span>...</span>
+                        }
+                    </td>
+                    <td>
+
+
+
+                        @if (checkEndDate > item.StartDate)
+                        {
+                            <span class="content_info_problem">***</span>
+                            checkEndDateExplanation = true;
+                        }
+                        @if (checkEndDate < item.EndDate)
+                        {
+                            checkEndDate = item.EndDate;
+                        }
+
+                        @Html.DisplayFor(modelItem => item.StartDate.Day)
+                        <span>/</span>
+                        @Html.DisplayFor(modelItem => item.StartDate.Month)
+                        <span>-</span>
+                        @Html.DisplayFor(modelItem => item.StartDate.Year)
+                    </td>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.EndDate.Day)
+                        <span>/</span>
+                        @Html.DisplayFor(modelItem => item.EndDate.Month)
+                        <span>-</span>
+                        @Html.DisplayFor(modelItem => item.EndDate.Year)
+                    </td>
+                    @*@if (User.IsInRole("Lärare"))
+                        {
+                            @Html.ActionLink("Ändra", "Edit/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions") <span>|</span>
+                        }
+
+                        @Html.ActionLink("Detaljer", "Details/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
+                        @if (User.IsInRole("Lärare"))
+                                { <span>|</span> }*@
+
+                    @*<td>
+                            @item.Activities.Count
+                        </td>*@
+
+                    @if (User.IsInRole("Lärare"))
+                    {
+                        if (item.Activities.Count > 0)
+                        {
+                            <td>
+                                <div>
+                                    <a href=" " title="Det finns aktiviteter i kursen." class="content_info_dont_delete">Ta bort</a>
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @Html.ActionLink("Ta bort", "Delete/" + item.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
+                            </td>
+                        }
+
+                    }
+                </tr>
+            }
+
+        </table>
+        @if (!checkEndDateExplanation == false)
+        {
+            <span class="content_info_problem">*** Kursens period överlappar en tidigare kurs.</span>
+            <br />
+        }
+</div></div>

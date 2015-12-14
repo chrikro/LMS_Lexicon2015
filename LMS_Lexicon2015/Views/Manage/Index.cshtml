@@ -3,75 +3,79 @@
     ViewBag.Title = "Hantera konto";
 }
 
-<h2>@ViewBag.Title</h2>
+<div class="row">
+    <div class="col-md-12 extratoppadding">
+        <h2>@ViewBag.Title</h2>
 
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div>
-    <h4>Ändra dina kontoinställningar</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>Lösenord:</dt>
-        <dd>
-            @*[*@
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("Ändra lösenord", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Skapa lösenord", "SetPassword")
-            }
-            @*]*@
-        </dd>
-        @*<dt>External Logins:</dt>
-        <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Hantera konto", "ManageLogins") ]
-        </dd>*@
-  
-        @*  
-            <dt>Phone Number:</dt>
-            <dd>
-                @(Model.PhoneNumber ?? "None") [
-                @if (Model.PhoneNumber != null)
-                {
-                    @Html.ActionLink("Change", "AddPhoneNumber")
-                    @: &nbsp;|&nbsp;
-                    @Html.ActionLink("Remove", "RemovePhoneNumber")
-                }
-                else
-                {
-                    @Html.ActionLink("Add", "AddPhoneNumber")
-                }
-                ]
-            </dd>
-        *@
-        @*<dt>Two-Factor Authentication:</dt>
-        <dd>
-            <p>
-                There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication.
-            </p>*@
-            @*@if (Model.TwoFactor)
-                {
-                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        <p class="text-success">@ViewBag.StatusMessage</p>
+        <div>
+            <h4>Ändra dina kontoinställningar</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>Lösenord:</dt>
+                <dd>
+                    @*[*@
+                    @if (Model.HasPassword)
                     {
-                        @Html.AntiForgeryToken()
-                        <text>Enabled
-                        <input type="submit" value="Disable" class="btn btn-link" />
-                        </text>
+                        @Html.ActionLink("Ändra lösenord", "ChangePassword")
                     }
-                }
-                else
-                {
-                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    else
                     {
-                        @Html.AntiForgeryToken()
-                        <text>Disabled
-                        <input type="submit" value="Enable" class="btn btn-link" />
-                        </text>
+                        @Html.ActionLink("Skapa lösenord", "SetPassword")
                     }
-                }*@
-        </dd>
-    </dl>
+                    @*]*@
+                </dd>
+                @*<dt>External Logins:</dt>
+                    <dd>
+                        @Model.Logins.Count [
+                        @Html.ActionLink("Hantera konto", "ManageLogins") ]
+                    </dd>*@
+
+                @*
+                    <dt>Phone Number:</dt>
+                    <dd>
+                        @(Model.PhoneNumber ?? "None") [
+                        @if (Model.PhoneNumber != null)
+                        {
+                            @Html.ActionLink("Change", "AddPhoneNumber")
+                            @: &nbsp;|&nbsp;
+                            @Html.ActionLink("Remove", "RemovePhoneNumber")
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Add", "AddPhoneNumber")
+                        }
+                        ]
+                    </dd>
+                *@
+                @*<dt>Two-Factor Authentication:</dt>
+                    <dd>
+                        <p>
+                            There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+                            for details on setting up this ASP.NET application to support two-factor authentication.
+                        </p>*@
+                @*@if (Model.TwoFactor)
+                    {
+                        using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <text>Enabled
+                            <input type="submit" value="Disable" class="btn btn-link" />
+                            </text>
+                        }
+                    }
+                    else
+                    {
+                        using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <text>Disabled
+                            <input type="submit" value="Enable" class="btn btn-link" />
+                            </text>
+                        }
+                    }</dd>*@
+
+            </dl>
+        </div>
+    </div>
 </div>

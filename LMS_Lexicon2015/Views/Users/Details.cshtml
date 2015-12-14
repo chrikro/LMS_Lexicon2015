@@ -4,104 +4,109 @@
 @{
     ViewBag.Title = "Details";
 }
+<div class="row">
+    <div class="col-md-12 extratoppadding">
+        <h2>Detaljer</h2>
 
-<h2>Detaljer</h2>
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
 
-<div>
-    <h4></h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+                <dt>
+                    @ViewBag.RoleHeader
+                </dt>
 
-        <dt>
-            @ViewBag.RoleHeader
-        </dt>
+                <dd>
+                    @ViewBag.Role
+                </dd>
 
-        <dd>
-            @ViewBag.Role
-        </dd>
+                <dt>
+                    @ViewBag.GroupName
+                </dt>
 
-        <dt>
-            @ViewBag.GroupName
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Group.Name)
-        </dd>
-
-
-        <dt>
-            @ViewBag.GroupStart
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Group.StartDate.Day)
-            <span>/</span>
-            @Html.DisplayFor(model => model.Group.StartDate.Month)
-            <span>-</span>
-            @Html.DisplayFor(model => model.Group.StartDate.Year)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Group.Name)
+                </dd>
 
 
-        <dt>
-            @ViewBag.GroupEnd
-        </dt>
+                <dt>
+                    @ViewBag.GroupStart
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Group.EndDate.Day)
-            <span>/</span>
-            @Html.DisplayFor(model => model.Group.EndDate.Month)
-            <span>-</span>
-            @Html.DisplayFor(model => model.Group.EndDate.Year)
-        </dd>
-
-
-
-        <dt>
-            @ViewBag.EmailHeader
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @ViewBag.PhoneHeader
-
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Group.StartDate.Day)
+                    <span>/</span>
+                    @Html.DisplayFor(model => model.Group.StartDate.Month)
+                    <span>-</span>
+                    @Html.DisplayFor(model => model.Group.StartDate.Year)
+                </dd>
 
 
-        <dt>
-            @ViewBag.UserName
-        </dt>
+                <dt>
+                    @ViewBag.GroupEnd
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Group.EndDate.Day)
+                    <span>/</span>
+                    @Html.DisplayFor(model => model.Group.EndDate.Month)
+                    <span>-</span>
+                    @Html.DisplayFor(model => model.Group.EndDate.Year)
+                </dd>
 
-    </dl>
+
+
+                <dt>
+                    @ViewBag.EmailHeader
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt>
+                    @ViewBag.PhoneHeader
+
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PhoneNumber)
+                </dd>
+
+
+                <dt>
+                    @ViewBag.UserName
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UserName)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
 </div>
-<p>
-@if (User.IsInRole("Lärare")) {
-    @Html.ActionLink("Ändra", "Edit", new { id = Model.Id }) <span>|</span>
-   }
-    @Html.ActionLink("Tillbaka till listan", "Index")
-</p>
+<div class="row">
+    <div class="col-md-12 extratoppadding">
+        @if (User.IsInRole("Lärare"))
+        {
+            @Html.ActionLink("Ändra", "Edit", new { id = Model.Id }) <span>|</span>
+        }
+        @Html.ActionLink("Tillbaka till listan", "Index")
+    </div>
+</div>

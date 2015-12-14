@@ -12,11 +12,12 @@
     ViewBag.AktivitetTyp = TempData["AktivitetTyp"];
     var AktivitetTyp = "";
     AktivitetTyp = ViewBag.AktivitetTyp;
-    
+   var db = new LMS_Lexicon2015.Models.ApplicationDbContext();
 }
 
+<div class="row">
+    <div class="col-md-12 extratoppadding">
 
-    
     @if (view == "Group")
     {
         <h2>Dokument för Gruppen</h2>
@@ -34,13 +35,17 @@
     {
         <h2>Dokument för ??????</h2>
     }  
+    </div>
+</div>
 
-
+<div class="row">
+    <div class="col-md-12 extratoppadding">
 @ViewBag.CourseOccasionId
 @ViewBag.GroupId
 @ViewBag.view
 @ViewBag.ActivityId
 @TempData["AktivitetTyp"]
+
 
 <p>
 
@@ -80,14 +85,15 @@
         <th>
             @Html.DisplayNameFor(model => model.Timestamp)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.UserId)
-        </th>
+        </th>*@
         <th>
-            @if (view == "Activities")
+            @*@if (view == "Activities")*@
+            @if (view == "Activities" && AktivitetTyp == "ÖvningsUppgift" && User.IsInRole("Elev"))
             {
 
-                <p>Inläming</p>
+                        <p>Inlämning</p>
             }
 
         </th>
@@ -118,9 +124,15 @@
             @*<td>
                     @Html.DisplayFor(modelItem => item.Deadline)
                 </td>*@
-            <td>
-                    @Html.DisplayFor(modelItem => item.UserId)
-                </td>
+            @*<td>*@
+               @* @Html.DisplayFor(modelItem => item.UserId)*@
+
+                @*@db.Users.Where(u => u.Id = item.UserId.FirstOrDefault().Name)
+
+                @db.Users.Where(U => U.Id == U.UserId).FirstOrDefault().Name
+                HttpContext.Current.User.Identity.Name*@
+               
+           @* </td>*@
             @*<td>
                     @Html.DisplayFor(modelItem => item.GroupId)
                 </td>
@@ -134,11 +146,12 @@
             <th>
 
 
-                @if (view == "Activities" && AktivitetTyp == "ÖvningsUppgift")
-                                      
+
+                @if (view == "Activities" && AktivitetTyp == "ÖvningsUppgift" && User.IsInRole("Elev"))
                 {
 
-                    <p>@Html.ActionLink("Ladda upp Inlämningsuppgiften", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId + "/inlämning")
+                    <p>
+                        @Html.ActionLink("Lämna in Inlämningsuppgiften", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId + "/inlämning")
 </p>
                 }
             </th>
@@ -148,3 +161,5 @@
 
 </table>
 
+    </div>
+</div>

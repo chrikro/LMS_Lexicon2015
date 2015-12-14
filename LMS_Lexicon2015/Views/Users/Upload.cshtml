@@ -2,50 +2,50 @@
     ViewBag.Title = "Upload File";
 }
 
-
-    <legend>Upload en fil</legend>
-    <div>
-        <input type='file' id="files" multiple="multiple" /><br />
-        <input type="button" id="upload" value="Upload" />
-    </div>
-
-
-<script>
-    $body = $("body");
-    $(document).on({
-        ajaxStart: function () { $body.addClass("loading"); },
-        ajaxStop: function () { $body.removeClass("loading"); }
-    });
-
-    $(document).ready(function () {
-        $("#upload").click(function () {
-            var data = new FormData();
-
-            //Add the Multiple selected files into the data object
-            var files = $("#files").get(0).files;
-            for (i = 0; i < files.length; i++) {
-                data.append("files" + i, files[i]);
-            }
+<div class="row">
+    <div class="col-md-12 extratoppadding">
+        <h3>Ladda upp en fil</h3>
+        <div>
+            <input type='file' id="files" multiple="multiple" /><br />
+            <input type="button" id="upload" value="Upload" />
+        </div>
 
 
+        <script>
+            $body = $("body");
+            $(document).on({
+                ajaxStart: function () { $body.addClass("loading"); },
+                ajaxStop: function () { $body.removeClass("loading"); }
+            });
 
+            $(document).ready(function () {
+                $("#upload").click(function () {
+                    var data = new FormData();
 
-            //Post the data (files) to the server
-            if (files.length > 0) {
-                $.ajax({
-                    type: 'POST',
-                    url: "@Url.Action("Upload")",
-                    data: data,
-                    contentType: false,
-                    processData: false,
-                    success: function (data) {
-                        alert("Successfully Uploaded!");
-                    },
-                    error: function () {
-                        alert("An error occurred!");
-                    },
+                    //Add the Multiple selected files into the data object
+                    var files = $("#files").get(0).files;
+                    for (i = 0; i < files.length; i++) {
+                        data.append("files" + i, files[i]);
+                    }
+
+                    //Post the data (files) to the server
+                    if (files.length > 0) {
+                        $.ajax({
+                            type: 'POST',
+                            url: "@Url.Action("Upload")",
+                            data: data,
+                            contentType: false,
+                            processData: false,
+                            success: function (data) {
+                                alert("Successfully Uploaded!");
+                            },
+                            error: function () {
+                                alert("An error occurred!");
+                            },
+                        });
+                    }
                 });
-            }
-        });
-    });
-</script>
+            });
+        </script>
+    </div>
+</div>
