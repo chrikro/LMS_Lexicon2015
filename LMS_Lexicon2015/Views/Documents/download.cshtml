@@ -9,6 +9,7 @@
     ViewBag.CourseOccasionId = TempData["CourseOccasionId"];
     ViewBag.view = TempData["view"];
     string view = ViewBag.view;
+    ViewBag.AktivitetTyp = TempData["AktivitetTyp"];
 }
 
 
@@ -24,6 +25,7 @@
     else if (view == "Activities")
     {
         <h2>Dokument för Aktiviteten</h2>
+        
     }
     else
     {
@@ -35,6 +37,7 @@
 @ViewBag.GroupId
 @ViewBag.view
 @ViewBag.ActivityId
+@TempData["AktivitetTyp"]
 
 <p>
 
@@ -47,11 +50,11 @@
     }
     else if (view == "Course")
     {
-        @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId)
+        @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId) 
     }
     else if (view == "Activities")
     {
-        @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId)
+        @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId + "/" + (string)ViewBag.AktivitetTyp)
        // @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId)
     }
     else
