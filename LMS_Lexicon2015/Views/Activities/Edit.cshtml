@@ -1,13 +1,13 @@
 ﻿@model LMS_Lexicon2015.Models.Activity
-
-@{
-    ViewBag.Title = "Edit";
+<div class="row">
+    <div class="col-md-12 extratoppadding">
+        @{
+            ViewBag.Title = "Edit";
     //DateTime valueStartDate = ViewBag.StartDate;
     //DateTime valueEndDate = ViewBag.EndDate;
-}
-
-<h2>Ändra informationen i aktiviteten</h2>
-
+        }
+    </div>
+</div>
 <script>
     function calculate() {
 
@@ -27,106 +27,111 @@
 
     }
 </script>
+<div class="row">
+    <div class="col-md-12">
+        <h2>Ändra informationen i aktiviteten</h2>
 
-@*@using (Html.BeginForm())*@
-@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "theForm" }))
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "theForm" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("name", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("name", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                        @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", type = "date", @Value = Model.StartDate.ToShortDateString() } })
+                            @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" data-val="true" id="StartDate1" name="StartDate1" type="date" value="@Model.StartDate.ToShortDateString()" onchange="calculate()">
+                        <input class="form-control text-box single-line" data-val="true" id="StartDate2" name="StartDate2" type="time" value="@Model.StartDate.ToLongTimeString()" onchange="calculate()">
+                        @Html.HiddenFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", @Value = Model.StartDate.ToString() } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                </div>
+
+
+                @*<div class="form-group">
+                        @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", type = "date", @Value = Model.EndDate.ToShortDateString() } })
+                            @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" data-val="true" id="EndDate1" name="EndDate1" type="date" value="@Model.EndDate.ToShortDateString()" onchange="calculate()">
+                        <input class="form-control text-box single-line" data-val="true" id="EndDate2" name="EndDate2" type="time" value="@Model.EndDate.ToLongTimeString()" onchange="calculate()">
+                        @Html.HiddenFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", @Value = Model.EndDate.ToString() } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.HiddenFor(model => model.CourseId)
+                @{TempData["GroupId"] = ViewBag.GroupId;}
+            </div>
+            <div>
+                <b>Kursens Startdatum:</b>
+                @{ var db = new LMS_Lexicon2015.Models.ApplicationDbContext();
+                 if (ViewBag.courseOccasionId != null)
+                 {
+                     int CourseId = ViewBag.courseOccasionId;
+                    @db.CourseOccasions.Where(c => c.Id == CourseId).FirstOrDefault().StartDate.ToShortDateString();
+                 }}
+                <b>Kursens Slutdatum:</b>
+                @{ if (ViewBag.courseOccasionId != null)
+                 {
+                     int CourseId = ViewBag.courseOccasionId;
+                    @db.CourseOccasions.Where(c => c.Id == CourseId).FirstOrDefault().EndDate.ToShortDateString();
+
+                 }
+                }
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Spara" class="btn btn-default" />
+                </div>
+            </div>
+        }
+        </div></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    @Html.ActionLink("Tillbaka till kursen", "Details/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.GroupId, "CourseOccasions")
+                </div>
+
+                @section Scripts {
+                    @Scripts.Render("~/bundles/jqueryval")
+                }
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", type = "date", @Value = Model.StartDate.ToShortDateString() } })
-                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input class="form-control text-box single-line" data-val="true" id="StartDate1" name="StartDate1" type="date" value="@Model.StartDate.ToShortDateString()" onchange="calculate()">
-                <input class="form-control text-box single-line" data-val="true" id="StartDate2" name="StartDate2" type="time" value="@Model.StartDate.ToLongTimeString()" onchange="calculate()">
-                @Html.HiddenFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", @Value = Model.StartDate.ToString() } })
-            </div>
-            @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
-        </div>
-
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", type = "date", @Value = Model.EndDate.ToShortDateString() } })
-                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input class="form-control text-box single-line" data-val="true" id="EndDate1" name="EndDate1" type="date" value="@Model.EndDate.ToShortDateString()" onchange="calculate()">
-                <input class="form-control text-box single-line" data-val="true" id="EndDate2" name="EndDate2" type="time" value="@Model.EndDate.ToLongTimeString()" onchange="calculate()">
-                @Html.HiddenFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", @Value = Model.EndDate.ToString() } })
-            </div>
-            @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
-        </div>
-
-        @Html.HiddenFor(model => model.CourseId)
-        @{TempData["GroupId"] = ViewBag.GroupId;}
-
-        <div>
-            <b>Kursens StartDate:</b>
-            @{ var db = new LMS_Lexicon2015.Models.ApplicationDbContext();
-             if (ViewBag.courseOccasionId != null)
-             {
-                 int CourseId = ViewBag.courseOccasionId;
-                @db.CourseOccasions.Where(c => c.Id == CourseId).FirstOrDefault().StartDate.ToShortDateString();
-             }}
-            <b>Kursens Slut Date:</b>
-            @{ if (ViewBag.courseOccasionId != null)
-             {
-                 int CourseId = ViewBag.courseOccasionId;
-                @db.CourseOccasions.Where(c => c.Id == CourseId).FirstOrDefault().EndDate.ToShortDateString();
-
-             }}
-        </div>
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Spara" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-
-
-<div>
-    @Html.ActionLink("Tillbaka till kursen", "Details/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.GroupId, "CourseOccasions")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

@@ -1,12 +1,23 @@
 ﻿@model LMS_Lexicon2015.Models.Group
 @using LMS_Lexicon2015.Models;
-
-<div class="jumbotron">
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 jumbotron">
     <h1>Lexicon LMS</h1>
     <p class="lead">
 </div>
-@if (User.IsInRole("Lärare")){
+    <div class="col-md-2"></div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-12 extratoppadding">
+        @if (User.IsInRole("Lärare"))
+        {
     <h3>Hej läraren!</h3>
+            var x = new LMS_Lexicon2015.Models.ApplicationDbContext().Users.Where(u => u.Email == User.Identity.Name).FirstOrDefault().Roles;
+
 
     var GroupId = new LMS_Lexicon2015.Models.ApplicationDbContext().Users.Where(u => u.Email == User.Identity.Name).FirstOrDefault().GroupId;
 
@@ -14,7 +25,7 @@
     {
            @Html.Partial("../Groups/Index", new LMS_Lexicon2015.Models.ApplicationDbContext().Groups.ToList())
 
-    }
+        }
     else
     {
         ViewBag.GroupId = GroupId;
@@ -25,6 +36,8 @@
         @Html.Partial("../Groups/_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId && o.StartDate < DateTime.Today && o.EndDate > DateTime.Today).ToList())
    }
 }
+
+
 
 @if (User.IsInRole("Elev"))
 {
@@ -53,7 +66,7 @@
 
     @*@Html.Partial("../CourseOccasions/_activities", new LMS_Lexicon2015.Models.ApplicationDbContext().Activitys.Where(a => a.CourseId == (int)CourseId).ToList())*@
     
-    <div></div>
+            <div><hr /><!--tabort hr--></div>
 
     @Html.Partial("../Users/PartitialGroup", new LMS_Lexicon2015.Models.ApplicationDbContext().Users.Where(o => o.GroupId == (int)GroupId))
      @*@Html.Partial("../Users/PartitialGroup", new {id = GroupId})*@
@@ -62,30 +75,13 @@
     
     ViewBag.Title = "";
 }
+    </div>
+</div>
 
+<!-- Kod för anonym besökare-->
 @if (!User.IsInRole("Elev") && !User.IsInRole("Lärare"))
 {
     <p><img src="http://www.lexicon.se/Global/Images/PLUS-580-grey.jpg" alt="Lexicon"></p>
 
 }
-
-
-
-<div class="row">
-    <div class="col-md-4">
-        <h2></h2>
-        <p>
-
-        </p>
-    </div>
-    <div class="col-md-4">
-        <h2></h2>
-        <p></p>
-
-    </div>
-    <div class="col-md-4">
-        <h2></h2>
-        <p></p>
-
-    </div>
-</div>
+<!-- Slut Kod för anonym besökare-->

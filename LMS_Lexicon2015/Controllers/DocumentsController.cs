@@ -44,16 +44,16 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Documents/upload
-        public ActionResult upload(string id, int id2, int? id3, int? id4)
+        public ActionResult upload(string id, int id2, int? id3, int? id4, string id5)
 
         {
             ViewBag.Groupid = new SelectList(db.Groups, "Id", "Name");//en bäg för rullningslistan på formuläret
 
-            
             ViewBag.view = id;
             ViewBag.GroupId = id2;
             ViewBag.CourseOccasionId = id3;
             ViewBag.ActivityId = id4;
+            ViewBag.AktivitetTyp = id5;
             return View();
         }
 
@@ -107,7 +107,9 @@ namespace LMS_Lexicon2015.Controllers
                 }
                 else if (view == "Activities")
                 {
-                    return RedirectToAction("Details/" + document.ActivityId+ "/"+ document.CourseOccasionId + "/" + document.GroupId  , "Activities");
+                    return RedirectToAction("Details/" + document.ActivityId + "/" + document.CourseOccasionId + "/" + document.GroupId, "Activities");
+
+         
                 }
                 else
                 {
