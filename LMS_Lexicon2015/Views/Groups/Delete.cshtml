@@ -3,62 +3,67 @@
 @{
     ViewBag.Title = "Delete";
 }
+<div class="row">
+    <div class="col-md-12 extratoppadding">
+        <h2>Ta bort</h2>
 
-<h2>Ta bort</h2>
+        <h3>Är du säker?</h3>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-<h3>Är du säker?</h3>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-    <h4></h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.StartDate.Day)
+                <span>/</span>
+                @Html.DisplayFor(model => model.StartDate.Month)
+                <span>-</span>
+                @Html.DisplayFor(model => model.StartDate.Year)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.StartDate.Day)
-            <span>/</span>
-            @Html.DisplayFor(model => model.StartDate.Month)
-            <span>-</span>
-            @Html.DisplayFor(model => model.StartDate.Year)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.EndDate.Day)
+                <span>/</span>
+                @Html.DisplayFor(model => model.EndDate.Month)
+                <span>-</span>
+                @Html.DisplayFor(model => model.EndDate.Year)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </dt>
+        </dl>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.EndDate.Day)
-            <span>/</span>
-            @Html.DisplayFor(model => model.EndDate.Month)
-            <span>-</span>
-            @Html.DisplayFor(model => model.EndDate.Year)
-        </dd>
+            <div class="form-actions no-color">
+                <input type="submit" value="Ta bort" class="btn btn-default" /> |
+                @Html.ActionLink("Tillbaka till listan", "Index")
+            </div>
+        }
 
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Ta bort" class="btn btn-default" /> |
-            @Html.ActionLink("Tillbaka till listan", "Index")
-        </div>
-    }
-
+    </div>
+</div>
