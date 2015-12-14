@@ -1,8 +1,13 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: arial,sans-serif;
+    color: #202020;
 }
 
+.imagecornersstartpage {
+  border-radius: 6px;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -11,9 +16,22 @@
 
 .navbar {
     display: inline;
-    font-family: Garamond;
-    font-size: 1.5em;
+    font-family: Garamond; 
+    font-size:1.5em;        
+    
+    /*font-family:"Whitney SSm A","Whitney SSm B",arial,sans-serif;*/
+    text-indent: 0;
+    /*font-size: 11px; */ /*lexicons strl inloggnlnk, för liten här.*/
+    /*font-size: 15px;*/
+    color: #8eff96;/*lexicon-länk-grön*/
 }
+
+/*.glyphicon {
+    font-family:"Whitney SSm A","Whitney SSm B",arial,sans-serif;
+    font-size: 15px;
+    color: #8eff96;/*lexicon-länk-grön*/
+
+    
 
 .navbar-inverse .navbar-nav > li > a {
     /*color: #41dd92;*/
@@ -37,55 +55,89 @@ textarea {
 
 hr {
     background-color: #DD002C; /*lexicon-röd*/
-    height:2px;
+    height: 2px;
 }
 
-.content_info_problem { 
-    color:#DD002C;
+.content_info_problem {
+    color: #DD002C;
 }
+
 .content_info_dont_delete {
-        background-color:#ffffff;
-        color:gray;
-        text-decoration:none;
+    background-color: #ffffff;
+    color: gray;
+    text-decoration: none;
 }
+
 a.content_info_dont_delete {
-        background-color:#ffffff;
-        color:gray;
-        text-decoration:none;
+    background-color: #ffffff;
+    color: gray;
+    text-decoration: none;
 }
+
 .content_info_ok {
-    color:#41AD49; /*lexicon-grön*/
-    font-size:18pt;
+    color: #41AD49; /*lexicon-grön*/
+    font-size: 18pt;
 }
+
 .content_info_ok_normal {
-    color:#41AD49; /*lexicon-grön*/
+    color: #41AD49; /*lexicon-grön*/
 }
 
 .jumbotron {
-margin-top:auto;
-  padding: 5px;
-  margin-bottom: 10px;
-  position:relative; /*blev inge bättre*/
+    margin-top: auto;
+    padding: 5px;
+    margin-bottom: 10px;
+    position: relative; /*blev inge bättre*/
 }
 
 @media screen and (min-width: 768px) {
-  .jumbotron {
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
-  .container .jumbotron {
-    padding-top:30px;
-    padding-right: 60px;
-    padding-left: 60px;
-  }
-  .jumbotron h1 {
-    font-size: 60px;
-  }
+    .jumbotron {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .container .jumbotron {
+        padding-top: 30px;
+        padding-right: 60px;
+        padding-left: 60px;
+    }
+
+    .jumbotron h1 {
+        font-size: 60px;
+        font-family:"Whitney SSm A","Whitney SSm B",arial,sans-serif;
+    }
 }
 
 .Grey_Button {
     color: grey;
 }
-.extratoppadding    {
-    padding-top:40px;
+
+.extratoppadding {
+    padding-top: 40px;
 }
+
+.close {
+    color: #202020;
+}
+
+    .close:focus {
+        color: #202020;
+    }
+
+    .close:focus {
+        color: #202020;
+    }
+
+.modal-backdrop {
+    background-color: #202020;
+}
+
+/*nedan från lexicon.se*/
+header h1, h2, h3, h4 {
+    font-family: "Whitney SSm A","Whitney SSm B",arial,sans-serif;
+    color: #202020;
+    font-weight: 700;
+    font-style: normal;
+    text-rendering: optimizeLegibility;
+}
+/*stop lexicon.se*/
