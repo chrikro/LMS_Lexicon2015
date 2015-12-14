@@ -81,6 +81,9 @@
             @Html.DisplayNameFor(model => model.Timestamp)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
             @if (view == "Activities")
             {
 
@@ -115,9 +118,9 @@
             @*<td>
                     @Html.DisplayFor(modelItem => item.Deadline)
                 </td>*@
-            @*<td>
+            <td>
                     @Html.DisplayFor(modelItem => item.UserId)
-                </td>*@
+                </td>
             @*<td>
                     @Html.DisplayFor(modelItem => item.GroupId)
                 </td>
@@ -129,7 +132,10 @@
                 </td>*@
 
             <th>
+
+
                 @if (view == "Activities" && AktivitetTyp == "ÖvningsUppgift")
+                                      
                 {
 
                     <p>@Html.ActionLink("Ladda upp Inlämningsuppgiften", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId + "/inlämning")
