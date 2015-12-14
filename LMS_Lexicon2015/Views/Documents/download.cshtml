@@ -11,7 +11,25 @@
     string view = ViewBag.view;
 }
 
-<h2>Dokument för @ViewBag.view</h2>
+
+    
+    @if (view == "Group")
+    {
+        <h2>Dokument för Gruppen</h2>
+    }
+    else if (view == "Course")
+    {
+        <h2>Dokument för Kursen</h2>
+    }
+    else if (view == "Activities")
+    {
+        <h2>Dokument för Aktiviteten</h2>
+    }
+    else
+    {
+        <h2>Dokument för ??????</h2>
+    }  
+
 
 <p>
     @*@Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (int)ViewBag.groupId + "/" + (string)ViewBag.view)*@
