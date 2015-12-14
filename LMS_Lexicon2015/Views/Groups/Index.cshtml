@@ -3,131 +3,136 @@
 @{
     ViewBag.Title = "Grupplista";
 }
+<div class="row">
+    <div class="col-md-12 extratoppadding">
+        <h2>@ViewBag.Title</h2>
 
-<h2>@ViewBag.Title</h2>
-
-<p>
-    @if (User.IsInRole("Lärare"))
-    {
-        @Html.ActionLink("Skapa ny grupp", "Create")
-    }
-</p>
-
-<h3>Sök på gruppnamn</h3>
-
-@using (Html.BeginForm())
-{
-    <p>
-        @Html.TextBox("SearchString")
-         <input type="submit" value="Sök" />
-        <label for="ActiveChoise">  Enbart aktiva </label>
-        <input type="checkbox" name="ActiveChoise" />
-       </p>
-}
-
-
-<br />
-
-<table class="table">
-
-    <tr>
-    <th>
-        @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Name).ToString()), "index", new { sortOrder = ViewBag.NameSortParm, searchString = ViewBag.searchString })
-    </th>
-    <th>
-        @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Description).ToString()), "index", new { sortOrder = ViewBag.DescriptionSortParm, searchString = ViewBag.searchString })
-    </th>
-    <th>
-        @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.StartDate).ToString()), "index", new { sortOrder = ViewBag.StartDateSortParm, searchString = ViewBag.searchString })
-    </th>
-        <th>
-            @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.EndDate).ToString()), "index", new { sortOrder = ViewBag.EndDateSortParm, searchString = ViewBag.searchString })
-        </th>
-        <th>
-            Antal Elever
-        </th>
-        <th></th>
-    </tr>
-
-        @foreach (var item in Model)
-        {
-<tr>
-
-            <td>
-                @Html.ActionLink(item.Name, "../Groups/Details", new { id = item.Id })
-               @* @Html.ActionLink(item.Name, new { controller = "Groups", action = "Details", id = item.Id })*@
-                @*@Html.DisplayFor(modelItem => item.Name)*@
-
-
-            </td>
-            <td>
-                @*@Html.ActionLink(item.Description, "Details", new { id = item.Id })*@
-                @if (item.Description.Length > 10)
-                {
-                    for (int i = 0; i < 10; i++)
-                    {
-                        @Html.DisplayFor(modelItem => item.Description[i])
-                    }
-                    <span>...</span>
-                }
-                else {
-                    @Html.DisplayFor(modelItem => item.Description)
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.StartDate.Day)
-                <span>/</span>
-                @Html.DisplayFor(model => item.StartDate.Month)
-                <span>-</span>
-                @Html.DisplayFor(model => item.StartDate.Year)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.EndDate.Day)
-                <span>/</span>
-                @Html.DisplayFor(model => item.EndDate.Month)
-                <span>-</span>
-                @Html.DisplayFor(model => item.EndDate.Year)
-            </td>
-            <td>
-                @Html.ActionLink(item.GroupName.Count().ToString(), "PartitialGroup/" + item.Id, "Users")
-            </td>
-    @if (User.IsInRole("Lärare"))
-    {
-        if ((item.Courses.Count() > 0) && (item.GroupName.Count() > 0))
-        {
-            <td>
-                <div>
-                    <a href=" " title="Det finns elever och kurser i gruppen." style="background-color:#FFFFFF;color:grey;text-decoration:none">Ta bort</a>
-                </div>
-            </td>
-        }
-        else if (item.GroupName.Count() > 0)
-        {
-                <td>
-                    <div>
-                        @*<input type="submit" value="Click To Open" onclick="javascript:return openPopupWindow();" />*@
-                        <a href=" " title="Det finns elever i gruppen." style="background-color:#FFFFFF;color:grey;text-decoration:none">Ta bort</a>
-                    </div>
-                </td>
-            }
-
-        else if (item.Courses.Count() > 0)
+        <p>
+            @if (User.IsInRole("Lärare"))
             {
-                <td>
-                        <div>
-                            <a href=" " title="Det finns kurser i gruppen." style="background-color:#FFFFFF;color:grey;text-decoration:none">Ta bort</a>
-                        </div>
-                 </td>
+                @Html.ActionLink("Skapa ny grupp", "Create")
             }
-        else
-        {
-            <td>
-                @Html.ActionLink("Ta bort", "Delete", new { id = item.Id })
-            </td>
-        }
-    }
-        </tr>
-    }
-     
+        </p>
 
-   </table>
+        <h3>Sök på gruppnamn</h3>
+
+        @using (Html.BeginForm())
+        {
+            <p>
+                @Html.TextBox("SearchString")
+                <input type="submit" value="Sök" />
+                <label for="ActiveChoise">  Enbart aktiva </label>
+                <input type="checkbox" name="ActiveChoise" />
+            </p>
+        }
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 extratoppadding">
+
+        <table class="table">
+
+            <tr>
+                <th>
+                    @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Name).ToString()), "index", new { sortOrder = ViewBag.NameSortParm, searchString = ViewBag.searchString })
+                </th>
+                <th>
+                    @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Description).ToString()), "index", new { sortOrder = ViewBag.DescriptionSortParm, searchString = ViewBag.searchString })
+                </th>
+                <th>
+                    @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.StartDate).ToString()), "index", new { sortOrder = ViewBag.StartDateSortParm, searchString = ViewBag.searchString })
+                </th>
+                <th>
+                    @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.EndDate).ToString()), "index", new { sortOrder = ViewBag.EndDateSortParm, searchString = ViewBag.searchString })
+                </th>
+                <th>
+                    Antal Elever
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.ActionLink(item.Name, "../Groups/Details", new { id = item.Id })
+                        @* @Html.ActionLink(item.Name, new { controller = "Groups", action = "Details", id = item.Id })*@
+                        @*@Html.DisplayFor(modelItem => item.Name)*@
+
+
+                    </td>
+                    <td>
+                        @*@Html.ActionLink(item.Description, "Details", new { id = item.Id })*@
+                        @if (item.Description.Length > 10)
+                        {
+                            for (int i = 0; i < 10; i++)
+                            {
+                                @Html.DisplayFor(modelItem => item.Description[i])
+                            }
+                            <span>...</span>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.Description)
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.StartDate.Day)
+                        <span>/</span>
+                        @Html.DisplayFor(model => item.StartDate.Month)
+                        <span>-</span>
+                        @Html.DisplayFor(model => item.StartDate.Year)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.EndDate.Day)
+                        <span>/</span>
+                        @Html.DisplayFor(model => item.EndDate.Month)
+                        <span>-</span>
+                        @Html.DisplayFor(model => item.EndDate.Year)
+                    </td>
+                    <td>
+                        @Html.ActionLink(item.GroupName.Count().ToString(), "PartitialGroup/" + item.Id, "Users")
+                    </td>
+                    @if (User.IsInRole("Lärare"))
+                    {
+                        if ((item.Courses.Count() > 0) && (item.GroupName.Count() > 0))
+                        {
+                            <td>
+                                <div>
+                                    <a href=" " title="Det finns elever och kurser i gruppen." style="background-color:#FFFFFF;color:grey;text-decoration:none">Ta bort</a>
+                                </div>
+                            </td>
+                        }
+                        else if (item.GroupName.Count() > 0)
+                        {
+                            <td>
+                                <div>
+                                    @*<input type="submit" value="Click To Open" onclick="javascript:return openPopupWindow();" />*@
+                                    <a href=" " title="Det finns elever i gruppen." style="background-color:#FFFFFF;color:grey;text-decoration:none">Ta bort</a>
+                                </div>
+                            </td>
+                        }
+
+                        else if (item.Courses.Count() > 0)
+                        {
+                            <td>
+                                <div>
+                                    <a href=" " title="Det finns kurser i gruppen." style="background-color:#FFFFFF;color:grey;text-decoration:none">Ta bort</a>
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @Html.ActionLink("Ta bort", "Delete", new { id = item.Id })
+                            </td>
+                        }
+                    }
+                </tr>
+            }
+
+
+        </table>
+</div></div>
