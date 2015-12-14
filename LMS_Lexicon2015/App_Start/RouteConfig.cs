@@ -23,6 +23,17 @@ namespace LMS_Lexicon2015
             name: "Default",
             url: "{controller}/{action}/{id}/{id2}/{id3}",
             defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, id2 = UrlParameter.Optional, id3 = UrlParameter.Optional });
+            
+           routes.MapRoute(
+           name: "aktivityDocument",
+           url: "{controller}/{action}/{id}/{id2}/{id3}/{id4}",
+           defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, id2 = UrlParameter.Optional, id3 = UrlParameter.Optional, id4 = UrlParameter.Optional });
+
+            //routes.MapRoute(
+            //name: "Default",
+            //url: "{controller}/{action}/{id}/{siteView}",
+            //defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, siteView = UrlParameter.Optional });
+ 
 
             //routes.MapRoute(
             //name: "Default",
@@ -37,3 +48,4 @@ namespace LMS_Lexicon2015
         }
     }
 }
+

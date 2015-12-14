@@ -34,6 +34,7 @@
 @ViewBag.CourseOccasionId
 @ViewBag.GroupId
 @ViewBag.view
+@ViewBag.ActivityId
 
 <p>
 
@@ -47,6 +48,10 @@
     else if (view == "Course")
     {
         @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId)
+    }
+    else if (view == "Activities")
+    {
+        @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId)
     }
     else
     {
