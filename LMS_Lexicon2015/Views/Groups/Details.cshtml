@@ -8,9 +8,8 @@
 <div>
 
     <hr />
+    <dl class="dl-horizontal">
 
-    <div class="row">
-        <div class="col-md-4">
 
             <dl>
             <dt>
@@ -20,8 +19,6 @@
             <dd>
                 @Html.DisplayFor(model => model.Description)
             </dd>
-
-
 
             <dt>
                 Datum
@@ -47,19 +44,14 @@
                 }
             </dd>
 
-           </dl>
+    </dl>
         </div>
-        <div class="col-md-8">
             @{
                 TempData["GroupId"] = Model.Id;
                 TempData["view"] = "Group";
             }
 
             @Html.Partial("../documents/download", new LMS_Lexicon2015.Models.ApplicationDbContext().Documents.Where(o => o.GroupId == Model.Id && o.CourseOccasionId == null && o.ActivityId == null).OrderBy(c => c.Timestamp).ToList())
-
-        </div>
-    </div>
-    <hr />
 
     @Html.Partial("_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == Model.Id).OrderBy(c => c.StartDate).ToList())
     @*@{Html.RenderAction("_Course", "Groups", new { id = Model.Id });}*@

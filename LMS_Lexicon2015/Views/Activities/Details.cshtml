@@ -67,16 +67,8 @@
         <span>|</span>
     }
 
-
     @Html.ActionLink("Tillbaka till kursen", "Details/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.GroupId, "CourseOccasions")
 
 </p>
-
-@{
-    TempData["groupId"] = (int)ViewBag.groupId;
-    TempData["CourseOccasionId"] = (int)ViewBag.courseOccasionId;
-    TempData["ActivityId"] = Model.Id;
-    TempData["view"] = "Activities";
-}
 
 @Html.Partial("../documents/download", new LMS_Lexicon2015.Models.ApplicationDbContext().Documents.Where(o => o.ActivityId == Model.Id).OrderBy(c => c.Timestamp).ToList())

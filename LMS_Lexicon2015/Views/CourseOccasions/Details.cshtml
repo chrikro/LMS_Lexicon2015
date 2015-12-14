@@ -10,71 +10,70 @@
         <div class="col-md-4">
 
             <dl>
-                @*<dt>
-                        @Html.DisplayNameFor(model => model.Name)
-                    </dt>
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Name)
-                    </dd>*@
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>*@
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Description)
-                </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Description)
-                </dd>
-                <dt>
-                    Datum
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.StartDate.Day)
-                    @ViewBag.Line1
-                    @Html.DisplayFor(model => model.StartDate.Month)
-                    @ViewBag.Line2
-                    @Html.DisplayFor(model => model.StartDate.Year)
-                    @ViewBag.Line3
-                    @Html.DisplayFor(model => model.EndDate.Day)
-                    @ViewBag.Line1
-                    @Html.DisplayFor(model => model.EndDate.Month)
-                    @ViewBag.Line2
-                    @Html.DisplayFor(model => model.EndDate.Year)
-                </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            Datum
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartDate.Day)
+            @ViewBag.Line1
+            @Html.DisplayFor(model => model.StartDate.Month)
+            @ViewBag.Line2
+            @Html.DisplayFor(model => model.StartDate.Year)
+            @ViewBag.Line3
+            @Html.DisplayFor(model => model.EndDate.Day)
+            @ViewBag.Line1
+            @Html.DisplayFor(model => model.EndDate.Month)
+            @ViewBag.Line2
+            @Html.DisplayFor(model => model.EndDate.Year)
+        </dd>
 
-                <dt>
+        <dt>
 
-                </dt>
+        </dt>
 
-                <dd>
-                    @if (User.IsInRole("Lärare"))
-                    {
-                        @Html.ActionLink("Ändra Kursens information", "Edit/" + Model.Id + "/" + (int)ViewBag.groupId, "CourseOccasions")
-                    }
-                </dd>
+        <dd>
+            @if (User.IsInRole("Lärare"))
+                        {
+                @Html.ActionLink("Ändra Kursens information", "Edit/" + Model.Id + "/" + (int)ViewBag.groupId, "CourseOccasions") 
+                        }
+        </dd>
 
-            </dl>
-        </div>
+    </dl>
+</div>
         <div class="col-md-8">
-            @{
-                TempData["groupId"] = (int)ViewBag.groupId;
-                TempData["CourseOccasionId"] = Model.Id;
-                TempData["view"] = "Course";
-            }
+@{
+    TempData["groupId"] = (int)ViewBag.groupId;
+    TempData["CourseOccasionId"] = Model.Id;
+    TempData["view"] = "Course";
+}
 
-            @Html.Partial("../documents/download", new LMS_Lexicon2015.Models.ApplicationDbContext().Documents.Where(o => o.CourseOccasionId == Model.Id && o.ActivityId == null).OrderBy(c => c.Timestamp).ToList())
+@Html.Partial("../documents/download", new LMS_Lexicon2015.Models.ApplicationDbContext().Documents.Where(o => o.CourseOccasionId == Model.Id && o.ActivityId == null).OrderBy(c => c.Timestamp).ToList())
 
 
         </div>
     </div>
 
+@Html.Partial("_activities", new LMS_Lexicon2015.Models.ApplicationDbContext().Activitys.Where(a => a.CourseId == Model.Id).OrderBy(c => c.StartDate).ToList())
 
-    @Html.Partial("_activities", new LMS_Lexicon2015.Models.ApplicationDbContext().Activitys.Where(a => a.CourseId == Model.Id).OrderBy(c => c.StartDate).ToList())
 
-
-    <p>
-        @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
-        @*@Html.ActionLink("Tillbaka till gruppen", "Details/" + (int)ViewBag.GroupId, "Groups")*@
-        @Html.ActionLink("Tillbaka till gruppen", "Details/" + Model.GroupId, "Groups")
-    </p>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+    @*@Html.ActionLink("Tillbaka till gruppen", "Details/" + (int)ViewBag.GroupId, "Groups")*@
+    @Html.ActionLink("Tillbaka till gruppen", "Details/" + Model.GroupId, "Groups")
+</p>
 </div>
