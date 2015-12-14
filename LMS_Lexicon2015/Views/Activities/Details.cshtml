@@ -1,83 +1,96 @@
 ﻿@model LMS_Lexicon2015.Models.Activity
+<div class="row">
+    <div class="col-md-12 extratoppadding">
 
-
-
-<h2>Aktivitet detailj</h2>
-
+        <h2>Aktivitet detailj</h2>
+    </div>
+</div>
 @*<p>groupId</p>@ViewBag.groupId
     <p>courseOccasionId</p>@ViewBag.courseOccasionId*@
 
-<div>
+<div class="row">
+    <div class="col-md-12 extratoppadding">
 
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-         </dt>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
-        <dt>
-            @*@Html.DisplayNameFor(model => model.StartDate)*@
-            Datum
-        </dt>
+            <dt>
+                @*@Html.DisplayNameFor(model => model.StartDate)*@
+                Datum
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.StartDate.Day)
-            @ViewBag.Line1
-            @Html.DisplayFor(model => model.StartDate.Month)
-            @ViewBag.Line2
-            @Html.DisplayFor(model => model.StartDate.Year)
-            <span>  </span>
-            @Html.DisplayFor(model => model.StartDate.Hour)
-            <span>:</span>
-            @Html.DisplayFor(model => model.StartDate.Minute)
-            @ViewBag.Line3
-            @Html.DisplayFor(model => model.EndDate.Day)
-            @ViewBag.Line1
-            @Html.DisplayFor(model => model.EndDate.Month)
-            @ViewBag.Line2
-            @Html.DisplayFor(model => model.EndDate.Year)
-            <span>  </span>
-            @Html.DisplayFor(model => model.EndDate.Hour)
-            <span>:</span>
-            @Html.DisplayFor(model => model.EndDate.Minute)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.StartDate.Day)
+                @ViewBag.Line1
+                @Html.DisplayFor(model => model.StartDate.Month)
+                @ViewBag.Line2
+                @Html.DisplayFor(model => model.StartDate.Year)
+                <span>  </span>
+                @Html.DisplayFor(model => model.StartDate.Hour)
+                <span>:</span>
+                @Html.DisplayFor(model => model.StartDate.Minute)
+                @ViewBag.Line3
+                @Html.DisplayFor(model => model.EndDate.Day)
+                @ViewBag.Line1
+                @Html.DisplayFor(model => model.EndDate.Month)
+                @ViewBag.Line2
+                @Html.DisplayFor(model => model.EndDate.Year)
+                <span>  </span>
+                @Html.DisplayFor(model => model.EndDate.Hour)
+                <span>:</span>
+                @Html.DisplayFor(model => model.EndDate.Minute)
+            </dd>
 
 
-    </dl>
+        </dl>
+    </div>
 </div>
-<p>
-    @*@{TempData["GroupId"] = ViewBag.GroupId;}*@
-    @*@Html.ActionLink("Ändra", "Edit/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |*@
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            @*@{TempData["GroupId"] = ViewBag.GroupId;}*@
+            @*@Html.ActionLink("Ändra", "Edit/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities") |*@
 
-    @if (User.IsInRole("Lärare"))
-    {
-        @Html.ActionLink("Ändra", "Edit/" + (int)ViewBag.activitiesId + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")
-        <span>|</span>
-    }
+            @if (User.IsInRole("Lärare"))
+            {
+                @Html.ActionLink("Ändra", "Edit/" + (int)ViewBag.activitiesId + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")
+                <span>|</span>
+            }
 
-    @Html.ActionLink("Tillbaka till kursen", "Details/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.GroupId, "CourseOccasions")
+            @Html.ActionLink("Tillbaka till kursen", "Details/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.GroupId, "CourseOccasions")
 
-</p>
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @{
+            TempData["groupId"] = (int)ViewBag.groupId;
+            TempData["CourseOccasionId"] = (int)ViewBag.courseOccasionId;
+            TempData["ActivityId"] = Model.Id;
+            TempData["view"] = "Activities";
+            TempData["AktivitetTyp"] = Model.Name;
+        }
 
-@{
-    TempData["groupId"] = (int)ViewBag.groupId;
-    TempData["CourseOccasionId"] = (int)ViewBag.courseOccasionId;
-    TempData["ActivityId"] = Model.Id;
-    TempData["view"] = "Activities";
-    TempData["AktivitetTyp"] = Model.Name;
-}
-
-
-@Html.Partial("../documents/download", new LMS_Lexicon2015.Models.ApplicationDbContext().Documents.Where(o => o.ActivityId == Model.Id).OrderBy(c => c.Timestamp).ToList())
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.Partial("../documents/download", new LMS_Lexicon2015.Models.ApplicationDbContext().Documents.Where(o => o.ActivityId == Model.Id).OrderBy(c => c.Timestamp).ToList())
+    </div>
+</div>
