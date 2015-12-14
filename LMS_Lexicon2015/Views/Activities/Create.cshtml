@@ -119,14 +119,14 @@
         @{TempData["GroupId"] = ViewBag.GroupId;}
 
         <div>
-            <b>Kursens StartDate:</b>
+            <b>Kursens startdatum:</b>
             @{ var db = new LMS_Lexicon2015.Models.ApplicationDbContext();
              if (ViewBag.courseOccasionId != null)
              {
                  int CourseId = ViewBag.courseOccasionId;
                 @db.CourseOccasions.Where(c => c.Id == CourseId).FirstOrDefault().StartDate.ToShortDateString();
              }}
-            <b>Kursens Slut Date:</b>
+            <b>Kursens slutdatum:</b>
             @{ if (ViewBag.courseOccasionId != null)
              {
                  int CourseId = ViewBag.courseOccasionId;
