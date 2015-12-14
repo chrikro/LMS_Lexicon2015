@@ -24,6 +24,11 @@ namespace LMS_Lexicon2015.Controllers
 
         public ActionResult download()
         {
+
+     
+           // var Users = db.Users.Where(U => U.Id == r.GroupId).FirstOrDefault().Name;
+
+
             return View(db.Documents.ToList());
         }
 
