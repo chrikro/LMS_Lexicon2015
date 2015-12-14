@@ -148,7 +148,7 @@ namespace LMS_Lexicon2015.Controllers
 
             if (checkBox == "on")
             {
-                applicationUsers = Users.Where(o => o.Group.EndDate > DateTime.Today);
+                applicationUsers = Users.Where(o => o.Group.EndDate > DateTime.Today && o.Group.StartDate < DateTime.Today);
             }
 
             ViewBag.Roles = db.Roles.ToList();
