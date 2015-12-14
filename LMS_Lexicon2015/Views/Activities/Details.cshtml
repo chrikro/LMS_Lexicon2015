@@ -85,12 +85,32 @@
             TempData["ActivityId"] = Model.Id;
             TempData["view"] = "Activities";
             TempData["AktivitetTyp"] = Model.Name;
+            var db = new LMS_Lexicon2015.Models.ApplicationDbContext();
         }
+
 
     </div>
 </div>
 <div class="row">
     <div class="col-md-12">
-        @Html.Partial("../documents/download", new LMS_Lexicon2015.Models.ApplicationDbContext().Documents.Where(o => o.ActivityId == Model.Id).OrderBy(c => c.Timestamp).ToList())
+               @if (User.IsInRole("Lärare"))
+        {
+            @Html.Partial("../documents/download", db.Documents.Where(o => o.ActivityId == Model.Id).OrderBy(c => c.Timestamp).ToList())
+        }
+
+        @if (User.IsInRole("Elev"))
+        {
+            @Html.Partial("../documents/download",
+    db.Documents.Where(d => d.ActivityId == Model.Id
+        && d.UserId == db.Users.Where(u => u.Id == d.UserId && u.Roles.FirstOrDefault().RoleId == db.Roles.Where(r => r.Name == "Lärare").FirstOrDefault().Id).FirstOrDefault().Id))
+        }
     </div>
 </div>
+
+
+@*SPARA VIKTIGT
+    @Html.Partial("../documents/download", db.Documents.Where(o => o.ActivityId == Model.Id).OrderBy(c => c.Timestamp).ToList())
+
+        @Html.Partial("../documents/download",
+        db.Documents.Where(d => d.ActivityId == Model.Id
+            && d.UserId == db.Users.Where(u => u.Id == d.UserId && u.Roles.FirstOrDefault().RoleId == db.Roles.Where(r => r.Name == "Lärare").FirstOrDefault().Id).FirstOrDefault().Id))*@ 
