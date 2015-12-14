@@ -10,6 +10,9 @@
     ViewBag.view = TempData["view"];
     string view = ViewBag.view;
     ViewBag.AktivitetTyp = TempData["AktivitetTyp"];
+    var AktivitetTyp = "";
+    AktivitetTyp = ViewBag.AktivitetTyp;
+    
 }
 
 
@@ -77,7 +80,14 @@
         <th>
             @Html.DisplayNameFor(model => model.Timestamp)
         </th>
+        <th>
+            @if (view == "Activities")
+            {
 
+                <p>Inläming</p>
+            }
+
+        </th>
 
     </tr>
 
@@ -117,6 +127,15 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.ActivityId)
                 </td>*@
+
+            <th>
+                @if (view == "Activities" && AktivitetTyp == "ÖvningsUppgift")
+                {
+
+                    <p>@Html.ActionLink("Ladda upp Inlämningsuppgiften", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId + "/inlämning")
+</p>
+                }
+            </th>
 
         </tr>
     }
