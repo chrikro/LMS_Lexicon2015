@@ -52,6 +52,7 @@
     else if (view == "Activities")
     {
         @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId)
+       // @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId)
     }
     else
     {
@@ -83,7 +84,8 @@
             <td>
                 @*@Html.DisplayFor(modelItem => item.Name)*@
                 @Html.ActionLink(item.Name, "../Documents/DownloadFile", new { fileUrl = item.Url, fileName = item.Name })
-
+              @*@Html.ActionLink(item.Name, "../Documents/DownloadFile", new { fileUrl = item.Url, fileName = item.Name },
+    +new { title = "Beskrivning:\n" + item.Description + "\n\nSkapades:\n" + item.Timestamp })*@
             </td>
             @*<td>
                     @Html.DisplayFor(modelItem => item.Url)

@@ -107,7 +107,7 @@ namespace LMS_Lexicon2015.Controllers
                 }
                 else if (view == "Activity")
                 {
-                    return RedirectToAction("Details/" + document.ActivityId+ "/"+ document.CourseOccasionId + "/" + document.GroupId  , "Activities");
+                    return RedirectToAction("Details/" + document.GroupId + "/" + document.CourseOccasionId + "/" + document.ActivityId, "Activities");
                 }
                 else
                 {
