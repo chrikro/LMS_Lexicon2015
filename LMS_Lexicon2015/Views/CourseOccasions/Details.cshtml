@@ -6,7 +6,10 @@
 <div>
 
     <hr />
-    <dl class="dl-horizontal">
+    <div class="row">
+        <div class="col-md-4">
+
+            <dl>
         @*<dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -52,6 +55,7 @@
 
     </dl>
 </div>
+        <div class="col-md-8">
 @{
     TempData["groupId"] = (int)ViewBag.groupId;
     TempData["CourseOccasionId"] = Model.Id;
@@ -61,6 +65,8 @@
 @Html.Partial("../documents/download", new LMS_Lexicon2015.Models.ApplicationDbContext().Documents.Where(o => o.CourseOccasionId == Model.Id && o.ActivityId == null).OrderBy(c => c.Timestamp).ToList())
 
 
+        </div>
+    </div>
 
 @Html.Partial("_activities", new LMS_Lexicon2015.Models.ApplicationDbContext().Activitys.Where(a => a.CourseId == Model.Id).OrderBy(c => c.StartDate).ToList())
 
@@ -70,3 +76,4 @@
     @*@Html.ActionLink("Tillbaka till gruppen", "Details/" + (int)ViewBag.GroupId, "Groups")*@
     @Html.ActionLink("Tillbaka till gruppen", "Details/" + Model.GroupId, "Groups")
 </p>
+</div>

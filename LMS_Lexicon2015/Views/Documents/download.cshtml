@@ -11,9 +11,33 @@
     string view = ViewBag.view;
 }
 
-<h2>Dokument för @ViewBag.view</h2>
+
+    
+    @if (view == "Group")
+    {
+        <h2>Dokument för Gruppen</h2>
+    }
+    else if (view == "Course")
+    {
+        <h2>Dokument för Kursen</h2>
+    }
+    else if (view == "Activities")
+    {
+        <h2>Dokument för Aktiviteten</h2>
+    }
+    else
+    {
+        <h2>Dokument för ??????</h2>
+    }  
+
+
+@ViewBag.CourseOccasionId
+@ViewBag.GroupId
+@ViewBag.view
 
 <p>
+
+
     @*@Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (int)ViewBag.groupId + "/" + (string)ViewBag.view)*@
 
     @if (view == "Group")
@@ -23,10 +47,6 @@
     else if (view == "Course")
     {
         @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId)
-    }
-    else if (view == "Activities")
-    {
-        @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId)
     }
     else
     {
@@ -39,13 +59,30 @@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Url)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Timestamp)
         </th>
-    
+        @*<th>
+                @Html.DisplayNameFor(model => model.Deadline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>*@
+        @*<th>
+                @Html.DisplayNameFor(model => model.GroupId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseOccasionId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActivityId)
+            </th>*@
 
     </tr>
 
@@ -53,19 +90,36 @@
     {
         <tr>
             <td>
-                @Html.ActionLink(item.Name, "../Documents/DownloadFile", new { fileUrl = item.Url, fileName = item.Name },
-    new { title = "Beskrivning:\n" + item.Description + "\n\nSkapades:\n" + item.Timestamp })
-              
+                @*@Html.DisplayFor(modelItem => item.Name)*@
+                @Html.ActionLink(item.Name, "../Documents/DownloadFile", new { fileUrl = item.Url, fileName = item.Name })
 
             </td>
- 
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Url)
+                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
+
+            
             <td>
                 @Html.DisplayFor(modelItem => item.Timestamp)
             </td>
-   
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Deadline)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.GroupId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseOccasionId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ActivityId)
+                </td>*@
 
         </tr>
     }

@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "Create";
-    string GroupView = ViewBag.view;
+    string view = ViewBag.view;
     int? CourseOccasionId = ViewBag.CourseOccasionId;
     int? ActivityId = ViewBag.ActivityId;
     ViewBag.View = ViewBag.view;
@@ -57,6 +57,8 @@
         </div>
 
 
+
+        @if (view == "Activities") { 
         <div class="form-group">
             @Html.LabelFor(model => model.Deadline, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -64,7 +66,7 @@
                 @Html.ValidationMessageFor(model => model.Deadline, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        }
 
         <div class="form-group" style="display: none;">
                 @Html.EditorFor(model => model.GroupId, new { htmlAttributes = new { @class = "form-control", @Value = @ViewBag.GroupId } })
@@ -126,11 +128,11 @@
 
 
 <div>
-    @if (GroupView == "Group")
+            @if (view == "Group")
     {
         @Html.ActionLink("Gå tillbaka till Group View", "../Groups/Details/" + (int)ViewBag.GroupId)
     }
-    else if (GroupView == "Course")
+    else if (view == "Course")
     {
         @Html.ActionLink("Gå tillbaka till Kurs View", "../CourseOccasions/Details/" + (int)ViewBag.GroupId + "/" + CourseOccasionId)
     }
