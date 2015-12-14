@@ -18,7 +18,7 @@
 
 .navbar-inverse .navbar-nav > li > a {
     /*color: #41dd92;*/
-    color: #8eff96;
+    color: #8eff96; /*lexicon-länk-grön*/
     /*background-color: #222222;*/ /*avvaktar*/
 }
 
@@ -37,9 +37,31 @@ textarea {
 }
 
 hr {
-    background-color: #DD002C;
+    background-color: #DD002C; /*lexicon-röd*/
     height:2px;
 }
+
+.content_info_problem { 
+    color:#DD002C;
+}
+.content_info_dont_delete {
+        background-color:#ffffff;
+        color:gray;
+        text-decoration:none;
+}
+a.content_info_dont_delete {
+        background-color:#ffffff;
+        color:gray;
+        text-decoration:none;
+}
+.content_info_ok {
+    color:#41AD49; /*lexicon-grön*/
+    font-size:18pt;
+}
+.content_info_ok_normal {
+    color:#41AD49; /*lexicon-grön*/
+}
+
 .jumbotron {
   padding: 5px;
   margin-bottom: 10px;

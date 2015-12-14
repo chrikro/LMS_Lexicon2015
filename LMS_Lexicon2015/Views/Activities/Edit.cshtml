@@ -2,12 +2,34 @@
 
 @{
     ViewBag.Title = "Edit";
+    //DateTime valueStartDate = ViewBag.StartDate;
+    //DateTime valueEndDate = ViewBag.EndDate;
 }
 
 <h2>Ändra informationen i aktiviteten</h2>
 
+<script>
+    function calculate() {
 
-@using (Html.BeginForm())
+
+        StartDate2 = "14:00:00";
+        EndDate2 = "14:00:00";
+
+        StartDate1 = document.theForm.StartDate1.value;
+        StartDate2 = document.theForm.StartDate2.value;
+        total = StartDate1 + " " + StartDate2;
+        document.theForm.StartDate.value = total;
+
+        EndDate1 = document.theForm.EndDate1.value;
+        EndDate2 = document.theForm.EndDate2.value;
+        total2 = EndDate1 + " " + EndDate2;
+        document.theForm.EndDate.value = total2;
+
+    }
+</script>
+
+@*@using (Html.BeginForm())*@
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "theForm" }))
 {
     @Html.AntiForgeryToken()
     
@@ -33,21 +55,43 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", type = "date", @Value = Model.StartDate.ToShortDateString() } })
                 @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
+            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" id="StartDate1" name="StartDate1" type="date" value="@Model.StartDate.ToShortDateString()" onchange="calculate()">
+                <input class="form-control text-box single-line" data-val="true" id="StartDate2" name="StartDate2" type="time" value="@Model.StartDate.ToLongTimeString()" onchange="calculate()">
+                @Html.HiddenFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", @Value = Model.StartDate.ToString() } })
+            </div>
+            @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+        </div>
+
+
+        @*<div class="form-group">
             @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", type = "date", @Value = Model.EndDate.ToShortDateString() } })
                 @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
             </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" id="EndDate1" name="EndDate1" type="date" value="@Model.EndDate.ToShortDateString()" onchange="calculate()">
+                <input class="form-control text-box single-line" data-val="true" id="EndDate2" name="EndDate2" type="time" value="@Model.EndDate.ToLongTimeString()" onchange="calculate()">
+                @Html.HiddenFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", @Value = Model.EndDate.ToString() } })
+            </div>
+            @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
         </div>
+
         @Html.HiddenFor(model => model.CourseId)
         @{TempData["GroupId"] = ViewBag.GroupId;}
 

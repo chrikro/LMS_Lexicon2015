@@ -18,6 +18,14 @@
             }
         });
         </script>
+    @*<script>
+    function value() {
+        EndDate1 = document.theForm.EndDate1.value;
+        EndDate1 = document.theForm.EndDate1.value;
+        total = EndDate1 + " " + EndDate1;
+        document.theForm.EndDate3.value = total;
+    }
+    </script>*@
     </head>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top">
@@ -39,7 +47,7 @@
                         {
                             <li>@Html.ActionLink("Grupper", "Index", "Groups")</li>
                             <li>@Html.ActionLink("Användare", "Index", "Users")</li>
-                            <li>@Html.ActionLink("Dokument", "Upload", "Users")</li>
+                            <li>@Html.ActionLink("Dokument", "Index", "Documents")</li>
                         }
 
 

@@ -10,7 +10,7 @@ namespace LMS_Lexicon2015.Models
         public string Id { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "{0} måste vara minst {2} tecken långt.", MinimumLength = 3)]
+        [StringLength(100, ErrorMessage = "{0} måste vara minst {2} tecken långt.", MinimumLength = 2)]
         [Display(Name = "Förnamn")]
         public string FirstName { get; set; }
 
@@ -141,8 +141,8 @@ namespace LMS_Lexicon2015.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Konfirmera lösenord")]
-        [Compare("Password", ErrorMessage = "Ditt nya lösenord och det konfirmerade lösenordet stämmer inte överens.")]
+        [Display(Name = "Bekräfta lösenord")]
+        [Compare("Password", ErrorMessage = "Ditt nya lösenord och det bekräftade lösenordet stämmer inte överens.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -160,8 +160,8 @@ namespace LMS_Lexicon2015.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Konfirmera lösenord")]
-        [Compare("Password", ErrorMessage = "Ditt nya lösenord och det konfirmerade lösenordet stämmer inte överens.")]
+        [Display(Name = "Bekräfta lösenord")]
+        [Compare("Password", ErrorMessage = "Ditt nya lösenord och det bekräftade lösenordet stämmer inte överens.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

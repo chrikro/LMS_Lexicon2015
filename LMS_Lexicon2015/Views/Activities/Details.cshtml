@@ -38,12 +38,20 @@
             @Html.DisplayFor(model => model.StartDate.Month)
             @ViewBag.Line2
             @Html.DisplayFor(model => model.StartDate.Year)
+            <span>  </span>
+            @Html.DisplayFor(model => model.StartDate.Hour)
+            <span>:</span>
+            @Html.DisplayFor(model => model.StartDate.Minute)
             @ViewBag.Line3
             @Html.DisplayFor(model => model.EndDate.Day)
             @ViewBag.Line1
             @Html.DisplayFor(model => model.EndDate.Month)
             @ViewBag.Line2
             @Html.DisplayFor(model => model.EndDate.Year)
+            <span>  </span>
+            @Html.DisplayFor(model => model.EndDate.Hour)
+            <span>:</span>
+            @Html.DisplayFor(model => model.EndDate.Minute)
         </dd>
 
 
@@ -59,6 +67,16 @@
         <span>|</span>
     }
 
+
     @Html.ActionLink("Tillbaka till kursen", "Details/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.GroupId, "CourseOccasions")
 
 </p>
+
+@{
+    TempData["groupId"] = (int)ViewBag.groupId;
+    TempData["CourseOccasionId"] = (int)ViewBag.courseOccasionId;
+    TempData["ActivityId"] = Model.Id;
+    TempData["view"] = "Activities";
+}
+
+@Html.Partial("../documents/download", new LMS_Lexicon2015.Models.ApplicationDbContext().Documents.Where(o => o.ActivityId == Model.Id).OrderBy(c => c.Timestamp).ToList())

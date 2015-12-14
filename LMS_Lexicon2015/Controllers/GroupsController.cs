@@ -232,16 +232,20 @@ namespace LMS_Lexicon2015.Controllers
         public ActionResult _Course(int GroupId) 
         {
 
-             //var checkCourseOccasions = db.CourseOccasions.Where(o => o.GroupId == GroupId);
+            var checkCourseOccasions = db.CourseOccasions.Where(o => o.GroupId == GroupId);
+            string dbStartDate = "";
 
-             //foreach (var item in checkCourseOccasions)
-             //{
-             //    ViewBag.checkStartDate(item.Id) = item.StartDate;
-             //    ViewBag.checkStartDate(item.Id) = item.StartDate;
-             //}
+            foreach (var item in checkCourseOccasions)
+            {
+                dbStartDate = dbStartDate + "," + item.StartDate;
 
-            ViewBag.GroupId = GroupId;
-            return View(db.CourseOccasions.ToList());
+            }
+
+
+            //ViewBag.dbStartDate = dbStartDate;
+            //ViewBag.GroupId = GroupId;
+            //return View(db.CourseOccasions.ToList());
+            return View();
         }
 
         protected override void Dispose(bool disposing)

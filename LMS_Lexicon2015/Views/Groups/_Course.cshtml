@@ -8,7 +8,7 @@
 }
 
 <h2>Kurser</h2>
-
+@ViewBag.dbStartDate
 <p>
 
     @if (User.IsInRole("Lärare"))
@@ -70,11 +70,12 @@
 
                 @if (checkEndDate > item.StartDate)
                 {
-                    <span style="color:red">***</span>
+                    <span class="content_info_problem">***</span>
                     checkEndDateExplanation = true;
                 }
-                @{
-        checkEndDate = item.EndDate;
+                @if (checkEndDate < item.EndDate)
+                {
+                    checkEndDate = item.EndDate;
                 }
 
                 @Html.DisplayFor(modelItem => item.StartDate.Day)
@@ -110,7 +111,7 @@
                 {
                     <td>
                         <div>
-                            <a href=" " title="Det finns aktiviteter i kursen." style="background-color:#FFFFFF;color:grey;text-decoration:none">Ta bort</a>
+                            <a href=" " title="Det finns aktiviteter i kursen." class="content_info_dont_delete">Ta bort</a>
                         </div>
                     </td>
                 }
@@ -129,6 +130,6 @@
 
 @if (!checkEndDateExplanation == false)
 {
-    <span style="color:red">*** = Dubbelt Kursdatum</span>
+    <span class="content_info_problem">*** Kursens period överlappar en tidigare kurs.</span>
     <br />
 }

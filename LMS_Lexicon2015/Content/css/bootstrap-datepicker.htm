@@ -1,0 +1,1461 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class=" is-copy-enabled">
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=1020">
+    
+    
+    <title>eternicode/bootstrap-datepicker</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-144.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144.png">
+    <meta property="fb:app_id" content="1401488693436528">
+
+      <meta content="@github" name="twitter:site" /><meta content="summary" name="twitter:card" /><meta content="eternicode/bootstrap-datepicker" name="twitter:title" /><meta content="bootstrap-datepicker - A datepicker for @twitter bootstrap forked from Stefan Petre&#39;s (of eyecon.ro), improvements by @eternicode" name="twitter:description" /><meta content="https://avatars0.githubusercontent.com/u/324189?v=3&amp;s=400" name="twitter:image:src" />
+      <meta content="GitHub" property="og:site_name" /><meta content="object" property="og:type" /><meta content="https://avatars0.githubusercontent.com/u/324189?v=3&amp;s=400" property="og:image" /><meta content="eternicode/bootstrap-datepicker" property="og:title" /><meta content="https://github.com/eternicode/bootstrap-datepicker" property="og:url" /><meta content="bootstrap-datepicker - A datepicker for @twitter bootstrap forked from Stefan Petre&#39;s (of eyecon.ro), improvements by @eternicode" property="og:description" />
+      <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+    <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+    <link rel="assets" href="https://assets-cdn.github.com/">
+    <link rel="web-socket" href="wss://live.github.com/_sockets/MTQ5OTY2MDQ6NDNmNGRhODI4YmEwZTA2ZjBmNTM1ZDg2OWI0N2JlMGE6ODQ3ZTBkNDM5NTgyZWNiNDdhNzRlMzc1MzdlOWY5YzllYmJiZjEzY2Y1ODg3M2I5ZDJmMTdlZWUyMDJhNjYwNg==--e5e7dcfe9669ab6207dd9c7171e1ec367dfb0d94">
+    <meta name="pjax-timeout" content="1000">
+    <link rel="sudo-modal" href="/sessions/sudo_modal">
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="selected-link" value="repo_source" data-pjax-transient>
+
+    <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+    <meta name="google-analytics" content="UA-3769691-2">
+
+<meta content="collector.githubapp.com" name="octolytics-host" /><meta content="github" name="octolytics-app-id" /><meta content="5D9E7DBA:4487:1C879B7:56683E64" name="octolytics-dimension-request_id" /><meta content="14996604" name="octolytics-actor-id" /><meta content="nille99" name="octolytics-actor-login" /><meta content="e88a1787a925c6b5c5dad35fbb4147507007456cf93bf3c150d24e6d92360e2d" name="octolytics-actor-hash" />
+<meta content="/&lt;user-name&gt;/&lt;repo-name&gt;" data-pjax-transient="true" name="analytics-location" />
+<meta content="Rails, view, files#disambiguate" data-pjax-transient="true" name="analytics-event" />
+
+
+  <meta class="js-ga-set" name="dimension1" content="Logged In">
+
+
+
+        <meta name="hostname" content="github.com">
+    <meta name="user-login" content="nille99">
+
+        <meta name="expected-hostname" content="github.com">
+
+      <link rel="mask-icon" href="https://assets-cdn.github.com/pinned-octocat.svg" color="#4078c0">
+      <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+
+    <meta content="168da15b87001a1915bf6ae45aa5aec2f22c8825" name="form-nonce" />
+
+    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github-e22d623d751b610e17d11f367d278f39da959fc110f2fce97536b485292df111.css" media="all" rel="stylesheet" />
+    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github2-437a4328e52a95ed09a1fa29276622738971546748cbd528b4f1bd3a5462d981.css" media="all" rel="stylesheet" />
+    
+    
+    
+
+
+    <meta http-equiv="x-pjax-version" content="936c52b5fe122be85732f548899c81e9">
+
+      
+  <meta name="description" content="bootstrap-datepicker - A datepicker for @twitter bootstrap forked from Stefan Petre&#39;s (of eyecon.ro), improvements by @eternicode">
+  <meta name="go-import" content="github.com/eternicode/bootstrap-datepicker git https://github.com/eternicode/bootstrap-datepicker.git">
+
+  <meta content="324189" name="octolytics-dimension-user_id" /><meta content="eternicode" name="octolytics-dimension-user_login" /><meta content="3744545" name="octolytics-dimension-repository_id" /><meta content="eternicode/bootstrap-datepicker" name="octolytics-dimension-repository_nwo" /><meta content="true" name="octolytics-dimension-repository_public" /><meta content="false" name="octolytics-dimension-repository_is_fork" /><meta content="3744545" name="octolytics-dimension-repository_network_root_id" /><meta content="eternicode/bootstrap-datepicker" name="octolytics-dimension-repository_network_root_nwo" />
+  <link href="https://github.com/eternicode/bootstrap-datepicker/commits/master.atom" rel="alternate" title="Recent Commits to bootstrap-datepicker:master" type="application/atom+xml">
+
+  </head>
+
+
+  <body class="logged_in   env-production windows vis-public">
+    <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
+
+    
+    
+    
+
+
+
+      <div class="header header-logged-in true" role="banner">
+  <div class="container clearfix">
+
+    <a class="header-logo-invertocat" href="https://github.com/" data-hotkey="g d" aria-label="Homepage" data-ga-click="Header, go to dashboard, icon:logo">
+  <span class="mega-octicon octicon-mark-github"></span>
+</a>
+
+
+      <div class="site-search repo-scope js-site-search" role="search">
+          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/eternicode/bootstrap-datepicker/search" class="js-site-search-form" data-global-search-url="/search" data-repo-search-url="/eternicode/bootstrap-datepicker/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <label class="js-chromeless-input-container form-control">
+    <div class="scope-badge">This repository</div>
+    <input type="text"
+      class="js-site-search-focus js-site-search-field is-clearable chromeless-input"
+      data-hotkey="s"
+      name="q"
+      placeholder="Search"
+      aria-label="Search this repository"
+      data-global-scope-placeholder="Search GitHub"
+      data-repo-scope-placeholder="Search"
+      tabindex="1"
+      autocapitalize="off">
+  </label>
+</form>
+      </div>
+
+      <ul class="header-nav left" role="navigation">
+        <li class="header-nav-item">
+          <a href="/pulls" class="js-selected-navigation-item header-nav-link" data-ga-click="Header, click, Nav menu - item:pulls context:user" data-hotkey="g p" data-selected-links="/pulls /pulls/assigned /pulls/mentioned /pulls">
+            Pull requests
+</a>        </li>
+        <li class="header-nav-item">
+          <a href="/issues" class="js-selected-navigation-item header-nav-link" data-ga-click="Header, click, Nav menu - item:issues context:user" data-hotkey="g i" data-selected-links="/issues /issues/assigned /issues/mentioned /issues">
+            Issues
+</a>        </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://gist.github.com/" data-ga-click="Header, go to gist, text:gist">Gist</a>
+          </li>
+      </ul>
+
+    
+<ul class="header-nav user-nav right" id="user-links">
+  <li class="header-nav-item">
+      <span class="js-socket-channel js-updatable-content"
+        data-channel="notification-changed:nille99"
+        data-url="/notifications/header">
+      <a href="/notifications" aria-label="You have no unread notifications" class="header-nav-link notification-indicator tooltipped tooltipped-s" data-ga-click="Header, go to notifications, icon:read" data-hotkey="g n">
+          <span class="mail-status all-read"></span>
+          <span class="octicon octicon-bell"></span>
+</a>  </span>
+
+  </li>
+
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link tooltipped tooltipped-s js-menu-target" href="/new"
+       aria-label="Create new…"
+       data-ga-click="Header, create new, icon:add">
+      <span class="octicon octicon-plus left"></span>
+      <span class="dropdown-caret"></span>
+    </a>
+
+    <div class="dropdown-menu-content js-menu-content">
+      <ul class="dropdown-menu dropdown-menu-sw">
+        
+<a class="dropdown-item" href="/new" data-ga-click="Header, create new repository">
+  New repository
+</a>
+
+
+  <a class="dropdown-item" href="/organizations/new" data-ga-click="Header, create new organization">
+    New organization
+  </a>
+
+
+
+  <div class="dropdown-divider"></div>
+  <div class="dropdown-header">
+    <span title="eternicode/bootstrap-datepicker">This repository</span>
+  </div>
+    <a class="dropdown-item" href="/eternicode/bootstrap-datepicker/issues/new" data-ga-click="Header, create new issue">
+      New issue
+    </a>
+
+      </ul>
+    </div>
+  </li>
+
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link name tooltipped tooltipped-sw js-menu-target" href="/nille99"
+       aria-label="View profile and more"
+       data-ga-click="Header, show menu, icon:avatar">
+      <img alt="@nille99" class="avatar" height="20" src="https://avatars2.githubusercontent.com/u/14996604?v=3&amp;s=40" width="20" />
+      <span class="dropdown-caret"></span>
+    </a>
+
+    <div class="dropdown-menu-content js-menu-content">
+      <div class="dropdown-menu  dropdown-menu-sw">
+        <div class=" dropdown-header header-nav-current-user css-truncate">
+            Signed in as <strong class="css-truncate-target">nille99</strong>
+
+        </div>
+
+
+        <div class="dropdown-divider"></div>
+
+          <a class="dropdown-item" href="/nille99" data-ga-click="Header, go to profile, text:your profile">
+            Your profile
+          </a>
+        <a class="dropdown-item" href="/stars" data-ga-click="Header, go to starred repos, text:your stars">
+          Your stars
+        </a>
+        <a class="dropdown-item" href="/explore" data-ga-click="Header, go to explore, text:explore">
+          Explore
+        </a>
+          <a class="dropdown-item" href="/integrations" data-ga-click="Header, go to integrations, text:integrations">
+            Integrations
+          </a>
+        <a class="dropdown-item" href="https://help.github.com" data-ga-click="Header, go to help, text:help">
+          Help
+        </a>
+
+          <div class="dropdown-divider"></div>
+
+          <a class="dropdown-item" href="/settings/profile" data-ga-click="Header, go to settings, icon:settings">
+            Settings
+          </a>
+
+          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/logout" class="logout-form" data-form-nonce="168da15b87001a1915bf6ae45aa5aec2f22c8825" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="FkcD1Qhd57z2Bg/wxy/4lKWsMZiLdPYMNlA03ZsNwzGphBssaol+em1O54XmxoW2EK2fWOxvKZ63UyGhwxO07Q==" /></div>
+            <button class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout">
+              Sign out
+            </button>
+</form>
+      </div>
+    </div>
+  </li>
+</ul>
+
+
+    
+  </div>
+</div>
+
+      
+
+      
+
+
+    <div id="start-of-content" class="accessibility-aid"></div>
+
+      <div id="js-flash-container">
+</div>
+
+
+    <div role="main" class="main-content">
+        <div itemscope itemtype="http://schema.org/WebPage">
+    <div id="js-repo-pjax-container" class="context-loader-container js-repo-nav-next" data-pjax-container>
+      
+<div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav">
+  <div class="container repohead-details-container">
+
+    
+
+<ul class="pagehead-actions">
+
+  <li>
+        <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-form-nonce="168da15b87001a1915bf6ae45aa5aec2f22c8825" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="dQO1JsEwJiAXyMvhcqvEVPbN8ruVi6KJVhWh9LXi0dg1PP67iyfjup8prdskX+m3ILDk4PwhI9ooNErLsDfhig==" /></div>      <input id="repository_id" name="repository_id" type="hidden" value="3744545" />
+
+        <div class="select-menu js-menu-container js-select-menu">
+          <a href="/eternicode/bootstrap-datepicker/subscription"
+            class="btn btn-sm btn-with-count select-menu-button js-menu-target" role="button" tabindex="0" aria-haspopup="true"
+            data-ga-click="Repository, click Watch settings, action:files#disambiguate">
+            <span class="js-select-button">
+              <span class="octicon octicon-eye"></span>
+              Watch
+            </span>
+          </a>
+          <a class="social-count js-social-count" href="/eternicode/bootstrap-datepicker/watchers">
+            392
+          </a>
+
+        <div class="select-menu-modal-holder">
+          <div class="select-menu-modal subscription-menu-modal js-menu-content" aria-hidden="true">
+            <div class="select-menu-header">
+              <span class="octicon octicon-x js-menu-close" role="button" aria-label="Close"></span>
+              <span class="select-menu-title">Notifications</span>
+            </div>
+
+              <div class="select-menu-list js-navigation-container" role="menu">
+
+                <div class="select-menu-item js-navigation-item selected" role="menuitem" tabindex="0">
+                  <span class="select-menu-item-icon octicon octicon-check"></span>
+                  <div class="select-menu-item-text">
+                    <input checked="checked" id="do_included" name="do" type="radio" value="included" />
+                    <span class="select-menu-item-heading">Not watching</span>
+                    <span class="description">Be notified when participating or @mentioned.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <span class="octicon octicon-eye"></span>
+                      Watch
+                    </span>
+                  </div>
+                </div>
+
+                <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                  <span class="select-menu-item-icon octicon octicon octicon-check"></span>
+                  <div class="select-menu-item-text">
+                    <input id="do_subscribed" name="do" type="radio" value="subscribed" />
+                    <span class="select-menu-item-heading">Watching</span>
+                    <span class="description">Be notified of all conversations.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <span class="octicon octicon-eye"></span>
+                      Unwatch
+                    </span>
+                  </div>
+                </div>
+
+                <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                  <span class="select-menu-item-icon octicon octicon-check"></span>
+                  <div class="select-menu-item-text">
+                    <input id="do_ignore" name="do" type="radio" value="ignore" />
+                    <span class="select-menu-item-heading">Ignoring</span>
+                    <span class="description">Never be notified.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <span class="octicon octicon-mute"></span>
+                      Stop ignoring
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+</form>
+  </li>
+
+  <li>
+    
+  <div class="js-toggler-container js-social-container starring-container ">
+
+    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/eternicode/bootstrap-datepicker/unstar" class="js-toggler-form starred js-unstar-button" data-form-nonce="168da15b87001a1915bf6ae45aa5aec2f22c8825" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="dluXDQPIfb45lBpAOzjH933dz9Gz6r4KZNcBQ+pA59XXKHfLOH8jT2xN3XNKEPlRumXG77rOgu72zE5p0sUGFw==" /></div>
+      <button
+        class="btn btn-sm btn-with-count js-toggler-target"
+        aria-label="Unstar this repository" title="Unstar eternicode/bootstrap-datepicker"
+        data-ga-click="Repository, click unstar button, action:files#disambiguate; text:Unstar">
+        <span class="octicon octicon-star"></span>
+        Unstar
+      </button>
+        <a class="social-count js-social-count" href="/eternicode/bootstrap-datepicker/stargazers">
+          7,357
+        </a>
+</form>
+    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/eternicode/bootstrap-datepicker/star" class="js-toggler-form unstarred js-star-button" data-form-nonce="168da15b87001a1915bf6ae45aa5aec2f22c8825" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="25Z6GX8if/N5mc6/Bl/TVQOUPYFasRQ3bXcM+iCrgfaPxB7V/BMaOsLHhdo4mrpqWp54ZuRxP5xbw09Gj9dt3g==" /></div>
+      <button
+        class="btn btn-sm btn-with-count js-toggler-target"
+        aria-label="Star this repository" title="Star eternicode/bootstrap-datepicker"
+        data-ga-click="Repository, click star button, action:files#disambiguate; text:Star">
+        <span class="octicon octicon-star"></span>
+        Star
+      </button>
+        <a class="social-count js-social-count" href="/eternicode/bootstrap-datepicker/stargazers">
+          7,357
+        </a>
+</form>  </div>
+
+  </li>
+
+  <li>
+          <a href="#fork-destination-box" class="btn btn-sm btn-with-count"
+              title="Fork your own copy of eternicode/bootstrap-datepicker to your account"
+              aria-label="Fork your own copy of eternicode/bootstrap-datepicker to your account"
+              rel="facebox"
+              data-ga-click="Repository, show fork modal, action:files#disambiguate; text:Fork">
+            <span class="octicon octicon-repo-forked"></span>
+            Fork
+          </a>
+
+          <div id="fork-destination-box" style="display: none;">
+            <h2 class="facebox-header" data-facebox-id="facebox-header">Where should we fork this repository?</h2>
+            <include-fragment src=""
+                class="js-fork-select-fragment fork-select-fragment"
+                data-url="/eternicode/bootstrap-datepicker/fork?fragment=1">
+              <img alt="Loading" height="64" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-128.gif" width="64" />
+            </include-fragment>
+          </div>
+
+    <a href="/eternicode/bootstrap-datepicker/network" class="social-count">
+      3,028
+    </a>
+  </li>
+</ul>
+
+    <h1 itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="entry-title public ">
+  <span class="octicon octicon-repo"></span>
+  <span class="author"><a href="/eternicode" class="url fn" itemprop="url" rel="author"><span itemprop="title">eternicode</span></a></span><!--
+--><span class="path-divider">/</span><!--
+--><strong><a href="/eternicode/bootstrap-datepicker" data-pjax="#js-repo-pjax-container">bootstrap-datepicker</a></strong>
+
+  <span class="page-context-loader">
+    <img alt="" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+  </span>
+
+</h1>
+
+  </div>
+  <div class="container">
+    
+<nav class="reponav js-repo-nav js-sidenav-container-pjax js-octicon-loaders"
+     role="navigation"
+     data-pjax="#js-repo-pjax-container">
+
+  <a href="/eternicode/bootstrap-datepicker" aria-label="Code" aria-selected="true" class="js-selected-navigation-item selected reponav-item" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches /eternicode/bootstrap-datepicker">
+    <span class="octicon octicon-code"></span>
+    Code
+</a>
+    <a href="/eternicode/bootstrap-datepicker/issues" class="js-selected-navigation-item reponav-item" data-hotkey="g i" data-selected-links="repo_issues repo_labels repo_milestones /eternicode/bootstrap-datepicker/issues">
+      <span class="octicon octicon-issue-opened"></span>
+      Issues
+      <span class="counter">352</span>
+</a>
+  <a href="/eternicode/bootstrap-datepicker/pulls" class="js-selected-navigation-item reponav-item" data-hotkey="g p" data-selected-links="repo_pulls /eternicode/bootstrap-datepicker/pulls">
+    <span class="octicon octicon-git-pull-request"></span>
+    Pull requests
+    <span class="counter">60</span>
+</a>
+
+  <a href="/eternicode/bootstrap-datepicker/pulse" class="js-selected-navigation-item reponav-item" data-selected-links="pulse /eternicode/bootstrap-datepicker/pulse">
+    <span class="octicon octicon-pulse"></span>
+    Pulse
+</a>
+  <a href="/eternicode/bootstrap-datepicker/graphs" class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors /eternicode/bootstrap-datepicker/graphs">
+    <span class="octicon octicon-graph"></span>
+    Graphs
+</a>
+
+</nav>
+
+  </div>
+</div>
+
+<div class="container new-discussion-timeline experiment-repo-nav">
+  <div class="repository-content">
+
+    
+<div class="repository-meta js-details-container">
+  <span class="repository-meta-content">
+        A datepicker for <a href="https://github.com/twitter" class="user-mention">@twitter</a> bootstrap forked from Stefan Petre's (of eyecon.ro), improvements by <a href="https://github.com/eternicode" class="user-mention">@eternicode</a>
+
+  </span>
+
+</div>
+
+
+<div class="overall-summary overall-summary-bottomless">
+
+  <div class="stats-switcher-viewport js-stats-switcher-viewport">
+    <div class="stats-switcher-wrapper">
+    <ul class="numbers-summary">
+      <li class="commits">
+        <a data-pjax href="/eternicode/bootstrap-datepicker/commits/master">
+            <span class="octicon octicon-history"></span>
+            <span class="num text-emphasized">
+              1,280
+            </span>
+            commits
+        </a>
+      </li>
+      <li>
+        <a data-pjax href="/eternicode/bootstrap-datepicker/branches">
+          <span class="octicon octicon-git-branch"></span>
+          <span class="num text-emphasized">
+            5
+          </span>
+          branches
+        </a>
+      </li>
+
+      <li>
+        <a data-pjax href="/eternicode/bootstrap-datepicker/releases">
+          <span class="octicon octicon-tag"></span>
+          <span class="num text-emphasized">
+            24
+          </span>
+          releases
+        </a>
+      </li>
+
+      <li>
+        
+  <a href="/eternicode/bootstrap-datepicker/graphs/contributors">
+    <span class="octicon octicon-organization"></span>
+    <span class="num text-emphasized">
+      241
+    </span>
+    contributors
+  </a>
+      </li>
+    </ul>
+
+      <div class="repository-lang-stats">
+        <ol class="repository-lang-stats-numbers">
+          <li>
+              <a href="/eternicode/bootstrap-datepicker/search?l=javascript">
+                <span class="color-block language-color" style="background-color:#f1e05a;"></span>
+                <span class="lang">JavaScript</span>
+                <span class="percent">77.7%</span>
+              </a>
+          </li>
+          <li>
+              <a href="/eternicode/bootstrap-datepicker/search?l=css">
+                <span class="color-block language-color" style="background-color:#563d7c;"></span>
+                <span class="lang">CSS</span>
+                <span class="percent">21.2%</span>
+              </a>
+          </li>
+          <li>
+              <a href="/eternicode/bootstrap-datepicker/search?l=html">
+                <span class="color-block language-color" style="background-color:#e44b23;"></span>
+                <span class="lang">HTML</span>
+                <span class="percent">1.1%</span>
+              </a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  <div class="repository-lang-stats-graph js-toggle-lang-stats" title="Click for language details">
+    <span class="language-color" aria-label="JavaScript 77.7%" style="width:77.7%; background-color:#f1e05a;" itemprop="keywords">JavaScript</span>
+    <span class="language-color" aria-label="CSS 21.2%" style="width:21.2%; background-color:#563d7c;" itemprop="keywords">CSS</span>
+    <span class="language-color" aria-label="HTML 1.1%" style="width:1.1%; background-color:#e44b23;" itemprop="keywords">HTML</span>
+  </div>
+
+<include-fragment src="/eternicode/bootstrap-datepicker/show_partial?partial=tree%2Frecently_touched_branches_list"></include-fragment>
+
+<div class="file-navigation in-mid-page file-navigation-new">
+  <div class="right">
+    <div class="btn-group">
+      
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/eternicode/bootstrap-datepicker/new/master" class="button_to js-new-blob-form" data-form-nonce="168da15b87001a1915bf6ae45aa5aec2f22c8825" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="1m7y6x+BV088sav9lN0gJ7p71ryh61R/W0t+YibRQz+NJbFu+X93Q9R7J29nb8PYnhklbqoMkpwNam2KxGizXQ==" /></div>
+    <button class="btn btn-sm tooltipped tooltipped-n js-new-blob-submit" type="submit"
+      data-disable-with="working…" aria-label="Fork this project and create a new file">
+      New file
+    </button>
+</form>
+
+
+      <a href="/eternicode/bootstrap-datepicker/find/master"
+        class="btn btn-sm empty-icon right js-show-file-finder"
+        data-pjax
+        data-hotkey="t"
+        data-ga-click="Repository, find file, location:repo overview">
+        Find file
+      </a>
+    </div>
+      <div class="file-navigation-options" data-multiple>
+
+        <div class="file-navigation-option">
+          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/users/set_protocol" class="js-set-user-protocol-preference" data-form-nonce="168da15b87001a1915bf6ae45aa5aec2f22c8825" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="+CL8bwTCxRWH8e0U/eJ8jTogt9a02Sn0vg+u1dCuXJogISD9CopKTFufqbiz1OHkYkCvgZY/YrSY06n5EZZiBw==" /></div>
+            <input type="hidden" name="protocol_type" value="clone">
+
+            <div class="select-menu js-menu-container js-select-menu">
+              <div class="input-group js-select-button js-zeroclipboard-container">
+                <div class="input-group-button">
+  <button type="button" class="btn btn-sm select-menu-button js-menu-target" data-ga-click="Repository, clone HTTPS, location:repo overview">
+    HTTPS
+  </button>
+</div>
+<input type="text" class="input-monospace input-mini js-zeroclipboard-target js-url-field" value="https://github.com/eternicode/bootstrap-datepicker.git" readonly>
+<div class="input-group-button">
+  <button aria-label="Copy to clipboard" class="js-zeroclipboard btn btn-sm zeroclipboard-button tooltipped tooltipped-s" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+</div>
+
+              </div>
+
+              <div class="select-menu-modal-holder">
+                <div class="select-menu-modal js-menu-content" aria-hidden="true">
+                  <div class="select-menu-header">
+                    <span class="octicon octicon-x js-menu-close" role="button" aria-label="Close"></span>
+                    <span class="select-menu-title">Choose a clone URL</span>
+                  </div>
+
+                  <div class="select-menu-list js-navigation-container" role="menu">
+                      <div class="select-menu-item js-navigation-item selected" role="menuitem" tabindex="0">
+                        <span class="select-menu-item-icon octicon octicon-check"></span>
+                        <div class="select-menu-item-text">
+                          <input type="radio" name="protocol_selector" value="http" checked>
+                          <span class="select-menu-item-heading">
+                            HTTPS
+                            (recommended)
+                          </span>
+                            <span class="description">
+                              Clone with Git or checkout with SVN using the repository's web address.
+                            </span>
+                          <span class="js-select-button-text hidden-select-button-text">
+                            <div class="input-group-button">
+  <button type="button" class="btn btn-sm select-menu-button js-menu-target" data-ga-click="Repository, clone HTTPS, location:repo overview">
+    HTTPS
+  </button>
+</div>
+<input type="text" class="input-monospace input-mini js-zeroclipboard-target js-url-field" value="https://github.com/eternicode/bootstrap-datepicker.git" readonly>
+<div class="input-group-button">
+  <button aria-label="Copy to clipboard" class="js-zeroclipboard btn btn-sm zeroclipboard-button tooltipped tooltipped-s" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+</div>
+
+                          </span>
+                        </div>
+                      </div>
+                      <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                        <span class="select-menu-item-icon octicon octicon-check"></span>
+                        <div class="select-menu-item-text">
+                          <input type="radio" name="protocol_selector" value="ssh" >
+                          <span class="select-menu-item-heading">
+                            SSH
+                            
+                          </span>
+                            <span class="description">
+                              Clone with an SSH key and passphrase from your GitHub settings.
+                            </span>
+                          <span class="js-select-button-text hidden-select-button-text">
+                            <div class="input-group-button">
+  <button type="button" class="btn btn-sm select-menu-button js-menu-target" data-ga-click="Repository, clone SSH, location:repo overview">
+    SSH
+  </button>
+</div>
+<input type="text" class="input-monospace input-mini js-zeroclipboard-target js-url-field" value="git@github.com:eternicode/bootstrap-datepicker.git" readonly>
+<div class="input-group-button">
+  <button aria-label="Copy to clipboard" class="js-zeroclipboard btn btn-sm zeroclipboard-button tooltipped tooltipped-s" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+</div>
+
+                          </span>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="select-menu-list" role="menu">
+                    <a class="select-menu-item select-menu-action" href="https://help.github.com/articles/which-remote-url-should-i-use" target="_blank">
+                      <span class="select-menu-item-icon octicon octicon-question"></span>
+                      <div class="select-menu-item-text">
+                        Learn more about clone URLs
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+</form>        </div>
+
+        <div class="file-navigation-option">
+    <a href="https://windows.github.com" class="btn btn-sm tooltipped tooltipped-s tooltipped-multiline" aria-label="Save eternicode/bootstrap-datepicker to your computer and use it in GitHub Desktop.">
+      <span class="octicon octicon-desktop-download"></span>
+    </a>
+</div>
+
+
+        <div class="file-navigation-option">
+          <a href="/eternicode/bootstrap-datepicker/archive/master.zip"
+             class="btn btn-sm"
+             rel="nofollow"
+             data-ga-click="Repository, download zip, location:repo overview">
+            Download ZIP
+          </a>
+        </div>
+      </div>
+  </div>
+
+  
+<div class="select-menu js-menu-container js-select-menu left">
+  <button class="btn btn-sm select-menu-button js-menu-target css-truncate" data-hotkey="w"
+    title="master"
+    type="button" aria-label="Switch branches or tags" tabindex="0" aria-haspopup="true">
+    <i>Branch:</i>
+    <span class="js-select-button css-truncate-target">master</span>
+  </button>
+
+  <div class="select-menu-modal-holder js-menu-content js-navigation-container" data-pjax aria-hidden="true">
+
+    <div class="select-menu-modal">
+      <div class="select-menu-header">
+        <span class="octicon octicon-x js-menu-close" role="button" aria-label="Close"></span>
+        <span class="select-menu-title">Switch branches/tags</span>
+      </div>
+
+      <div class="select-menu-filters">
+        <div class="select-menu-text-filter">
+          <input type="text" aria-label="Filter branches/tags" id="context-commitish-filter-field" class="js-filterable-field js-navigation-enable" placeholder="Filter branches/tags">
+        </div>
+        <div class="select-menu-tabs">
+          <ul>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="branches" data-filter-placeholder="Filter branches/tags" class="js-select-menu-tab" role="tab">Branches</a>
+            </li>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="tags" data-filter-placeholder="Find a tag…" class="js-select-menu-tab" role="tab">Tags</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="branches" role="menu">
+
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="/eternicode/bootstrap-datepicker/tree/1.4"
+               data-name="1.4"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="1.4">
+                1.4
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="/eternicode/bootstrap-datepicker/tree/1.5"
+               data-name="1.5"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="1.5">
+                1.5
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="/eternicode/bootstrap-datepicker/tree/extensible"
+               data-name="extensible"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="extensible">
+                extensible
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="/eternicode/bootstrap-datepicker/tree/gh-pages"
+               data-name="gh-pages"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="gh-pages">
+                gh-pages
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open selected"
+               href="/eternicode/bootstrap-datepicker/tree/master"
+               data-name="master"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="master">
+                master
+              </span>
+            </a>
+        </div>
+
+          <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="tags">
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/v1.5.0"
+                 data-name="v1.5.0"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="v1.5.0">v1.5.0</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/v1.5.0-RC1"
+                 data-name="v1.5.0-RC1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="v1.5.0-RC1">v1.5.0-RC1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/v1.4.1"
+                 data-name="v1.4.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="v1.4.1">v1.4.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/v1.4.0"
+                 data-name="v1.4.0"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="v1.4.0">v1.4.0</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/v1.0.1"
+                 data-name="v1.0.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="v1.0.1">v1.0.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/v1.0.0"
+                 data-name="v1.0.0"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="v1.0.0">v1.0.0</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/1.3.1"
+                 data-name="1.3.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.1">1.3.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/1.3.0"
+                 data-name="1.3.0"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.0">1.3.0</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/1.3.0-rc.6"
+                 data-name="1.3.0-rc.6"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.0-rc.6">1.3.0-rc.6</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/1.3.0-rc.5"
+                 data-name="1.3.0-rc.5"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.0-rc.5">1.3.0-rc.5</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/1.3.0-rc.4"
+                 data-name="1.3.0-rc.4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.0-rc.4">1.3.0-rc.4</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/1.3.0-rc.3"
+                 data-name="1.3.0-rc.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.0-rc.3">1.3.0-rc.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/1.3.0-rc.2"
+                 data-name="1.3.0-rc.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.0-rc.2">1.3.0-rc.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/1.3.0-rc.1"
+                 data-name="1.3.0-rc.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.0-rc.1">1.3.0-rc.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/1.2.0"
+                 data-name="1.2.0"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.0">1.2.0</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/1.2.0-rc.1"
+                 data-name="1.2.0-rc.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.0-rc.1">1.2.0-rc.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/1.1.3"
+                 data-name="1.1.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.1.3">1.1.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/1.1.2"
+                 data-name="1.1.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.1.2">1.1.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/1.1.1"
+                 data-name="1.1.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.1.1">1.1.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/1.1.0"
+                 data-name="1.1.0"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.1.0">1.1.0</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/1.0.2"
+                 data-name="1.0.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.0.2">1.0.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/1.0.2-rc.2"
+                 data-name="1.0.2-rc.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.0.2-rc.2">1.0.2-rc.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/1.0.2-rc.1.1"
+                 data-name="1.0.2-rc.1.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.0.2-rc.1.1">1.0.2-rc.1.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/eternicode/bootstrap-datepicker/tree/1.0.2-rc.1"
+                 data-name="1.0.2-rc.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.0.2-rc.1">1.0.2-rc.1</a>
+            </div>
+        </div>
+
+        <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+    <a href="/eternicode/bootstrap-datepicker/pull/new/master" class="btn btn-sm btn-primary" data-pjax data-ga-click="Repository, new pull request, location:repo overview">
+      New pull request
+    </a>
+
+  <div class="breadcrumb">
+    
+  </div>
+</div>
+
+
+
+
+  <div class="commit-tease js-details-container">
+    <span class="right">
+      Latest commit
+      <a class="commit-tease-sha" href="/eternicode/bootstrap-datepicker/commit/34b1564f51cd2bd26fe9dff08337eaec1f271f15" data-pjax>
+        34b1564
+      </a>
+      <time datetime="2015-12-09T07:35:12Z" is="relative-time">Dec 9, 2015</time>
+    </span>
+
+
+    <span class="commit-author-section">
+      <img alt="@acrobat" class="avatar" height="20" src="https://avatars0.githubusercontent.com/u/1374857?v=3&amp;s=40" width="20" />
+      <a href="/acrobat" class="user-mention" rel="contributor">acrobat</a>
+    </span>
+
+        <a href="/eternicode/bootstrap-datepicker/commit/34b1564f51cd2bd26fe9dff08337eaec1f271f15" class="message" data-pjax="true" title="Merge pull request #1710 from camohub/patch-1
+
+Update options.rst">Merge pull request</a> <a href="https://github.com/eternicode/bootstrap-datepicker/pull/1710" class="issue-link" title="Update options.rst">#1710</a> <a href="/eternicode/bootstrap-datepicker/commit/34b1564f51cd2bd26fe9dff08337eaec1f271f15" class="message" data-pjax="true" title="Merge pull request #1710 from camohub/patch-1
+
+Update options.rst">from camohub/patch-1</a>
+          <span class="hidden-text-expander inline">
+            <a href="#" class="js-details-target">…</a>
+          </span>
+    </span>
+
+      <div class="commit-desc"><pre class="text-small">Update options.rst</pre></div>
+  </div>
+
+
+<div class="file-wrap">
+  <a href="/eternicode/bootstrap-datepicker/tree/34b1564f51cd2bd26fe9dff08337eaec1f271f15" class="hidden js-permalink-shortcut" data-hotkey="y">Permalink</a>
+
+  <table class="files js-navigation-container js-active-navigation-container" data-pjax>
+
+
+    <tbody>
+      <tr class="warning include-fragment-error">
+        <td class="icon"><span class="octicon octicon-alert"></span></td>
+        <td class="content" colspan="3">Failed to load latest commit information.</td>
+      </tr>
+
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/eternicode/bootstrap-datepicker/tree/master/build" class="js-directory-link js-navigation-open" id="b0da275520918e23dd615e2a747528f1-fe869ec434890a2a687cbd2197a5bcb66954ce4b" title="build">build</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/eternicode/bootstrap-datepicker/commit/b742eadaba497b21f4a7c21b75637c04f451289c" class="message" data-pjax="true" title="[BS3 Less] Remove unused variables and clear">[BS3 Less] Remove unused variables and clear</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-10-23T01:50:03Z" is="time-ago">Oct 23, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/eternicode/bootstrap-datepicker/tree/master/dist" class="js-directory-link js-navigation-open" id="2a6d07eef8b10b84129b42424ed99327-074668aaa2087fdbf32a7b294cf6aadd86bc126d" title="dist">dist</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/eternicode/bootstrap-datepicker/commit/1a33a3305d0c44a329a4a3b0a2024d1606dbc4d7" class="message" data-pjax="true" title="Regenerated dist files">Regenerated dist files</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-12-08T18:53:01Z" is="time-ago">Dec 8, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/eternicode/bootstrap-datepicker/tree/master/docs" class="js-directory-link js-navigation-open" id="e3e2a9bfd88566b05001b02a3f51d286-397c4a9e8bf518572cc50734cc80ba79fa734388" title="docs">docs</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/eternicode/bootstrap-datepicker/commit/24c93e9270bd2fd45b10669dfbbe617cc8e9e901" class="message" data-pjax="true" title="Update options.rst">Update options.rst</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-12-09T00:09:26Z" is="time-ago">Dec 9, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/eternicode/bootstrap-datepicker/tree/master/grunt" class="js-directory-link js-navigation-open" id="ab950343e97df05f1262e24666111fb6-04008b9e27d2d1875d329a662009be956cd45be7" title="grunt">grunt</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/eternicode/bootstrap-datepicker/commit/98beb529e3dd2e9e1e95304a49772609094da011" class="message" data-pjax="true" title="Reworked grunt tasks">Reworked grunt tasks</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-02-08T18:00:35Z" is="time-ago">Feb 8, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/eternicode/bootstrap-datepicker/tree/master/js" class="js-directory-link js-navigation-open" id="32981a13284db7a021131df49e6cd203-1e7c576bbb1f404063d34b6b60518d345f1255ca" title="js">js</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/eternicode/bootstrap-datepicker/commit/b9bd4aa21b588505bd02c9cf0dd13ab39b467305" class="message" data-pjax="true" title="Merge branch &#39;1.5&#39;">Merge branch '1.5'</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-12-08T20:32:41Z" is="time-ago">Dec 8, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/eternicode/bootstrap-datepicker/tree/master/less" class="js-directory-link js-navigation-open" id="e37e8d912e8f7b8f9b5ef9452ba47ff1-5c3fd378b5b9c8abf2547a657653e95c6865ec55" title="less">less</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/eternicode/bootstrap-datepicker/commit/b742eadaba497b21f4a7c21b75637c04f451289c" class="message" data-pjax="true" title="[BS3 Less] Remove unused variables and clear">[BS3 Less] Remove unused variables and clear</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-10-23T01:50:03Z" is="time-ago">Oct 23, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/eternicode/bootstrap-datepicker/tree/master/tests" class="js-directory-link js-navigation-open" id="b61a6d542f9036550ba9c401c80f00ef-5a67212ab1e2a9a90aa4e29883b51912a56e7b96" title="tests">tests</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/eternicode/bootstrap-datepicker/commit/2d621d12f22229b29247c7c7886bfb7938de96b2" class="message" data-pjax="true" title="rebase">rebase</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-12-03T14:23:52Z" is="time-ago">Dec 3, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/eternicode/bootstrap-datepicker/blob/master/.editorconfig" class="js-directory-link js-navigation-open" id="1e70daafb475c0ce3fef7d2728279182-b22d6e6029b2c414db04beb82df91b3ed39d63dc" title=".editorconfig">.editorconfig</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/eternicode/bootstrap-datepicker/commit/3faabefdcc9970ec801ee0bdaa01be55b5817728" class="message" data-pjax="true" title="Added editor config">Added editor config</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2014-12-17T09:31:44Z" is="time-ago">Dec 17, 2014</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/eternicode/bootstrap-datepicker/blob/master/.gitignore" class="js-directory-link js-navigation-open" id="a084b794bc0759e7a6b77810e01874f2-85109aedcac85adcd25beb59046077a9d69a6dae" title=".gitignore">.gitignore</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/eternicode/bootstrap-datepicker/commit/77d61e717fb13cc31ffe5e639c0a3d9aa7325e51" class="message" data-pjax="true" title="Add bower_components to .gitignore">Add bower_components to .gitignore</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-05-24T14:04:17Z" is="time-ago">May 24, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/eternicode/bootstrap-datepicker/blob/master/.travis.yml" class="js-directory-link js-navigation-open" id="354f30a63fb0907d4ad57269548329e3-7460094a1ec3080ed1f7696495138284977bcfd2" title=".travis.yml">.travis.yml</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/eternicode/bootstrap-datepicker/commit/4a4e711e35eb70b41d405066987e30c63b2a01fd" class="message" data-pjax="true" title="Enable travis container builds">Enable travis container builds</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-11-13T20:35:46Z" is="time-ago">Nov 13, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/eternicode/bootstrap-datepicker/blob/master/CHANGELOG.md" class="js-directory-link js-navigation-open" id="4ac32a78649ca5bdd8e0ba38b7006a1e-b0b79cc31bd3e788249d0a7d6ae88509d3db2594" title="CHANGELOG.md">CHANGELOG.md</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/eternicode/bootstrap-datepicker/commit/c2dfe46d1b959c8cde63e9bc7a6c81bb694f1cfa" class="message" data-pjax="true" title="add 1.5.0 to changelog
+
+fixes #1663">add 1.5.0 to changelog</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-11-10T07:31:13Z" is="time-ago">Nov 10, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/eternicode/bootstrap-datepicker/blob/master/CONTRIBUTING.md" class="js-directory-link js-navigation-open" id="6a3371457528722a734f3c51d9238c13-775c6447cf59701132a346b37d112392a58a51ee" title="CONTRIBUTING.md">CONTRIBUTING.md</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/eternicode/bootstrap-datepicker/commit/1f556f2b020e44d5d1d0677caa4a4344b22a88ed" class="message" data-pjax="true" title="Add contributing note about CDN assets for testing">Add contributing note about CDN assets for testing</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2014-01-07T08:27:10Z" is="time-ago">Jan 7, 2014</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/eternicode/bootstrap-datepicker/blob/master/Gruntfile.js" class="js-directory-link js-navigation-open" id="35b4a816e0441e6a375cd925af50752c-22d8d555fef51d8215afbf2e9bb16fc131b6afa9" title="Gruntfile.js">Gruntfile.js</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/eternicode/bootstrap-datepicker/commit/c82d9fff76f59e4848d50cb12f06d4404d0414b4" class="message" data-pjax="true" title="Merge pull request #1654 from vsn4ik/rebase-1524
+
+Fixing month in title">Merge pull request</a> <a href="https://github.com/eternicode/bootstrap-datepicker/pull/1654" class="issue-link" title="Rebase PR 1524">#1654</a> <a href="/eternicode/bootstrap-datepicker/commit/c82d9fff76f59e4848d50cb12f06d4404d0414b4" class="message" data-pjax="true" title="Merge pull request #1654 from vsn4ik/rebase-1524
+
+Fixing month in title">from vsn4ik/rebase-1524</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-11-17T19:08:31Z" is="time-ago">Nov 17, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/eternicode/bootstrap-datepicker/blob/master/LICENSE" class="js-directory-link js-navigation-open" id="9879d6db96fd29134fc802214163b95a-d645695673349e3947e8e5ae42332d0ac3164cd7" title="LICENSE">LICENSE</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/eternicode/bootstrap-datepicker/commit/437e0756291b2a87928b7f6d2ac779e38848971d" class="message" data-pjax="true" title="Stefan&#39;s original code">Stefan's original code</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2012-03-05T19:47:58Z" is="time-ago">Mar 5, 2012</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/eternicode/bootstrap-datepicker/blob/master/README.md" class="js-directory-link js-navigation-open" id="04c6e90faac2675aa89e2176d2eec7d8-6ad917323f51f37ff6fff14f5976502baa122522" title="README.md">README.md</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/eternicode/bootstrap-datepicker/commit/b26f4994dc7a264f1e17f7c8e155ddaf610f2c81" class="message" data-pjax="true" title="Add Gitter badge">Add Gitter badge</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-09-15T17:21:56Z" is="time-ago">Sep 15, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/eternicode/bootstrap-datepicker/blob/master/bower.json" class="js-directory-link js-navigation-open" id="0a08a7565aba4405282251491979bb6b-e08e0101fceb161d29f7d0cad508452b4c6b2d32" title="bower.json">bower.json</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/eternicode/bootstrap-datepicker/commit/2a49c69414e496aa0ab576a91ddc4d9345b5e4a0" class="message" data-pjax="true" title="Bumped version">Bumped version</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-10-18T12:59:02Z" is="time-ago">Oct 18, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/eternicode/bootstrap-datepicker/blob/master/composer.json" class="js-directory-link js-navigation-open" id="b5d0ee8c97c7abd7e3fa29b9a27d1780-f9cf01dc401b4733422ec2e252903e58a62f2721" title="composer.json">composer.json</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/eternicode/bootstrap-datepicker/commit/9cacb3d179e91717f56a5f00a68f3fc2c6cae753" class="message" data-pjax="true" title="&quot;Twitter Bootstrap&quot; =&gt; &quot;Bootstrap&quot;
+
+Also updates the homepage URL for Bootstrap.
+
+Since version 3, Bootstrap is no longer organizationally affiliated with Twitter.
+See http://getbootstrap.com/about/#name
+and https://github.com/twbs/bootstrap/issues/9899">"Twitter Bootstrap" =&gt; "Bootstrap"</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-05-05T01:25:50Z" is="time-ago">May 4, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/eternicode/bootstrap-datepicker/blob/master/package.json" class="js-directory-link js-navigation-open" id="b9cfc7f2cdf78a7f4b91a753d10865a2-08531ec6d40e8dfeac388db4f6c188df1f5a4964" title="package.json">package.json</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="/eternicode/bootstrap-datepicker/commit/d973838c43f3df2260d3ea5a760d10ab6c651fc7" class="message" data-pjax="true" title="Update cssmin and add sourcemap for minified CSS files">Update cssmin and add sourcemap for minified CSS files</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-11-01T23:18:49Z" is="time-ago">Nov 2, 2015</time></span>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+  <div id="readme" class="boxed-group flush clearfix announce instapaper_body md">
+    <h3>
+      <span class="octicon octicon-book"></span>
+      README.md
+    </h3>
+
+    <article class="markdown-body entry-content" itemprop="mainContentOfPage"><h1><a id="user-content-bootstrap-datepicker" class="anchor" href="#bootstrap-datepicker" aria-hidden="true"><span class="octicon octicon-link"></span></a>bootstrap-datepicker</h1>
+
+<p><a href="https://gitter.im/eternicode/bootstrap-datepicker?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://camo.githubusercontent.com/da2edb525cde1455a622c58c0effc3a90b9a181c/68747470733a2f2f6261646765732e6769747465722e696d2f4a6f696e253230436861742e737667" alt="Join the chat at https://gitter.im/eternicode/bootstrap-datepicker" data-canonical-src="https://badges.gitter.im/Join%20Chat.svg" style="max-width:100%;"></a></p>
+
+<p>This is a fork of Stefan Petre's <a href="http://www.eyecon.ro/bootstrap-datepicker/">original code</a>;
+thanks go to him for getting this thing started!</p>
+
+<p>Please note that this fork is not used on Stefan's page, nor is it maintained or contributed to by him.</p>
+
+<p>Versions are incremented according to <a href="http://semver.org/">semver</a>.</p>
+
+<h2><a id="user-content-cdn" class="anchor" href="#cdn" aria-hidden="true"><span class="octicon octicon-link"></span></a>CDN</h2>
+
+<p>You can use the <a href="https://www.cloudflare.com">CloudFlare</a> powered <a href="https://cdnjs.com">cdnjs.com</a> on your website. </p>
+
+<p><a href="http://cdnjs.com/libraries/bootstrap-datepicker">bootstrap-datepicker</a> on cdnjs</p>
+
+<p>Please note: It might take a few days until a new version is available on cdnjs.</p>
+
+<h2><a id="user-content-links" class="anchor" href="#links" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h2>
+
+<ul>
+<li><a href="http://eternicode.github.io/bootstrap-datepicker/">Online Demo</a></li>
+<li><a href="http://bootstrap-datepicker.readthedocs.org/en/stable/">Online Docs</a> (ReadTheDocs.com)</li>
+<li><a href="https://groups.google.com/group/bootstrap-datepicker/">Google Group</a></li>
+<li><a href="https://travis-ci.org/eternicode/bootstrap-datepicker">Travis CI <img src="https://camo.githubusercontent.com/5936e515dd31e1ff340051a1e95dca163fbe8d8e/68747470733a2f2f7472617669732d63692e6f72672f657465726e69636f64652f626f6f7473747261702d646174657069636b65722e7376673f6272616e63683d6d6173746572" alt="Build Status" data-canonical-src="https://travis-ci.org/eternicode/bootstrap-datepicker.svg?branch=master" style="max-width:100%;"></a></li>
+</ul>
+
+<h2><a id="user-content-development" class="anchor" href="#development" aria-hidden="true"><span class="octicon octicon-link"></span></a>Development</h2>
+
+<p>Once you cloned the repo, you'll need to install <a href="http://gruntjs.com/">grunt</a> and the development dependencies using <a href="https://www.npmjs.com/">npm</a>.</p>
+
+<pre><code>npm install -g grunt-cli
+npm install
+</code></pre>
+</article>
+  </div>
+
+
+  </div>
+  <div class="modal-backdrop"></div>
+</div>
+
+    </div>
+  </div>
+
+    </div>
+
+        <div class="container">
+  <div class="site-footer" role="contentinfo">
+    <ul class="site-footer-links right">
+        <li><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+      <li><a href="https://developer.github.com" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li><a href="https://training.github.com" data-ga-click="Footer, go to training, text:training">Training</a></li>
+      <li><a href="https://shop.github.com" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
+        <li><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
+        <li><a href="https://github.com/pricing" data-ga-click="Footer, go to pricing, text:pricing">Pricing</a></li>
+
+    </ul>
+
+    <a href="https://github.com" aria-label="Homepage">
+      <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+</a>
+    <ul class="site-footer-links">
+      <li>&copy; 2015 <span title="0.11145s from github-fe121-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+        <li><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+        <li><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+        <li><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
+        <li><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact</a></li>
+        <li><a href="https://help.github.com" data-ga-click="Footer, go to help, text:help">Help</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+    
+    
+    
+
+    <div id="ajax-error-message" class="flash flash-error">
+      <span class="octicon octicon-alert"></span>
+      <button type="button" class="flash-close js-flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+        <span class="octicon octicon-x"></span>
+      </button>
+      Something went wrong with that request. Please try again.
+    </div>
+
+
+      <script crossorigin="anonymous" src="https://assets-cdn.github.com/assets/frameworks-b7c9523d93e6cd0235a0a8b7d1a691f7909d3834cd9c9caa7b1674ba508b644c.js"></script>
+      <script async="async" crossorigin="anonymous" src="https://assets-cdn.github.com/assets/github-b42430c121e963c7370a99d029c78f3c2fdc9b75b73adf817f07802e33988e81.js"></script>
+      
+      
+      
+    <div class="js-stale-session-flash stale-session-flash flash flash-warn flash-banner hidden">
+      <span class="octicon octicon-alert"></span>
+      <span class="signed-in-tab-flash">You signed in with another tab or window. <a href="">Reload</a> to refresh your session.</span>
+      <span class="signed-out-tab-flash">You signed out in another tab or window. <a href="">Reload</a> to refresh your session.</span>
+    </div>
+  </body>
+</html>
+
