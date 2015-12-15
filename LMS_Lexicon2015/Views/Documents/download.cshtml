@@ -88,7 +88,7 @@
 
 
 
-                @if (view == "Activities" && AktivitetTyp == "ÖvningsUppgift")
+                @if (view == "Activities" && AktivitetTyp == "ÖvningsUppgift" && User.IsInRole("Lärare"))
                 {
                     <th>
                         @Html.DisplayNameFor(model => model.Deadline)
@@ -160,22 +160,14 @@
 
                             <p>
                                 @Html.ActionLink("Lämna in Inlämningsuppgiften", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId + "/inlämning")
+                                Senaste:
+
                                 @if (item.Deadline.HasValue)
                                 {
-                                    @item.Deadline.Value.ToShortDateString();
+                                @item.Deadline.Value.ToShortDateString();
                                 }
                             </p>
                         }
-                        else if (view == "Activities" && AktivitetTyp == "ÖvningsUppgift" && item.Deadline < DateTime.Now && User.IsInRole("Elev"))
-                        {
-                            if (item.Deadline.HasValue)
-                            {
-                                @item.Deadline.Value.ToShortDateString();
-                            }
-                        }
-
-
-
                         else if (User.IsInRole("Lärare"))
                         {
                             if (item.Deadline.HasValue)
