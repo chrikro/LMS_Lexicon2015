@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity;
 
 namespace LMS_Lexicon2015.Controllers
 {
+    [Authorize]
     public class DocumentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

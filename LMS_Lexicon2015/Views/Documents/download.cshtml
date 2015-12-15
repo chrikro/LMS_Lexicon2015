@@ -2,8 +2,6 @@
 
 @{
     ViewBag.Title = "Index";
-
-
     ViewBag.ActivityId = TempData["ActivityId"];
     ViewBag.GroupId = TempData["GroupId"];
     ViewBag.CourseOccasionId = TempData["CourseOccasionId"];
@@ -13,7 +11,8 @@
     var AktivitetTyp = "";
     AktivitetTyp = ViewBag.AktivitetTyp;
     var db = new LMS_Lexicon2015.Models.ApplicationDbContext();
-    // DateTime Deadline = DateTime.Now;
+
+    
 }
 
 <div class="row">
@@ -41,15 +40,7 @@
 
 <div class="row">
     <div class="col-md-12 extratoppadding">
-        @*@ViewBag.CourseOccasionId
-            @ViewBag.GroupId
-            @ViewBag.view
-            @ViewBag.ActivityId
-            @TempData["AktivitetTyp"]*@
-
-
         <p>
-            @*@Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (int)ViewBag.groupId + "/" + (string)ViewBag.view)*@
             @if (User.IsInRole("Lärare"))
             {
                 if (view == "Group")
@@ -63,7 +54,6 @@
                 else if (view == "Activities")
                 {
                     @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId + "/" + (string)ViewBag.AktivitetTyp)
-                    // @Html.ActionLink("Ladda upp dokument", "../Documents/upload/" + (string)ViewBag.view + "/" + (int)ViewBag.groupId + "/" + (int)ViewBag.CourseOccasionId + "/" + (int)ViewBag.ActivityId)
                 }
                 else
                 {
@@ -129,12 +119,9 @@
                     <td>
                         @*@Html.DisplayFor(modelItem => item.Timestamp)*@
                         @item.Timestamp.ToShortDateString()
-                    </td>
+   
 
-
-                    @*<td>*@
-                    @* @Html.DisplayFor(modelItem => item.UserId)*@
-
+                   
                     @*@db.Users.Where(u => u.Id = item.UserId.FirstOrDefault().Name)
 
                         @db.Users.Where(U => U.Id == U.UserId).FirstOrDefault().Name
@@ -185,3 +172,6 @@
 
     </div>
 </div>
+
+       
+       
