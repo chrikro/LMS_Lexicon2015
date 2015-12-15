@@ -11,6 +11,13 @@
         <h2>Kurser</h2>
         @ViewBag.dbStartDate
 
+        <p>
+            @if ((ViewBag.groupId != null) && (User.IsInRole("Lärare")))
+            {
+                @Html.ActionLink("Lägga till en ny kurs", "Create/" + (int)ViewBag.groupId, "CourseOccasions")
+            }
+        </p>
+
         <table class="table">
             <tr>
                 <th>
@@ -124,9 +131,6 @@
             <br />
         }
         <p>
-               @if ((ViewBag.groupId != null) && (User.IsInRole("Lärare")))
-               {
-                    @Html.ActionLink("Lägga till en ny kurs", "Create/" + (int)ViewBag.groupId, "CourseOccasion")
-                    }
+
         </p>
 </div></div>
