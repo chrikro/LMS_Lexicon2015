@@ -40,6 +40,16 @@ hr {
     height:2px;
 }
 
+.green_hr{
+    background-color: #66CC33; /*lexicon-grön*/
+    height:2px;
+}
+
+hr-blue {
+    background-color: #3399FF; /*lexicon-blå*/
+    height:2px;
+}
+
 .content_info_problem { 
     color:#DD002C;
 }
