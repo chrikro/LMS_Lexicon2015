@@ -20,7 +20,15 @@ namespace LMS_Lexicon2015.Controllers
         // GET: Documents
         public ActionResult Index()
         {
-            return View(db.Documents.ToList());
+            var model = db.Documents.ToList();
+            if (User.IsInRole("Elev"))
+            {
+                //var id = new LMS_Lexicon2015.Models.ApplicationDbContext().Users.Where(u => u.Email == User.Identity.Name).FirstOrDefault().GroupId;
+                //model = db.Documents.Where(g => g.GroupId == id).ToList();
+                var id = new LMS_Lexicon2015.Models.ApplicationDbContext().Users.Where(u => u.Email == User.Identity.Name).FirstOrDefault().Id;
+                model = db.Documents.Where(g => g.UserId == id).ToList();
+            }
+            return View(model);
         }
 
         public ActionResult download()
