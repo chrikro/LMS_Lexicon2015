@@ -6,6 +6,12 @@
 <div class="row">
     <div class="col-md-12 extratoppadding">
         <h2>@ViewBag.Title</h2>
+        <p>
+            @if (User.IsInRole("Lärare"))
+            {
+                @Html.ActionLink("Skapa ny grupp", "Create")
+            }
+        </p>
 
         <h3>Sök på gruppnamn</h3>
 
@@ -128,12 +134,5 @@
 
 
         </table>
-
-        <p>
-            @if (User.IsInRole("Lärare"))
-            {
-                @Html.ActionLink("Skapa ny grupp", "Create")
-            }
-        </p>
 
 </div></div>
