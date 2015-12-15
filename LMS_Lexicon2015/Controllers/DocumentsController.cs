@@ -43,6 +43,7 @@ namespace LMS_Lexicon2015.Controllers
 
 
         // GET: Documents/Details/5
+         [Authorize(Roles = "Lärare")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -154,6 +155,7 @@ namespace LMS_Lexicon2015.Controllers
 
 
         // GET: Documents/Edit/5
+         [Authorize(Roles = "Lärare")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -173,6 +175,7 @@ namespace LMS_Lexicon2015.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Lärare")]
         public ActionResult Edit([Bind(Include = "Id,Name,Url,Description,Timestamp,Deadline,UserId,GroupId,CourseOccasionId,ActivityId")] Document document)
         {
             if (ModelState.IsValid)
@@ -185,6 +188,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Documents/Delete/5
+         [Authorize(Roles = "Lärare")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -200,11 +204,22 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // POST: Documents/Delete/5
+         
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Lärare")]
         public ActionResult DeleteConfirmed(int id)
         {
+
             Document document = db.Documents.Find(id);
+
+            var fileName = document.Url;
+            var fileSavePath = Path.Combine(Server.MapPath("/Files"), fileName);
+
+            FileInfo file = new FileInfo(fileSavePath);
+            file.Delete();
+
+            
             db.Documents.Remove(document);
             db.SaveChanges();
             return RedirectToAction("Index");

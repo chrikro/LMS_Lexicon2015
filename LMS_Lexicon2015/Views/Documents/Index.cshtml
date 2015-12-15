@@ -23,22 +23,22 @@
                 </th>
                 @if (User.IsInRole("Lärare"))
                 {
-                    <th>
-                        @Html.DisplayNameFor(model => model.Deadline)
-                    </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Deadline)
+                </th>
                 }
                 @*<th>
-                        Användare
-                    </th>
-                    <th>
-                        Grupp
-                    </th>
-                    <th>
-                        Kurs
-                    </th>
-                    <th>
-                        Aktivitet
-                    </th>*@
+                    Användare
+                </th>
+                <th>
+                    Grupp
+                </th>
+                <th>
+                    Kurs
+                </th>
+                <th>
+                    Aktivitet
+                </th>*@
                 <th></th>
             </tr>
 
@@ -50,7 +50,7 @@
                         @Html.ActionLink(item.Name, "DownloadFile", new { fileUrl = item.Url, fileName = item.Name })
 
                     </td>
-                    <td>
+                     <td>
                         @Html.DisplayFor(modelItem => item.Description)
                     </td>
                     <td>
@@ -58,35 +58,35 @@
                     </td>
                     @if (User.IsInRole("Lärare"))
                     {
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Deadline)
-                        </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Deadline)
+                    </td>
                     }
                     @*<td>
-                            @Html.DisplayFor(modelItem => item.UserId)
-                        </td>*@
-                        @*<td>
-                                 @Html.DisplayFor(modelItem => item.UserId)
-                             </td>
-                            <td>
-                                 @Html.DisplayFor(modelItem => item.GroupId)
-                             </td>
-                             <td>
-                                 @Html.DisplayFor(modelItem => item.CourseOccasionId)
-                             </td>
-                             <td>
-                                 @Html.DisplayFor(modelItem => item.ActivityId)
-                             </td>*@
-                            <td>
-                                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id })*@
-                                @*@Html.ActionLink("Details", "Details", new { id=item.Id })*@
-                                @if (User.IsInRole("Lärare")) {
-                                    @Html.ActionLink("Ta bort", "Delete", new { id = item.Id })
-                                }
-                                </td>
-                            </tr>
+                        @Html.DisplayFor(modelItem => item.Url)
+                    </td>*@
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.UserId)
+                    </td>
+                   <td>
+                        @Html.DisplayFor(modelItem => item.GroupId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CourseOccasionId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ActivityId)
+                    </td>*@
+                    <td>
+                        @if (User.IsInRole("Lärare"))
+                        {
+                        @Html.ActionLink("Ta bort", "Delete", new { id = item.Id })
+                        }
+                        
+                    </td>
+                </tr>
             }
 
-                    </table>
+        </table>
                 </div>
             </div>
