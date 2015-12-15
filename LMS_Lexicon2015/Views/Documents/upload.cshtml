@@ -149,18 +149,19 @@
 
 <div class="row">
     <div class="col-md-12">
-
-        @if (view == "Group")
-        {
-            @Html.ActionLink("Gå tillbaka till Gruppvy", "../Groups/Details/" + (int)ViewBag.GroupId)
-        }
-        else if (view == "Course")
-        {
-            @Html.ActionLink("Gå tillbaka till Kursvy", "../CourseOccasions/Details/" + CourseOccasionId + "/" + (int)ViewBag.GroupId)
-        }
-        else if (view == "Activities")
-        {
-            @Html.ActionLink("Gå tillbaka till Aktivitetsvy", "../Activities/Details/" + ActivityId + "/" + CourseOccasionId + "/" + (int)ViewBag.GroupId)
-        }
+        <h4>
+            @if (view == "Group")
+            {
+                @Html.ActionLink("Gå tillbaka till Gruppvy", "../Groups/Details/" + (int)ViewBag.GroupId)
+            }
+            else if (view == "Course")
+            {
+                @Html.ActionLink("Gå tillbaka till Kursvy", "../CourseOccasions/Details/" + CourseOccasionId + "/" + (int)ViewBag.GroupId)
+            }
+            else if (view == "Activities")
+            {
+                @Html.ActionLink("Gå tillbaka till Aktivitetsvy", "../Activities/Details/" + ActivityId + "/" + CourseOccasionId + "/" + (int)ViewBag.GroupId)
+            }
+        </h4>
     </div>
 </div>

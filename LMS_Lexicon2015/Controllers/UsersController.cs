@@ -151,6 +151,12 @@ namespace LMS_Lexicon2015.Controllers
                 applicationUsers = Users.Where(o => o.Group.EndDate > DateTime.Today && o.Group.StartDate < DateTime.Today);
             }
 
+            if (User.IsInRole("Elev"))
+           {
+               var id = new LMS_Lexicon2015.Models.ApplicationDbContext().Users.Where(u => u.Email == User.Identity.Name).FirstOrDefault().GroupId;
+                applicationUsers = applicationUsers.Where(g => g.GroupId == id);
+            }
+
             ViewBag.Roles = db.Roles.ToList();
             FromPartitialView = false;
 
@@ -166,7 +172,6 @@ namespace LMS_Lexicon2015.Controllers
                     GroupId = db.Groups.Where(G => G.Id == r.GroupId).FirstOrDefault().Id,
                     PhoneNumber = r.PhoneNumber
                 }).ToList();
-
 
            return View(model);
 

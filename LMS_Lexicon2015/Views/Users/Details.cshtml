@@ -103,10 +103,12 @@
 </div>
 <div class="row">
     <div class="col-md-12 extratoppadding">
-        @if (User.IsInRole("Lärare"))
-        {
-            @Html.ActionLink("Ändra", "Edit", new { id = Model.Id }) <span>|</span>
-        }
-        @Html.ActionLink("Tillbaka till listan", "Index")
+        <h4>
+            @if (User.IsInRole("Lärare"))
+            {
+                @Html.ActionLink("Ändra", "Edit", new { id = Model.Id }) <span>|</span>
+            }
+            @Html.ActionLink("Tillbaka till listan", "Index")
+        </h4>
     </div>
 </div>

@@ -8,14 +8,6 @@
     <div class="col-md-12 extratoppadding">
         <h2>@ViewBag.Title</h2>
 
-        <p>
-            @if (User.IsInRole("Lärare"))
-            {
-                @Html.ActionLink("Skapa Användare", "Register", "Account")
-            }
-
-        </p>
-
         <h3>Sök på användarnamn</h3>
 
         @using (Html.BeginForm())
@@ -112,4 +104,11 @@
             }
 
         </table>
+        <p>
+            @if (User.IsInRole("Lärare"))
+            {
+                @Html.ActionLink("Skapa Användare", "Register", "Account")
+            }
+
+        </p>
 </div></div>
