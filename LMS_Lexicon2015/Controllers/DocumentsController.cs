@@ -72,7 +72,7 @@ namespace LMS_Lexicon2015.Controllers
 
 
 
-        public ActionResult upload([Bind(Include = "Name,Description,GroupId,CourseOccasionId,ActivityId")] CreateDocumentViewModel document, HttpPostedFileBase Name)
+        public ActionResult upload([Bind(Include = "Name,Description,GroupId,CourseOccasionId,ActivityId,Deadline")] CreateDocumentViewModel document, HttpPostedFileBase Name)
         {
 
             if (ModelState.IsValid)
@@ -82,6 +82,10 @@ namespace LMS_Lexicon2015.Controllers
                 string fileName = Guid.NewGuid().ToString() + '.' + fileExtension;
                 var fileSavePath = Path.Combine(Server.MapPath("/Files"), fileName);
                 Name.SaveAs(fileSavePath);
+
+
+ 
+
 
                   var doc = new Document
                 {
