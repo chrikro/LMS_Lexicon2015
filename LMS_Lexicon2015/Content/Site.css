@@ -40,35 +40,6 @@ hr {
     height:2px;
 }
 
-
-div.green_hr {
-    background-color: #8eff96; /*lexicon-grön*/
-    height:2px;
-}
-div.green_hr hr {
-  display: none;
-}
-
-div.blue_hr {
-    background-color: #3399FF; /*lexicon-blå*/
-    height:2px;
-}
-div.blue_hr hr {
-  display: none;
-}
-
-h2.green_h2 {
-    color: #8eff96; /*lexicon-grön*/
-}
-
-
-h2.blue_h2 {
-    color: #3399FF; /*lexicon-blå*/
-}
-
-
-
-
 .content_info_problem { 
     color:#DD002C;
 }
@@ -117,4 +88,8 @@ margin-top:auto;
 }
 .extratoppadding    {
     padding-top:40px;
+}
+
+.fixed-attachment {
+    background-attachment: fixed;
 }
