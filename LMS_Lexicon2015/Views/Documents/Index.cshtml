@@ -21,9 +21,12 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Timestamp)
                 </th>
+                @if (User.IsInRole("Lärare"))
+                {
                 <th>
                     @Html.DisplayNameFor(model => model.Deadline)
                 </th>
+                }
                 @*<th>
                     Användare
                 </th>
@@ -53,9 +56,12 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Timestamp)
                     </td>
+                    @if (User.IsInRole("Lärare"))
+                    {
                     <td>
                         @Html.DisplayFor(modelItem => item.Deadline)
                     </td>
+                    }
                     @*<td>
                         @Html.DisplayFor(modelItem => item.Url)
                     </td>*@
@@ -74,7 +80,7 @@
                     <td>
                         @if (User.IsInRole("Lärare"))
                         {
-                          @Html.ActionLink("Ta bort", "Delete", new { id = item.Id })
+                        @Html.ActionLink("Ta bort", "Delete", new { id = item.Id })
                         }
                         
                     </td>
@@ -82,4 +88,5 @@
             }
 
         </table>
-</div></div>
+                </div>
+            </div>
