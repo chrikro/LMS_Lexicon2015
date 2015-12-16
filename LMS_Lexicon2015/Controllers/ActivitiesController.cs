@@ -80,9 +80,10 @@ namespace LMS_Lexicon2015.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Description,StartDate,EndDate,CourseId")] Activity activity)
         {
+            
+            
             if (ModelState.IsValid)
             {
-
                 DateTime CoursesStartDate = db.CourseOccasions.Where(c => c.Id == activity.CourseId).FirstOrDefault().StartDate;
                 DateTime CoursesEndDate = db.CourseOccasions.Where(c => c.Id == activity.CourseId).FirstOrDefault().EndDate;
                 //CoursesStartDate = CoursesStartDate.AddHours(23);
@@ -130,11 +131,20 @@ namespace LMS_Lexicon2015.Controllers
                 }
             }
 
+            DateTime StartDate = DateTime.Now;
+            TimeSpan tStartDate = new TimeSpan(09, 00, 0);
+            StartDate = StartDate.Date + tStartDate;
+
+            DateTime EndDate = DateTime.Now;
+            TimeSpan tEndDate = new TimeSpan(17, 00, 0);
+            EndDate = EndDate.Date + tEndDate;
+
+            ViewBag.StartDate = StartDate;
+            ViewBag.EndDate = EndDate;
             ViewBag.courseOccasionId = activity.CourseId;
             ViewBag.groupId = (int)TempData["GroupId"];
-            ViewBag.StartDate = activity.StartDate;
-            ViewBag.EndDate = activity.EndDate;
             ViewBag.Name = new SelectList(db.ActivityTypes, "Name", "Name");//en bäg för rullningslistan på formuläret 
+            ModelState.AddModelError("", "Du har angivit ett startdatumet och  slutdatumet före kursens startdatumet");
             return View(activity);
         }
 
