@@ -22,7 +22,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(db.CourseOccasions.ToList());
         }
 
-        // GET: CourseOccasions/Details/5
+        // GET: Skapar en sida med detaljer för kursen
         public ActionResult Details(int? id, int? id2)
         {
             if (id == null)
@@ -40,7 +40,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(courseOccasion);
         }
 
-        // GET: CourseOccasions/Create
+        // GET: Starsidan från vilken man kan skapa en kurs
         [Authorize(Roles = "Lärare")]
         public ActionResult Create(int? id)
         {
@@ -61,7 +61,7 @@ namespace LMS_Lexicon2015.Controllers
             return View();
         }
 
-        // POST: CourseOccasions/Create
+        // POST: Skapar kursen ovan
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [Authorize(Roles = "Lärare")]
@@ -113,7 +113,7 @@ namespace LMS_Lexicon2015.Controllers
 
 
 
-        // GET: CourseOccasions/Edit/5
+        // GET: Skapar en sida från vilken man kan ändra kurs data
         [Authorize(Roles = "Lärare")]
         public ActionResult Edit(int? id, int? id2)
         {
@@ -132,7 +132,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(courseOccasion);
         }
 
-        // POST: CourseOccasions/Edit/5
+        // POST: Genomför ändringen angiven ovan
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [Authorize(Roles = "Lärare")]
@@ -179,7 +179,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(courseOccasion);
         }
 
-        // GET: CourseOccasions/Delete/5
+        // GET: Skapar en sida från vilken man kan ta bort en kurs
         [Authorize(Roles = "Lärare")]
         public ActionResult Delete(int? id)
         {
@@ -199,7 +199,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         [Authorize(Roles = "Lärare")]
-        // POST: CourseOccasions/Delete/5
+        // POST: Tar bort kursen enligt ovan
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

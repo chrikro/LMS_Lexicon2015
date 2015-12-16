@@ -17,7 +17,7 @@ namespace LMS_Lexicon2015.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Documents
+        // GET: Skapar en sida som listar dokumenten
         public ActionResult Index()
         {
             var model = db.Documents.ToList();
@@ -31,7 +31,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(model);
         }
 
-        public ActionResult download()
+        public ActionResult download()  //Laddar ner ett dokument
         {
 
 
@@ -42,7 +42,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
 
-        // GET: Documents/Details/5
+        // GET:Visar en sida med detaljer för dokumenten
          [Authorize(Roles = "Lärare")]
         public ActionResult Details(int? id)
         {
@@ -58,7 +58,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(document);
         }
 
-        // GET: Documents/upload
+        // GET: Laddar upp ett dokument
         public ActionResult upload(string id, int id2, int? id3, int? id4, string id5)
         {
             ViewBag.Groupid = new SelectList(db.Groups, "Id", "Name");//en bäg för rullningslistan på formuläret
@@ -72,7 +72,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
 
-        //POST: Documents/upload
+        //POST:   Genomför uppladdningen ovan
         //To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         //more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -159,7 +159,7 @@ namespace LMS_Lexicon2015.Controllers
 
 
 
-        // GET: Documents/Edit/5
+        // GET: Visar en sida på vilken man kan ändra information om dokumentet
          [Authorize(Roles = "Lärare")]
         public ActionResult Edit(int? id)
         {
@@ -175,7 +175,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(document);
         }
 
-        // POST: Documents/Edit/5
+        // POST: Genomför ändringarna ovan
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -192,7 +192,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(document);
         }
 
-        // GET: Documents/Delete/5
+        // GET: Visar en sida från vilken man kan radera ett dokument
          [Authorize(Roles = "Lärare")]
         public ActionResult Delete(int? id)
         {
@@ -208,7 +208,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(document);
         }
 
-        // POST: Documents/Delete/5
+        // POST: Raderar dokumentet ovan
          
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

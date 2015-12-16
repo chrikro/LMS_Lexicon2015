@@ -142,7 +142,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         //
-        // GET: /Account/Register
+        // GET:       //Registrerar nya användare
         [Authorize(Roles = "Lärare")]
         public ActionResult Register()
         {
@@ -157,7 +157,7 @@ namespace LMS_Lexicon2015.Controllers
         }
         
         //
-        // POST: /Account/Register
+        // POST:    //Registrerar nya användare del 2
         [HttpPost]
         [Authorize(Roles = "Lärare")]
         [ValidateAntiForgeryToken]
@@ -216,7 +216,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         //
-        // GET: /Account/ForgotPassword
+        // GET: Glömt lösenord
         [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
@@ -224,7 +224,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         //
-        // POST: /Account/ForgotPassword
+        // POST: Glömt lösenord del2
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
