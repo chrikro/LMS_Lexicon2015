@@ -43,7 +43,7 @@ namespace LMS_Lexicon2015.Migrations
             //grupper
             var groups = new[] {
                 new Group { Name = ".net Mar 2015", Description = "dotNet-utbildning. Påbyggnad våren-sommaren 2015.", StartDate = new DateTime(2015,03,06), EndDate = new DateTime(2015,08,21)  },    
-                new Group { Name = ".net Sep 2015", Description = "dotNet-utbildning. Påbyggnad hösten 2015.", StartDate = new DateTime(2015, 08, 31), EndDate = new DateTime(2016, 12, 20) },
+                new Group { Name = ".net Sep 2015", Description = "dotNet-utbildning. Påbyggnad hösten 2015.", StartDate = new DateTime(2015, 08, 31), EndDate = new DateTime(2015, 12, 20) },
                 new Group { Name = "Java Sep 2015", Description = "Java-utbildning.", StartDate = new DateTime(2015, 08, 31), EndDate = new DateTime(2015, 12, 20) },
                 new Group { Name = ".net Feb 2016", Description = "dotNet-utbildning. Påbyggnad våren 2016.", StartDate = new DateTime(2016, 02, 28), EndDate = new DateTime(2016, 06, 16) }
             };

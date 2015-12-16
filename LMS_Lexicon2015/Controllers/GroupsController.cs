@@ -87,10 +87,7 @@ namespace LMS_Lexicon2015.Controllers
                 {
                     Groups = Groups.Where(o => o.EndDate > DateTime.Today);
                 }
-                else
-                {
-                    Groups = Groups;
-                }
+
 
                 return View(Groups.ToList());
             }
