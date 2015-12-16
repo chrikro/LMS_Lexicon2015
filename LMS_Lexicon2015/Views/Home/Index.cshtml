@@ -34,15 +34,26 @@
                     @ViewBag.GroupName
                 </h2>
                 @Html.Partial("../Groups/_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId && o.StartDate < DateTime.Today && o.EndDate > DateTime.Today).ToList())
-                var CourseId = new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId && o.StartDate < DateTime.Today && o.EndDate > DateTime.Today).First().Activities.First().CourseId;
-                if (CourseId != null)
+                var CourseList = new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId && o.StartDate < DateTime.Today && o.EndDate > DateTime.Today).ToList();
+                if (CourseList.Any())
                 {
-                    <hr />
+                    var ActivityList = new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId && o.StartDate < DateTime.Today && o.EndDate > DateTime.Today).First().Activities.ToList();
+                        if (ActivityList.Any()) {
+                    var CourseId = new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId && o.StartDate < DateTime.Today && o.EndDate > DateTime.Today).First().Activities.First().CourseId;
+                            <hr />
                     ViewBag.courseOccasionId = CourseId;
                     @Html.Partial("../CourseOccasions/_activities", new LMS_Lexicon2015.Models.ApplicationDbContext().Activitys.Where(a => a.CourseId == (int)CourseId).ToList())
+        }
+            else {
+                            <h3>Inga aktiviteter</h3>
+                }
+                }
+                        else
+                        {
+                            <h3>Inga kurser idag</h3>
+                        }
                 }
             }
-        }
 
 
 
@@ -68,17 +79,26 @@
             ViewBag.GroupId = GroupId;
             //ViewBag.GroupName = new LMS_Lexicon2015.Models.ApplicationDbContext().Groups.Where(g => g.Id == GroupId).FirstOrDefault().Name;
             @Html.Partial("../Groups/_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId && o.StartDate < DateTime.Today && o.EndDate > DateTime.Today).ToList())
-            <div></div>
-            <hr />
-            var CourseId = new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId && o.StartDate < DateTime.Today && o.EndDate > DateTime.Today).First().Activities.First().CourseId;
-            if (CourseId != null)
+            var CourseList = new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId && o.StartDate < DateTime.Today && o.EndDate > DateTime.Today).ToList();
+            if (CourseList.Any())
             {
-                ViewBag.courseOccasionId = CourseId;
-                @Html.Partial("../CourseOccasions/_activities", new LMS_Lexicon2015.Models.ApplicationDbContext().Activitys.Where(a => a.CourseId == (int)CourseId).ToList())
-                 <hr />
+                var ActivityList = new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId && o.StartDate < DateTime.Today && o.EndDate > DateTime.Today).First().Activities.ToList();
+                if (ActivityList.Any())
+                {
+                    var CourseId = new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId && o.StartDate < DateTime.Today && o.EndDate > DateTime.Today).First().Activities.First().CourseId;
+                    <hr />
+                    ViewBag.courseOccasionId = CourseId;
+                    @Html.Partial("../CourseOccasions/_activities", new LMS_Lexicon2015.Models.ApplicationDbContext().Activitys.Where(a => a.CourseId == (int)CourseId).ToList())
+                }
+                else
+                {
+                    <h3>Inga aktiviteter</h3>
+                }
             }
-
-
+            else
+            {
+                <h3>Inga kurser idag</h3>
+            }
             @Html.Partial("../Users/PartitialGroup", new LMS_Lexicon2015.Models.ApplicationDbContext().Users.Where(o => o.GroupId == (int)GroupId))
             @*@Html.Partial("../Users/PartitialGroup", new {id = GroupId})*@
 
