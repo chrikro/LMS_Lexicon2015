@@ -89,6 +89,11 @@ namespace LMS_Lexicon2015.Controllers
             if (ModelState.IsValid)
             {
                 var view = (string)TempData["view"];
+                //if (Name.FileName == null)
+                //{
+                //    ModelState.AddModelError("", "Du har glömt filen");
+                //    return View(document);
+                //}
                 var dbFileName = Name.FileName;
                 string fileExtension = Name.FileName.Split('.').Last();
 

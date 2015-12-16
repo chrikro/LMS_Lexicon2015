@@ -137,7 +137,7 @@ namespace LMS_Lexicon2015.Controllers
 
             if (ModelState.IsValid)
             {
-                if (group.StartDate < DateTime.Now)
+                if (group.StartDate.AddDays(1) < DateTime.Now)
                 {
 
                     ModelState.AddModelError("", "Du har angivit ett startdatum före dagens datum");
