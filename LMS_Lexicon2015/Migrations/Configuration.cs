@@ -130,11 +130,11 @@ namespace LMS_Lexicon2015.Migrations
                 new Activity{ Name = activityTypes[0].Name, Description = "Samtalsteknik. En övning i att vara trivsam.", StartDate = new DateTime(2015,09,07,09,00,00), EndDate = new DateTime(2015,09,12,15,30,00), CourseId = courses[3].Id },
                 new Activity{ Name = activityTypes[0].Name, Description = "Testteknik lärs ut. Även andra aspekter av test tas upp under den här aktiviteten.", StartDate = new DateTime(2015,09,20,09,00,00), EndDate = new DateTime(2015,09,22,15,30,00), CourseId = courses[4].Id },
                 //demo nedan
-                new Activity{ Name = activityTypes[0].Name, Description = "Vad är SQL? Intro", StartDate = new DateTime(2016,01,25,09,00,00), EndDate = new DateTime(2016,01,25,12,00,00), CourseId = courses[11].Id },
-                new Activity{ Name = activityTypes[2].Name, Description = "För att öva sql.", StartDate = new DateTime(2015,01,25,13,15,00), EndDate = new DateTime(2016,01,26,16,30,00), CourseId = courses[11].Id },                
-                new Activity{ Name = activityTypes[0].Name, Description = "Om artefakter och samarbete", StartDate = new DateTime(2016,02,01,09,00,00), EndDate = new DateTime(2016,02,01,12,00,00), CourseId = courses[12].Id },
-                new Activity{ Name = activityTypes[2].Name, Description = "Samtalsteknik. En övning i att vara trivsam.", StartDate = new DateTime(2016,02,02,09,00,00), EndDate = new DateTime(2016,02,02,16,45,00), CourseId = courses[12].Id },
-                new Activity{ Name = activityTypes[1].Name, Description = "Testteknik lärs ut. Även andra aspekter av test tas upp under den här aktiviteten.", StartDate = new DateTime(2016,02,08,09,00,00), EndDate = new DateTime(2016,02,08,17,00,00), CourseId = courses[13].Id }
+                new Activity{ Name = activityTypes[0].Name, Description = "Vad är SQL? Intro", StartDate = new DateTime(2016,01,25,09,00,00), EndDate = new DateTime(2016,01,25,12,00,00), CourseId = courses[10].Id },
+                new Activity{ Name = activityTypes[2].Name, Description = "För att öva sql.", StartDate = new DateTime(2015,01,25,13,15,00), EndDate = new DateTime(2016,01,26,16,30,00), CourseId = courses[10].Id }, 
+                new Activity{ Name = activityTypes[0].Name, Description = "Om artefakter och samarbete", StartDate = new DateTime(2016,02,01,09,00,00), EndDate = new DateTime(2016,02,01,12,00,00), CourseId = courses[11].Id },
+                new Activity{ Name = activityTypes[2].Name, Description = "Samtalsteknik. En övning i att vara trivsam.", StartDate = new DateTime(2016,02,02,09,00,00), EndDate = new DateTime(2016,02,02,16,45,00), CourseId = courses[11].Id },
+                new Activity{ Name = activityTypes[1].Name, Description = "Testteknik lärs ut. Även andra aspekter av test tas upp under den här aktiviteten.", StartDate = new DateTime(2016,02,08,09,00,00), EndDate = new DateTime(2016,02,08,17,00,00), CourseId = courses[12].Id }
 
            };
 
