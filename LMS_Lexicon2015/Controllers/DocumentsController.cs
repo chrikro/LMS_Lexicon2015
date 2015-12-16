@@ -86,14 +86,21 @@ namespace LMS_Lexicon2015.Controllers
             var manager = new UserManager<LMS_Lexicon2015.Models.ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<LMS_Lexicon2015.Models.ApplicationUser>(new LMS_Lexicon2015.Models.ApplicationDbContext()));
             var currentUser = manager.FindById(User.Identity.GetUserId());
 
+
+            if (Name == null)
+            { // glömt själva filen
+
+                ViewBag.GroupId = document.GroupId;
+                ViewBag.CourseOccasionId = document.CourseOccasionId;
+                ViewBag.view = (string)TempData["view"];
+
+                        ModelState.AddModelError("", "Du har glömt själva filen");
+                        return View(document);
+            }
+
             if (ModelState.IsValid)
             {
                 var view = (string)TempData["view"];
-                //if (Name.FileName == null)
-                //{
-                //    ModelState.AddModelError("", "Du har glömt filen");
-                //    return View(document);
-                //}
                 var dbFileName = Name.FileName;
                 string fileExtension = Name.FileName.Split('.').Last();
 
