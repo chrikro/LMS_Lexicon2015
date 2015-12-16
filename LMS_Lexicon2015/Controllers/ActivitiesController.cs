@@ -85,7 +85,8 @@ namespace LMS_Lexicon2015.Controllers
 
                 DateTime CoursesStartDate = db.CourseOccasions.Where(c => c.Id == activity.CourseId).FirstOrDefault().StartDate;
                 DateTime CoursesEndDate = db.CourseOccasions.Where(c => c.Id == activity.CourseId).FirstOrDefault().EndDate;
-
+                //CoursesStartDate = CoursesStartDate.AddHours(23);
+                //CoursesStartDate = CoursesStartDate.AddMinutes(59);
                 if (activity.StartDate < CoursesStartDate)
                 {
                     //AddErrors(ModelState);
@@ -98,7 +99,7 @@ namespace LMS_Lexicon2015.Controllers
                     return View(activity);
                 }
 
-                else if (activity.EndDate > CoursesEndDate)
+                else if (activity.EndDate > CoursesEndDate.AddDays(1))
                 {
                     //AddErrors(ModelState);
                     ViewBag.courseOccasionId = activity.CourseId;
@@ -106,7 +107,7 @@ namespace LMS_Lexicon2015.Controllers
                     ViewBag.StartDate = activity.StartDate;
                     ViewBag.EndDate = activity.EndDate;
                     ViewBag.Name = new SelectList(db.ActivityTypes, "Name", "Name");//en bäg för rullningslistan på formuläret 
-                    ModelState.AddModelError("", "Du har angivit ett slutdatum efter kursens slutdatum");
+                    ModelState.AddModelError("", "Du har angivit ett slutdatum efter kursens slutdatum" + CoursesEndDate);
                     return View(activity);
                 }
                 else if (activity.StartDate > activity.EndDate)
