@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity;
 
 namespace LMS_Lexicon2015.Controllers
 {
+    [Authorize]
     public class DocumentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -19,14 +20,22 @@ namespace LMS_Lexicon2015.Controllers
         // GET: Documents
         public ActionResult Index()
         {
-            return View(db.Documents.ToList());
+            var model = db.Documents.ToList();
+            if (User.IsInRole("Elev"))
+            {
+                //var id = new LMS_Lexicon2015.Models.ApplicationDbContext().Users.Where(u => u.Email == User.Identity.Name).FirstOrDefault().GroupId;
+                //model = db.Documents.Where(g => g.GroupId == id).ToList();
+                var id = new LMS_Lexicon2015.Models.ApplicationDbContext().Users.Where(u => u.Email == User.Identity.Name).FirstOrDefault().Id;
+                model = db.Documents.Where(g => g.UserId == id).ToList();
+            }
+            return View(model);
         }
 
         public ActionResult download()
         {
 
-     
-           // var Users = db.Users.Where(U => U.Id == r.GroupId).FirstOrDefault().Name;
+
+            // var Users = db.Users.Where(U => U.Id == r.GroupId).FirstOrDefault().Name;
 
 
             return View(db.Documents.ToList());
@@ -34,6 +43,7 @@ namespace LMS_Lexicon2015.Controllers
 
 
         // GET: Documents/Details/5
+         [Authorize(Roles = "Lärare")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -50,7 +60,6 @@ namespace LMS_Lexicon2015.Controllers
 
         // GET: Documents/upload
         public ActionResult upload(string id, int id2, int? id3, int? id4, string id5)
-
         {
             ViewBag.Groupid = new SelectList(db.Groups, "Id", "Name");//en bäg för rullningslistan på formuläret
 
@@ -68,34 +77,46 @@ namespace LMS_Lexicon2015.Controllers
         //more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-          // public ActionResult Create([Bind(Include = "Id,Name,Url,Description,Timestamp,Deadline,UserId,GroupId,CourseOccasionId,ActivityId")] Document document, HttpPostedFileBase Name)
+        // public ActionResult Create([Bind(Include = "Id,Name,Url,Description,Timestamp,Deadline,UserId,GroupId,CourseOccasionId,ActivityId")] Document document, HttpPostedFileBase Name)
 
 
 
-        public ActionResult upload([Bind(Include = "Name,Description,GroupId,CourseOccasionId,ActivityId")] CreateDocumentViewModel document, HttpPostedFileBase Name)
+        public ActionResult upload([Bind(Include = "Name,Description,GroupId,CourseOccasionId,ActivityId,Deadline")] CreateDocumentViewModel document, HttpPostedFileBase Name)
         {
+            var manager = new UserManager<LMS_Lexicon2015.Models.ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<LMS_Lexicon2015.Models.ApplicationUser>(new LMS_Lexicon2015.Models.ApplicationDbContext()));
+            var currentUser = manager.FindById(User.Identity.GetUserId());
 
             if (ModelState.IsValid)
             {
                 var view = (string)TempData["view"];
+                var dbFileName = Name.FileName;
                 string fileExtension = Name.FileName.Split('.').Last();
+
                 string fileName = Guid.NewGuid().ToString() + '.' + fileExtension;
                 var fileSavePath = Path.Combine(Server.MapPath("/Files"), fileName);
                 Name.SaveAs(fileSavePath);
 
-                  var doc = new Document
+
+                if (view == "Activities" && User.IsInRole("Elev"))
                 {
-                    Name = Name.FileName,
-                    //Url = fileSavePath,
-                    Url = fileName,
-                    Description = document.Description,
-                    Timestamp = DateTime.Now,
-                    Deadline = document.Deadline,
-                    UserId = User.Identity.GetUserId(),
-                    GroupId = document.GroupId,
-                    CourseOccasionId = document.CourseOccasionId,
-                    ActivityId = document.ActivityId
-                };
+                    string fileNameElev = Name.FileName.Split('.').First();
+                    dbFileName = fileNameElev + "-" + currentUser.FirstName + "-" + currentUser.LastName + '.' + fileExtension;
+                }
+
+                var doc = new Document
+              {
+                  //Name = Name.FileName,
+                  Name = dbFileName,
+                  //Url = fileSavePath,
+                  Url = fileName,
+                  Description = document.Description,
+                  Timestamp = DateTime.Now,
+                  Deadline = document.Deadline,
+                  UserId = User.Identity.GetUserId(),
+                  GroupId = document.GroupId,
+                  CourseOccasionId = document.CourseOccasionId,
+                  ActivityId = document.ActivityId
+              };
 
                 db.Documents.Add(doc);
                 db.SaveChanges();
@@ -114,7 +135,7 @@ namespace LMS_Lexicon2015.Controllers
                 {
                     return RedirectToAction("Details/" + document.ActivityId + "/" + document.CourseOccasionId + "/" + document.GroupId, "Activities");
 
-         
+
                 }
                 else
                 {
@@ -134,6 +155,7 @@ namespace LMS_Lexicon2015.Controllers
 
 
         // GET: Documents/Edit/5
+         [Authorize(Roles = "Lärare")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -153,6 +175,7 @@ namespace LMS_Lexicon2015.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Lärare")]
         public ActionResult Edit([Bind(Include = "Id,Name,Url,Description,Timestamp,Deadline,UserId,GroupId,CourseOccasionId,ActivityId")] Document document)
         {
             if (ModelState.IsValid)
@@ -165,6 +188,7 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // GET: Documents/Delete/5
+         [Authorize(Roles = "Lärare")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -180,11 +204,22 @@ namespace LMS_Lexicon2015.Controllers
         }
 
         // POST: Documents/Delete/5
+         
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Lärare")]
         public ActionResult DeleteConfirmed(int id)
         {
+
             Document document = db.Documents.Find(id);
+
+            var fileName = document.Url;
+            var fileSavePath = Path.Combine(Server.MapPath("/Files"), fileName);
+
+            FileInfo file = new FileInfo(fileSavePath);
+            file.Delete();
+
+            
             db.Documents.Remove(document);
             db.SaveChanges();
             return RedirectToAction("Index");

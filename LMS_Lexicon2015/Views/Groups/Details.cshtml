@@ -67,9 +67,11 @@
         @Html.Partial("_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == Model.Id).OrderBy(c => c.StartDate).ToList())
         @*@{Html.RenderAction("_Course", "Groups", new { id = Model.Id });}*@
 
-        <p>
-            @Html.ActionLink("Tillbaka till Grupplistan", "Index")
-        </p>
+@if (User.IsInRole("Lärare")) {
+        <h4>
+            @Html.ActionLink("Till Grupplistan", "Index")
+        </h4>
+        }
 
     </div>
 </div>

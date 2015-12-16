@@ -10,18 +10,14 @@
     <div class="col-md-12">
         <h2>Kurser</h2>
         @ViewBag.dbStartDate
+
         <p>
-
-            @if (User.IsInRole("Lärare"))
+            @if ((ViewBag.groupId != null) && (User.IsInRole("Lärare")))
             {
-                if (ViewBag.groupId != null)
-                {
-                    @Html.ActionLink("Lägg till en ny kurs", "Create/" + (int)ViewBag.groupId, "CourseOccasions")
-                }
+                @Html.ActionLink("Lägga till en ny kurs", "Create/" + (int)ViewBag.groupId, "CourseOccasions")
             }
-
-
         </p>
+
         <table class="table">
             <tr>
                 <th>
@@ -134,4 +130,7 @@
             <span class="content_info_problem">*** Kursens period överlappar en tidigare kurs.</span>
             <br />
         }
+        <p>
+
+        </p>
 </div></div>

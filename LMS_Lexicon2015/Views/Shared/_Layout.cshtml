@@ -18,14 +18,7 @@
             }
         });
         </script>
-    @*<script>
-    function value() {
-        EndDate1 = document.theForm.EndDate1.value;
-        EndDate1 = document.theForm.EndDate1.value;
-        total = EndDate1 + " " + EndDate1;
-        document.theForm.EndDate3.value = total;
-    }
-    </script>*@
+
     </head>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top">
@@ -70,5 +63,13 @@
         @Scripts.Render("~/bundles/bootstrap")
         @Scripts.Render("~/bundles/datetime")
         @RenderSection("scripts", required: false)
+        <script>
+    $(function () {
+        $(window).on("load resize", function () {
+            $(".fill-screen").css("height", window.innerHeight);
+        });
+    });
+        </script>
     </body>
 </html>
+
