@@ -34,10 +34,10 @@
                     @ViewBag.GroupName
                 </h2>
                 @Html.Partial("../Groups/_Course", new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId && o.StartDate < DateTime.Today && o.EndDate > DateTime.Today).ToList())
-                <hr />
                 var CourseId = new LMS_Lexicon2015.Models.ApplicationDbContext().CourseOccasions.Where(o => o.GroupId == (int)GroupId && o.StartDate < DateTime.Today && o.EndDate > DateTime.Today).First().Activities.First().CourseId;
                 if (CourseId != null)
                 {
+                    <hr />
                     ViewBag.courseOccasionId = CourseId;
                     @Html.Partial("../CourseOccasions/_activities", new LMS_Lexicon2015.Models.ApplicationDbContext().Activitys.Where(a => a.CourseId == (int)CourseId).ToList())
                 }
@@ -75,8 +75,9 @@
             {
                 ViewBag.courseOccasionId = CourseId;
                 @Html.Partial("../CourseOccasions/_activities", new LMS_Lexicon2015.Models.ApplicationDbContext().Activitys.Where(a => a.CourseId == (int)CourseId).ToList())
+                 <hr />
             }
-            <hr />
+
 
             @Html.Partial("../Users/PartitialGroup", new LMS_Lexicon2015.Models.ApplicationDbContext().Users.Where(o => o.GroupId == (int)GroupId))
             @*@Html.Partial("../Users/PartitialGroup", new {id = GroupId})*@
