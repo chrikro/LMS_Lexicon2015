@@ -55,38 +55,38 @@
                     <td>
                         <span>Kl:</span>
                         @Html.DisplayFor(modelItem => item.StartDate.Hour)
-                        <span>:</span>
+                        <span class="ak">:</span>
                         @if (item.StartDate.Minute < 10)
                         {
-                            <span>0</span>
+                            <span class="ak">0</span>
                         }
                         @Html.DisplayFor(modelItem => item.StartDate.Minute)
-                        <span>(</span>
+                        <span class="ak">(</span>
 
                         @Html.DisplayFor(modelItem => item.StartDate.Day)
-                        <span>/</span>
+                        <span class="ak">/</span>
                         @Html.DisplayFor(modelItem => item.StartDate.Month)
-                        <span>-</span>
+                        <span class="ak">-</span>
                         @Html.DisplayFor(modelItem => item.StartDate.Year)
-                        <span>)</span>
+                        <span class="ak">)</span>
                     </td>
                     <td>
                         <span>Kl:</span>
                         @Html.DisplayFor(modelItem => item.EndDate.Hour)
-                        <span>:</span>
+                        <span class="ak">:</span>
                         @if (item.EndDate.Minute < 10)
                         {
-                            <span>0</span>
+                            <span class="ak">0</span>
                         }
                         @Html.DisplayFor(modelItem => item.EndDate.Minute)
-                        <span>(</span>
+                        <span class="ak">(</span>
 
                         @Html.DisplayFor(modelItem => item.EndDate.Day)
-                        <span>/</span>
+                        <span class="ak">/</span>
                         @Html.DisplayFor(modelItem => item.EndDate.Month)
-                        <span>-</span>
+                        <span class="ak">-</span>
                         @Html.DisplayFor(modelItem => item.EndDate.Year)
-                        <span>)</span>
+                        <span class="ak">)</span>
                     </td>
 
                     <td>

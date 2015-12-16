@@ -65,12 +65,12 @@ namespace LMS_Lexicon2015.Migrations
                 createNewUser(context, groups[1].Id, UserManager, "Nisse", "Hult", "Lärare", "nisaw99@hotmail.com");
                 createNewUser(context, groups[1].Id, UserManager, "Anna-Karin", "Rönnegård", "Lärare", "a.ronnegard@gmail.com");
                 createNewUser(context, groups[1].Id, UserManager, "Tomte", "von Nordpoolen", "Elev", "jultomten@nordpoolen.org");
-                createNewUser(context, groups[1].Id, UserManager, "Leo", "Henning", "Elev", "leo.henning@dfdf.se");
-                createNewUser(context, groups[1].Id, UserManager, "Oscar", "Gustavsson", "Elev", "oscar.gustavssong@dfdf.se");
-                createNewUser(context, groups[1].Id, UserManager, "Lilly", "Bergqvist", "Elev", "lilly@ander.se");
-                createNewUser(context, groups[1].Id, UserManager, "Ingvar", "Andersson", "Elev", "ingvar.andersson@hotmail.com");
+            createNewUser(context, groups[1].Id, UserManager, "Leo", "Henning", "Elev", "fgfg2@dfdf.se");
+            createNewUser(context, groups[1].Id, UserManager, "Oscar", "Gustavsson", "Elev", "gfggfg@dfdf.se");
+            createNewUser(context, groups[1].Id, UserManager, "Lilly", "Bergqvist", "Elev", "sara2@ander.se");
+            createNewUser(context, groups[1].Id, UserManager, "Ingvar", "Andersson", "Elev", "dfdfdfw88@hotmail.com");
                 createNewUser(context, groups[2].Id, UserManager, "Kalle", "Andersson", "Elev", "Kalle@Kalle.se");
-                createNewUser(context, groups[2].Id, UserManager, "Liam", "Ahlqvist", "Elev", "liam.a@fff.se");
+            createNewUser(context, groups[2].Id, UserManager, "Liam", "Ahlqvist", "Elev", "fff@fff.se");
                 createNewUser(context, groups[2].Id, UserManager, "Donald", "Trump", "Elev", "donald.trump@muppetshow.com");
                 createNewUser(context, groups[2].Id, UserManager, "Angela", "Merkel", "Lärare", "angela.merkel@yahoo.de");
                 createNewUser(context, groups[2].Id, UserManager, "Kalle", "Lundvall", "Elev", "kalle.lundvall@hotmail.com");
