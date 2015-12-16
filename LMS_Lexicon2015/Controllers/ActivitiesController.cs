@@ -23,7 +23,7 @@ namespace LMS_Lexicon2015.Controllers
 
         }
 
-        // GET: Activities/Details/5
+        // GET:  Skapar sidan med detalj information av aktivitetera
         public ActionResult Details(int? id, int? id2, int? id3)
         {
             if (id == null)
@@ -45,7 +45,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(activity);
         }
 
-        // GET: Activities/Create
+        // GET:  //Skapar sidan i vilken man kan lägga till en aktivitet
         [Authorize(Roles = "Lärare")]
         public ActionResult Create(int? id, int? id2)
         {
@@ -72,7 +72,7 @@ namespace LMS_Lexicon2015.Controllers
              return View();
         }
 
-        // POST: Activities/Create
+        // POST: //Skapar aktiviteten som blev skapad  ovan
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -148,7 +148,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(activity);
         }
 
-        // GET: Activities/Edit/5
+        // GET: Skapar sidan på vilken man kan editera aktiviteter
         [Authorize(Roles = "Lärare")]
         public ActionResult Edit(int? id, int? id2, int? id3)
         {
@@ -173,7 +173,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(activity);
         }
 
-        // POST: Activities/Edit/5
+        // POST: Sparar undan ändringarna ovan
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [Authorize(Roles = "Lärare")]
@@ -238,7 +238,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(activity);
         }
 
-        // GET: Activities/Delete/5
+        // GET: //Skapar sidan från vilken man kan ta bort aktiviteter
         [Authorize(Roles = "Lärare")]
         public ActionResult Delete(int? id, int? id2, int? id3)
         {
@@ -260,7 +260,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(activity);
         }
 
-        // POST: Activities/Delete/5
+        // POST: Tar bort aktiviteten ovan
         [Authorize(Roles = "Lärare")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
