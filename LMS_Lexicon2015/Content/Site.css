@@ -58,6 +58,11 @@ hr {
     height: 2px;
 }
 
+span.ak
+{
+    letter-spacing: -3px;
+}
+
 .content_info_problem { 
     color: #DD002C;
 }
