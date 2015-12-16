@@ -85,7 +85,7 @@ namespace LMS_Lexicon2015.Controllers
 
                 if (checkBox == "on")
                 {
-                    Groups = Groups.Where(o => o.EndDate > DateTime.Today);
+                    Groups = Groups.Where(o => o.EndDate > DateTime.Today && o.StartDate < DateTime.Today);
                 }
 
                 return View(Groups.ToList());

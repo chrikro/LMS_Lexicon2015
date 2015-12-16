@@ -1,15 +1,7 @@
 ﻿@model LMS_Lexicon2015.Models.Activity
 <div class="row">
     <div class="col-md-12 extratoppadding">
-
         <h2>Aktivitet detailj</h2>
-    </div>
-</div>
-@*<p>groupId</p>@ViewBag.groupId
-    <p>courseOccasionId</p>@ViewBag.courseOccasionId*@
-
-<div class="row">
-    <div class="col-md-12 extratoppadding">
 
         <hr />
         <dl class="dl-horizontal">
@@ -68,12 +60,8 @@
 
             @if (User.IsInRole("Lärare"))
             {
-                @Html.ActionLink("Ändra", "Edit/" + (int)ViewBag.activitiesId + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")
-                <span>|</span>
+                @Html.ActionLink("Ändra detaljer", "Edit/" + (int)ViewBag.activitiesId + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.groupId, "Activities")
             }
-
-            @Html.ActionLink("Tillbaka till kursen", "Details/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.GroupId, "CourseOccasions")
-
         </p>
     </div>
 </div>
@@ -106,7 +94,9 @@
         }
     </div>
 </div>
-
+<h4>
+    @Html.ActionLink("Tillbaka till kursen", "Details/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.GroupId, "CourseOccasions")
+</h4>
 
 @*SPARA VIKTIGT
     @Html.Partial("../documents/download", db.Documents.Where(o => o.ActivityId == Model.Id).OrderBy(c => c.Timestamp).ToList())

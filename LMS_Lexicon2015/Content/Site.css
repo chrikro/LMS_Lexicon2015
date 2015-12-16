@@ -16,7 +16,7 @@
 
 .navbar {
     display: inline;
-    font-family: Garamond; 
+    font-family: Garamond;
     font-size:1.5em;        
     
     /*font-family:"Whitney SSm A","Whitney SSm B",arial,sans-serif;*/
@@ -58,7 +58,7 @@ hr {
     height: 2px;
 }
 
-.content_info_problem {
+.content_info_problem { 
     color: #DD002C;
 }
 
@@ -85,27 +85,27 @@ a.content_info_dont_delete {
 
 .jumbotron {
     margin-top: auto;
-    padding: 5px;
-    margin-bottom: 10px;
+  padding: 5px;
+  margin-bottom: 10px;
     position: relative; /*blev inge bättre*/
 }
 
 @media screen and (min-width: 768px) {
-    .jumbotron {
-        padding-top: 30px;
-        padding-bottom: 30px;
-    }
+  .jumbotron {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
 
-    .container .jumbotron {
+  .container .jumbotron {
         padding-top: 30px;
-        padding-right: 60px;
-        padding-left: 60px;
-    }
+    padding-right: 60px;
+    padding-left: 60px;
+  }
 
-    .jumbotron h1 {
-        font-size: 60px;
+  .jumbotron h1 {
+    font-size: 60px;
         font-family:"Whitney SSm A","Whitney SSm B",arial,sans-serif;
-    }
+  }
 }
 
 .Grey_Button {
@@ -140,4 +140,7 @@ header h1, h2, h3, h4 {
     font-style: normal;
     text-rendering: optimizeLegibility;
 }
-/*stop lexicon.se*/
+
+.fixed-attachment {
+    background-attachment: fixed;
+}
