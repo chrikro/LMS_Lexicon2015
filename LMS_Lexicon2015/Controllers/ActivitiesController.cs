@@ -54,10 +54,12 @@ namespace LMS_Lexicon2015.Controllers
             ViewBag.StartDate = DateTime.Now;
             ViewBag.EndDate = DateTime.Now;
 
+            //ge startdatum defold värde med klockslag
             DateTime StartDate = DateTime.Now;
             TimeSpan tStartDate = new TimeSpan(09, 00, 0);
             StartDate = StartDate.Date + tStartDate;
 
+            //ge slutdatum defold värde med klockslag
             DateTime EndDate = DateTime.Now;
             TimeSpan tEndDate = new TimeSpan(17, 00, 0);
             EndDate = EndDate.Date + tEndDate;
@@ -86,8 +88,8 @@ namespace LMS_Lexicon2015.Controllers
             {
                 DateTime CoursesStartDate = db.CourseOccasions.Where(c => c.Id == activity.CourseId).FirstOrDefault().StartDate;
                 DateTime CoursesEndDate = db.CourseOccasions.Where(c => c.Id == activity.CourseId).FirstOrDefault().EndDate;
-                //CoursesStartDate = CoursesStartDate.AddHours(23);
-                //CoursesStartDate = CoursesStartDate.AddMinutes(59);
+
+
                 if (activity.StartDate < CoursesStartDate)
                 {
                     //AddErrors(ModelState);

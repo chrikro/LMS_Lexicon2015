@@ -51,6 +51,7 @@ namespace LMS_Lexicon2015
             };
 
             // Configure validation logic for passwords
+            //ställ in reglerna för lösenord
             manager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,
