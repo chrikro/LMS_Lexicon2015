@@ -4,10 +4,13 @@
     <div class="col-md-12 extratoppadding">
         <h2>@ViewBag.GroupName</h2>
         <h3>Elevlista</h3>
+        <p>
+            @if (User.IsInRole("Lärare"))
+            {
+                @Html.ActionLink("Lägga till användare", "Register", "Account")
+            }
+        </p>
 
-        @*<p>
-                @Html.ActionLink("Create New", "Register")
-            </p>*@
         <table class="table">
             <tr>
                 <th>
@@ -69,10 +72,5 @@
         </p>
 
         @*+ "?" + HttpContext.Current.Request.Url.AbsolutPath*@
-        <p>
-            @if (User.IsInRole("Lärare"))
-            {
-                @Html.ActionLink("Lägga till användare", "Register", "Account")
-            }
-        </p>
+
 </div></div>

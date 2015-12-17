@@ -47,7 +47,7 @@ namespace LMS_Lexicon2015.Migrations
                 new Group { Name = ".net Sep 2015", Description = "dotNet-utbildning. Påbyggnad hösten 2015.", StartDate = new DateTime(2015, 08, 31,09,00,00), EndDate = new DateTime(2015, 12, 20,17,00,00) },
                 new Group { Name = "Java Sep 2015", Description = "Java-utbildning.", StartDate = new DateTime(2015, 08, 31,09,00,00), EndDate = new DateTime(2015, 12, 20,17,00,00) },
                 new Group { Name = ".net Feb 2016", Description = "dotNet-utbildning. Påbyggnad våren 2016.", StartDate = new DateTime(2016, 02, 28,09,00,00), EndDate = new DateTime(2016, 06, 16,17,00,00) },
-                new Group { Name = ".net Vintern 2015/16", Description = "dotNet-utbildning. Påbyggnad vintern 2015/16.", StartDate = new DateTime(2015, 12, 14, 09,00,00), EndDate = new DateTime(2016, 04, 22,17,00,00) }
+                new Group { Name = ".net Vintern 2015/16", Description = "dotNet-utbildning. Påbyggnad vintern 2015/16.", StartDate = new DateTime(2015, 11, 30, 09,00,00), EndDate = new DateTime(2016, 04, 08,17,00,00) }
             };
 
             context.Groups.AddOrUpdate(g => g.Name, groups);
@@ -93,7 +93,7 @@ namespace LMS_Lexicon2015.Migrations
 
             /////----------------------
             //kurser 
-            // flest kurser till grupp[1] (.NET sep 2015)
+            // flest kurser till grupp[1,4] (.NET sep 2015, vinter 15/16)
             var courses = new[] {
                 new CourseOccasion { Name = "C-sharp-1", Description = "Modernt programmeringsspråk.", StartDate = new DateTime(2015, 03, 11,09,00,00), EndDate = new DateTime(2015, 03, 16,16,30,00), GroupId = groups[0].Id  },
                 new CourseOccasion { Name = "Angular JS", Description = "Typ av javaskript", StartDate = new DateTime(2015, 04, 27,09,00,00), EndDate = new DateTime(2015, 05, 10,16,30,00), GroupId = groups[0].Id  },
@@ -106,11 +106,11 @@ namespace LMS_Lexicon2015.Migrations
                 //demo nedan 9-16
                 new CourseOccasion { Name = "C-Sharp-2", Description = "Modernt programmeringsspråk. Objektorienterat", StartDate = new DateTime(2015, 12, 14,09,00,00), EndDate = new DateTime(2016, 01, 15,16,30,00), GroupId = groups[4].Id  },
                 new CourseOccasion { Name = "AngularJS", Description = "Typ av javascript.", StartDate = new DateTime(2016, 01, 18,09,00,00), EndDate = new DateTime(2016, 01, 20,16,30,00), GroupId = groups[4].Id  },
-                new CourseOccasion { Name = "SQL", Description = "Språk för att manipulera data i en databas.", StartDate = new DateTime(2016, 01,25,09,00,00), EndDate = new DateTime(2016, 01, 29,16,30,00), GroupId = groups[4].Id  },
-                new CourseOccasion { Name = "Scrum-projekt", Description = "Utveckling enligt scrum. En metod att använda. Bra att kunna.", StartDate = new DateTime(2016, 02, 01,09,00,00), EndDate = new DateTime(2016, 02, 05,16,30,00), GroupId = groups[4].Id  },
+                new CourseOccasion { Name = "SQL", Description = "Språk för att manipulera data i en databas.", StartDate = new DateTime(2015, 12,07,09,00,00), EndDate = new DateTime(2015, 12, 11,16,30,00), GroupId = groups[4].Id  },
+                new CourseOccasion { Name = "Scrum-projekt", Description = "Utveckling enligt scrum. En metod att använda. Bra att kunna.", StartDate = new DateTime(2015, 12, 01,09,00,00), EndDate = new DateTime(2015, 12, 04,16,30,00), GroupId = groups[4].Id  },
                 new CourseOccasion { Name = "Testmetodik", Description = "Test. Planering och genomförande av tester.", StartDate = new DateTime(2016, 02, 08,09,00,00), EndDate = new DateTime(2016, 02, 12,16,30,00), GroupId = groups[4].Id  },
                 new CourseOccasion { Name = "UX/UI", Description = "Så lite kognitiv friktion som möjligt.", StartDate = new DateTime(2016, 02, 15,09,00,00), EndDate = new DateTime(2016, 02, 19,16,30,00), GroupId = groups[4].Id  },                
-                new CourseOccasion { Name = "Bootstrap", Description = "Teknik för att skapa responsiva webbplatser.", StartDate = new DateTime(2016, 02, 22,09,00,00), EndDate = new DateTime(2016, 02, 26,16,30,00), GroupId = groups[4].Id  },
+                new CourseOccasion { Name = "Bootstrap", Description = "Teknik för att skapa responsiva webbplatser.", StartDate = new DateTime(2016, 02, 18,09,00,00), EndDate = new DateTime(2016, 02, 26,16,30,00), GroupId = groups[4].Id  },
                 new CourseOccasion { Name = "Versionshantering med Git", Description = "Versionshantering i allmänhet och Git i synnerhet.", StartDate = new DateTime(2016, 02, 29,09,00,00), EndDate = new DateTime(2016, 03, 04,16,30,00), GroupId = groups[4].Id  }
 
             };
@@ -135,10 +135,10 @@ namespace LMS_Lexicon2015.Migrations
                 new Activity{ Name = activityTypes[1].Name, Description = "Introduction To Web Development", StartDate = new DateTime(2015,12,16,09,00,00), EndDate = new DateTime(2015,12,16,16,00,00), CourseId = courses[8].Id },
                 new Activity{ Name = activityTypes[1].Name, Description = "C# MVC5", StartDate = new DateTime(2015,12,17,09,00,00), EndDate = new DateTime(2015,12,17,12,00,00), CourseId = courses[8].Id },
                 new Activity{ Name = activityTypes[1].Name, Description = "Building Applications with ASP.NET", StartDate = new DateTime(2015,12,18,09,00,00), EndDate = new DateTime(2015,12,18,12,00,00), CourseId = courses[8].Id },
-                new Activity{ Name = activityTypes[0].Name, Description = "Vad är SQL? Intro", StartDate = new DateTime(2016,01,25,09,00,00), EndDate = new DateTime(2016,01,25,12,00,00), CourseId = courses[10].Id },
-                new Activity{ Name = activityTypes[2].Name, Description = "För att öva sql.", StartDate = new DateTime(2015,01,25,13,15,00), EndDate = new DateTime(2016,01,26,16,30,00), CourseId = courses[10].Id }, 
-                new Activity{ Name = activityTypes[0].Name, Description = "Om artefakter och samarbete", StartDate = new DateTime(2016,02,01,09,00,00), EndDate = new DateTime(2016,02,01,12,00,00), CourseId = courses[11].Id },
-                new Activity{ Name = activityTypes[2].Name, Description = "Samtalsteknik. En övning i att vara trivsam.", StartDate = new DateTime(2016,02,02,09,00,00), EndDate = new DateTime(2016,02,02,16,45,00), CourseId = courses[11].Id },
+                new Activity{ Name = activityTypes[0].Name, Description = "Vad är SQL? Intro", StartDate = new DateTime(2015,12,07,09,00,00), EndDate = new DateTime(2015,12,07,12,00,00), CourseId = courses[10].Id },
+                new Activity{ Name = activityTypes[2].Name, Description = "För att öva sql.", StartDate = new DateTime(2015,12,07,13,15,00), EndDate = new DateTime(2015,12,08,16,30,00), CourseId = courses[10].Id }, 
+                new Activity{ Name = activityTypes[0].Name, Description = "Om artefakter och samarbete", StartDate = new DateTime(2015,12,01,09,00,00), EndDate = new DateTime(2015,12,01,12,00,00), CourseId = courses[11].Id },
+                new Activity{ Name = activityTypes[2].Name, Description = "Samtalsteknik. En övning i att vara trivsam.", StartDate = new DateTime(2015,12,02,09,00,00), EndDate = new DateTime(2015,12,02,16,45,00), CourseId = courses[11].Id },
                 new Activity{ Name = activityTypes[1].Name, Description = "Testteknik lärs ut. Även andra aspekter av test tas upp under den här aktiviteten.", StartDate = new DateTime(2016,02,08,09,00,00), EndDate = new DateTime(2016,02,08,17,00,00), CourseId = courses[12].Id }
            };
 
@@ -153,9 +153,9 @@ namespace LMS_Lexicon2015.Migrations
             createNewDocument(context, groups[1].Id, courses[2].Id, activitys[0].Id, "jultomten@nordpoolen.org", "test.txt", "Ett nytt fint dokument som handlar om SQL.", new DateTime(2015, 09, 03, 09, 30, 00), null);
             //demo nedan
             createNewDocument(context, groups[4].Id, courses[8].Id, null, "benjamin.syrsa@wdisney.com", "C# Bible.pdf", "Bra dokument om CSharp", new DateTime(2015, 12, 15, 10, 30, 00), null);
-            createNewDocument(context, groups[4].Id, null, null, "nisse@nordpoolen.org", "testmetoder.txt", "Beskrivning av olika testmetoder.", new DateTime(2015, 09, 01, 10, 30, 00), new DateTime(2015, 09, 02, 10, 30, 00));
-            createNewDocument(context, groups[4].Id, courses[11].Id, null, "nisse@nordpoolen.org", "Scrum-övning1.txt", "Inlämningsuppgift Scrum", new DateTime(2016, 02, 02, 14, 00, 00), null);
-            createNewDocument(context, groups[4].Id, courses[11].Id, activitys[0].Id, "nisse@nordpoolen.org", "sql-inlämning.txt", "Mitt lösningsförslag till SQL-uppgiften", new DateTime(2016, 01, 26, 16, 30, 00), null);
+            createNewDocument(context, groups[4].Id, courses[12].Id, null, "benjamin.syrsa@wdisney.com", "testmetoder.txt", "Beskrivning av olika testmetoder.", new DateTime(2015, 12, 01, 10, 30, 00), null);
+            createNewDocument(context, groups[4].Id, courses[11].Id, null, "nisse@nordpoolen.org", "Scrum-övning1.txt", "Inlämningsuppgift Scrum", new DateTime(2015, 12, 03, 14, 00, 00), null);
+            createNewDocument(context, groups[4].Id, courses[11].Id, activitys[0].Id, "nisse@nordpoolen.org", "sql-inlämning.txt", "Mitt lösningsförslag till SQL-uppgiften", new DateTime(2015, 12, 08, 16, 30, 00), null);
         }
 
         // ------------- separat metod för att skapa nya dokument. Anropas fr ovan 

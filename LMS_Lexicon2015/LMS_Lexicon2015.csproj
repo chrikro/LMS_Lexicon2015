@@ -285,6 +285,7 @@
     <Content Include="Scripts\ChangeRole.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Files\C# Bible.pdf" />
+    <Content Include="ClassDiagram2.cd" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

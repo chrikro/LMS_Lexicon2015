@@ -7,7 +7,19 @@
 <div class="row">
     <div class="col-md-12 extratoppadding">
         <h2>@ViewBag.Title</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @if (User.IsInRole("Lärare"))
+        {
+            @Html.ActionLink("Lägga till användare", "Register", "Account")
+        }
+    </div>
+</div>
 
+<div class="row">
+    <div class="col-md-8">
         <h3>Sök på användarnamn</h3>
 
         @using (Html.BeginForm())
@@ -20,12 +32,14 @@
                 <input type="checkbox" name="ActiveChoise" />
             </p>
         }
-
     </div>
 </div>
+
+
+
 <div class="row">
     <div class="col-md-12">
-        
+
         <table class="table">
             <tr>
                 <th>
@@ -104,11 +118,6 @@
             }
 
         </table>
-        <p>
-            @if (User.IsInRole("Lärare"))
-            {
-                @Html.ActionLink("Skapa Användare", "Register", "Account")
-            }
 
-        </p>
-</div></div>
+    </div>
+</div>
