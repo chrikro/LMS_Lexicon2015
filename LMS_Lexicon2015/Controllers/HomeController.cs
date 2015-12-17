@@ -12,6 +12,8 @@ namespace LMS_Lexicon2015.Controllers
     public class HomeController : Controller
     {
         public static bool HomeIndex = false;
+
+        // Skapae en inloggnings sida
         public ActionResult Index()
         {
 
