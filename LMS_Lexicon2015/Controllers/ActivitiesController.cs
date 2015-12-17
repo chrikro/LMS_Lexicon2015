@@ -35,6 +35,9 @@ namespace LMS_Lexicon2015.Controllers
             {
                 return HttpNotFound();
             }
+
+
+
             ViewBag.activitiesId = id;
             ViewBag.courseOccasionId = id2;
             ViewBag.groupId = id3;
