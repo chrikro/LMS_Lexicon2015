@@ -65,7 +65,7 @@ namespace LMS_Lexicon2015.Controllers
 
 
 
-        // GET: Users
+        // GET: Skapar en lista med användare
         public ActionResult Index(string sortOrder, string searchString)
         {
 
@@ -178,7 +178,7 @@ namespace LMS_Lexicon2015.Controllers
 
         }
 
-        // GET: Groups
+        // GET: Skaparen sida med de användare som tillhör samma grupp
         //       public ActionResult DelGroup(int id)
         public ActionResult PartitialGroup(int? id)
         {
@@ -195,7 +195,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(model);
         }
 
-        // GET: Users/Details/5
+        // GET: Visar en sida med detaljerad information av en användare
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -222,7 +222,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(applicationUser);
         }
 
-        // GET: Users/Create
+        // GET: Visar en sida från vilken man kan skapa en användare
         [Authorize(Roles = "Lärare")]
         public ActionResult Create()
         {
@@ -251,7 +251,7 @@ namespace LMS_Lexicon2015.Controllers
             return View();
         }
 
-        // GET: Users/Edit/5
+        // GET: Visar en sida från vilken man kan ändra info om en användare
         [Authorize(Roles = "Lärare")]
         public ActionResult Edit(string id)
         {
@@ -297,7 +297,7 @@ namespace LMS_Lexicon2015.Controllers
 
         //vi har ändratedit pga lössenord ändras vid ändringar
 
-        // POST: Users/Edit/5
+        // POST: Sparar ändringarna ovan
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [Authorize(Roles = "Lärare")]
@@ -381,7 +381,7 @@ namespace LMS_Lexicon2015.Controllers
 
         }
 
-        // GET: Users/Delete/5
+        // GET: Visar en sida från vilken man kan ta bort en användare
         [Authorize(Roles = "Lärare")]
         public ActionResult Delete(string id)
         {
@@ -406,7 +406,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(applicationUser);
         }
 
-        // POST: Users/Delete/5
+        // POST: Tar bort ovan nämnda användare
         [Authorize(Roles = "Lärare")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

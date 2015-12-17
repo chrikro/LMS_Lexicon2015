@@ -15,7 +15,7 @@ namespace LMS_Lexicon2015.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Groups
+        // GET: Skapar en sida med alla grupper
         public ActionResult Index(string sortOrder, string searchString)
         {
             {
@@ -100,7 +100,7 @@ namespace LMS_Lexicon2015.Controllers
         //}
 
 
-        // GET: Groups/Details/5
+        // GET: Skapar en sida med detaljerad information av en grupp
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -118,7 +118,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(group);
         }
 
-        // GET: Groups/Create
+        // GET: Skapae en sida från vilken man kan skapa en grupp
         [Authorize(Roles = "Lärare")]
         public ActionResult Create()
         {
@@ -126,7 +126,7 @@ namespace LMS_Lexicon2015.Controllers
             return View();
         }
 
-        // POST: Groups/Create
+        // POST: Skapar gruppen ovan
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [Authorize(Roles = "Lärare")]
@@ -162,7 +162,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(group);
         }
 
-        // GET: Groups/Edit/5
+        // GET: Skapar en sida från vilken man kan editera detaljinformationen av en grupp
         [Authorize(Roles = "Lärare")]
         public ActionResult Edit(int? id)
         {
@@ -180,7 +180,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(group);
         }
 
-        // POST: Groups/Edit/5
+        // POST: Sparar den editerade informationen
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [Authorize(Roles = "Lärare")]
@@ -209,7 +209,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(group);
         }
 
-        // GET: Groups/Delete/5
+        // GET: Skapar en sida från vilken man kan ta bort en grupp
         [Authorize(Roles = "Lärare")]
         public ActionResult Delete(int? id)
         {
@@ -226,7 +226,7 @@ namespace LMS_Lexicon2015.Controllers
             return View(group);
         }
 
-        // POST: Groups/Delete/5
+        // POST: Tar bort gruppen angiven ovan
         [Authorize(Roles = "Lärare")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
