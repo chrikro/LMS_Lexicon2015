@@ -110,7 +110,7 @@ namespace LMS_Lexicon2015.Migrations
                 new CourseOccasion { Name = "Scrum-projekt", Description = "Utveckling enligt scrum. En metod att använda. Bra att kunna.", StartDate = new DateTime(2015, 12, 01,09,00,00), EndDate = new DateTime(2015, 12, 04,16,30,00), GroupId = groups[4].Id  },
                 new CourseOccasion { Name = "Testmetodik", Description = "Test. Planering och genomförande av tester.", StartDate = new DateTime(2016, 02, 08,09,00,00), EndDate = new DateTime(2016, 02, 12,16,30,00), GroupId = groups[4].Id  },
                 new CourseOccasion { Name = "UX/UI", Description = "Så lite kognitiv friktion som möjligt.", StartDate = new DateTime(2016, 02, 15,09,00,00), EndDate = new DateTime(2016, 02, 19,16,30,00), GroupId = groups[4].Id  },                
-                new CourseOccasion { Name = "Bootstrap", Description = "Teknik för att skapa responsiva webbplatser.", StartDate = new DateTime(2016, 02, 22,09,00,00), EndDate = new DateTime(2016, 02, 26,16,30,00), GroupId = groups[4].Id  },
+                new CourseOccasion { Name = "Bootstrap", Description = "Teknik för att skapa responsiva webbplatser.", StartDate = new DateTime(2016, 02, 18,09,00,00), EndDate = new DateTime(2016, 02, 26,16,30,00), GroupId = groups[4].Id  },
                 new CourseOccasion { Name = "Versionshantering med Git", Description = "Versionshantering i allmänhet och Git i synnerhet.", StartDate = new DateTime(2016, 02, 29,09,00,00), EndDate = new DateTime(2016, 03, 04,16,30,00), GroupId = groups[4].Id  }
 
             };
