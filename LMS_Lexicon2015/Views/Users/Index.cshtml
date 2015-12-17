@@ -10,7 +10,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-4">
         @if (User.IsInRole("Lärare"))
         {
             @Html.ActionLink("Skapa Användare", "Register", "Account")
@@ -19,7 +19,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-8">
         <h3>Sök på användarnamn</h3>
 
         @using (Html.BeginForm())
