@@ -26,8 +26,8 @@ namespace LMS_Lexicon2015.Models
         [Display(Name = "Slutdatum")]
         public DateTime EndDate { get; set; }
 
-       [Display(Name = "Gruppnamn")]
-       public virtual ICollection<ApplicationUser> GroupName { get; set; }
+        [Display(Name = "Gruppnamn")]//skulle heta Användarnamn istället.
+       public virtual ICollection<ApplicationUser> GroupName { get; set; }//skulle heta Users istället.
 
        [Display(Name = "Courses")]
        public virtual ICollection<CourseOccasion> Courses { get; set; }

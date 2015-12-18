@@ -92,6 +92,7 @@ namespace LMS_Lexicon2015.Controllers
 
                 ViewBag.GroupId = document.GroupId;
                 ViewBag.CourseOccasionId = document.CourseOccasionId;
+                //ViewBag.ActivityId = document.ActivityId;
                 ViewBag.view = (string)TempData["view"];
 
                         ModelState.AddModelError("", "Du har glömt själva filen");
