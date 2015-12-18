@@ -230,7 +230,10 @@ namespace LMS_Lexicon2015.Controllers
                 {
                     db.Entry(activity).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Details/" + activity.CourseId + "/" + (int)TempData["GroupId"], "CourseOccasions");
+                    //return RedirectToAction("Details/" + activity.CourseId + "/" + (int)TempData["GroupId"], "CourseOccasions");
+
+                   // @Html.ActionLink("Tillbaka till kursen", "Details/" + (int)ViewBag.activitiesId + "/" + (int)ViewBag.courseOccasionId + "/" + (int)ViewBag.GroupId, "Activities")
+                    return RedirectToAction("Details/" + activity.Id + "/" + activity.CourseId + "/" + (int)TempData["GroupId"], "Activities");
                 }
 
 
